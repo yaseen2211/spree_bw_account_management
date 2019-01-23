@@ -26,80 +26,39 @@
 
       </ul>
     </div>
-    <div class="col-md-9 well admin-content" id="pi">
-    	<p> Personal Info Tab </p>
-    	<div class="row narrow-row-md">
-			  <div class="col-sm-6">
-			    <div class="form-group">
-			      <label class="control-label">Email Address<span class="required">*</span></label>
-			      <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email) %>
-			    </div>
-			  </div>
-			</div>
 
-			<div class="row narrow-row-md">
-			  <div class="col-sm-6">
-			    <div class="form-group">
-			      <label class="control-label">Enter a Password<span class="required">*</span></label>
-			      <%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password) %>
-			      <div class="form-control-legend">Minimum 7 characters. Must include at least 1 letter and 1 number.</div>
-			    </div>
-			  </div>
-			</div>
-			<div class="row narrow-row-md">
-			  <div class="col-sm-6">
-			    <div class="form-group">
-			      <label class="control-label">Confirm Password<span class="required">*</span></label>
-			       <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => Spree.t(:confirm_password) %>
-			    </div>
-			  </div>
-			</div>
-    	<p>
-      	<%= f.submit "Save", :class => 'btn btn-primary' %>
-    	</p>
+    <div class="col-md-9 well admin-content" id="pi">
+    	<%= render partial: "spree/account_management/personal_information", locals: { :f => f } %>
     </div>
+
     <div class="col-md-9 well admin-content" id="address">
-    	<p> Addresses </p>
-      <p>
-      	<%= f.submit "Save", :class => 'btn btn-primary' %>
-    	</p>
+    	<%= render partial: "spree/account_management/addresses", locals: { :f => f } %>
     </div>
+
     <div class="col-md-9 well admin-content" id="orders">
-    	<p> Orders </p>
-       <p>
-      	<%= f.submit "Save", :class => 'btn btn-primary' %>
-    	</p>
+      <%= render partial: "spree/account_management/orders", locals: { :f => f } %>
     </div>
+    
     <div class="col-md-9 well admin-content" id="whislist">
-    	<p> Whislist </p>
-      <p>
-      	<%= f.submit "Save", :class => 'btn btn-primary' %>
-    	</p>
+    	<%= render partial: "spree/account_management/wishlist", locals: { :f => f } %>
     </div>
+
     <div class="col-md-9 well admin-content" id="reviews">
-    	<p> Reviews</p>
-      <p>
-      	<%= f.submit "Save", :class => 'btn btn-primary' %>
-    	</p>
+      <%= render partial: "spree/account_management/reviews", locals: { :f => f } %>
     </div>
+
     <div class="col-md-9 well admin-content" id="settings">
-    	<p> Settings </p>
-      <p>
-      	<%= f.submit "Save", :class => 'btn btn-primary' %>
-    	</p>
+      <%= render partial: "spree/account_management/settings", locals: { :f => f } %>
     </div>
+
     <div class="col-md-9 well admin-content" id="messages">
-    	<p> Messages </p>
-      <p>
-      	<%= f.submit "Save", :class => 'btn btn-primary' %>
-    	</p>
+      <%= render partial: "spree/account_management/messages", locals: { :f => f } %>
     </div>
+
     <div class="col-md-9 well admin-content" id="sc">
-    	<p> Supoort Center </p>
-      <p>
-      	<%= f.submit "Save", :class => 'btn btn-primary' %>
-    	</p>
+      <%= render partial: "spree/account_management/support_center", locals: { :f => f } %>
     </div>
+
   </div>
 </div>
 <% if page_name == "registeration" %>
