@@ -1,4 +1,3 @@
-console.log("here");
 <%if @user.errors.any?%>
   $('.error-messages').html("<%= escape_javascript render(:partial => 'spree/shared/error_messages', :locals => { :target => @user } ) %>");
 <%else%>
