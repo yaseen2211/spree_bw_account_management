@@ -1,7 +1,9 @@
 <div class="container sm-width">
 	<div class="col-md-12">
-	  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => spree_current_user } %>
-	  <%= form_for spree_current_user, :url => spree.user_path(spree_current_user), :method => :put do |f| %>
+    <div class="error-messages">
+      <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+    </div>
+	  <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
 	    <%= render :partial => 'spree/shared/user_form', :locals => { :page_name=> "edit_account",:f => f } %>
 	  <% end %>
 	  </div> 
