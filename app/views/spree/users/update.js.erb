@@ -1,0 +1,5 @@
+<%if @user.errors.any?%>
+  $('.error-messages').html("<%= escape_javascript render(:partial => 'spree/shared/error_messages', :locals => { :target => @user } ) %>");
+<%else%>
+  $('.error-messages').html("<div class='alert alert-success'>Account updated</div>");
+<%end%>
