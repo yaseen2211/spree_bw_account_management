@@ -1,0 +1,9 @@
+<%= f.fields_for :addresses do |form| %>
+	<div class="panel-heading">
+        <h3 class="panel-title"><%= Spree.t(:address) %></h3>
+    </div>
+    <div class="panel-body">
+   
+        <%= render partial: 'spree/account_management/address/form', locals: { form: form, address_type: 'user', address: @user.addresses.first } %>
+    </div>
+<% end %>

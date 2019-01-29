@@ -1,4 +1,6 @@
 <p> Addresses </p>
+
 <p>
-<%= f.submit "Save", :class => 'btn btn-primary' %>
+	<%= render partial: 'spree/account_management/address/single_address', locals: {f: f}  %>
+	<%= f.submit "Save", :class => 'btn btn-primary' %>
 </p>
