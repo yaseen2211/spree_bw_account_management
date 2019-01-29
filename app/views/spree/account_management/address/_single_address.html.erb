@@ -4,6 +4,6 @@
     </div>
     <div class="panel-body">
    
-        <%= render partial: 'spree/account_management/address/form', locals: { form: form, address_type: 'user', address: @user.addresses.first } %>
+        <%= render partial: 'spree/account_management/address/form', locals: { form: form, address_type: 'user', address: @user.addresses.new } %>
     </div>
 <% end %>
