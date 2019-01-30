@@ -5,3 +5,19 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
 body{margin-top:20px;}
 .fa-fw {width: 2em;}
+.margin-bottom-20{
+  margin-bottom: 20px;
+}
+.margin-top-50{
+  margin-top: 50px;
+}
+.half-width{
+  width: 65%;
+  height: 0px;
+}
+.buttons-collection{
+  width: 30%;
+  position: relative;
+  left: 115%;
+  bottom: 230px;
+}

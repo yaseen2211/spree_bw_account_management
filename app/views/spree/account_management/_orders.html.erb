@@ -1,4 +1,171 @@
-<p> Orders </p>
- <p>
-	<%= f.submit "Save", :class => 'btn btn-primary' %>
+<h1 class="text-center"> Orders </h1>
+<hr>
+<p>
+  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
 </p>
+<hr>
+<% @orders.each do |order| %>
+    <fieldset id="order_summary-<%order.id%>">
+      <div id="order" data-hook="">
+        <div class="row steps-data margin-top-50">
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <h4>Order Details</h4>
+            <div class="fn"><%= order.number %></div>
+            <div>
+              Purchased on:
+              <%= order.created_at.strftime("%e/%m/%Y") %>
+            </div>
+            <div>
+              Items:
+              <%= order.line_items.count %>
+            </div>
+            <div>
+              Personalised Item:
+              <%= order.line_items.count %>
+            </div>
+            <% if order.has_step?("payment") %>
+              <div>
+                Payment method:
+                <%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <h4>Shiping Details</h4>
+            <% if order.has_step?("delivery") %>
+              <h5><%= order.ship_address.full_name %></h5>
+              <% unless order.ship_address.phone.blank? %>
+                <%= order.ship_address.phone %>
+              <% end %>
+              <% unless order.ship_address.alternative_phone.blank? %>
+                <div class="alternative-phone tel">
+                  <%= order.ship_address.alternative_phone %>
+                </div>
+              <% end %>
+
+              <div class="adr">
+                <div class="street-address">
+                  <div class="street-address-line">
+                    <%= order.ship_address.address1 %>
+                  </div>
+                  <% unless order.ship_address.address2.blank? %>
+                      <div class="street-address-line">
+                        <%= order.ship_address.address2 %>
+                      </div>
+                  <% end %>
+                </div>
+                <div class="local">
+                  <span class="locality"><%= order.ship_address.city %></span>
+                  <span class="postal-code"><%= order.ship_address.zipcode %></span>
+                  <div class="country-name"><%= order.ship_address.country.try(:name) %></div>
+                </div>
+              </div>
+            <%end%>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <h4>Order Summary</h4>
+            <div>
+              Shiping:
+              <% order.shipments.group_by { |s| s.selected_shipping_rate.name }.each do |name, shipments| %>
+                <tr class="total">
+                  <td class="total"><span><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></span></td>
+                </tr>
+              <% end %>
+            </div>
+            <div>
+              Store Credit: $40
+            </div>
+            <div>
+              Discount: $40
+            </div>
+            <div>
+              Product Total: $300
+            </div>
+            <div>
+              <b>Cart Total:</b>
+              <b><%= order.display_total.to_html %></b>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h4>#0000567-042019-ABC - Purchased From Store Name</h4>
+            <span class="pull-right">
+              Shiped On: 04/04-2018
+              <div>
+                Tracking NUmber: DVXFTGJHRE
+              </div>
+            </span>
+          </div>
+        </div>
+        <div class="row steps-data">
+          <div class="col-md-2 col-sm-4">
+            <a>Order Received</a>
+          </div>
+          <div class="col-md-2 col-sm-4">
+            <a>Order In Progress</a>
+          </div>
+          <div class="col-md-2 col-sm-4">
+            <a>Order Delivered</a>
+          </div>
+        </div>
+        <hr>
+        <div class="half-width">
+          <% order.line_items.each do |item| %>
+            <div class=" row">
+              <div class="col-md-4 col-sm-2">
+                <% if item.variant.images.length == 0 %>
+                    <%= link_to small_image(item.variant.product), item.variant.product %>
+                <% else %>
+                    <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
+                <% end %>
+              </div>
+              <div class="col-md-8 col-sm-2">
+                <h4><%= item.quantity.to_s + " x " + item.name %></h4>
+                <%= truncate(item.description, length: 100) %>
+                <div>
+                  <%= item.variant.options_text unless item.variant.option_values.empty? %>
+                </div>
+                <div>
+                  <span>100.0</span>
+                  <span class="pull-right">100.0</span>
+                </div>
+                <div>
+                  30% OFF
+                </div>
+                <div>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="pull-right"><button class="btn btn-primary">Review  <i class="fa fa-star"></i></button></span>
+                </div>
+              </div>
+            </div>
+            <hr>
+          <%end%>
+          <div class="buttons-collection">
+            <div class="margin-bottom-20">
+              <button class="btn btn-primary">Download Invoice  <i class="fa fa-star"></i></button>
+            </div>
+            <div class="margin-bottom-20">
+              <button class="btn btn-primary">Contact Store  <i class="fa fa-star"></i></button>
+            </div>
+            <div class="margin-bottom-20">
+              <button class="btn btn-primary">Request Return  <i class="fa fa-star"></i></button>
+            </div>
+            <div class="margin-bottom-20">
+              <button class="btn btn-primary">View Messages  <i class="fa fa-star"></i></button>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+<% end %>
+
+ <!--<p>-->
+	<!--<%#= f.submit "Save", :class => 'btn btn-primary' %>-->
+<!--</p>-->

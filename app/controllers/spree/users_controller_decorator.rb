@@ -1,5 +1,9 @@
 Spree::UsersController.class_eval do
 
+  def edit
+    @orders = @user.orders.includes(line_items: [variant: [:option_values, :images, :product]], bill_address: :state, ship_address: :state)
+  end
+
   def update
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       params[:user].delete(:password)
