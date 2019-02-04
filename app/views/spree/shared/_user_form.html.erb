@@ -28,39 +28,54 @@
     </div>
 
     <div class="col-md-9 well admin-content" id="pi">
-    	<%= render partial: "spree/account_management/personal_information", locals: { :f => f } %>
+      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+    	 <%= render partial: "spree/account_management/personal_information", locals: { :f => f } %>
+      <% end %>
     </div>
 
-    <div class="col-md-9 well admin-content" id="address">
-    	<%= render partial: "spree/account_management/addresses", locals: { :f => f } %>
+    <div class="col-md-9  admin-content" id="address">
+    	 <%= render partial: "spree/account_management/addresses" %>
     </div>
 
     <div class="col-md-9 well admin-content" id="orders">
-      <%= render partial: "spree/account_management/orders", locals: { :f => f } %>
+      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+        <%= render partial: "spree/account_management/orders", locals: { :f => f } %>
+      <% end %>
     </div>
     
     <div class="col-md-9 well admin-content" id="whislist">
-    	<%= render partial: "spree/account_management/wishlist", locals: { :f => f } %>
+    	<%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+        <%= render partial: "spree/account_management/wishlist", locals: { :f => f } %>
+      <% end %>
     </div>
 
     <div class="col-md-9 well admin-content" id="reviews">
-      <%= render partial: "spree/account_management/reviews", locals: { :f => f } %>
+      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+        <%= render partial: "spree/account_management/reviews", locals: { :f => f } %>
+      <% end %>
     </div>
 
     <div class="col-md-9 well admin-content" id="settings">
-      <%= render partial: "spree/account_management/settings", locals: { :f => f } %>
+      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+        <%= render partial: "spree/account_management/settings", locals: { :f => f } %>
+      <% end %>
     </div>
 
     <div class="col-md-9 well admin-content" id="messages">
-      <%= render partial: "spree/account_management/messages", locals: { :f => f } %>
+      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+        <%= render partial: "spree/account_management/messages", locals: { :f => f } %>
+      <% end %>
     </div>
 
     <div class="col-md-9 well admin-content" id="sc">
-      <%= render partial: "spree/account_management/support_center", locals: { :f => f } %>
+      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+        <%= render partial: "spree/account_management/support_center", locals: { :f => f } %>
+      <% end %>
     </div>
-
   </div>
+
 </div>
+
 <% if page_name == "registeration" %>
    <p class="text-center"><small>By clicking &quot;Continue&quot;, you agree to our <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a>, including receipt of emails and promotions.</small></p>
   <p><%= f.submit 'Continue', :class => 'btn btn-lg btn-success btn-block' %></p>

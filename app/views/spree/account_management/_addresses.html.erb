@@ -1,6 +1,22 @@
-<p> Addresses </p>
+<% @address_contents     = Spree::PageContent.from_gen_slug(I18n.locale,'address') %>
+<% @address_btn_contents = @address_contents.from_gen_slug(I18n.locale,'address-btn-label') %>
 
-<p>
-	<%= render partial: 'spree/account_management/address/single_address', locals: {f: f}  %>
-	<%= f.submit "Save", :class => 'btn btn-primary' %>
-</p>
+<% address_main_content = @address_contents.spec_slug('addresses-main-heading-desc').last%>
+<% new_address_btn      = @address_btn_contents.spec_slug('address-btn-label-new').last%>
+
+<% Globalize.with_locale (I18n.locale) do %> 
+	
+	<div class="text-center">
+		<h1 class="text-center "><%= address_main_content .title %></h1>
+		<button style="    margin-top: -39px;" type="button" class="btn btn-success pull-right"  id="btn-new-address"><%=new_address_btn.title %></button>
+
+	</div>
+	<hr>
+	<p class="text-center"> <%=  address_main_content .description%></p>
+
+<% end %>
+
+<div class=" alert  alert-dismissible" id="address-info-sec"></div>
+<div id="user-<%=@user.id%>-addresses-section" >
+	<%= render partial: 'spree/account_management/address/user_addresses_section', locals: {addresses: @user.addresses, user: @user} %>
+</div>
