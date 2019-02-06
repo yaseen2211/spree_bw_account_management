@@ -2,84 +2,96 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<% if page_name == "registeration" %>
-<h2 class="text-center">Registration</h2>
-  <h4 class="text-center">It looks like you’re new here. we need a bit more info…</h4>
+<% if spree_current_user.present? %>
+
+  <h2 class="text-center" style="font-style: italic;">Edit Account</h2>
+  <!------ Include the above in your HEAD tag ---------->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked admin-menu">
+          <li class="active"><a href="#" data-target-id="pi"><i class="fa fa-home fa-fw"></i>Personal Information</a></li>
+          <li><a href="http://www.jquery2dotnet.com" data-target-id="address"><i class="fa fa-list-alt fa-fw"></i>Addresses</a></li>
+          <li><a href="http://www.jquery2dotnet.com" data-target-id="orders"><i class="fa fa-file-o fa-fw"></i>Orders</a></li>
+          <li><a href="http://www.jquery2dotnet.com" data-target-id="whislist"><i class="fa fa-bar-chart-o fa-fw"></i>Whislist</a></li>
+          <li><a href="http://www.jquery2dotnet.com" data-target-id="reviews"><i class="fa fa-table fa-fw"></i>Reviews</a></li>
+          <li><a href="http://www.jquery2dotnet.com" data-target-id="settings"><i class="fa fa-tasks fa-fw"></i>Settings</a></li>
+          <li><a href="http://www.jquery2dotnet.com" data-target-id="messages"><i class="fa fa-calendar fa-fw"></i>Messages</a></li>
+          <li><a href="http://www.jquery2dotnet.com" data-target-id="sc"><i class="fa fa-book fa-fw"></i>Supoort Center</a></li>
+          <li><a href="http://www.jquery2dotnet.com" data-target-id="logout"><i class="fa fa-pencil fa-fw"></i>Logout</a></li>
+
+        </ul>
+      </div>
+
+      <div class="col-md-9 well admin-content" id="pi">
+        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+         <%= render partial: "spree/account_management/personal_information", locals: { :f => f } %>
+        <% end %>
+      </div>
+
+      <div class="col-md-9  admin-content" id="address">
+         <%= render partial: "spree/account_management/addresses" %>
+      </div>
+
+      <div class="col-md-9 well admin-content" id="orders">
+        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+          <%= render partial: "spree/account_management/orders", locals: { :f => f } %>
+        <% end %>
+      </div>
+      
+      <div class="col-md-9 well admin-content" id="whislist">
+        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+          <%= render partial: "spree/account_management/wishlist", locals: { :f => f } %>
+        <% end %>
+      </div>
+
+      <div class="col-md-9 well admin-content" id="reviews">
+        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+          <%= render partial: "spree/account_management/reviews", locals: { :f => f } %>
+        <% end %>
+      </div>
+
+      <div class="col-md-9 well admin-content" id="settings">
+        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+          <%= render partial: "spree/account_management/settings", locals: { :f => f } %>
+        <% end %>
+      </div>
+
+      <div class="col-md-9 well admin-content" id="messages">
+        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+          <%= render partial: "spree/account_management/messages", locals: { :f => f } %>
+        <% end %>
+      </div>
+
+      <div class="col-md-9 well admin-content" id="sc">
+        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+          <%= render partial: "spree/account_management/support_center", locals: { :f => f } %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
 <% else %>
-<h2 class="text-center" style="font-style: italic;">Edit Account</h2>
-<% end %>
-
-<!------ Include the above in your HEAD tag ---------->
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <ul class="nav nav-pills nav-stacked admin-menu">
-        <li class="active"><a href="#" data-target-id="pi"><i class="fa fa-home fa-fw"></i>Personal Information</a></li>
-        <li><a href="http://www.jquery2dotnet.com" data-target-id="address"><i class="fa fa-list-alt fa-fw"></i>Addresses</a></li>
-        <li><a href="http://www.jquery2dotnet.com" data-target-id="orders"><i class="fa fa-file-o fa-fw"></i>Orders</a></li>
-        <li><a href="http://www.jquery2dotnet.com" data-target-id="whislist"><i class="fa fa-bar-chart-o fa-fw"></i>Whislist</a></li>
-        <li><a href="http://www.jquery2dotnet.com" data-target-id="reviews"><i class="fa fa-table fa-fw"></i>Reviews</a></li>
-        <li><a href="http://www.jquery2dotnet.com" data-target-id="settings"><i class="fa fa-tasks fa-fw"></i>Settings</a></li>
-        <li><a href="http://www.jquery2dotnet.com" data-target-id="messages"><i class="fa fa-calendar fa-fw"></i>Messages</a></li>
-        <li><a href="http://www.jquery2dotnet.com" data-target-id="sc"><i class="fa fa-book fa-fw"></i>Supoort Center</a></li>
-        <li><a href="http://www.jquery2dotnet.com" data-target-id="logout"><i class="fa fa-pencil fa-fw"></i>Logout</a></li>
-
-      </ul>
-    </div>
-
-    <div class="col-md-9 well admin-content" id="pi">
-      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-    	 <%= render partial: "spree/account_management/personal_information", locals: { :f => f } %>
-      <% end %>
-    </div>
-
-    <div class="col-md-9  admin-content" id="address">
-    	 <%= render partial: "spree/account_management/addresses" %>
-    </div>
-
-    <div class="col-md-9 well admin-content" id="orders">
-      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-        <%= render partial: "spree/account_management/orders", locals: { :f => f } %>
-      <% end %>
-    </div>
-    
-    <div class="col-md-9 well admin-content" id="whislist">
-    	<%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-        <%= render partial: "spree/account_management/wishlist", locals: { :f => f } %>
-      <% end %>
-    </div>
-
-    <div class="col-md-9 well admin-content" id="reviews">
-      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-        <%= render partial: "spree/account_management/reviews", locals: { :f => f } %>
-      <% end %>
-    </div>
-
-    <div class="col-md-9 well admin-content" id="settings">
-      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-        <%= render partial: "spree/account_management/settings", locals: { :f => f } %>
-      <% end %>
-    </div>
-
-    <div class="col-md-9 well admin-content" id="messages">
-      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-        <%= render partial: "spree/account_management/messages", locals: { :f => f } %>
-      <% end %>
-    </div>
-
-    <div class="col-md-9 well admin-content" id="sc">
-      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-        <%= render partial: "spree/account_management/support_center", locals: { :f => f } %>
-      <% end %>
-    </div>
+ 
+  <div class="form-group">
+    <%= f.label :email, Spree.t(:email) %>
+    <%= f.email_field :email, class: 'form-control' %>
   </div>
 
-</div>
-
-<% if page_name == "registeration" %>
-   <p class="text-center"><small>By clicking &quot;Continue&quot;, you agree to our <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a>, including receipt of emails and promotions.</small></p>
-  <p><%= f.submit 'Continue', :class => 'btn btn-lg btn-success btn-block' %></p>
-  <div class="text-center">
-    <%= link_to 'Already Registered? Try another email', spree.login_path %>
-  </div>
+  <% if spree_current_user.nil? || spree_current_user.password_required? %>
+    <div id="password-credentials">
+      <div class="form-group">
+        <%= f.label :password, Spree.t(:password) %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, Spree.t(:confirm_password) %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+    </div>
+  <% end %>
+  
 <% end %>
+
+
