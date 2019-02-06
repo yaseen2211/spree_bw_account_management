@@ -47,3 +47,21 @@ If you'd like to contribute, please take a look at the
 pull request.
 
 Copyright (c) 2019 [name of extension creator], released under the New BSD License
+
+
+
+NOTE
+
+- Include the dependency gems into main extension
+
+gem 'spree_i18n', github: 'spree-contrib/spree_i18n'
+gem 'spree_globalize', github: 'spree-contrib/spree_globalize'
+
+- Add the following extension to remove the localization content dependency
+
+gem 'spree_bw_page_contents', path: '../extensions/spree_bw_page_contents'
+
+
+- Copy the seeds form extension and run into main extension.
+
+
