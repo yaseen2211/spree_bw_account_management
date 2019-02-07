@@ -17,10 +17,6 @@ module SpreeBwAccountManagement
         run 'bundle exec rake railties:install:migrations FROM=spree_bw_account_management'
       end
 
-      # def run_seeds
-      #   run 'bundle exec rake db:seed'
-      # end
-
       def run_migrations
         run_migrations = options[:auto_run_migrations] || ['', 'y', 'Y'].include?(ask('Would you like to run the migrations now? [Y/n]'))
         if run_migrations
@@ -29,6 +25,11 @@ module SpreeBwAccountManagement
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
       end
+
+      def load_seeds_files
+        SpreeBwAccountManagement::Engine.load_seed
+      end
+      
     end
   end
 end
