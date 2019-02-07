@@ -21,18 +21,20 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <ul class="nav nav-pills nav-stacked admin-menu">
-          <li class="active"><a href="#" data-target-id="pi"><i class="fa fa-home fa-fw"></i><%= profile_info_txt.title%></a></li>
-          <li><a href="http://www.jquery2dotnet.com" data-target-id="address"><i class="fa fa-list-alt fa-fw"></i><%= profile_info_txt.title%></a></li>
-          <li><a href="http://www.jquery2dotnet.com" data-target-id="orders"><i class="fa fa-file-o fa-fw"></i><%= addresses_txt.title%></a></li>
-          <li><a href="http://www.jquery2dotnet.com" data-target-id="whislist"><i class="fa fa-bar-chart-o fa-fw"></i><%= orders_txt.title%></a></li>
-          <li><a href="http://www.jquery2dotnet.com" data-target-id="reviews"><i class="fa fa-table fa-fw"></i><%= wishlist_txt.title%></a></li>
-          <li><a href="http://www.jquery2dotnet.com" data-target-id="settings"><i class="fa fa-tasks fa-fw"></i><%= reviews_txt.title%></a></li>
-          <li><a href="http://www.jquery2dotnet.com" data-target-id="messages"><i class="fa fa-calendar fa-fw"></i><%= settings_txt.title%></a></li>
-          <li><a href="http://www.jquery2dotnet.com" data-target-id="sc"><i class="fa fa-book fa-fw"></i><%= sc_txt.title%></a></li>
-          <li><a href="http://www.jquery2dotnet.com" data-target-id="logout"><i class="fa fa-pencil fa-fw"></i><%= logout_txt.title%></a></li>
+        <% Globalize.with_locale (I18n.locale) do %> 
+          <ul class="nav nav-pills nav-stacked admin-menu">
+            <li class="active"><a href="#" data-target-id="pi"><i class="fa fa-home fa-fw"></i><%= profile_info_txt.title%></a></li>
+            <li><a href="http://www.jquery2dotnet.com" data-target-id="address"><i class="fa fa-list-alt fa-fw"></i><%= profile_info_txt.title%></a></li>
+            <li><a href="http://www.jquery2dotnet.com" data-target-id="orders"><i class="fa fa-file-o fa-fw"></i><%= addresses_txt.title%></a></li>
+            <li><a href="http://www.jquery2dotnet.com" data-target-id="whislist"><i class="fa fa-bar-chart-o fa-fw"></i><%= orders_txt.title%></a></li>
+            <li><a href="http://www.jquery2dotnet.com" data-target-id="reviews"><i class="fa fa-table fa-fw"></i><%= wishlist_txt.title%></a></li>
+            <li><a href="http://www.jquery2dotnet.com" data-target-id="settings"><i class="fa fa-tasks fa-fw"></i><%= reviews_txt.title%></a></li>
+            <li><a href="http://www.jquery2dotnet.com" data-target-id="messages"><i class="fa fa-calendar fa-fw"></i><%= settings_txt.title%></a></li>
+            <li><a href="http://www.jquery2dotnet.com" data-target-id="sc"><i class="fa fa-book fa-fw"></i><%= sc_txt.title%></a></li>
+            <li><a href="http://www.jquery2dotnet.com" data-target-id="logout"><i class="fa fa-pencil fa-fw"></i><%= logout_txt.title%></a></li>
 
-        </ul>
+          </ul>
+        <% end %>
       </div>
 
       <div class="col-md-9 well admin-content" id="pi">
