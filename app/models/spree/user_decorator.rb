@@ -1,6 +1,5 @@
 Spree::User.class_eval do
-	
- 
+	 
   validates :first_name, :presence => {:message     => Spree::PageContent.from_gen_slug(I18n.locale,'user-error-msg').spec_slug('user-error-msg-first-name').last.title }
   validates :last_name, :presence => {:message     => Spree::PageContent.from_gen_slug(I18n.locale,'user-error-msg').spec_slug('user-error-msg-last-name').last.title }
 	validates :phone_number, :presence => {:message     => Spree::PageContent.from_gen_slug(I18n.locale,'user-error-msg').spec_slug('user-error-msg-phone-number').last.title },
