@@ -6,7 +6,16 @@ Introduction goes here.
 
 1. Add this extension to your Gemfile with this line:
   ```ruby
-  gem 'spree_bw_account_management', github: '[your-github-handle]/spree_bw_account_management'
+  gem 'spree_bw_account_management', github: 'omairrazam/spree_bw_account_management'
+  ```
+   ```ruby
+  gem 'spree_i18n', github: 'spree-contrib/spree_i18n'
+  ```
+   ```ruby
+  gem 'spree_globalize', github: 'spree-contrib/spree_globalize'
+  ```
+   ```ruby
+  gem 'spree_bw_page_contents', github: 'omairrazam/spree_bw_page_contents'
   ```
 
 2. Install the gem using Bundler:
@@ -17,6 +26,9 @@ Introduction goes here.
 3. Copy & run migrations
   ```ruby
   bundle exec rails g spree_bw_account_management:install
+  ```
+   ```ruby
+  bundle exec rails g spree_bw_page_contents:install
   ```
 
 4. Restart your server

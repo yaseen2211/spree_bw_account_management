@@ -26,6 +26,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_extension'
 
+  s.add_dependency 'spree_i18n'
+  s.add_dependency 'spree_globalize'
+  s.add_dependency 'spree_page_contents'
+
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'capybara-screenshot'

@@ -25,6 +25,11 @@ module SpreeBwAccountManagement
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
       end
+
+      def load_seeds_files
+        SpreeBwAccountManagement::Engine.load_seed
+      end
+      
     end
   end
 end
