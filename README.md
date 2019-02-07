@@ -24,12 +24,14 @@ Introduction goes here.
   ```
 
 3. Copy & run migrations
+
+  ```ruby
+  bundle exec rails g spree_bw_page_contents:install
+  ```
   ```ruby
   bundle exec rails g spree_bw_account_management:install
   ```
-   ```ruby
-  bundle exec rails g spree_bw_page_contents:install
-  ```
+  
 
 4. Restart your server
 
