@@ -44,7 +44,9 @@ class Spree::UserAddressesController < Spree::StoreController
   end
 
   def make_address_primary
-    @primary_address = spree_current_user.update(shipping_address: @spree_user_address , billing_address: @spree_user_address)
+    spree_current_user.shipping_address = @spree_user_address
+    spree_current_user.billing_address  =  @spree_user_address
+    @primary_address = spree_current_user.save(:validate => false)
   end
 
   private

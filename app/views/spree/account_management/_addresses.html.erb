@@ -6,12 +6,12 @@
 <% Globalize.with_locale (I18n.locale) do %> 
 	
 	<div class="text-center">
-		<h1 class="text-center "><%= address_main_content.title %></h1>
-		<button style="    margin-top: -39px;" type="button" class="btn btn-success pull-right"  id="btn-new-address"><%=new_address_btn.title %></button>
+		<h1 class="text-center "><%= address_main_content.try(:title) %></h1>
+		<button style="    margin-top: -39px;" type="button" class="btn btn-success pull-right"  id="btn-new-address"><%=new_address_btn.try(:title) %></button>
 
 	</div>
 	<hr>
-	<p class="text-center"> <%=  address_main_content.description%></p>
+	<p class="text-center"> <%=  address_main_content.try(:description)%></p>
 
 <% end %>
 
