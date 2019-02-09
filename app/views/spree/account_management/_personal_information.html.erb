@@ -1,7 +1,7 @@
-<% user_contents     = Spree::PageContent.from_gen_slug(I18n.locale,'user') %>
-<% user_btn_contents = user_contents.from_gen_slug(I18n.locale,'user-btn') %>
-<% user_main_contents = user_contents.from_gen_slug(I18n.locale,'user-main') %>
-<% user_fields_contents = user_contents.from_gen_slug(I18n.locale,'user-field') %>
+<% user_contents     = Spree::PageContent.from_gen_slug('user') %>
+<% user_btn_contents = user_contents.from_gen_slug('user-btn') %>
+<% user_main_contents = user_contents.from_gen_slug('user-main') %>
+<% user_fields_contents = user_contents.from_gen_slug('user-field') %>
 <% user_personal_content = user_main_contents.spec_slug('user-main-heading-desc').last%>
 <% user_measurement_content = user_main_contents.spec_slug('user-main-msr-heading-desc').last%>
 <% user_personal_btn_content = user_btn_contents.spec_slug('user-btn-label-save').last%>

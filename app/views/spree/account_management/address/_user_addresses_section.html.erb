@@ -1,6 +1,6 @@
-<% @address_contents     = Spree::PageContent.from_gen_slug(I18n.locale,'address') %>
-<% @address_btn_contents = @address_contents.from_gen_slug(I18n.locale,'address-btn-label') %>
-<% @address_fileds_contents = @address_contents.from_gen_slug(I18n.locale,'address-field-label') %>
+<% @address_contents     = Spree::PageContent.from_gen_slug('address') %>
+<% @address_btn_contents = @address_contents.from_gen_slug('address-btn-label') %>
+<% @address_fileds_contents = @address_contents.from_gen_slug('address-field-label') %>
 
 <% if addresses.any? %> 
 
