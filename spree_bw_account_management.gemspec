@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_i18n'
   s.add_dependency 'spree_globalize'
   s.add_dependency 'spree_bw_page_contents'
+  s.add_dependency 'spree_wishlist'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'capybara'

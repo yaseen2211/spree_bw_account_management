@@ -18,6 +18,11 @@ Introduction goes here.
   gem 'spree_bw_page_contents', github: 'omairrazam/spree_bw_page_contents'
   ```
 
+  ```ruby
+  gem 'spree_wishlist', github: 'spree-contrib/spree_wishlist', branch: '3-0-stable'
+  ```
+
+
 2. Install the gem using Bundler:
   ```ruby
   bundle install
@@ -28,6 +33,11 @@ Introduction goes here.
   ```ruby
   bundle exec rails g spree_bw_page_contents:install
   ```
+
+  ```ruby
+  bundle exec rails g spree_wishlist:install
+  ```
+  
   ```ruby
   bundle exec rails g spree_bw_account_management:install
   ```

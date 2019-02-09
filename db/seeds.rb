@@ -79,3 +79,17 @@ Spree::PageContent.find_or_create_by! title: "Messages", description: "", slug: 
 Spree::PageContent.find_or_create_by! title: "Support Centre", description: "", slug: "profile-nav-txt-support-centre"
 Spree::PageContent.find_or_create_by! title: "Logout", description: "", slug: "profile-nav-txt-logout"
 Spree::PageContent.find_or_create_by! title: "Logout Successfully", description: "", slug: "profile-nav-txt-msg-success-logout"
+
+
+
+
+
+Spree::PageContent.find_or_create_by! title: "WishList", description: "Lorem Ipsum is simply dummy text.", slug: "wishlist-main-heading-desc"
+Spree::PageContent.find_or_create_by! title: "OFF", description: "", slug: "wishlist-label-off"
+Spree::PageContent.find_or_create_by! title: "Add to Cart", description: "", slug: "wishlist-btn-label-add-to-cart"
+Spree::PageContent.find_or_create_by! title: "Delete", description: "", slug: "wishlist-btn-label-delete"
+Spree::PageContent.find_or_create_by! title: "Some Error occured while wishlist product deletion", description: "", slug: "wishlist-error-msg-delete"
+Spree::PageContent.find_or_create_by! title: "Product is successfully deleted from wishlist", description: "", slug: "wishlist-success-msg-delete"
+Spree::PageContent.find_or_create_by! title: "Temporarily out of Stock", description: "", slug: "wishlist-label-out-off-stock"
+Spree::PageContent.find_or_create_by! title: "Load More", description: "", slug: "wishlist-btn-label-load-more"
+Spree::PageContent.find_or_create_by! title: "Back To Top", description: "", slug: "wishlist-btn-label-top"
