@@ -4,7 +4,7 @@
 
 <% if spree_current_user.present? %>
 
-  <% profile_nav_txt     = Spree::PageContent.from_gen_slug(I18n.locale,'profile-nav-txt') %>
+  <% profile_nav_txt     = Spree::PageContent.from_gen_slug('profile-nav-txt') %>
 
   <% profile_info_txt    = profile_nav_txt.spec_slug('profile-nav-txt-personal-info').last %>
   <% addresses_txt    = profile_nav_txt.spec_slug('profile-nav-txt-addresses').last %>
@@ -14,7 +14,7 @@
   <% settings_txt    = profile_nav_txt.spec_slug('profile-nav-txt-settings').last %>
   <% messages_txt    = profile_nav_txt.spec_slug('profile-nav-txt-messages').last %>
   <% sc_txt    = profile_nav_txt.spec_slug('profile-nav-txt-support-centre').last %>
-  <% logout_txt    = profile_nav_txt.from_gen_slug(I18n.locale,'profile-nav-txt-logout').last %>
+  <% logout_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-logout').last %>
 
   <!------ Include the above in your HEAD tag ---------->
   <div class="container">

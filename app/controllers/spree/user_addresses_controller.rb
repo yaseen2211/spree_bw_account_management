@@ -32,8 +32,7 @@ class Spree::UserAddressesController < Spree::StoreController
 
   # DELETE /spree/user_addresses/1
   def destroy
-    
-    is_primary = (spree_current_user.shipping_address.id || spree_current_user.billing_address.id) == @spree_user_address.id 
+    is_primary = (spree_current_user.shipping_address.try(:id) || spree_current_user.billing_address.try(:id) ) == @spree_user_address.id 
 
     if is_primary 
       @spree_user_address.errors.add(:alert, "Primary Address Can't be deleted");
