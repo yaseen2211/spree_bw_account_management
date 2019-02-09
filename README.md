@@ -18,6 +18,11 @@ Introduction goes here.
   gem 'spree_bw_page_contents', github: 'omairrazam/spree_bw_page_contents'
   ```
 
+
+  ```ruby
+  gem 'spree_sales', github: 'yaseen2211/spree_sales', branch: 'master'
+  ```
+
   ```ruby
   gem 'spree_wishlist', github: 'yaseen2211/spree_wishlist', branch: '3-0-stable'
   ```
@@ -34,6 +39,10 @@ Introduction goes here.
   bundle exec rails g spree_bw_page_contents:install
   ```
 
+  ```ruby
+  bundle exec rails g spree_sales:install
+  ```
+  
   ```ruby
   bundle exec rails g spree_wishlist:install
   ```
