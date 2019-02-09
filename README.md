@@ -19,7 +19,7 @@ Introduction goes here.
   ```
 
   ```ruby
-  gem 'spree_wishlist', github: 'spree-contrib/spree_wishlist', branch: '3-0-stable'
+  gem 'spree_wishlist', github: 'yaseen2211/spree_wishlist', branch: '3-0-stable'
   ```
 
 

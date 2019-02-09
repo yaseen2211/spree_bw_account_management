@@ -12,7 +12,7 @@ gem 'rails-controller-testing'
 
 
 gem 'spree_bw_page_contents', github: 'omairrazam/spree_bw_page_contents'
-gem 'spree_wishlist', github: 'spree-contrib/spree_wishlist', branch: '3-0-stable'
+gem 'spree_wishlist', github: 'yaseen2211/spree_wishlist', branch: '3-0-stable'
 gem 'spree_i18n', github: 'spree-contrib/spree_i18n'
 gem 'spree_globalize', github: 'yaseen2211/spree_globalize'
 
