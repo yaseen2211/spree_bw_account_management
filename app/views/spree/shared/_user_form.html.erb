@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-md-3">
         <% Globalize.with_locale (I18n.locale) do %> 
-          <ul class="nav nav-pills nav-stacked admin-menu">
+          <ul class="nav nav-pills nav-stacked admin-menu" id="profile-tabs">
             <li class="active"><a href="#" data-target-id="pi"><i class="fa fa-home fa-fw"></i><%= profile_info_txt.try(:title)%></a></li>
             <li><a href="http://www.jquery2dotnet.com" data-target-id="address"><i class="fa fa-list-alt fa-fw"></i><%= addresses_txt.try(:title)%></a></li>
             <li><a href="http://www.jquery2dotnet.com" data-target-id="orders"><i class="fa fa-file-o fa-fw"></i><%= orders_txt.try(:title)%></a></li>
@@ -35,6 +35,8 @@
           </ul>
         <% end %>
       </div>
+
+
 
       <div class="col-md-9 well admin-content" id="pi">
         <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
@@ -53,9 +55,7 @@
       </div>
       
       <div class="col-md-9 well admin-content" id="whislist">
-        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-          <%= render partial: "spree/account_management/wishlist", locals: { :f => f } %>
-        <% end %>
+        <%= render partial: "spree/account_management/wishlist"%>
       </div>
 
       <div class="col-md-9 well admin-content" id="reviews">
