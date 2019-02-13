@@ -19,7 +19,7 @@
 
   <% end %> 
 <% else %> 
-  <p><strong>No Address(s) Found</strong></p>
+  <p><strong>No Address(s) found.Please create a new address . You can mark your one address as Primary.</strong></p>
 <% end %>
 
 <%= render partial: 'spree/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: user_user_addresses_path(user), method_name: "post",user: user}  %>
