@@ -19,5 +19,8 @@ body{margin-top:20px;}
   width: 30%;
   position: relative;
   left: 115%;
-  bottom: 230px;
+  bottom: 230px;}
+
+.primary {
+	background-color: #B2BABB !important;
 }

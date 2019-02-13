@@ -13,6 +13,10 @@ module SpreeBwAccountManagement
         inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/spree_bw_account_management\n", before: %r{\*\/}, verbose: true
       end
 
+      def load_seeds_files
+        SpreeBwAccountManagement::Engine.load_seed
+      end
+
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=spree_bw_account_management'
       end
@@ -25,6 +29,9 @@ module SpreeBwAccountManagement
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
       end
+
+      
+      
     end
   end
 end

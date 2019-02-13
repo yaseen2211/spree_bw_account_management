@@ -1,0 +1,26 @@
+<% primary_address  = @address_contents.spec_slug('address-primary-heading').last%>
+<% new_address      = @address_contents.spec_slug('address-new-address-heading').last%>
+<% btn_primary      = @address_btn_contents.spec_slug('address-btn-label-primary').last%>
+<% existing_address = @address_contents.spec_slug('address-existing-heading').last%>
+<% @is_primary      = (@user_shipping_address || @user_billing_address ) == form_obj.id %>
+
+<% Globalize.with_locale (I18n.locale) do %> 
+
+  <div class="col-md-4 well <%= @is_primary ? "primary" : "" %>">
+    <div class="panel-heading">
+       <h3 class="panel-try(:title) pull-left"><%= @is_primary ? primary_address.try(:title) : (form_obj.persisted? ? existing_address.try(:title) : new_address.try(:title)) %></h3>
+       
+       <% if form_obj.persisted? && !@is_primary %>
+        <%=link_to btn_primary.try(:title) ,make_address_primary_path(id:form_obj.id),:class => "btn btn-success pull-right",:remote => true%> 
+       <% end %>
+       
+
+    </div>
+    <div class="panel-body">
+      <%= form_for(form_obj, :url => url_name, method: method_name, remote: true) do |form| %>
+        <%= render partial: 'spree/account_management/address/form', locals: { address_form: form, address_type: 'user-address', address: form_obj,user: user } %>
+      <% end%>
+    </div>
+  </div>
+
+<% end %>
