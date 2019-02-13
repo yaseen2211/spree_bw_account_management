@@ -16,7 +16,7 @@
 <% user_msr_shld_lft = user_fields_contents.spec_slug('user-field-msr-shld-lft').last%>
 <% user_msr_shld_rht = user_fields_contents.spec_slug('user-field-msr-shld-rgt').last%>
 <% user_msr_lft_arm = user_fields_contents.spec_slug('user-field-msr-label-lft-arm').last%>
-
+<% user_country  = user_fields_contents.spec_slug('user-field-label-country').last%>
 
 <% Globalize.with_locale (I18n.locale) do %> 
   <div class="text-center">
@@ -31,7 +31,6 @@
   <div class="row narrow-row-md">
     <div class="col-sm-6">
       <div class="form-group">
-        <label class="control-label">Email Address<span class="required">*</span></label>
         <%= f.email_field :email, :class => 'form-control', :placeholder => user_email.try(:title) %>
       </div>
     </div>
@@ -40,16 +39,15 @@
   	<div class="row narrow-row-md">
   	  <div class="col-sm-6">
   	    <div class="form-group">
-          <label class="control-label">First Name<span class="required">*</span></label>
           <%= f.text_field :first_name, :class => 'form-control', :placeholder => user_first_name.try(:title) %>
   	      <!--<label class="control-label">Enter a Password<span class="required">*</span></label>-->
   	      <!--<#%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password) %>-->
   	      <!--<div class="form-control-legend">Minimum 7 characters. Must include at least 1 letter and 1 number.</div>-->
   	    </div>
   	  </div>
+      
       <div class="col-sm-6">
         <div class="form-group">
-          <label class="control-label">Last Name<span class="required">*</span></label>
           <%= f.text_field :last_name, :class => 'form-control', :placeholder => user_last_name.try(:title) %>
         </div>
       </div>
@@ -57,7 +55,6 @@
   	<div class="row narrow-row-md">
   	  <div class="col-sm-6">
   	    <div class="form-group">
-          <label class="control-label">Phone Number<span class="required">*</span></label>
           <%= f.text_field :phone_number, :class => 'form-control', :placeholder => user_phone_number.try(:title) %>
   	      <!--<label class="control-label">Confirm Password<span class="required">*</span></label>-->
   	       <!--<#%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => Spree.t(:confirm_password) %>-->
@@ -65,10 +62,9 @@
   	  </div>
       <div class="col-sm-6">
         <div class="form-group">
-          <label class="control-label">Date of birth<span class="required">*</span></label>
-          <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{},{:placeholder => user_birth_date.try(:title)}%>
-          <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{},{:placeholder => user_birth_month.try(:title)}%>
+          <%= f.collection_select :country, available_countries, :id, :name, {:prompt => f.object.country.present? ? f.object.country : user_country.try(:title) }, { class: 'form-control', required: true } %>
         </div>
+
       </div>
   	</div>
     <div class="text-center">
@@ -81,7 +77,6 @@
     <div class="row narrow-row-md">
       <div class="col-sm-6">
         <div class="form-group">
-          <label class="control-label">Head<span class="required">*</span></label>
           <%= f.number_field :head, :class => 'form-control', :placeholder => user_msr_head.try(:title) %>
         </div>
       </div>
@@ -89,7 +84,6 @@
     <div class="row narrow-row-md">
       <div class="col-sm-6">
         <div class="form-group">
-          <label class="control-label">Left Shoulder<span class="required">*</span></label>
           <%= f.number_field :left_shoulder, :class => 'form-control', :placeholder => user_msr_shld_lft.try(:title) %>
         </div>
       </div>
@@ -97,7 +91,6 @@
     <div class="row narrow-row-md">
       <div class="col-sm-6">
         <div class="form-group">
-          <label class="control-label">Right Shoulder<span class="required">*</span></label>
           <%= f.number_field :right_shoulder, :class => 'form-control', :placeholder => user_msr_shld_rht.try(:title) %>
         </div>
       </div>
@@ -105,7 +98,6 @@
     <div class="row narrow-row-md">
       <div class="col-sm-6">
         <div class="form-group">
-          <label class="control-label">Left Arm<span class="required">*</span></label>
           <%= f.number_field :left_arm, :class => 'form-control', :placeholder => user_msr_lft_arm.try(:title) %>
         </div>
       </div>
