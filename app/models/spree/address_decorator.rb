@@ -1,8 +1,8 @@
 Spree::Address.class_eval do
-	# _validators.reject! { |key, _| key == :lastname }
-	# _validate_callbacks.each do |callback|
-	#   callback.raw_filter.attributes.reject! { |key| key == :lastname } if callback.raw_filter.respond_to?(:attributes)
-	# end
+	_validators.reject! { |key, _| key == :lastname }
+	_validate_callbacks.each do |callback|
+	  callback.raw_filter.attributes.reject! { |key| key == :lastname } if callback.raw_filter.respond_to?(:attributes)
+	end
 
 	# validates :firstname, :presence => {:message     => Spree::PageContent.from_gen_slug('address-error-msg').spec_slug('address-error-msg-contact-name').last.try(:title) }
 	# validates :phone, :presence => {:message     => Spree::PageContent.from_gen_slug('address-error-msg').spec_slug('address-error-msg-contact-number').last.try(:title) },
@@ -12,9 +12,9 @@ Spree::Address.class_eval do
 	# validates :state, :presence => {:message     => Spree::PageContent.from_gen_slug('address-error-msg').spec_slug('address-error-msg-state').last.try(:title) }
 	# validates :country, :presence => {:message     => Spree::PageContent.from_gen_slug('address-error-msg').spec_slug('address-error-msg-country').last.try(:title) }
 
-	# def require_zipcode?
-	#   false
-	# end
+	def require_zipcode?
+	  false
+	end
 
   belongs_to :user
 end
