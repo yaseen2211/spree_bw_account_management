@@ -90,24 +90,26 @@
         <hr>
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <h4>#0000567-042019-ABC - Purchased From Store Name</h4>
+            <h4><%= order.number %> - Purchased From <%=order.store.name%></h4>
             <span class="pull-right">
               Shiped On: 04/04-2018
               <div>
-                Tracking NUmber: DVXFTGJHRE
+                Tracking Number: DVXFTGJHRE
               </div>
             </span>
           </div>
         </div>
         <div class="row steps-data">
+          <% state_class = order.completed? ? "green": ""%>
+          <% partially_closed = order.shipped? ? "green" : ""%>
           <div class="col-md-2 col-sm-4">
-            <a>Order Received</a>
+            <a style="color: <%=state_class%>;">Order Received</a>
           </div>
           <div class="col-md-2 col-sm-4">
-            <a>Order In Progress</a>
+            <a style="color: <%=state_class%>;">Order In Progress</a>
           </div>
           <div class="col-md-2 col-sm-4">
-            <a>Order Delivered</a>
+            <a style="color: <%=partially_closed%>;">Order Delivered</a>
           </div>
         </div>
         <hr>
@@ -135,12 +137,68 @@
                   30% OFF
                 </div>
                 <div>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="pull-right"><button class="btn btn-primary">Review  <i class="fa fa-star"></i></button></span>
+                  <%user_review = nil%>
+                  <% if item.variant.product.reviews.present?%>
+                    <%item.variant.product.reviews.each do |review|%>
+                      <% next if review.user_id != @user.id%>
+                      <% user_review = review%>
+                    <% end %>
+                  <% end %>
+                  <% if user_review.present? %>
+                      <%= render 'spree/reviews/stars', stars: user_review.rating %>
+                      <span class="pull-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show-review-<%=item.id%>">
+                          My Review
+                        </button>
+                      </span>
+                      <div class="modal fade" id="show-review-<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document" style="left: 0px;">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Product Review</h5>
+                            </div>
+                            <div class="modal-body">
+                              <div>
+                                Product Nmae: <%=item.name%>
+                              </div>
+                              <div>
+                                Review Date: <%= user_review.created_at.strftime("%e/%m/%Y")%>
+                              </div>
+                              <div>
+                                <%= simple_format(user_review.review) %>
+                              </div>
+                              <div>
+                                <%= render 'spree/reviews/stars', stars: user_review.rating %>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  <% else %>
+                    <%= render 'spree/reviews/stars', stars: 0 %>
+                    <span class="pull-right">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-review-<%=item.id%>">
+                        Review
+                        <i class="fa fa-star"></i>
+                      </button>
+                    </span>
+                    <div class="modal fade" id="create-review-<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document" style="left: 0px;">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create Product Review</h5>
+                          </div>
+                          <div class="modal-body">
+                            Thankyou for leaving a review for the <%=item.name%> you perchased on <%= order.created_at.strftime("%e/%m/%Y") %>
+                            <%= render 'spree/account_management/review', review: Spree::Review.new(product: item.variant.product), product:  item.variant.product%>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -148,7 +206,10 @@
           <%end%>
           <div class="buttons-collection">
             <div class="margin-bottom-20">
-              <button class="btn btn-primary">Download Invoice  <i class="fa fa-star"></i></button>
+              <%= link_to("/admin/invoice/#{order.number}/invoice", target:  "_blank", class: "btn btn-primary") do %>
+                <span class='glyphicon glyphicon-print'></span>
+                <%= Spree.t("Download Invoice") %>
+              <% end %>
             </div>
             <div class="margin-bottom-20">
               <button class="btn btn-primary">Contact Store  <i class="fa fa-star"></i></button>
