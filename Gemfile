@@ -13,7 +13,7 @@ gem 'spree_multi_vendor', github: 'spree-contrib/spree_multi_vendor'
 gem 'spree_reviews', github: 'spree-contrib/spree_reviews'
 gem 'spree_html_invoice', git: 'https://github.com/vinsol-spree-contrib/spree-html-invoice', branch: 'master'
 
-
+gem 'spree_sales', github: 'ronzalo/spree_sales', branch: 'master'
 gem 'spree_bw_page_contents', github: 'omairrazam/spree_bw_page_contents'
 gem 'spree_wishlist', github: 'yaseen2211/spree_wishlist', branch: '3-0-stable'
 gem 'spree_i18n', github: 'spree-contrib/spree_i18n'
