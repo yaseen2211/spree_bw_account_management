@@ -3,7 +3,8 @@ module Spree
     before_action :load_vendor
 
     def new
-     @contact_store = @vendor.contact_stores.new
+      @contact_store = @vendor.contact_stores.new
+      @order = spree_current_user.orders.find_by(number: "R585672829")
     end
 
     def create

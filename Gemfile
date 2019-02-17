@@ -12,6 +12,7 @@ gem 'rails-controller-testing'
 gem 'spree_multi_vendor', github: 'spree-contrib/spree_multi_vendor'
 gem 'spree_reviews', github: 'spree-contrib/spree_reviews'
 gem 'spree_html_invoice', git: 'https://github.com/vinsol-spree-contrib/spree-html-invoice', branch: 'master'
+gem 'spree_item_returns' , github: 'vinsol-spree-contrib/spree_item_returns'
 
 gem 'spree_sales', github: 'ronzalo/spree_sales', branch: 'master'
 gem 'spree_bw_page_contents', github: 'omairrazam/spree_bw_page_contents'

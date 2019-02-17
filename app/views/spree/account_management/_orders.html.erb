@@ -125,9 +125,9 @@
                   <div class=" row">
                     <div class="col-md-4 col-sm-2">
                       <% if item.variant.images.length == 0 %>
-                          <%= link_to small_image(item.variant.product), item.variant.product %>
+                          <%#= link_to small_image(item.variant.product), item.variant.product %>
                       <% else %>
-                          <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
+                          <%#= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
                       <% end %>
                     </div>
                     <div class="col-md-8 col-sm-2">
@@ -223,10 +223,18 @@
                 </div>
                 <div class="margin-bottom-20">
                   <!--<button class="btn btn-primary">Contact Store  <i class="fa fa-star"></i></button>-->
-                  <a href="<%=new_vendor_contact_store_path(vendor.id)%>"> contact store</a>
+                  <%= link_to(spree.new_vendor_contact_store_path(vendor.id, order_number: order.number), target:  "_blank", class: "btn btn-primary") do %>
+                      <span class='fa fa-star'></span>
+                      Contact Store
+                  <% end %>
                 </div>
                 <div class="margin-bottom-20">
-                  <button class="btn btn-primary">Request Return  <i class="fa fa-star"></i></button>
+                  <% if spree_current_user.present? && order.shipped? && order.has_returnable_products? && order.has_returnable_line_items? %>
+                    <%= link_to(spree.new_order_return_authorization_path(order), class: 'btn btn-primary') do %>
+                      <span class='glyphicon glyphicon-send'></span>
+                      Request Return
+                    <% end %>
+                  <% end %>
                 </div>
                 <div class="margin-bottom-20">
                   <button class="btn btn-primary">View Messages  <i class="fa fa-star"></i></button>

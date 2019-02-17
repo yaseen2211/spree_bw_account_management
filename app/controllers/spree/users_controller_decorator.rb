@@ -2,9 +2,6 @@ Spree::UsersController.class_eval do
 
   def edit
     @orders = @user.orders.includes(:products, line_items: [variant: [:option_values, :images, :product]], bill_address: :state, ship_address: :state)
-
-    # @group_by_product_vendor = @orders.group("product.vendor")
-    # puts @group_by_product_vendor
   end
 
   def update

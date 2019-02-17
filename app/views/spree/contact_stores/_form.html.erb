@@ -1,9 +1,25 @@
 <%= form_for @contact_store, url: vendor_contact_stores_path(@vendor.id), html: { method: :post } do |f| %>
   <div>
-    <%=@vendor.name%>
+    Contact <%=@vendor.name%>
+  </div>
+  <div>
+    Store Name <%=@vendor.name%>
+  </div>
+  <div>
+    Order Number <%=@order.number%>
+  </div>
+  <div>
+    Purchased On <%=@order.created_at.strftime("%e/%m/%Y")%>
+  </div>
+  <div>
+    Total Items <%=@order.line_items.count%>
   </div>
   <div>
     Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+  </div>
+  <div class="form-group">
+    <%#= f.radio_button :type, 'general' %> General Query<br />
+    <%#= f.radio_button :type, 'return' %> Return Request<br />
   </div>
   <div class="form-group">
     <%= f.label :subject %>
@@ -16,6 +32,6 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit "submit request", class: 'btn btn-default' %>
+    <%= f.submit "Submit Request", class: 'btn btn-default' %>
   </div>
 <% end %>

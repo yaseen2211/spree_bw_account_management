@@ -49,4 +49,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'spree_multi_vendor'
   s.add_development_dependency 'spree_reviews'
   s.add_development_dependency 'spree_html_invoice'
+  s.add_development_dependency 'spree_item_returns'
 end
