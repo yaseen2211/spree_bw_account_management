@@ -125,9 +125,9 @@
                   <div class=" row">
                     <div class="col-md-4 col-sm-2">
                       <% if item.variant.images.length == 0 %>
-                          <%#= link_to small_image(item.variant.product), item.variant.product %>
+                          <%= link_to small_image(item.variant.product), item.variant.product %>
                       <% else %>
-                          <%#= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
+                          <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
                       <% end %>
                     </div>
                     <div class="col-md-8 col-sm-2">
