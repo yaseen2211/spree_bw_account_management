@@ -97,9 +97,13 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <h4><%= order.number %> - Purchased From <%=vendor.name%></h4>
                 <span class="pull-right">
-                Shiped On: 04/04-2018
+                <% if order.shipped?%>
+                  Shiped On: <%=order.shipments.first.shipped_at? ? order.shipments.first.shipped_at.strftime("%e/%m/%Y") : ""%>
+                <% else %>
+                  Shiped On: -
+                <% end %>
                 <div>
-                  Tracking Number: DVXFTGJHRE
+                  Tracking Number: <%=order.shipments.first.tracking? ? order.shipments.first.tracking : ""%>
                 </div>
               </span>
               </div>
