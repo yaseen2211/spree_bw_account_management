@@ -27,6 +27,10 @@ Introduction goes here.
   gem 'spree_wishlist', github: 'yaseen2211/spree_wishlist', branch: '3-0-stable'
   ```
 
+  ```ruby
+  gem 'spree_address_book', github: 'yaseen2211/spree_address_book'
+  ```
+
 
 2. Install the gem using Bundler:
   ```ruby
@@ -48,8 +52,14 @@ Introduction goes here.
   ```
   
   ```ruby
+  bundle exec rails g spree_address_book:install
+  ```
+
+  ```ruby
   bundle exec rails g spree_bw_account_management:install
   ```
+
+
   
 
 4. Restart your server

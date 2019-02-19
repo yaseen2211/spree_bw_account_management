@@ -1,4 +1,4 @@
-<% if @user_address %>
+<% if @address_status %>
 	var html = "<%= j render partial: 'spree/account_management/address/user_addresses_section', locals: {addresses: spree_current_user.addresses, user: spree_current_user} %>"
 	$("#user-"+ <%= spree_current_user.id %> + "-addresses-section").html(html);
 	$('#address-info-sec').html("<p> <%= Spree::PageContent.from_gen_slug('address-success-msg').spec_slug('address-success-msg-save').last.try(:title) %></p>")
@@ -6,7 +6,7 @@
 	$('#address-info-sec').removeClass('hide alert-danger')
 
 <% else %>
-	$('#address-info-sec').html("<p><%= @spree_user_address.errors.messages%></p>")
+	$('#address-info-sec').html("<p><%= @address.errors.messages%></p>")
 	$('#address-info-sec').addClass("alert-danger")
 	$('#address-info-sec').removeClass('hide alert-success')
 <% end%>

@@ -6,7 +6,7 @@
 
 <% Globalize.with_locale (I18n.locale) do %> 
 
-  <div class="col-md-4 well <%= @is_primary ? "primary" : "" %>">
+  <div class="col-md-4 well <%= @is_primary ? "primary-address " : "" %>">
     <div class="panel-heading">
        <h3 class="panel-try(:title) pull-left"><%= @is_primary ? primary_address.try(:title) : (form_obj.persisted? ? existing_address.try(:title) : new_address.try(:title)) %></h3>
        
@@ -17,8 +17,8 @@
 
     </div>
     <div class="panel-body">
-      <%= form_for(form_obj, :url => url_name, method: method_name, remote: true) do |form| %>
-        <%= render partial: 'spree/account_management/address/form', locals: { address_form: form, address_type: 'user-address', address: form_obj,user: user } %>
+      <%= form_for form_obj , html: { id: 'checkout_form_address' } ,remote: true do |form| %>
+        <%= render partial: 'spree/account_management/address/form', locals: { address_form: form, address_type: 'shipping', address: form_obj,user: user } %>
       <% end%>
     </div>
   </div>
