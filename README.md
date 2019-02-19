@@ -52,12 +52,14 @@ Introduction goes here.
   ```
   
   ```ruby
-  bundle exec rails g spree_bw_account_management:install
+  bundle exec rails g spree_address_book:install
   ```
 
   ```ruby
-  bundle exec rails g spree_address_book:install
+  bundle exec rails g spree_bw_account_management:install
   ```
+
+
   
 
 4. Restart your server
