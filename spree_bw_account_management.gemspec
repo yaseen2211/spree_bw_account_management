@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_bw_page_contents'
   s.add_dependency 'spree_sales'
   s.add_dependency 'spree_wishlist'
+  s.add_dependency 'spree_address_book'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'capybara'

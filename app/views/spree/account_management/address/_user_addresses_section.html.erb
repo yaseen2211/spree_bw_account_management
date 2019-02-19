@@ -10,17 +10,18 @@
 	<%secondry_addresses  = addresses.reject{|s| ( @user_shipping_address || @user_billing_address  ) == s.id} %>
 
 	<% if primary_address.present? %>
-		<%= render partial: 'spree/account_management/address/single_address', locals: {form_obj: primary_address, url_name: user_user_address_path(user,primary_address), method_name: "put",user: user}  %>
+		<%= render partial: 'spree/account_management/address/single_address', locals: {form_obj: primary_address, url_name: address_path(primary_address), method_name: "put",user: user}  %>
 	<% end %>
 
   <% secondry_addresses.each do |address| %>
-	<%= render partial: 'spree/account_management/address/single_address', locals: {form_obj: address, url_name: user_user_address_path(user,address), method_name: "put",user: user}  %>
+	<%= render partial: 'spree/account_management/address/single_address', locals: {form_obj: address, url_name: address_path(address), method_name: "put",user: user}  %>
 
   <% end %> 
 <% else %> 
   <p><strong>No Address(s) Found</strong></p>
 <% end %>
 
-<%= render partial: 'spree/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: user_user_addresses_path(user), method_name: "post",user: user}  %>
+<%= render partial: 'spree/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user}  %>
+
 
 
