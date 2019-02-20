@@ -14,7 +14,7 @@ Spree::User.class_eval do
  #  validates :left_shoulder, presence: {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-msr-shld-lft-formate').last.try(:title) }, format: { with: /\A\d+(?:\.\d{2})?\z/ }, on: :update
 	# validates :date_of_birth, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-birth-date').last.try(:title) }
  #  validates :month_of_birth, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-birth-month').last.try(:title) }
-  validate :email_matcher, on: :create
+#   validate :email_matcher, on: :create
 
   private
    def email_matcher
