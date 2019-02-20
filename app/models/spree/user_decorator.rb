@@ -16,8 +16,6 @@ Spree::User.class_eval do
  #  validates :month_of_birth, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-birth-month').last.try(:title) }
   validate :email_matcher, on: :create
 
-  has_many :addresses
-
   private
    def email_matcher
     errors.add(:email_confirmation, Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-email-confirmation-matcher').last.try(:title)) unless

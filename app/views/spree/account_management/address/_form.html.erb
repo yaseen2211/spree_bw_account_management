@@ -134,11 +134,8 @@
 
     <%= address_form.submit address_form.object.persisted? ? update_address_btn.try(:title) : save_address_btn.try(:title)  , :class => 'btn btn-primary',style:"width:50%" %>
     <% if address_form.object.persisted? && !@is_primary %>
-    <%=link_to delete_address_btn.try(:title) ,user_user_address_path(user,address_form.object), 'data-method' => :delete, :class => "btn btn-danger",:data => {:confirm => 'Are you sure?'},:remote => true%> 
+    <%=link_to delete_address_btn.try(:title) ,address_path(address_form.object), 'data-method' => :delete, :class => "btn btn-danger",:data => {:confirm => 'Are you sure?'},:remote => true%> 
     <% end %>
   </div>
 <% end %>
-
-
-
 

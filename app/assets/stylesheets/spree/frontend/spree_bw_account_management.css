@@ -19,9 +19,10 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
   width: 30%;
   position: relative;
   left: 115%;
-  bottom: 170px;}
+  bottom: 170px;
 
+}
 
-.primary {
+.primary-address {
 	background-color: #B2BABB !important;
 }
