@@ -3,3 +3,7 @@
 <%else%>
   $('.error-messages').html("<div class='alert alert-success'>Account updated</div>");
 <%end%>
+
+$('html, body').animate({
+  scrollTop: $(".error-messages").offset().top
+}, 2000);

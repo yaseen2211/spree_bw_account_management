@@ -55,6 +55,16 @@ Spree::PageContent.find_or_create_by! title: "Phone Number is not valid", descri
 Spree::PageContent.find_or_create_by! title: "Email", description: "", slug: "user-field-label-email"
 Spree::PageContent.find_or_create_by! title: "Email can't be blank", description: "", slug: "user-error-msg-email"
 Spree::PageContent.find_or_create_by! title: "Email is not valid", description: "", slug: "user-error-msg-email-formate"
+Spree::PageContent.find_or_create_by! title: "Confirm Email Address*", description: "", slug: "user-field-label-email-confirmation"
+Spree::PageContent.find_or_create_by! title: "Confirm Email can't be blank", description: "", slug: "user-error-msg-email-confirmation"
+Spree::PageContent.find_or_create_by! title: "Email Address is not matched .", description: "", slug: "user-error-msg-email-confirmation-matcher"
+Spree::PageContent.find_or_create_by! title: "Password*", description: "", slug: "user-field-label-password"
+Spree::PageContent.find_or_create_by! title: "Password can't be blank", description: "", slug: "user-error-msg-password"
+Spree::PageContent.find_or_create_by! title: "Password is not valid", description: "", slug: "user-error-msg-password-formate"
+Spree::PageContent.find_or_create_by! title: "Password Confirmation *", description: "", slug: "user-field-label-password-confirmation"
+Spree::PageContent.find_or_create_by! title: "Password Confirmation can't be blank", description: "", slug: "user-error-msg-password-confirmation"
+Spree::PageContent.find_or_create_by! title: "Select Your Country ", description: "", slug: "user-field-label-country"
+
 Spree::PageContent.find_or_create_by! title: "Last Name", description: "", slug: "user-field-label-last-name"
 Spree::PageContent.find_or_create_by! title: "Last Name can't be blank", description: "", slug: "user-error-msg-last-name"
 Spree::PageContent.find_or_create_by! title: "Date of Birth", description: "", slug: "user-field-label-birth-date"
@@ -79,9 +89,6 @@ Spree::PageContent.find_or_create_by! title: "Messages", description: "", slug: 
 Spree::PageContent.find_or_create_by! title: "Support Centre", description: "", slug: "profile-nav-txt-support-centre"
 Spree::PageContent.find_or_create_by! title: "Logout", description: "", slug: "profile-nav-txt-logout"
 Spree::PageContent.find_or_create_by! title: "Logout Successfully", description: "", slug: "profile-nav-txt-msg-success-logout"
-
-
-
 
 
 Spree::PageContent.find_or_create_by! title: "WishList", description: "Lorem Ipsum is simply dummy text.", slug: "wishlist-main-heading-desc"
