@@ -25,7 +25,7 @@ $(document).ready(function()
 
     $("#btn-new-address").click(function() {
       $('html, body').animate({
-          scrollTop: $("#new_address").offset().top
+          scrollTop: $("#checkout_form_address").offset().top
       }, 2000);
     });
 });
