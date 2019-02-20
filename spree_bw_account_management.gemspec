@@ -46,4 +46,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'pg', '~> 0.18'
   s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'spree_multi_vendor'
+  s.add_development_dependency 'spree_reviews'
+  s.add_development_dependency 'spree_html_invoice'
+  s.add_development_dependency 'spree_item_returns'
 end
