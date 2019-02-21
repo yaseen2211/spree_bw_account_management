@@ -26,7 +26,22 @@ Introduction goes here.
   ```ruby
   gem 'spree_wishlist', github: 'yaseen2211/spree_wishlist', branch: '3-0-stable'
   ```
-
+  
+  ```ruby
+  gem 'spree_multi_vendor', github: 'spree-contrib/spree_multi_vendor'
+  ```
+  
+  ```ruby
+  gem 'spree_reviews', github: 'spree-contrib/spree_reviews'
+  ```
+  
+  ```ruby
+  gem 'spree_html_invoice', git: 'https://github.com/vinsol-spree-contrib/spree-html-invoice', branch: 'master'
+  ```
+  
+  ```ruby
+  gem 'spree_item_returns', path: 'zainrafique/spree_item_returns'
+  ```
 
 2. Install the gem using Bundler:
   ```ruby
@@ -51,6 +66,21 @@ Introduction goes here.
   bundle exec rails g spree_bw_account_management:install
   ```
   
+  ```ruby
+  bundle exec rails g spree_multi_vendor:install
+  ```
+  
+  ```ruby
+  bundle exec rails g spree_reviews:install
+  ```
+
+  ```ruby
+  bundle exec rails g spree_html_invoice:install
+  ```
+  
+  ```ruby
+  bundle exec rails g spree_item_returns:install
+  ```
 
 4. Restart your server
 

@@ -80,6 +80,13 @@ Spree::PageContent.find_or_create_by! title: "Support Centre", description: "", 
 Spree::PageContent.find_or_create_by! title: "Logout", description: "", slug: "profile-nav-txt-logout"
 Spree::PageContent.find_or_create_by! title: "Logout Successfully", description: "", slug: "profile-nav-txt-msg-success-logout"
 
+Spree::PageContent.find_or_create_by! title: "Orders", description: "Lorem Ipsum is simply dummy text.", slug: "order-main-heading-desc"
+Spree::PageContent.find_or_create_by! title: "Order Details", description: "", slug: "order-sub-heading-order-details"
+Spree::PageContent.find_or_create_by! title: "Purchased on", description: "", slug: "order-purchased-on-label"
+Spree::PageContent.find_or_create_by! title: "Personalised", description: "", slug: "order-personalised-label"
+Spree::PageContent.find_or_create_by! title: "Payment method", description: "", slug: "order-payment-method-label"
+Spree::PageContent.find_or_create_by! title: "Shiping Details", description: "", slug: "order-sub-heading-shiping-details"
+
 
 
 
