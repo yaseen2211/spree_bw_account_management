@@ -25,10 +25,10 @@ Spree::UsersController.class_eval do
 
   private
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :phone_number, :date_of_birth,:month_of_birth, 
-                                        :head, :left_shoulder, :right_shoulder, :left_arm,
-                                        addresses_attributes: []
-                                        )
+      params.require(:user).permit(:first_name, :last_name, :phone_number, :date_of_birth,:month_of_birth, 
+                                      :head, :left_shoulder, :right_shoulder, :left_arm,
+                                      :email_confirmation, :country
+                                      )
     end
 
 end
