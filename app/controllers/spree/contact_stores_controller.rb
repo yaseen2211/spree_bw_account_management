@@ -4,7 +4,7 @@ module Spree
 
     def new
       @contact_store = @vendor.contact_stores.new
-      @order = spree_current_user.orders.find_by(number: "R585672829")
+      @order = spree_current_user.orders.find_by(number: params[:order_number])
     end
 
     def create
