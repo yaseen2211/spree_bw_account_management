@@ -84,9 +84,31 @@
     
     
    
-    <p class="form-group" id=<%="#{address_id}state" %>>
-      <%= address_form.text_field :state_name, class: 'form-control', required: true, placeholder: address_form.object.persisted? ? ex_contact_state.title  : new_contact_state.title , value:  address_form.object.persisted? ?  address_form.object.state : "" %>
-    </p>
+    <% if Spree::Config[:address_requires_state] && address_form.object.persisted? %>
+      <p class="form-group" id=<%="#{address_id}state" %>>
+        <% have_states = !address.country.states.empty? %>
+        
+
+        <%== state_elements = [
+           address_form.collection_select(:state_id, address.country.states,
+                              :id, :name,
+                              {include_blank: true},
+                              {class: have_states ? 'form-control' : 'form-control hidden',
+                              required: have_states,
+                              disabled: !have_states}) +
+           address_form.text_field(:state_name,
+                              class: !have_states ? 'form-control' : 'form-control hidden',
+                              required: !have_states,
+                              disabled: have_states)
+           ].join.gsub('"', "'").gsub("\n", "")
+        %>
+      </p>
+    <% else %>
+      <p class="form-group" id=<%="#{address_id}state" %>>
+        <%= address_form.text_field :state_name, class: 'form-control', required: true, placeholder: address_form.object.persisted? ? ex_contact_state.title  : new_contact_state.title  %>
+      </p>
+    <% end %>
+
 
 
     <p class="form-group">
