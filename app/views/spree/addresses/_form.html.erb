@@ -105,7 +105,7 @@
       </p>
     <% else %>
       <p class="form-group" id=<%="#{address_id}state" %>>
-        <%= address_form.text_field :state_name, class: 'form-control', required: true, placeholder: address_form.object.persisted? ? ex_contact_state.title  : new_contact_state.title  %>
+        <%= address_form.text_field :state_name, class: 'form-control', required: true, placeholder: address_form.object.persisted? ? ex_contact_state.try(:title)  : new_contact_state.try(:title)  %>
       </p>
     <% end %>
 
