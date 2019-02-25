@@ -1,5 +1,5 @@
 module Spree
-  class ContactStoresController < Spree::BaseController
+  class ContactStoresController < Spree::StoreController
     before_action :load_vendor
 
     def new
