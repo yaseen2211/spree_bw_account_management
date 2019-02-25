@@ -4,7 +4,7 @@
   Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
 </p>
 <hr>
-<% @orders.each do |order| %>
+<% @orders.complete.each do |order| %>
     <fieldset id="order_summary-<%order.id%>">
       <div id="order" data-hook="">
         <div class="row steps-data margin-top-50">
