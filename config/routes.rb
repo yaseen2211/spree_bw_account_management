@@ -1,5 +1,6 @@
 Spree::Core::Engine.add_routes do
 
+
   get 'invoice/:id(/:template)', to: 'invoice#show'
   resources :users do
   	resources :user_addresses
