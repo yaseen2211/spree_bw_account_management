@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-52TNT8S');
+        // End Google Tag Manager
+
+        // Analytics & Optimized
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-50346986-5', 'auto');
+        ga('require', 'GTM-WHT74XP');
+        ga('send', 'pageview');
+    </script>
+
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+        .async-hide
+        {
+            opacity: 0 !important
+        }
+    </style>
+    <script>
+    (function (a, s, y, n, c, h, i, d, e) {
+        s.className += ' ' + y; h.start = 1 * new Date;
+            h.end = i = function () { s.className = s.className.replace(RegExp(' ?' + y), '') };
+            (a[n] = a[n] || []).hide = h; setTimeout(function () { i(); h.end = null }, c); h.timeout = c;
+        })(window, document.documentElement, 'async-hide', 'dataLayer', 4000,
+        { 'GTM-WHT74XP': true });</script>
+
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5164303.js"></script>
+    <!-- End of HubSpot Embed Code -->
+
+    <meta name="p:domain_verify" content="64842680dd546782f747d66adb04093b" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/Content/img/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link href="/Content/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Bundles/css/stylesWebsite?v=Yw_DVP0KVkI6KWxg0tBssp1hH1OvxbIMyOa9kdH5yms1" rel="stylesheet"/>
+
+    
+    <title>Logo Maker - Create Your Own Logo, It&#39;s Free! - FreeLogoDesign</title>
+
+    <link href="/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Nova+Script|Source+Sans+Pro:300,400,600,700|IM+Fell+DW+Pica+SC|Michroma|La+Belle+Aurore|Lobster|Holtwood+One+SC|Josefin+Slab|Calligraffitti|UnifrakturCook:700|Monoton|Open+Sans|Oswald|Roboto+Slab|Trocchi|Ultra|Gabriela|Almendra+SC|Nunito|Molengo|Allerta+Stencil|Special+Elite|Audiowide|Playball|Griffy|Sancreek|Kavoon|UnifrakturMaguntia|Amarante|Creepster|Fjalla+One' rel='stylesheet' type='text/css' />
+    <meta name="google-site-verification" content="qV7TuSoa1huhXcUVzWtNfsX4Gvxfa2T3mtSMJ0SALBk" />
+    <meta name="description" property="og:description" content="Create your logo design online for your business or project. Its Free to use. Customize a logo for your company easily with our free online logo maker."><meta property="og:title" content="Logo Maker - Create Your Own Logo, It’s Free! - FreeLogoDesign"><meta property="og:type" content="website"><meta property="og:url" content="https://www.freelogodesign.org"><meta property="og:image" content="https://www.freelogodesign.org/Content/css/images/images/freelogodesign-og.png"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="FreeLogoDesign">
+    <meta name="twitter:card" content="summary"><meta name="twitter:description" content="Create your logo design online for your business or project. Its Free to use. Customize a logo for your company easily with our free online logo maker."><meta name="twitter:title" content="Logo Maker - Create Your Own Logo, It’s Free! - FreeLogoDesign"><meta name="twitter:site" content="@freelogodesign_"><meta name="twitter:creator" content="@freelogodesign_"><meta name="twitter:image" content="https://www.freelogodesign.org/Content/css/images/images/freelogodesign-og.png">
+    <link href="/Bundles/css/homeAltStyles?v=NyY5IBbG1X_LYoOh7Ug-cnlGdI_aL9XhMJFKfMgeB9I1" rel="stylesheet"/>
+
+    <link href="Content/css/slick.css" rel="stylesheet" />
+    <link rel="canonical" href="https://www.freelogodesign.org/" /> <link rel="alternate" hreflang="en" href="https://www.freelogodesign.org/" /><link rel="alternate" hreflang="pt" href="https://pt.freelogodesign.org/" /><link rel="alternate" hreflang="fr" href="https://fr.freelogodesign.org/" /><link rel="alternate" hreflang="es" href="https://es.freelogodesign.org/" /><link rel="alternate" hreflang="nl" href="https://nl.freelogodesign.org/" /><link rel="alternate" hreflang="it" href="https://it.freelogodesign.org/" /><link rel="alternate" hreflang="de" href="https://de.freelogodesign.org/" /><link rel="alternate" hreflang="x-default" href="https://www.freelogodesign.org/" />
+    <meta name="p:domain_verify" content="64842680dd546782f747d66adb04093b"/>
+
+
+    <script src="https://d2wy8f7a9ursnm.cloudfront.net/v4/bugsnag.min.js"></script>
+    <script>
+        window.bugsnagClient = bugsnag({
+            apiKey: "f8489c708c305d525e9f1c633653de9a",
+            appVersion: "1.0.0.0",
+            releaseStage: "production"
+        });
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <!-- DO NOT MODIFY -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }
+                ; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        }(window,
+            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1141035866031181'
+        );
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1141035866031181&ev=PageView&noscript=1" /></noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52TNT8S"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="header">
+        <nav class="pure-g" id="menu">
+            <div class="full-width noMargin noPadding">
+                <div class="pure-menu">
+                    <div class="pure-u-3-4 pure-u-md-1-5 noMargin noPadding float-left">
+                        <a href="/" class="pure-menu-heading home-link textLeft">
+                           <div class="main-logo"></div>
+                        </a>
+                    </div>
+                    <div class="pure-u-1-4 noMargin noPadding">
+                        <div class="custom-toggle float-right" id="toggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1 the-menu">
+                    <div class="pure-menu pure-menu-horizontal custom-can-transform">
+                        <ul class="pure-menu-list margin-bot-16px">
+                            <li class="pure-menu-item"><a href="https://www.freelogodesign.org/categories">Inspiration</a></li>
+                            <li class="pure-menu-item"><a class="secondary" href="https://www.freelogodesign.org/about">About</a></li>
+                            <li class="pure-menu-item"><a href="https://www.freelogodesign.org/blog">Blog</a></li>
+                            <div class="custom-select">
+                                <div class="selected"></div>
+                                <select></select>
+                            </div>
+                        </ul>
+
+                        <a class="link-button primaryBtn btn-sm" id="StartNewMenu" href="#">Create my logo</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Content -->
+    <div id="TemplateContent">
+        
+
+<script type="text/javascript">_is_home_page = true;</script>
+
+<div id="wrapper" class="home">
+        <!-- Entête Wrapper -->
+<div class="pure-g entete-wrapper old-version carousel-horizontal">
+    <div class="pure-u-1"><h1 class="margin-bot-60px">Create a free logo in seconds!</h1></div>
+    <div class="pure-u-1 noPadding">
+        <!-- Entête -->
+        <div class="pure-g noPadding margin-auto">
+            <div class="wrapper">
+                <!-- Formulaire -->
+                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-2-5">
+                    <input class="customInput01 companyName full-width textLeft" type="text" placeholder="Enter your company name" />
+                </div>
+                <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-2-5 selectWrapper">
+                    <select class="customSelect01 full-width align-left-desktop" id="category">
+                        <option value="0">All categories</option>
+
+                                <option value="1">Abstract</option>
+                                <option value="2">Agriculture</option>
+                                <option value="3">Animals &amp; Pets</option>
+                                <option value="4">Architectural</option>
+                                <option value="5">Automotive &amp; Vehicle</option>
+                                <option value="6">Business &amp; Consulting</option>
+                                <option value="7">Children &amp; Childcare</option>
+                                <option value="8">Cleaning &amp; Maintenance</option>
+                                <option value="9">Communications</option>
+                                <option value="10">Community &amp; Non-Profit</option>
+                                <option value="11">Computer</option>
+                                <option value="12">Construction &amp; Tools</option>
+                                <option value="13">Dating</option>
+                                <option value="14">Education</option>
+                                <option value="15">Entertainment &amp; Arts</option>
+                                <option value="16">Environmental &amp; Green</option>
+                                <option value="17">Fashion &amp; Beauty</option>
+                                <option value="18">Floral</option>
+                                <option value="19">Food &amp; Drink</option>
+                                <option value="20">Games &amp; Recreation</option>
+                                <option value="21">Home Furnishings</option>
+                                <option value="22">Industrial</option>
+                                <option value="23">Internet</option>
+                                <option value="24">Landscaping</option>
+                                <option value="25">Medical &amp; Pharmaceutical</option>
+                                <option value="26">Photography</option>
+                                <option value="27">Politics</option>
+                                <option value="28">Real Estate &amp; Mortgage</option>
+                                <option value="29">Religious</option>
+                                <option value="30">Retail</option>
+                                <option value="31">Security</option>
+                                <option value="32">Spa &amp; Esthetics</option>
+                                <option value="33">Sports</option>
+                                <option value="34">Technology</option>
+                                <option value="35">Travel &amp; Hotel</option>
+                                <option value="36">Wedding Service</option>
+                    </select>
+                </div>
+                <div class="pure-u-1 pure-u-sm-1 pure-u-md-1-5">
+                    <div class="startAll primaryBtn black-bg btn-md">
+                        <span lang="start">Get Started</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-inner">
+            <div class="logo-carousel-wrapper">
+                <div class="logo-carousel"></div>
+                <div class="carousel-arrow carousel-arrow-left"><i class="fa fa-arrow-left"></i></div>
+                <div class="carousel-arrow carousel-arrow-right"><i class="fa fa-arrow-right"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Create a logo in minutes -->
+    <div class="pure-g max-width-10 margin-auto space-top-01 space-bottom-02 flex-center">
+        <div class="pure-u-1 pure-u-md-1-2 textCenter">
+            <img class="margin-bot-20px full-width max-width-01 noMarginDesktop" width="300" src="/Content/css/images/images/editor.png" />
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 textCenter">
+
+            <h3 class="extra-bold padding-bot-20px textLeft">Create a Logo in Seconds</h3>
+            <div class="pure-g noPadding">
+                <div class="pure-u-1 pure-u-md-1-2 noPadding padding-right-20px">
+
+                    <span class="display-block textLeft">FreeLogoDesign is a free logo maker for entrepreneurs, small businesses, freelancers and organizations to create professional looking logos in minutes. Get a free logo for your website, business cards or correspondence.</span>
+
+                </div>
+                <div class="pure-u-1 pure-u-md-1-2 noPadding">
+                    <span class="display-block textLeft">Our user-friendly editor will help you create the perfect logo for your business, sports club, organization, etc. in just a few clicks. Simply select a template from a variety of options, edit your logo until you are completely satisfied, and download your logo free of charge.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nombre de logo créés -->
+    <div class="textBlanc fondNoir space-top-02 space-bottom-02">
+        <div class="wrapper">
+            <h3 class="extra-bold" lang="home_2_title">2 383 714 entrepreneurs</h3>
+            <span lang="home_2_text">created their logo with FreeLogoDesign since its creation</span>
+        </div>
+    </div>
+
+     <!-- Étapes de création d'un logo -->
+<div class="Steps space-top-02 space-bottom-02">
+    <div class="wrapper">
+        <h3 class="extra-bold padding-bot-30px margin-top-16px" lang="home_3_title">How to create a logo with FreeLogoDesign</h3>
+        <span lang="home_3_text"></span>
+        <ol>
+            <li>
+                <div lang="home_3_step_1">Choose a name for your business</div>
+            </li>
+            <li>
+                <div lang="home_3_step_2">Choose a template amongst thousands of free logos inside the editor</div>
+            </li>
+            <li>
+                <div lang="home_3_step_3">Customize your logo by changing the color, shape, font, etc.</div>
+            </li>
+            <li>
+                <div lang="home_3_step_4">Download your free logo or purchase a high-resolution version</div>
+            </li>
+        </ol>
+        <div class="padding-bot-40px">
+            <div id="startNew" class="primaryBtn"><span lang="home_4_btn">Create my logo</span></div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Why choose FLD ? -->
+    <div class="why-choose old-version space-top-02 space-bottom-02 extra-light-grey-bg">
+        <div class="wrapper">
+
+            <h3 class="extra-bold max-width-05 margin-auto margin-bot-20px" lang="home_4_title">Why choose FreeLogoDesign?</h3>
+
+            <ul class="textLeft margin-0">
+                <li>
+                    <span class="icons"></span>
+                    <span>
+                        <b>100% free tool</b>
+                        Our logo maker is free, anyone can create stunning professional logos in seconds. There is no experience required and no need to go through a designer.
+                    </span>
+                </li>
+                <li>
+                    <span class="icons"></span>
+                    <span>
+                        <b>A user-friendly editor</b>
+                        There is no need for advanced technical skills, our drag and drop editor is easy for everyone to use.
+                    </span>
+                </li>
+                <li>
+                    <span class="icons"></span>
+                    <span>
+                        <b>Thousands of logo templates</b>
+                        Our designers have create thousands of templates for you to get inspired and start your logo from!
+                    </span>
+                </li>
+                <li>
+                    <span class="icons"></span>
+                    <span>
+                        <b>Create a brand to your image</b>
+                        We believe a professional logo improves your branding and will give you an edge over your competitors.<br/><br/>For trips, tricks and much more, check out our <a href="/blog">blog</a>!
+                    </span>
+                </li>
+                <li>
+                    <span class="icons"></span>
+                    <span>
+                        <b>A recognized tool used in the creation of several businesses</b>
+                        Over 2 million business owners and entrepreneurs have trusted free logo for their logo creation!
+                    </span>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Exemple de logos à éditer -->
+    <div class="pure-g fondOrange space-top-02 space-bottom-02 textBlanc">
+        <div class="wrapper max-width-02">
+            <div class="pure-u-1">
+                <h3 class="extra-bold" lang="home_logo_button">Professional logos for your company</h3>
+                <p class="max-width-01 margin-auto padding-top-20px padding-bot-20px" lang="home_professional_text">Our designers have worked hard to offer you thousands of quality templates! Simply select the one that reflects your business the most and start making your own personal logo!</p>
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="90ed191c-7554-410f-b5ed-e0a74f7dafe5">
+                <img src="Content/img/logo-ex-1.png" />
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="8f9c0253-a935-475f-a411-4bc9554f278f">
+                <img src="Content/img/logo-ex-2.png" />
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="933ee691-114b-4bfb-95d9-a66a4ff04a88">
+                <img src="Content/img/logo-ex-3.png" />
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="2e56fab3-f941-4206-bcfa-4627321fdeba">
+                <img src="Content/img/logo-ex-4.png" />
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="6528d51e-1a3d-45ed-8c2c-9fec34de58d6">
+                <img src="Content/img/logo-ex-5.png" />
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="9a4e8e4c-00f7-47d4-b7b3-a424d67404c3">
+                <img src="Content/img/logo-ex-6.png" />
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="3e0da912-1d6c-4e79-84f9-016b37a36064">
+                <img src="Content/img/logo-ex-7.png" />
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="651f7a55-7b4b-4414-b6de-a141defe5530">
+                <img src="Content/img/logo-ex-8.png" />
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 logo-example" data-guid="255718f5-e865-4b69-89bf-d47997a650ed">
+                <img src="Content/img/logo-ex-9.png" />
+            </div>
+
+            <div class="pure-u-1 padding-top-20px">
+                <span class="startAll primaryBtn black-bg cursorPointer txt-20px" lang="start_all">View all logos</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bloc de texte simple -->
+    <div class="fondBlanc space-top-02 space-bottom-02">
+        <h3 class="extra-bold margin-bot-40px">About FreeLogoDesign</h3>
+        <div class="max-width-02 margin-auto">
+            <span class="bold" lang="home_5_text">We are proud to offer the most simple and fast logo design solution. To start, choose from thousands of high quality templates. Our templates are divided in 20 categories like agriculture, real estate and technology, so can you definitely create a logo that matches your needs.<br/><br/>We want you to enjoy your free logo design experience! Feel free to contact us if you need help, if you have questions or questions, or simply if you want to chat. We will be pleased to assist you! </span>
+        </div>
+    </div>
+
+    <!-- Carousel de testimonials -->
+    <h3 class="extra-bold margin-bot-20px">They trusted us</h3>
+
+    <div class="testimonials old-testimonials">
+        <div class="slider">
+            <input type="radio" name="slider" checked="checked" class="slider-nav active" />
+            <input type="radio" name="slider" class="slider-nav" />
+            <input type="radio" name="slider" class="slider-nav" />
+            <div class="slider-inner">
+                <div class="slider-contents">
+                    <div class="text-content">
+                        <p class="slider-caption" lang="home_temoignage_1">«&nbsp;Quick and easy to use. You are able to create any logo you can imagine with the tools here.&nbsp;»</p>
+                        <p class="slider-auteur" lang="home_temoignage_1_name">
+                            - Alexander Gill, <a href='http://uiucprelawhonorssociety.weebly.com/' target='_blank'> View the website</a>
+                        </p>
+                    </div>
+                    <div class="slider-image"></div>
+                </div>
+                <div class="slider-contents">
+                    <div class="text-content">
+                        <p class="slider-caption" lang="home_temoignage_2">«&nbsp;We found it easy to use the software and make changes until we were happy with the end result. Having a logo has given our company a &quot;face&quot; which makes us recognizable and builds familiarity&nbsp;»</p>
+                        <p class="slider-auteur" lang="home_temoignage_2_name">
+                            - Fernando Chavez
+                        </p>
+                    </div>
+                    <div class="slider-image"></div>
+                </div>
+                <div class="slider-contents">
+                    <div class="text-content">
+                        <p class="slider-caption" lang="home_temoignage_3">«&nbsp;I enjoyed my experience using FreeLogo Design. The editor is easy to understand and I received my logo via email in minutes! I highly recommend it&nbsp;»</p>
+                        <p class="slider-auteur" lang="home_temoignage_3_name">
+                            - James Smith
+                        </p>
+                    </div>
+                    <div class="slider-image"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pure-g fondGradient textBlanc space-bottom-03 space-top-03">
+    <div class="wrapper">
+        <div class="pure-u-1">
+            <h3 class="extra-bold padding-bot-20px">Don&#39;t wait! Create your own logo now!</h3>
+            <span class="display-block padding-bot-20px default-screen-width margin-auto">
+                Get the tools you need to improve your online presence. Design your own logo today with our free online logo maker. Try our free logo generator to make your own custom logo.
+            </span>
+
+        </div>
+        <div class="pure-g noPadding">
+            <div class="pure-u-1 pure-u-md-2-3 pure-u-lg-5-8 noPaddingDesktop">
+                <input class="customInput02 max-width-07 float-right-desktop companyDontWait companyName01" type="text" placeholder="Enter your company name" />
+            </div>
+            <div class="pure-u-1 pure-u-md-1-3 pure-u-lg-3-8">
+                <div class="startDontWait primaryBtn float-left-desktop white-bg">
+                    <span class="extra-bold startDontWait startNewEngine">Create my logo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+    <!-- Footer and lower footer -->
+    <div id="footer" class="pure-g extra-light-grey-bg noPadding padding-top-20px padding-bot-20px">
+        <div class="wrapper">
+            <div class="pure-u-1 pure-u-md-2-5">
+                <div class="logo-footer"></div>
+                <p class="footer-description">FreeLogoDesign is a free logo maker. Our online design tool allows entrepreneurs, small businesses, freelancers and associations around the world to create professional looking logos in minutes. Create your own logo design with Free Logo Design, 100% free, fast and effective! Via our logo creator in 3-steps you can create and upload your own logo, in minutes.</p>
+                <div class="">
+                    <span class="social-icons">
+                        <a target="_blank" href="https://www.facebook.com/freelogodesign.org/"><i class="fa fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/freelogodesignorg/"><i class="fa fa-instagram"></i></a>
+                        <a target="_blank" href="https://www.pinterest.com/FreeLogo/"><i class="fa fa-pinterest-p"></i></a>
+                    </span>
+                    <select></select>
+                </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-3-5 noPadding">
+                <div class="pure-g noPadding">
+                    <div class="pure-u-1 pure-u-sm-1-2 noMargin">
+                        <h5 class="extra-bold capitalize">company</h5>
+                        <span><a href="https://www.freelogodesign.org/about">About</a></span>
+                        <span><a href="https://www.freelogodesign.org/offers">Offers</a></span>
+                        <span><a href="https://www.freelogodesign.org/how-to-create-a-logo">How to create a logo</a></span>
+                        <span><a href="https://www.freelogodesign.org/categories">Inspiration</a></span>
+                        <span><a href="https://www.freelogodesign.org/custom-logo-design">Custom logo design</a></span>
+                    </div>
+                    <div class="pure-u-1 pure-u-sm-1-2">
+                        <h5 lang="menu_community" class="extra-bold capitalize">community</h5>
+                        <span><a href="https://www.freelogodesign.org/blog">Blog</a></span>
+                        <span><a href="https://www.freelogodesign.org/faq">FAQ</a></span>
+                        <span><a href="https://www.freelogodesign.org/contact">Contact</a></span>
+                        <span><a href="https://www.freelogodesign.org/partners">Our partners</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="lowerFooter" class="pure-g noPadding padding-top-16px padding-bot-16px">
+        <div class="wrapper lower-footer">
+            <div class="pure-u-1 pure-u-md-1-2 noMargin noPadding">
+                <span class="copyrights float-right-desktop">&copy; 2018 FreeLogoDesign.org&nbsp;</span>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2 noPadding">
+                <span class="copyrights float-left-desktop">All Rights Reserved | <a href="https://www.freelogodesign.org/terms-of-use">Terms of use</a></span>
+            </div>
+        </div>
+    </div>
+
+  
+    <script src="/Scripts/lib/jquery.js"></script>
+    <script src="/Bundles/functions?v=z3hCOMYj-p6pj3SEqJf0IQgKSLgBQYoJfD-gOFCbOqM1"></script>
+
+    <script src="/Scripts/lib/js.cookie.js"></script>
+    <script type="text/javascript">
+        var MenuLinks = $(".the-menu a");
+        MenuLinks.each(function (index) {
+            if ($(this).attr("href") == window.location.pathname) {
+                $(this).addClass("active");
+            }
+        });
+
+     
+    </script>
+    <script src="/Bundles/api?v=2v7nl8tliCLjJwzzWB31dvJ4NK7p6vRFAdxi0E_nyBo1"></script>
+
+    
+    <script src="Scripts/lib/es6-promise.min.js"></script>
+    <script src="Scripts/lib/OpenType/opentype.min.js"></script>
+    <script src="Scripts/lib/slick.min.js"></script>
+    <script src="/Bundles/svgtools?v=W2tZfZcPc3bWuuxS-kVzG6wPDOznaujHBydu6L_E9o01"></script>
+
+    <script src="/Bundles/color?v=dREA_6ds--snms9v7_CistDeUtiZ6cRKNPKcUCgkOZ41"></script>
+
+    <script src="/Bundles/gradient?v=j5hFl8mgbAxHtq0QMELcfaRCsLJQfGPmBtZwjwja1BA1"></script>
+
+    <script src="/Bundles/calc?v=73woDgqYj9ms4TQoRj64gUo6K6-bev0L_Fhvj8hBbYw1"></script>
+
+    <script src="/Bundles/textformat?v=hvXPZeDfopAqTpQPpdoxtrSL6YNR1Zguc-6yjQhEHek1"></script>
+
+    <script src="/Bundles/textpath?v=n1547iSdScsFI1XGSo9euLIklMiWp4IhLddAaSIJzXA1"></script>
+
+    <script src="/Bundles/polyfill?v=9BC7p-HCu-AWWNDZ_uL4KsnqiBSVGw1MrqdsBW72CZk1"></script>
+
+    <script src="Scripts/lib/Snap/snap.svg-min.js"></script>
+    <script src="/Bundles/index?v=w9Z_dshydndq5-j8CJr_RAmfk8iviGBI2IRUCBqVsMI1"></script>
+
+
+</body>
+</html>
