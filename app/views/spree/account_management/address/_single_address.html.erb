@@ -3,6 +3,9 @@
 <% btn_primary      = @address_btn_contents.spec_slug('address-btn-label-primary').last%>
 <% existing_address = @address_contents.spec_slug('address-existing-heading').last%>
 <% @is_primary      = (@user_shipping_address || @user_billing_address ) == form_obj.id %>
+<% update_address_btn   = @address_btn_contents.spec_slug('address-btn-label-save').last%>
+<% save_address_btn     = @address_btn_contents.spec_slug('address-btn-label-new-save').last%>
+<% delete_address_btn   = @address_btn_contents.spec_slug('address-btn-label-delete').last%>
 
 <% Globalize.with_locale (I18n.locale) do %> 
 
@@ -18,7 +21,12 @@
     </div>
     <div class="panel-body">
       <%= form_for form_obj , html: { id: 'checkout_form_address' } ,remote: true do |form| %>
-        <%= render partial: 'spree/account_management/address/form', locals: { address_form: form, address_type: 'shipping', address: form_obj,user: user } %>
+        <%= render partial: 'spree/addresses/form', locals: { address_form: form, address_type: 'shipping', address: form_obj} %>
+
+        <%= form.submit form.object.persisted? ? update_address_btn.try(:title) : save_address_btn.try(:title)  , :class => 'btn btn-primary',style:"width:50%" %>
+        <% if form.object.persisted? && !@is_primary %>
+        <%=link_to delete_address_btn.try(:title) ,address_path(form.object), 'data-method' => :delete, :class => "btn btn-danger",:data => {:confirm => 'Are you sure?'},:remote => true%> 
+        <% end %>
       <% end%>
     </div>
   </div>
