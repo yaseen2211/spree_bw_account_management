@@ -1,0 +1,6 @@
+<h3>Open</h3>
+<a class="pull-right"  href="#">View All</a>
+<% appointments.each do |appo| %>
+	<%= render partial: "spree/account_management/appointments/appointment", locals: {appointment: appo} %>
+	<br>
+<% end %>

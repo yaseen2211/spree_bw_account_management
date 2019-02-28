@@ -1,0 +1,25 @@
+<div class="col-md-12 well" style="background: white;">
+	<div class="col-md-3">
+		<p><strong><%= appointment.start.strftime("%B")%></strong></p>
+		<p><strong><%= appointment.start.strftime("%d")%></strong></p>
+		<p><strong><%= appointment.start.strftime("%Y")%></strong></p>
+
+		<p><strong><span style="color:red;"><%= appointment.state %></span></strong></p>
+	</div>
+	<div class="col-md-3">
+		<p><strong><%= appointment.start.strftime("%H:%M %P")%></strong></p>
+		<p><strong>with:</strong> <%= appointment.vendor.name%></p>
+		<p><strong>For:</strong> Product Name</p>
+		<p><strong>where:</strong>Address</p>
+	</div>
+	<div class="col-md-3">
+		<div><button type="button" class="btn btn-primary">Confirm Change</button></div><br>
+		<div><button type="button" class="btn btn-info">Propose New Time</button></div><br>
+		<div><button type="button" class="btn btn-danger">View Original Info</button></div><br>
+	</div>
+	<div class="col-md-3">
+		<div><button type="button" class="btn btn-success">Change Appointment</button></div><br>
+		<div><button type="button" class="btn btn-dark">Change Address</button></div><br>
+		<div><button type="button" class="btn btn-warning">Show Measurements</button></div>
+	</div>
+</div>
