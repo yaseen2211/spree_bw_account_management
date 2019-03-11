@@ -1,10 +1,10 @@
 module Spree
-  class ContactStoresController < Spree::BaseController
+  class ContactStoresController < Spree::StoreController
     before_action :load_vendor
 
     def new
       @contact_store = @vendor.contact_stores.new
-      @order = spree_current_user.orders.find_by(number: "R585672829")
+      @order = spree_current_user.orders.find_by(number: params[:order_number])
     end
 
     def create

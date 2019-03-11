@@ -4,7 +4,7 @@
   Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
 </p>
 <hr>
-<% @orders.each do |order| %>
+<% @orders.complete.each do |order| %>
     <fieldset id="order_summary-<%order.id%>">
       <div id="order" data-hook="">
         <div class="row steps-data margin-top-50">
@@ -108,19 +108,23 @@
               </span>
               </div>
             </div>
-            <div class="row steps-data">
-              <% state_class = order.completed? ? "green": ""%>
-              <% partially_closed = order.shipped? ? "green" : ""%>
-              <div class="col-md-2 col-sm-4">
-                <a style="color: <%=state_class%>;">Order Received</a>
+
+            <% if vendors.count < 2%>
+              <div class="row steps-data">
+                <% state_class = order.completed? ? "green": ""%>
+                <% partially_closed = order.shipped? ? "green" : ""%>
+                <div class="col-md-2 col-sm-4">
+                  <a style="color: <%=state_class%>;">Order Received</a>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <a style="color: <%=state_class%>;">Order In Progress</a>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <a style="color: <%=partially_closed%>;">Order Delivered</a>
+                </div>
               </div>
-              <div class="col-md-2 col-sm-4">
-                <a style="color: <%=state_class%>;">Order In Progress</a>
-              </div>
-              <div class="col-md-2 col-sm-4">
-                <a style="color: <%=partially_closed%>;">Order Delivered</a>
-              </div>
-            </div>
+            <% end %>
+
             <hr>
             <div class="half-width">
               <% products.each do |pro|%>
