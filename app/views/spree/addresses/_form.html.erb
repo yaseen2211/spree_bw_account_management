@@ -37,7 +37,7 @@
         <!-- <abbr class="required" try(:title)="required">*</abbr> -->
         <%# end %>
       <%# end %>
-      <%= address_form.phone_field :phone, class: 'form-control', required: true, placeholder:  address_form.object.persisted? ? ex_contact_number.try(:title)  : new_contact_number.try(:title)  %>
+      <%= address_form.number_field :phone, class: 'form-control', required: true, placeholder:  address_form.object.persisted? ? ex_contact_number.try(:title)  : new_contact_number.try(:title)  %>
     </p>
     <!-- <%# if Spree::Config[:alternative_shipping_phone] %>
       <p class="form-group" id=<%#="#{address_id}altphone" %>>
