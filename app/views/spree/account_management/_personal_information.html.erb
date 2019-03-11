@@ -55,15 +55,26 @@
   	<div class="row narrow-row-md">
   	  <div class="col-sm-6">
   	    <div class="form-group">
-          <%= f.text_field :phone_number, :class => 'form-control', :placeholder => user_phone_number.try(:title) %>
+          <%= f.number_field :phone_number, :class => 'form-control', :placeholder => user_phone_number.try(:title) %>
   	      <!--<label class="control-label">Confirm Password<span class="required">*</span></label>-->
   	       <!--<#%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => Spree.t(:confirm_password) %>-->
   	    </div>
   	  </div>
       <div class="col-sm-6">
-        <div class="form-group">
-          <%= f.collection_select :country, available_countries, :id, :name, {:prompt => f.object.country.present? ? f.object.country : user_country.try(:title) }, { class: 'form-control', required: true } %>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", required: true}%>
+          </div>
         </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", required: true}%>
+          </div>
+        </div>
+
+       <!--  <div class="form-group">
+          <%#= f.collection_select :country, available_countries, :id, :name, {:prompt => f.object.country.present? ? f.object.country : user_country.try(:title) }, { class: 'form-control', required: true } %>
+        </div> -->
 
       </div>
   	</div>
@@ -76,30 +87,57 @@
 
     <div class="row narrow-row-md">
       <div class="col-sm-6">
-        <div class="form-group">
-          <%= f.number_field :head, :class => 'form-control', :placeholder => user_msr_head.try(:title) %>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label><%= user_msr_head.try(:title)%></label>
+            <%= f.number_field :head, :class => 'form-control'%> 
+          </div>
+        </div>
+        <div class="col-sm-2" style="    margin-top: 26px;">
+          CM
         </div>
       </div>
     </div>
     <div class="row narrow-row-md">
       <div class="col-sm-6">
-        <div class="form-group">
-          <%= f.number_field :left_shoulder, :class => 'form-control', :placeholder => user_msr_shld_lft.try(:title) %>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label><%=user_msr_shld_lft.try(:title) %></label>
+            <%= f.number_field :left_shoulder, :class => 'form-control', step: :any %>
+          </div>
         </div>
+        <div class="col-sm-2" style="    margin-top: 26px;">
+          CM
+        </div>
+        
       </div>
     </div>
     <div class="row narrow-row-md">
       <div class="col-sm-6">
-        <div class="form-group">
-          <%= f.number_field :right_shoulder, :class => 'form-control', :placeholder => user_msr_shld_rht.try(:title) %>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label><%= user_msr_shld_rht.try(:title)%></label>
+            <%= f.number_field :right_shoulder, :class => 'form-control'%>
+          </div>
         </div>
+        <div class="col-sm-2" style="    margin-top: 26px;">
+          CM
+        </div>
+       
       </div>
     </div>
     <div class="row narrow-row-md">
       <div class="col-sm-6">
-        <div class="form-group">
-          <%= f.number_field :left_arm, :class => 'form-control', :placeholder => user_msr_lft_arm.try(:title) %>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label><%= user_msr_lft_arm.try(:title) %></label>
+            <%= f.number_field :left_arm, :class => 'form-control' %>
+          </div>
         </div>
+        <div class="col-sm-2" style="    margin-top: 26px;">
+          CM
+        </div>
+        
       </div>
     </div>
   <p>

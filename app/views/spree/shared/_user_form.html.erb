@@ -14,6 +14,7 @@
   <% messages_txt    = profile_nav_txt.spec_slug('profile-nav-txt-messages').last %>
   <% sc_txt    = profile_nav_txt.spec_slug('profile-nav-txt-support-centre').last %>
   <% logout_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-logout').last %>
+  <% stores_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-stores').last %>
 
   <!------ Include the above in your HEAD tag ---------->
   <div class="container">
@@ -22,14 +23,21 @@
         <% Globalize.with_locale (I18n.locale) do %> 
           <ul class="nav nav-pills nav-stacked admin-menu" id="profile-tabs">
             <li class="active"><a href="#" data-target-id="pi"><i class="fa fa-home fa-fw"></i><%= profile_info_txt.try(:title)%></a></li>
-            <li><a href="http://www.jquery2dotnet.com" data-target-id="address"><i class="fa fa-list-alt fa-fw"></i><%= addresses_txt.try(:title)%></a></li>
-            <li><a href="http://www.jquery2dotnet.com" data-target-id="orders"><i class="fa fa-file-o fa-fw"></i><%= orders_txt.try(:title)%></a></li>
-            <li><a href="http://www.jquery2dotnet.com" data-target-id="whislist"><i class="fa fa-bar-chart-o fa-fw"></i><%= wishlist_txt.try(:title)%></a></li>
-            <li><a href="http://www.jquery2dotnet.com" data-target-id="reviews"><i class="fa fa-table fa-fw"></i><%= reviews_txt.try(:title)%></a></li>
-            <li><a href="http://www.jquery2dotnet.com" data-target-id="settings"><i class="fa fa-tasks fa-fw"></i><%= settings_txt.try(:title)%></a></li>
-            <li><a href="http://www.jquery2dotnet.com" data-target-id="messages"><i class="fa fa-calendar fa-fw"></i><%= messages_txt.try(:title)%></a></li>
-            <li><a href="http://www.jquery2dotnet.com" data-target-id="sc"><i class="fa fa-book fa-fw"></i><%= sc_txt.try(:title)%></a></li>
-            <li><a href="http://www.jquery2dotnet.com" data-target-id="logout"><i class="fa fa-pencil fa-fw"></i><%= logout_txt.try(:title)%></a></li>
+
+            <li><a href="#" data-target-id="address"><i class="fa fa-list-alt fa-fw"></i><%= addresses_txt.try(:title)%></a></li>
+            <li><a href="#" data-target-id="orders"><i class="fa fa-file-o fa-fw"></i><%= orders_txt.try(:title)%></a></li>
+            <li><a href="#" data-target-id="whislist"><i class="fa fa-bar-chart-o fa-fw"></i><%= wishlist_txt.try(:title)%></a></li>
+            <li><a href="#" data-target-id="reviews"><i class="fa fa-table fa-fw"></i><%= reviews_txt.try(:title)%></a></li>
+            <li><a href="#" data-target-id="stores"><i class="fa fa-heart fa-fw"></i><%= stores_txt.try(:title)%></a></li>
+            <li><a href="#" data-target-id="settings"><i class="fa fa-tasks fa-fw"></i><%= settings_txt.try(:title)%></a></li>
+            <li><a href="#" data-target-id="messages"><i class="fa fa-calendar fa-fw"></i><%= messages_txt.try(:title)%></a></li>
+            <li><a href="#" data-target-id="appointments"><i class="fa fa-tasks fa-fw"></i>My Appointments</a></li>
+            <li><a href="#" data-target-id="sc"><i class="fa fa-book fa-fw"></i><%= sc_txt.try(:title)%></a></li>
+            <li>
+              <%= link_to spree.logout_path do %>
+                <i class="fa fa-pencil fa-fw"></i><%= logout_txt.try(:title)%>
+              <% end %>
+            </li>
 
           </ul>
         <% end %>
@@ -63,6 +71,12 @@
         <% end %>
       </div>
 
+      <div class="col-md-9 well admin-content" id="stores">
+        <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+          <%= render partial: "spree/account_management/stores", locals: { :f => f } %>
+        <% end %>
+      </div>
+
       <div class="col-md-9 well admin-content" id="settings">
         <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
           <%= render partial: "spree/account_management/settings", locals: { :f => f } %>
@@ -82,6 +96,7 @@
       </div>
     </div>
 
+    
   </div>
 
 <% else %>
@@ -117,11 +132,11 @@
 
       <div class="form-group">
         <%= f.password_field :password, :class => 'form-control', :placeholder => user_password.try(:title), required: true %>
+      </div>
 
-      </div>
-      <div class="form-group">
-        <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => user_password_confirm.try(:title), required: true %>
-      </div>
+      <!-- <div class="form-group">
+        <%#= f.password_field :password_confirmation, :class => 'form-control', :placeholder => user_password_confirm.try(:title), required: true %>
+      </div> -->
 
       <div class="col-md-6">
         <div class="form-group">
@@ -129,6 +144,7 @@
       </div>
 
       </div>
+
       <div class="col-md-6">
         <div class="form-group">
           <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", required: true}%>
