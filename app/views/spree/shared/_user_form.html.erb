@@ -2,7 +2,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<% if spree_current_user.present? %>
+<% if spree_current_user.present? && (params[:action].present? && params[:action] != "new") %>
 
   <% profile_nav_txt     = Spree::PageContent.from_gen_slug('profile-nav-txt') %>
   <% profile_info_txt    = profile_nav_txt.spec_slug('profile-nav-txt-personal-info').last %>
@@ -12,9 +12,11 @@
   <% reviews_txt    = profile_nav_txt.spec_slug('profile-nav-txt-reviews').last %>
   <% settings_txt    = profile_nav_txt.spec_slug('profile-nav-txt-settings').last %>
   <% messages_txt    = profile_nav_txt.spec_slug('profile-nav-txt-messages').last %>
-  <% sc_txt    = profile_nav_txt.spec_slug('profile-nav-txt-support-centre').last %>
+  <% sc_txt          = profile_nav_txt.spec_slug('profile-nav-txt-support-centre').last %>
   <% logout_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-logout').last %>
   <% stores_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-stores').last %>
+
+  <% wishlist_label_advertisment = Spree::PageContent.spec_slug('wishlist-label-advertisement').last %>
 
   <!------ Include the above in your HEAD tag ---------->
   <div class="container">
@@ -43,8 +45,6 @@
         <% end %>
       </div>
 
-
-
       <div class="col-md-9 well admin-content" id="pi">
         <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
          <%= render partial: "spree/account_management/personal_information", locals: { :f => f } %>
@@ -61,9 +61,16 @@
         <% end %>
       </div>
       
-      <div class="col-md-9 well admin-content" id="whislist">
+      <div class="col-md-9  admin-content" id="whislist">
         <%= render partial: "spree/account_management/wishlist"%>
+        <% if wishlist_label_advertisment.image.attached? %>
+          <div>
+            <p><%= wishlist_label_advertisment.try(:title) %></p>
+            <%= image_tag(main_app.url_for(wishlist_label_advertisment.image), height: "60px", width: "100%") %>
+          </div>
+        <% end %>
       </div>
+
 
       <div class="col-md-9 well admin-content" id="reviews">
         <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>

@@ -63,12 +63,12 @@
       <div class="col-sm-6">
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", required: true}%>
+            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control"}%>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", required: true}%>
+            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control"}%>
           </div>
         </div>
 

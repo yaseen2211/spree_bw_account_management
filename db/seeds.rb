@@ -132,3 +132,7 @@ Spree::PageContent.find_or_create_by! title: "Product is successfully deleted fr
 Spree::PageContent.find_or_create_by! title: "Temporarily out of Stock", description: "", slug: "wishlist-label-out-off-stock"
 Spree::PageContent.find_or_create_by! title: "Load More", description: "", slug: "wishlist-btn-label-load-more"
 Spree::PageContent.find_or_create_by! title: "Back To Top", description: "", slug: "wishlist-btn-label-top"
+
+
+
+Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "wishlist-label-advertisement"
