@@ -1,4 +1,14 @@
-$('#profile-tabs a[data-target-id="whislist"]').click();
-window.location.href = "/account/edit"
+<% if @wished_product.errors.blank? %>
+	$('#js-messages').html("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p> <%= @wished_product.variant.name%> is successfully added to your Wishlist.")
+	$('#js-messages').addClass("alert-success")
+	$('#js-messages').removeClass('hide alert-danger')
+<% else %>
 
+	$('#js-messages').html("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p><%= @wished_product.errors.messages%></p>")
+	$('#js-messages').addClass("alert-danger")
+	$('#js-messages').removeClass('hide alert-success')
+<% end %>
 
+$('html, body').animate({
+  scrollTop: $("#js-messages").offset().top
+}, 2000);
