@@ -1,75 +1,106 @@
-<h1 class="text-center"> Orders </h1>
-<hr>
-<p>
-  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-</p>
-<hr>
-<% @orders.complete.each do |order| %>
+<% order_contents     = Spree::PageContent.from_gen_slug('order') %>
+<% order_main_contents = order_contents.from_gen_slug('order-main') %>
+<% order_content = order_main_contents.spec_slug('order-main-heading-desc').last%>
+<% order_sub_heading_order_details = order_contents.spec_slug('order-sub-heading-order-details').last%>
+<% order_purchased_on_label = order_contents.spec_slug('order-purchased-on-label').last%>
+<% order_personalised_label = order_contents.spec_slug('order-personalised-label').last%>
+<% order_payment_method_label = order_contents.spec_slug('order-payment-method-label').last%>
+<% order_sub_heading_shiping_details = order_contents.spec_slug('order-sub-heading-shiping-details').last%>
+<% order_sale_off_label = order_contents.spec_slug('order-sale-off-label').last%>
+<% order_review_button_label = order_contents.spec_slug('order-review-button-label').last%>
+<% order_my_review_button_label = order_contents.spec_slug('order-my-review-button-label').last%>
+<% order_download_invoice_button_label = order_contents.spec_slug('order-download-invoice-button-label').last%>
+<% order_contact_store_button_label = order_contents.spec_slug('order-contact-store-button-label').last%>
+<% order_request_return_button_label = order_contents.spec_slug('order-request-return-button-label').last%>
+<% order_view_messages_button_label = order_contents.spec_slug('order-view-messages-button-label').last%>
+<% order_create_product_review_label = order_contents.spec_slug('order-create-product-review-label').last%>
+<% order_product_review_heading = order_contents.spec_slug('order-product-review-heading').last%>
+<% order_my_review_product_name = order_contents.spec_slug('order-my-review-product-name').last%>
+<% order_my_review_date = order_contents.spec_slug('order-my-review-date').last%>
+<% order_my_review_close = order_contents.spec_slug('order-my-review-close').last%>
+<% order_detail_items = order_contents.spec_slug('order-detail-items').last%>
+<% order_sub_heading_order_summary = order_contents.spec_slug('order-sub-heading-order-summary').last%>
+<% order_summary_shipping_label = order_contents.spec_slug('order-summary-shipping-label').last%>
+<% order_number_purchased_from_label = order_contents.spec_slug('order-number-purchased-from-label').last%>
+<% order_status_received_label = order_contents.spec_slug('order-status-received-label').last%>
+<% order_status_in_progress_label = order_contents.spec_slug('order-status-in-progress-label').last%>
+<% order_status_delivered_label = order_contents.spec_slug('order-status-delivered-label').last%>
+<% order_shiped_on_label = order_contents.spec_slug('order-shiped-on-label').last%>
+<% order_tracking_number_label = order_contents.spec_slug('order-tracking-number-label').last%>
+<%#= order_return_request_heading.try(:title) %>
+<% Globalize.with_locale (I18n.locale) do %>
+  <h1 class="text-center"> <%= order_content.try(:title) %> </h1>
+  <hr>
+  <p>
+    <%= order_content.try(:description) %>
+  </p>
+  <hr>
+  <% @orders.complete.each do |order| %>
     <fieldset id="order_summary-<%order.id%>">
       <div id="order" data-hook="">
         <div class="row steps-data margin-top-50">
           <div class="col-md-4 col-sm-4 col-xs-6">
-            <h4>Order Details</h4>
+            <h4><%= order_sub_heading_order_details.try(:title) %></h4>
             <div class="fn"><%= order.number %></div>
             <div>
-              Purchased on:
+              <%= order_purchased_on_label.try(:title) %>:
               <%= order.created_at.strftime("%e/%m/%Y") %>
             </div>
             <div>
-              Items:
+              <%= order_detail_items.try(:title) %>:
               <%= order.line_items.count %>
             </div>
             <div>
-              Personalised Item:
+              <%= order_personalised_label.try(:title) %>:
               <%= order.line_items.count %>
             </div>
             <% if order.has_step?("payment") %>
-                <div>
-                  Payment method:
-                  <%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %>
-                </div>
+              <div>
+                <%= order_payment_method_label.try(:title) %>:
+                <%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %>
+              </div>
             <% end %>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-6">
-            <h4>Shiping Details</h4>
+            <h4><%= order_sub_heading_shiping_details.try(:title) %></h4>
             <% if order.has_step?("delivery") %>
-                <h5><%= order.ship_address.full_name %></h5>
-                <% unless order.ship_address.phone.blank? %>
-                    <%= order.ship_address.phone %>
-                <% end %>
-                <% unless order.ship_address.alternative_phone.blank? %>
-                    <div class="alternative-phone tel">
-                      <%= order.ship_address.alternative_phone %>
-                    </div>
-                <% end %>
+              <h5><%= order.ship_address.full_name %></h5>
+              <% unless order.ship_address.phone.blank? %>
+                  <%= order.ship_address.phone %>
+              <% end %>
+              <% unless order.ship_address.alternative_phone.blank? %>
+                  <div class="alternative-phone tel">
+                    <%= order.ship_address.alternative_phone %>
+                  </div>
+              <% end %>
 
-                <div class="adr">
-                  <div class="street-address">
-                    <div class="street-address-line">
-                      <%= order.ship_address.address1 %>
-                    </div>
-                    <% unless order.ship_address.address2.blank? %>
-                        <div class="street-address-line">
-                          <%= order.ship_address.address2 %>
-                        </div>
-                    <% end %>
+              <div class="adr">
+                <div class="street-address">
+                  <div class="street-address-line">
+                    <%= order.ship_address.address1 %>
                   </div>
-                  <div class="local">
-                    <span class="locality"><%= order.ship_address.city %></span>
-                    <span class="postal-code"><%= order.ship_address.zipcode %></span>
-                    <div class="country-name"><%= order.ship_address.country.try(:name) %></div>
-                  </div>
+                  <% unless order.ship_address.address2.blank? %>
+                      <div class="street-address-line">
+                        <%= order.ship_address.address2 %>
+                      </div>
+                  <% end %>
                 </div>
+                <div class="local">
+                  <span class="locality"><%= order.ship_address.city %></span>
+                  <span class="postal-code"><%= order.ship_address.zipcode %></span>
+                  <div class="country-name"><%= order.ship_address.country.try(:name) %></div>
+                </div>
+              </div>
             <%end%>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-6">
-            <h4>Order Summary</h4>
+            <h4><%= order_sub_heading_order_summary.try(:title) %></h4>
             <div>
-              Shiping:
+              <%= order_summary_shipping_label.try(:title) %>:
               <% order.shipments.group_by { |s| s.selected_shipping_rate.name }.each do |name, shipments| %>
-                  <tr class="total">
-                    <td class="total"><span><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></span></td>
-                  </tr>
+                <tr class="total">
+                  <td class="total"><span><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></span></td>
+                </tr>
               <% end %>
             </div>
             <div>
@@ -92,20 +123,20 @@
           <%vendors = []%>
           <%vendors = order.products.group_by(&:vendor) %>
           <% vendors.each do |vendor, products|%>
-              <br>
+            <br>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <h4><%= order.number %> - Purchased From <%=vendor.name%></h4>
+                <h4><%= order.number %> - <%= order_number_purchased_from_label.try(:title) %> <%=vendor.name%></h4>
                 <span class="pull-right">
-                <% if order.shipped?%>
-                  Shiped On: <%=order.shipments.first.shipped_at? ? order.shipments.first.shipped_at.strftime("%e/%m/%Y") : ""%>
-                <% else %>
-                  Shiped On: -
-                <% end %>
-                <div>
-                  Tracking Number: <%=order.shipments.first.tracking? ? order.shipments.first.tracking : ""%>
-                </div>
-              </span>
+                  <% if order.shipped?%>
+                    <%= order_shiped_on_label.try(:title) %>: <%=order.shipments.first.shipped_at? ? order.shipments.first.shipped_at.strftime("%e/%m/%Y") : ""%>
+                  <% else %>
+                    <%= order_shiped_on_label.try(:title) %>: -
+                  <% end %>
+                          <div>
+                    <%= order_tracking_number_label.try(:title) %>: <%=order.shipments.first.tracking? ? order.shipments.first.tracking : ""%>
+                  </div>
+                </span>
               </div>
             </div>
 
@@ -114,13 +145,13 @@
                 <% state_class = order.completed? ? "green": ""%>
                 <% partially_closed = order.shipped? ? "green" : ""%>
                 <div class="col-md-2 col-sm-4">
-                  <a style="color: <%=state_class%>;">Order Received</a>
+                  <a style="color: <%=state_class%>;"><%= order_status_received_label.try(:title) %></a>
                 </div>
                 <div class="col-md-2 col-sm-4">
-                  <a style="color: <%=state_class%>;">Order In Progress</a>
+                  <a style="color: <%=state_class%>;"><%= order_status_in_progress_label.try(:title) %></a>
                 </div>
                 <div class="col-md-2 col-sm-4">
-                  <a style="color: <%=partially_closed%>;">Order Delivered</a>
+                  <a style="color: <%=partially_closed%>;"><%= order_status_delivered_label.try(:title) %></a>
                 </div>
               </div>
             <% end %>
@@ -139,45 +170,56 @@
                       <% end %>
                     </div>
                     <div class="col-md-8 col-sm-2">
-                      <h4><%= item.quantity.to_s + " x " + item.name %></h4>
-                      <%= truncate(item.description, length: 100) %>
+                      <h4>
+                        <%=item.quantity.to_s + " x "%>
+                        <%= link_to item.variant.product, itemprop: "url" do %>
+                            <%= content_tag(:span, truncate(item.variant.product.name, length: 50), class: 'info', itemprop: "name", title: item.variant.product.name) %>
+                        <% end %>
+                      </h4>
+                      <div>
+                        <%= truncate(item.description, length: 100) %>
+                      </div>
                       <div>
                         <%= item.variant.options_text unless item.variant.option_values.empty? %>
                       </div>
-                      <div>
-                        <span>100.0</span>
-                        <span class="pull-right">100.0</span>
-                      </div>
-                      <div>
-                        30% OFF
-                      </div>
+                      <%product = item.variant.product%>
+                      <% if product.on_sale? %>
+                        <div>
+                          <span>$<%= product.original_price.to_f%></span>
+                          <span class="pull-right">$<%= product.price.to_f%></span>
+                        </div>
+                        <div>
+                          <% sale_ammount = product.original_price.to_f - product.price.to_f %>
+                          <%= ((sale_ammount/product.original_price) * 100).round(2).to_s + '% ' + order_sale_off_label.try(:title)%>
+                        </div>
+                      <% end %>
                       <div>
                         <%user_review = nil%>
                         <% if item.variant.product.reviews.present?%>
-                            <%item.variant.product.reviews.each do |review|%>
-                                <% next if review.user_id != @user.id%>
-                                <% user_review = review%>
-                            <% end %>
+                          <%item.variant.product.reviews.each do |review|%>
+                              <% next if review.user_id != @user.id%>
+                              <% user_review = review%>
+                          <% end %>
                         <% end %>
                         <% if user_review.present? %>
                           <%= render 'spree/reviews/stars', stars: user_review.rating %>
                           <span class="pull-right">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show-review-<%=item.id%>">
-                              My Review
+                              <%= order_my_review_button_label.try(:title) %>
                             </button>
                           </span>
                           <div class="modal fade" id="show-review-<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document" style="left: 0px;">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Product Review</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel"><%= order_product_review_heading.try(:title) %></h5>
                                 </div>
                                 <div class="modal-body">
                                   <div>
-                                    Product Nmae: <%=item.name%>
+                                    <%= order_my_review_product_name.try(:title) %>: <%=item.name%>
                                   </div>
                                   <div>
-                                    Review Date: <%= user_review.created_at.strftime("%e/%m/%Y")%>
+                                    <%= order_my_review_date.try(:title) %>: <%= user_review.created_at.strftime("%e/%m/%Y")%>
                                   </div>
                                   <div>
                                     <%= simple_format(user_review.review) %>
@@ -187,7 +229,7 @@
                                   </div>
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= order_my_review_close.try(:title) %></button>
                                 </div>
                               </div>
                             </div>
@@ -196,7 +238,7 @@
                           <%= render 'spree/reviews/stars', stars: 0 %>
                           <span class="pull-right">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-review-<%=item.id%>">
-                              Review
+                              <%= order_review_button_label.try(:title) %>
                               <i class="fa fa-star"></i>
                             </button>
                           </span>
@@ -204,7 +246,7 @@
                             <div class="modal-dialog" role="document" style="left: 0px;">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Create Product Review</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel"><%= order_create_product_review_label.try(:title) %></h5>
                                 </div>
                                 <div class="modal-body">
                                   Thankyou for leaving a review for the <%=item.name%> you perchased on <%= order.created_at.strftime("%e/%m/%Y") %>
@@ -226,26 +268,29 @@
                 <div class="margin-bottom-20">
                   <%= link_to("/admin/invoice/#{order.number}/invoice", target:  "_blank", class: "btn btn-primary") do %>
                       <span class='glyphicon glyphicon-print'></span>
-                      <%= Spree.t("Download Invoice") %>
+                      <%= order_download_invoice_button_label.try(:title) %>
                   <% end %>
                 </div>
                 <div class="margin-bottom-20">
-                  <!--<button class="btn btn-primary">Contact Store  <i class="fa fa-star"></i></button>-->
                   <%= link_to(spree.new_vendor_contact_store_path(vendor.id, order_number: order.number), target:  "_blank", class: "btn btn-primary") do %>
                       <span class='fa fa-star'></span>
-                      Contact Store
+                      <%= order_contact_store_button_label.try(:title) %>
                   <% end %>
                 </div>
                 <div class="margin-bottom-20">
                   <% if spree_current_user.present? && order.shipped? && order.has_returnable_products? && order.has_returnable_line_items? %>
-                    <%= link_to(spree.new_order_return_authorization_path(order), class: 'btn btn-primary') do %>
+                      <%= link_to(spree.new_order_return_authorization_path(order), class: 'btn btn-primary') do %>
+                          <span class='glyphicon glyphicon-send'></span>
+                          <%= order_request_return_button_label.try(:title) %>
+                      <% end %>
+                  <% end %>
+                  <%= link_to(spree.new_order_return_authorization_path(order), class: 'btn btn-primary') do %>
                       <span class='glyphicon glyphicon-send'></span>
-                      Request Return
-                    <% end %>
+                      <%= order_request_return_button_label.try(:title) %>
                   <% end %>
                 </div>
                 <div class="margin-bottom-20">
-                  <button class="btn btn-primary">View Messages  <i class="fa fa-star"></i></button>
+                  <button class="btn btn-primary"><%= order_view_messages_button_label.try(:title) %>  <i class="fa fa-star"></i></button>
                 </div>
                 <hr>
               </div>
@@ -254,8 +299,5 @@
         </div>
       </div>
     </fieldset>
+  <% end %>
 <% end %>
-
-<!--<p>-->
-<!--<%#= f.submit "Save", :class => 'btn btn-primary' %>-->
-<!--</p>-->

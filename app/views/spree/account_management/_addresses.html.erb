@@ -3,8 +3,8 @@
 <% address_main_content = @address_contents.spec_slug('address-main-heading-desc').last%>
 <% new_address_btn      = @address_btn_contents.spec_slug('address-btn-label-new').last%>
 
-<% Globalize.with_locale (I18n.locale) do %> 
-	
+<% Globalize.with_locale (I18n.locale) do %>
+
 	<div class="text-center">
 		<h1 class="text-center "><%= address_main_content.try(:title) %></h1>
 		<button style="    margin-top: -39px;" type="button" class="btn btn-success pull-right"  id="btn-new-address"><%=new_address_btn.try(:title) %></button>
