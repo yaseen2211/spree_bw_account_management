@@ -31,7 +31,7 @@
     </thead>
     <tbody id="line_items">
     <% if wishlist.present? && wishlist.wished_products.size > 0 %>
-      <% wishlist.wished_products.each do |wish|
+      <% wishlist.wished_products.sort_alphabatical_by_name.each do |wish|
           variant = wish.variant
           product = variant.product %>
       <tr class="<%= cycle('', 'alt') %>">
@@ -45,7 +45,7 @@
         </td>
         <td>
           <h4><%= link_to product.name, product %></h4>
-          <p class="font-weight-bold"> Store Name </p>
+          <p class="font-weight-bold"> <%= product.vendor.present? ? "Store Name:  " + product.vendor.name.to_s : "Store Does'nt Exist"%> </p>
           <% if product.on_sale? %>
 
           	<div style="background-color: white;">
