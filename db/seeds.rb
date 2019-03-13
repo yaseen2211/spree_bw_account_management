@@ -130,6 +130,9 @@ Spree::PageContent.find_or_create_by! title: "Delete", description: "", slug: "w
 Spree::PageContent.find_or_create_by! title: "Some Error occured while wishlist product deletion", description: "", slug: "wishlist-error-msg-delete"
 Spree::PageContent.find_or_create_by! title: "Product is successfully deleted from wishlist", description: "", slug: "wishlist-success-msg-delete"
 Spree::PageContent.find_or_create_by! title: "Temporarily out of Stock", description: "", slug: "wishlist-label-out-off-stock"
+Spree::PageContent.find_or_create_by! title: "In Stock", description: "", slug: "wishlist-label-in-stock"
+
+
 Spree::PageContent.find_or_create_by! title: "Load More", description: "", slug: "wishlist-btn-label-load-more"
 Spree::PageContent.find_or_create_by! title: "Back To Top", description: "", slug: "wishlist-btn-label-top"
 

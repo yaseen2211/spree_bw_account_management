@@ -4,10 +4,11 @@
 <% wishlist_btn_label_content = wishlist_contents.from_gen_slug('wishlist-btn-label')%>
 
 
-<% wishlist_off_label         = wishlist_label_contents.spec_slug('wishlist-label-off').last%>
-<% wishlist_temp_label        = wishlist_label_contents.spec_slug('wishlist-label-out-off-stock').last%>
-<% wishlist_add_cart_btn      = wishlist_btn_label_content.spec_slug('wishlist-btn-label-add-to-cart').last%>
-<% wishlist_del_btn           = wishlist_btn_label_content.spec_slug('wishlist-btn-label-delete').last%>
+<% wishlist_off_label             = wishlist_label_contents.spec_slug('wishlist-label-off').last%>
+<% wishlist_temp_label            = wishlist_label_contents.spec_slug('wishlist-label-out-off-stock').last%>
+<% wishlist_add_cart_btn          = wishlist_btn_label_content.spec_slug('wishlist-btn-label-add-to-cart').last%>
+<% wishlist_del_btn               = wishlist_btn_label_content.spec_slug('wishlist-btn-label-delete').last%>
+<% wishlist_in_stock_label        = wishlist_label_contents.spec_slug('wishlist-label-in-stock').last%>
 
 
 <% Globalize.with_locale (I18n.locale) do %> 
@@ -63,7 +64,7 @@
           <% end %>
         </td>
         <td>
-          <%= variant.can_supply? ? Spree.t(:in_stock) : wishlist_temp_label.title %>
+          <%= variant.can_supply? ? wishlist_in_stock_label.try(:title) : wishlist_temp_label.try(:title) %>
         </td>
         <!-- <td>
           <%#= wish.created_at.strftime '%m/%d/%Y' %>
