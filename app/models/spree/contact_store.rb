@@ -1,5 +1,7 @@
 class Spree::ContactStore < ActiveRecord::Base
   belongs_to :vendor
+  belongs_to :user
+  belongs_to :order
 
   after_create :send_email_to_vendor
 

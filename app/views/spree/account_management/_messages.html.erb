@@ -1,4 +1,29 @@
-<p> My Messages </p>
+<div class="text-center">
+	<h1 class="text-center ">My Messages</h1>
+</div>
+<hr>
+<p class="text-center"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+<div class="col-md-12">
+	<% if @user.contact_stores.any? %>
+	 <div class="clear-fix"></div>
+	 <div>
+	 	<% @user.contact_stores.each do |cs| %>
+	 	 <div style="background-color: white;">
+	 	 	
+	 	 	<p><strong>Subject: </strong>   <%= cs.subject %></p>
+	 	 	<p><strong>Query:</strong>  <%= cs.query %></p>
+	 	 	<p><strong>Order Number:</strong>   <%= cs.order.number %></p>
+	 	 	<p><strong>Total Order Items: </strong>   <%= cs.order.line_items.count %></p>
+
+	 	 </div>
+	 	 <hr>
+	 	<% end %>
+	 </div>
+	<% else %>
+		<p> No Message(s) Found </p>
+	<% end %>
+	
+</div>
 <p>
-	<%= f.submit "Save", :class => 'btn btn-primary' %>
+	<%#= f.submit "Save", :class => 'btn btn-primary' %>
 </p>

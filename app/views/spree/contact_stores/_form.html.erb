@@ -24,6 +24,7 @@
   <div class="form-group">
     <%= f.label :subject %>
     <%= f.text_field :subject, maxlength: 255, size: 50, class: 'form-control' %>
+    <%= f.hidden_field :order_number , value: @order.number.to_s %>
   </div>
 
   <div class="form-group">
