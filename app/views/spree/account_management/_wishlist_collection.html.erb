@@ -56,6 +56,8 @@
 
   	        	<p>Sale Percentage :  <%= ((sale_ammount/product.original_price) * 100).to_i.to_s + '%' + wishlist_off_label.title %></p> 
            	</div>
+          <% else %>
+            <p> Price: $<%= product.original_price.to_f%></p>
           <% end %>
           <p><%= variant_options variant %></p>
           <p><%= truncate(strip_tags(product.description), length: 100, omission: '...') %><p>

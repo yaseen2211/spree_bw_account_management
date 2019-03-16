@@ -1,6 +1,13 @@
 <% if @address.save %>
 	var html = "<%= j render partial: 'spree/account_management/address/user_addresses_section', locals: {addresses: spree_current_user.addresses, user: spree_current_user} %>"
 	$("#user-"+ <%= spree_current_user.id %> + "-addresses-section").html(html);
+	<% if params[:controller].present? && params[:controller].include?("spree/addresses") %>
+		$('#bl_popup').modal('hide');
+		setTimeout(function(){
+		   window.location.reload(1);
+		}, 3000);
+	<% end %>
+
 	$('#address-info-sec').html("<p><%= Spree::PageContent.from_gen_slug('address-success-msg').spec_slug('address-success-msg-new-save').last.try(:title) %></p>")
 	$('#address-info-sec').addClass("alert-success")
 	$('#address-info-sec').removeClass('hide alert-danger')

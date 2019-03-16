@@ -9,7 +9,6 @@
 	<hr>
 	<p class="text-center"><%= wishlist_main_content.description%></p>
 <% end %>
-
 <div class=" alert  alert-dismissible" id="wishlist-info-sec"></div>
 <div id="user-<%=@user.id%>-wishlist-section">
 	<%= render partial: "spree/account_management/wishlist_collection", locals: {wishlist: @wishlist} %>
