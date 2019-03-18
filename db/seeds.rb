@@ -121,6 +121,13 @@ Spree::PageContent.find_or_create_by! title: "Order in Progress", description: "
 Spree::PageContent.find_or_create_by! title: "Order Delivered", description: "", slug: "order-status-delivered-label"
 Spree::PageContent.find_or_create_by! title: "Shiped On", description: "", slug: "order-shiped-on-label"
 Spree::PageContent.find_or_create_by! title: "Tracking Number", description: "", slug: "order-tracking-number-label"
+Spree::PageContent.find_or_create_by! title: "Currency", description: "", slug: "order-currency-label"
+Spree::PageContent.find_or_create_by! title: "Discount", description: "", slug: "order-discount-label"
+Spree::PageContent.find_or_create_by! title: "Store Credit", description: "", slug: "order-store-credit-label"
+Spree::PageContent.find_or_create_by! title: "Gift Card", description: "", slug: "order-gift-card-label"
+Spree::PageContent.find_or_create_by! title: "VAT", description: "", slug: "order-vat-label"
+Spree::PageContent.find_or_create_by! title: "VAT Total", description: "", slug: "order-vat-total-label"
+Spree::PageContent.find_or_create_by! title: "Total inc. VAT", description: "", slug: "order-total-inc-vat-label"
 
 
 Spree::PageContent.find_or_create_by! title: "WishList", description: "Lorem Ipsum is simply dummy text.", slug: "wishlist-main-heading-desc"
