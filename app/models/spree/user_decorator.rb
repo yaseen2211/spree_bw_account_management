@@ -12,7 +12,7 @@ Spree::User.class_eval do
  #  validates :email_confirmation, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-email-confirmation').last.try(:title) }
  #  validates :password, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-password').last.try(:title) }, on: :create
  #  validates :password_confirmation, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-password-confirmation').last.try(:title) }, on: :create
-  validates :left_shoulder, format: {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-msr-shld-lft-formate').last.try(:title), with: /\A\d+(?:\.\d{2})?\z/ }, on: :update , if: -> {self.left_shoulder.present?}
+  # validates :left_shoulder, format: {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-msr-shld-lft-formate').last.try(:title), with: /\A\d+(?:\.\d{2})?\z/ }, on: :update , if: -> {self.left_shoulder.present?}
 	# validates :date_of_birth, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-birth-date').last.try(:title) }
  #  validates :month_of_birth, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-birth-month').last.try(:title) }
 #   validate :email_matcher, on: :create
