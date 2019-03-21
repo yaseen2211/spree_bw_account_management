@@ -1,4 +1,6 @@
 Spree::User.class_eval do
+  
+  after_create :send_welcome_email
   Spree::PermittedAttributes.user_attributes.push(:first_name, :last_name, :phone_number, :date_of_birth, :month_of_birth, :head, :left_shoulder, :right_shoulder, :left_arm)
   has_many :contact_stores
   has_many :reviews
@@ -11,16 +13,21 @@ Spree::User.class_eval do
   validates_format_of  :email,:message =>Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-email-formate').last.try(:title),  :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   validates :email_confirmation, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-email-confirmation').last.try(:title) }
   validates :password, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-password').last.try(:title) }, on: :create
-  validates :password_confirmation, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-password-confirmation').last.try(:title) }, on: :create
+  # validates :password_confirmation, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-password-confirmation').last.try(:title) }, on: :create
   validates :left_shoulder, format: {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-msr-shld-lft-formate').last.try(:title), with: /\A\d+(?:\.\d{2})?\z/ }, on: :update , if: -> {self.left_shoulder.present?}
 	validates :date_of_birth, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-birth-date').last.try(:title) }
   validates :month_of_birth, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-birth-month').last.try(:title) }
   validate :email_matcher, on: :create
 
 
-	def after_confirmation
-	  Spree::UserMailer.welcome(self).deliver_now
-	end
+  def send_welcome_email
+    Spree::UserMailer.welcome(self).deliver_now
+  end
+
+  # Comment Due To Email Confirmation Link
+	# def after_confirmation
+	#   Spree::UserMailer.welcome(self).deliver_now
+	# end
 
   private
    def email_matcher
