@@ -81,41 +81,41 @@
     <!-- <%#= address_form.label :state do %>
       <%#= Spree.t(:state) %><abbr class='required' try(:title)="required" id=<%#="#{address_id}state-required"%>>*</abbr>
     <%# end %> -->
-    <% if Spree::Config[:address_requires_state] && address_form.object.persisted? %>
+    <p class="form-group" id=<%="#{address_id}country" %>>
+      <%#= address_form.label :country_id do %>
+        <!-- <%#= Spree.t(:country) %><abbr class="required" title="required">*</abbr> -->
+      <%# end %>
+
+      <span id=<%="#{address_id}country-selection" %>>
+        <%= address_form.collection_select :country_id, available_countries, :id, :name, {:selected => address_form.object.country_id.present? ? address_form.object.country_id : Spree::Config.default_country_id}, { class: 'form-control country-select-dp', required: true } %>
+      </span>
+    </p>
+    <% address.country.present? ? address.country : (address.country_id = Spree::Config.default_country_id) %>
+    <% if Spree::Config[:address_requires_state] %>
       <p class="form-group" id=<%="#{address_id}state" %>>
         <% have_states = !address.country.states.empty? %>
-        
+        <%#= address_form.label :state do %>
+          <!-- <%#= Spree.t(:state) %><abbr class='required' title="required" id=<%#="#{address_id}state-required"%>>*</abbr> -->
+        <%# end %>
 
         <%== state_elements = [
            address_form.collection_select(:state_id, address.country.states,
                               :id, :name,
-                              {include_blank: true},
+                              {include_blank: true, :prompt => "Please Select the State"},
                               {class: have_states ? 'form-control' : 'form-control hidden',
                               required: have_states,
                               disabled: !have_states}) +
-           address_form.text_field(:state_name,
+            address_form.text_field(:state_name,
                               class: !have_states ? 'form-control' : 'form-control hidden',
                               required: !have_states,
                               disabled: have_states)
            ].join.gsub('"', "'").gsub("\n", "")
         %>
       </p>
-    <% else %>
-      <p class="form-group" id=<%="#{address_id}state" %>>
-        <%= address_form.text_field :state_name, class: 'form-control', required: true, placeholder: address_form.object.persisted? ? ex_contact_state.try(:title)  : new_contact_state.try(:title)  %>
-      </p>
+        <noscript>
+          <%= address_form.text_field :state_name, class: 'form-control', required: true %>
+        </noscript>
     <% end %>
-
-
-
-    <p class="form-group">
-      <!-- <%#= address_form.label :country_id do %>
-        <%#= Spree.t(:country) %><abbr class="required" try(:title)="required">*</abbr>
-      <%# end %> -->
-      <span id=<%="#{address_id}country-selection" %>>
-        <%= address_form.collection_select :country_id, available_countries, :id, :name, {:prompt => address_form.object.persisted? ? ex_contact_country.try(:title) : new_contact_country.try(:title)}, { class: 'form-control', required: true } %>
-      </span>
-    </p>
 
     <%#= address_field(address_form, :state, address_id) { address_state(address_form, address.country, address_id) } %>
 
