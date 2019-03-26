@@ -1,0 +1,188 @@
+
+
+
+<div class="row" style="border-style: groove ; padding: 27px;">
+  <%vendors = []%>
+  <%vendors = order.products.group_by(&:vendor) %>
+  <% vendors.each do |vendor, products|%>
+    <br>
+    <div class="col-md-12">
+      <div class="col-md-8">
+        <h4><%= main_order.number%> - <%= order.number %> - <%= @order_number_purchased_from_label.try(:title) %> <%=vendor.name%></h4>
+      </div>
+      <div class="col-md-4">
+        <% if order.completed?  && order.shipped?%>
+          <% if order.shipped?%>
+            <%= @order_shiped_on_label.try(:title) %>: <%=order.shipments.first.shipped_at? ? order.shipments.first.shipped_at.strftime("%e/%m/%Y") : ""%>
+          <% else %>
+            <%= @order_shiped_on_label.try(:title) %>: -
+          <% end %>
+          <div>
+            <%= @order_tracking_number_label.try(:title) %>: <%= order.shipments.present? && order.shipments.first.tracking.present? ? order.shipments.first.tracking : ""%>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="col-md-8">
+        <% if vendors.count < 2%>
+          <div class="row steps-data">
+            <% state_class = order.completed? ? "green": ""%>
+            <% partially_closed = order.shipped? ? "green" : ""%>
+            <div class="col-md-4 col-sm-4">
+              <a style="color: <%=state_class%>;"><%= @order_status_received_label.try(:title) %></a>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <a style="color: <%=state_class%>;"><%= @order_status_in_progress_label.try(:title) %></a>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <a style="color: <%=partially_closed%>;"><%= @order_status_delivered_label.try(:title) %></a>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="half-width">
+          <% products.each do |pro|%>
+            <% order.line_items.each do |item| %>
+              <% next if pro.id != item.variant.product.id%>
+              <div class=" row">
+                <div class="col-md-4 col-sm-2">
+                  <% if item.variant.images.length == 0 %>
+                      <%= link_to small_image(item.variant.product), item.variant.product %>
+                  <% else %>
+                      <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
+                  <% end %>
+                </div>
+                <div class="col-md-8 col-sm-2">
+                  <h4>
+                    <%=item.quantity.to_s + " x "%>
+                    <%= link_to item.variant.product, itemprop: "url" do %>
+                        <%= content_tag(:span, truncate(item.variant.product.name, length: 50), class: 'info', itemprop: "name", title: item.variant.product.name) %>
+                    <% end %>
+                  </h4>
+                  <div>
+                    <%= truncate(item.description, length: 100) %>
+                  </div>
+                  <div>
+                    <%= item.variant.options_text unless item.variant.option_values.empty? %>
+                  </div>
+                  <%product = item.variant.product%>
+                  <% if product.on_sale? %>
+                    <div>
+                      <span>$<%= product.original_price.to_f%></span>
+                      <span class="pull-right">$<%= product.price.to_f%></span>
+                    </div>
+                    <div>
+                      <% sale_ammount = product.original_price.to_f - product.price.to_f %>
+                      <%= ((sale_ammount/product.original_price) * 100).round(2).to_s + '% ' + @order_sale_off_label.try(:title)%>
+                    </div>
+                  <% else %>
+                      $<%= (product.price_in(current_currency).amount.nil?)? 0 : product.price_in(current_currency).amount.to_d %>
+                  <% end %>
+                  <div>
+                    <% if order.completed? && order.shipped?%>
+                      <%user_review = nil%>
+                      <% if item.variant.product.reviews.present?%>
+                          <%item.variant.product.reviews.each do |review|%>
+                              <% next if review.user_id != @user.id%>
+                              <% user_review = review%>
+                          <% end %>
+                      <% end %>
+                      <% if user_review.present? %>
+                          <%= render 'spree/reviews/stars', stars: user_review.rating %>
+                          <span class="pull-right">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show-review-<%=item.id%>">
+                              <%= @order_my_review_button_label.try(:title) %>
+                            </button>
+                          </span>
+                          <div class="modal fade" id="show-review-<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document" style="left: 0px;">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"><%= @order_product_review_heading.try(:title) %></h5>
+                                </div>
+                                <div class="modal-body">
+                                  <div>
+                                    <%= @order_my_review_product_name.try(:title) %>: <%=item.name%>
+                                  </div>
+                                  <div>
+                                    <%= @order_my_review_date.try(:title) %>: <%= user_review.created_at.strftime("%e/%m/%Y")%>
+                                  </div>
+                                  <div>
+                                    <%= simple_format(user_review.review) %>
+                                  </div>
+                                  <div>
+                                    <%= render 'spree/reviews/stars', stars: user_review.rating %>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= @order_my_review_close.try(:title) %></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      <% else %>
+                          <%= render 'spree/reviews/stars', stars: 0 %>
+                          <span class="pull-right">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-review-<%=item.id%>">
+                              <%= @order_review_button_label.try(:title) %>
+                              <i class="fa fa-star"></i>
+                            </button>
+                          </span>
+                          <div class="modal fade" id="create-review-<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document" style="left: 0px;">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"><%= @order_create_product_review_label.try(:title) %></h5>
+                                </div>
+                                <div class="modal-body">
+                                  Thankyou for leaving a review for the <%=item.name%> you perchased on <%= order.created_at.strftime("%e/%m/%Y") %>
+                                  <%= render 'spree/account_management/review', review: Spree::Review.new(product: item.variant.product), product:  item.variant.product%>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      <% end %>
+                    <% else %>
+                      <div class="alert alert-info" role="alert">
+                         You can only give the review on product, if the order is deliverd.
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+        <br>
+        <div class="margin-bottom-20">
+          <%= link_to("/admin/invoice/#{order.number}/invoice", target:  "_blank", class: "btn btn-primary") do %>
+              <span class='glyphicon glyphicon-print'></span>
+              <%= @order_download_invoice_button_label.try(:title) %>
+          <% end %>
+        </div>
+        <div class="margin-bottom-20">
+          <%= link_to(spree.new_vendor_contact_store_path(vendor.id, order_number: order.number), target:  "_blank", class: "btn btn-primary") do %>
+              <span class='fa fa-star'></span>
+              <%= @order_contact_store_button_label.try(:title) %>
+          <% end %>
+        </div>
+        <div class="margin-bottom-20">
+          <% if spree_current_user.present? && order.completed? && order.shipped? && order.has_returnable_products? && order.has_returnable_line_items? %>
+            <%= link_to(spree.new_order_return_authorization_path(order), class: 'btn btn-primary') do %>
+                <span class='glyphicon glyphicon-send'></span>
+                <%= @order_request_return_button_label.try(:title) %>
+            <% end %>
+          <% end %>
+        </div>
+        <!-- <div class="margin-bottom-20">
+          <button class="btn btn-primary"><%#= order_view_messages_button_label.try(:title) %>  <i class="fa fa-star"></i></button>
+        </div> -->
+
+      </div>
+    </div>
+    <!-- <p> BUTTON </p> -->
+  <% end %>
+</div>

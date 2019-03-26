@@ -1,0 +1,15 @@
+<% @wishlist = @user.wishlists.first %>
+<% wishlist_main_content     = Spree::PageContent.from_gen_slug('wishlist').spec_slug('wishlist-main-heading-desc').last %>
+
+<% Globalize.with_locale (I18n.locale) do %> 
+
+	<div class="text-center">
+	  <h1 class="text-center "><%= wishlist_main_content.title%></h1>
+	</div>
+	<hr>
+	<p class="text-center"><%= wishlist_main_content.description%></p>
+<% end %>
+<div class=" alert  alert-dismissible" id="wishlist-info-sec"></div>
+<div id="user-<%=@user.id%>-wishlist-section">
+	<%= render partial: "spree/account_management/wishlist_collection", locals: {wishlist: @wishlist} %>
+</div>

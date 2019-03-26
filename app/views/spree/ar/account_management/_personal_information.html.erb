@@ -1,4 +1,3 @@
-
 <% user_contents     = Spree::PageContent.from_gen_slug('user') %>
 <% user_btn_contents = user_contents.from_gen_slug('user-btn') %>
 <% user_main_contents = user_contents.from_gen_slug('user-main') %>
@@ -23,104 +22,103 @@
 
 <% Globalize.with_locale (I18n.locale) do %> 
   <div class="container">
-
-    <div class="stor-full-top">
+    <div class="stor-full-top" dir="rtl">
       <div class="dv-title text-center col-md-12">
-        <h2><%= user_personal_content.try(:title) %> </h2>
-      </div>
-      
-      <div class="clearfix"></div>
+        <h2><%= user_personal_content.try(:title) %></h2>
+      </div>    
     </div>
     
-    <div class="locan-stor cate-pg">
+    <div class="clearfix"></div>
     
-      <%= render  partial: "spree/account_management/side_bar_tab" %> 
-      
-      <div class="col-lg-10 col-md-10 col-sm-9 stor-list-pg">
-        
-        <div class="col-lg-12 col-md-12 col-sm-12 acc_form_set">
+    <div class="locan-stor cate-pg" dir="rtl"> 
+    
+       <!--- inner section start ----->    
+      <div class="col-lg-10 col-md-10 col-sm-9 stor-list-pg" dir="rtl">      
+        <div class="col-lg-12 col-md-12 col-sm-12 acc_form_set" dir="rtl">
         
         <div class="col-lg-12 col-md-12 col-sm-12 wet-text">
-        <p><%= user_personal_content.try(:description) %></p>
+        <p> <%= user_personal_content.try(:description) %></p>
         </div>
         
-        <div class="col-lg-12 col-md-12 col-sm-12 wet-frm">
-        
-       <div class="col-lg-3 col-md-3 col-sm-3 wet-pro-pic">
-        <a href="#"><%= image_tag "profile-img.jpg", alt: "", height: "90", width: "90"%></a>
-       </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 wet-frm">      
+          <div class="col-lg-9 col-md-9 col-sm-9 wet-ful-frm" dir="rtl">
+         
+            <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
+              <label><%= user_first_name.try(:title) %></label>
+              <%= f.text_field :first_name, :class => 'form-control' %>
+            </div>
+            <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
+              <label><%=  user_last_name.try(:title) %></label>
+              <%= f.text_field :last_name, :class => 'form-control' %>
+            </div>
        
-       <div class="col-lg-9 col-md-9 col-sm-9 wet-ful-frm">
-       
-       <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
-       <label><%= user_first_name.try(:title) %></label>
-        <%= f.text_field :first_name, :class => 'form-control' %>
-       </div>
-        <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
-        <label><%=  user_last_name.try(:title) %></label>
-        <%= f.text_field :last_name, :class => 'form-control' %>
-       </div>
-       
-        <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
-       <label><%= user_email.try(:title) %></label>
-       <%= f.email_field :email, :class => 'form-control'  %>
-       </div>
-        <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
-        <label><%=  user_phone_number.try(:title) %></label>
-       <%= f.number_field :phone_number, :class => 'form-control' %>
-       </div>
-       <div class="form-group col-md-6 col-sm-12 col-lg-6 nxt-sell">
-        <label><%= user_birth_date.try(:title) %></label>
-        <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{},{class: "form-control frt-sell"}%>
+            <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
+          <label><%= user_email.try(:title) %></label>
+          <%= f.email_field :email, :class => 'form-control'  %>
+         </div>
+            <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
+          <label><%=  user_phone_number.try(:title) %></label>
+          <%= f.number_field :phone_number, :class => 'form-control' %>
+         </div>
+          <div class="form-group col-md-6 col-sm-12 col-lg-6 nxt-sell">
+          <label><%= user_birth_date.try(:title) %></label>
+          <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{},{class: "form-control frt-sell"}%>
 
-        <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control sc-sell"}%>
+          <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control sc-sell"}%>
+         </div>
+           <div class="form-group col-md-12 col-sm-12 col-lg-12 sub-btn-acc">
+          <%= f.submit user_personal_btn_content.try(:title), :class => "xtut" %>
+         </div>
+         
+         </div>
 
-       </div>
-       <div class="form-group col-md-12 col-sm-12 col-lg-12 sub-btn-acc">
-        <%= f.submit user_personal_btn_content.try(:title), :class => "xtut" %>
-       </div>
-       
-       </div>
+         <div class="col-lg-3 col-md-3 col-sm-3 wet-pro-pic" dir="rtl">
+          <a href="#"><%= image_tag "profile-img.jpg", alt: "", height: "90", width: "90"%></a>
+         </div>
         </div>
         
-         <div class="col-lg-12 col-md-12 col-sm-12 wet-text mesur">
-         <h2><%= user_measurement_content.try(:title) %></h2>
-        <p><%= user_measurement_content.try(:description) %></p>
+        <div class="col-lg-12 col-md-12 col-sm-12 wet-text mesur">
+          <h2><%= user_measurement_content.try(:title) %></h2>
+          <p> <%= user_measurement_content.try(:description) %></p>
         </div>
         
         <div class="clearfix"></div>
         
         <div class="bust-th col-lg-12 col-md-12 col-sm-12">
-        <ul>
-        <li><h3 class="fr-marg">Front</h3><%= image_tag "front-img.jpg", alt: ""%></li>
-        <li><h3>Back</h3><%= image_tag "back-img.jpg", alt: ""%></li>
-        </ul>
+          <ul>     
+            <li><h3>Back</h3><%= image_tag "back-img.jpg", alt: ""%></li>
+            <li><h3 class="fr-marg">Front</h3><%= image_tag "front-img.jpg", alt: ""%></li>
+          </ul>
         
-        <div class="sv-acc-btn col-lg-12 col-md-12 col-sm-12">
-          <%#= f.submit user_personal_btn_content.try(:title), :class => "acc-sv-btn" %>
-        </div>
-        
-        </div>
-        
+          <div class="sv-acc-btn col-lg-12 col-md-12 col-sm-12">
+            <button class="acc-sv-btn">ﻌﺘﻳ ﺕﺎﻐﻟ</button>
+          </div>
         
         </div>
+        
         
       </div>
+        
+      </div>
+       <!--- inner section end ----->    
       
+      <!--- profile section start ----->
+      <%= render  partial: "spree/ar/account_management/side_bar_tab" %>
+      <!--- profile section end ----->
       </div>
-   
+    
+    
+    
   </div>
-
-
 
   <div class="adver-sec">
+    <!--- advertise ment section start--->
     <div class="container">
-      <div class="adver-sec-mn"> <img class="img-responsive" src="images/advertize.jpg" alt=""> </div>
+      <div class="adver-sec-mn"><%= image_tag "advertize.jpg", alt: "" %> </div>
     </div>
   </div>
+
 <% end %>
-
-
 
 <!-- 
 <div class="row narrow-row-md">

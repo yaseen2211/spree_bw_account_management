@@ -1,0 +1,71 @@
+ <% Globalize.with_locale (I18n.locale) do %> 
+  <div class="col-lg-2 col-md-2 col-sm-3 option-stor-lft p-0" dir="rtl">
+    <ul class="profile-set-mg">
+      <%= image_tag "profile-img.jpg", alt: "", width: "75", height: "75" %>
+        <h5><%= @user.full_name %></h5>
+       <li><a href="#"><%= @user.email %></a></li>
+      <li><a href="#"><%= @user.phone_number %></a></li>
+    </ul>
+    <ul class="rev_vw">
+      <li><%= image_tag "per-information-icon.png", alt: "" %><a class="active" href="account-profile-ar.html"> ,ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ </a></li>
+       <li><%= image_tag "address-icon.png", alt: "" %><a href="account-address-ar.html">ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ </a></li>
+       <li><%= image_tag "order-icon.png", alt: "" %><a href="account-orders-ar.html">,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ </a></li>
+       <li><%= image_tag "apointment-icon.png", alt: "" %><a href="#">ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ </a></li>
+       <li><%= image_tag "wishlist-icon.png", alt: "" %><a href="account-wishlist-ar.html">.ﻢﺛ ﻥﺪﻣ </a></li>
+       <li><%= image_tag "reviews-icon.png", alt: "" %><a href="account-reviews-ar.html">ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍ ﻝ</a></li>
+       <li><%= image_tag "stor-icon.png", alt: "" %><a href="store-listing-ar.html">ّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ </a></li>
+        <li><%= image_tag "setting-icon.png", alt: "" %><a href="#">ﺔﻳﺪﻴﻠﻘﺘﻟﺍ </a></li>
+       <li><%= image_tag "message-icon.png", alt: "" %><a href="#">ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ </a></li>
+       <li><%= image_tag "support-icon.png", alt: "" %><a href="#">ﻢﺛ ﻥﺪﻣ  </a></li>
+       <li class="log_ut"><%= image_tag "acc-log-out-ar.png", alt: "" %><a href="#">.ﻢﺛ ﻥﺪﻣ  </a></li>
+    </ul>
+         
+  </div>
+<% end %>
+
+
+<!-- <%# Globalize.with_locale (I18n.locale) do %> 
+  <ul class="nav nav-pills nav-stacked admin-menu" id="profile-tabs">
+    <li class="active"><a href="#" data-target-id="pi"><i class="fa fa-home fa-fw"></i><%#= profile_info_txt.try(:title)%></a></li>
+
+    <li><a href="#" data-target-id="address"><i class="fa fa-list-alt fa-fw"></i><%#= addresses_txt.try(:title)%></a></li>
+    <li><a href="#" data-target-id="orders"><i class="fa fa-file-o fa-fw"></i><%#= orders_txt.try(:title)%></a></li>
+    <li><a href="#" data-target-id="whislist"><i class="fa fa-bar-chart-o fa-fw"></i><%#= wishlist_txt.try(:title)%></a></li>
+    <li><a href="#" data-target-id="reviews"><i class="fa fa-table fa-fw"></i><%#= reviews_txt.try(:title)%></a></li>
+    <li><a href="#" data-target-id="stores"><i class="fa fa-heart fa-fw"></i><%#= stores_txt.try(:title)%></a></li>
+    <li><a href="#" data-target-id="settings"><i class="fa fa-tasks fa-fw"></i><%#= settings_txt.try(:title)%></a></li>
+    <li><a href="#" data-target-id="messages"><i class="fa fa-calendar fa-fw"></i><%#= messages_txt.try(:title)%></a></li>
+    <li><a href="#" data-target-id="appointments"><i class="fa fa-tasks fa-fw"></i>My Appointments</a></li>
+    <li><a href="#" data-target-id="sc"><i class="fa fa-book fa-fw"></i><%#= sc_txt.try(:title)%></a></li>
+    <li>
+      <%#= link_to spree.logout_path do %>
+        <i class="fa fa-pencil fa-fw"></i><%#= logout_txt.try(:title)%>
+      <%# end %>
+    </li>
+
+  </ul>
+<%# end %> -->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+          theme: "minimal"
+      });
+
+      $('#dismiss, .overlay').on('click', function () {
+          $('#sidebar').removeClass('active');
+          $('.overlay').removeClass('active');
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').addClass('active');
+          $('.overlay').addClass('active');
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+  });
+</script>
