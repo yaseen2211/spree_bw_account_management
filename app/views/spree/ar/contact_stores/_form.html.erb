@@ -72,6 +72,7 @@
               <label>ﻦﻔﺴﻟﺍ</label>
               <%= f.text_field :subject, maxlength: 255, size: 50, class: 'form-control', requied: true %>
               <%= f.hidden_field :order_number , value: @order.number.to_s %>
+              <%= hidden_field_tag 'lang', 'ar' %>
             </div>
 
             <div class="ftr_not order-set-marg">
