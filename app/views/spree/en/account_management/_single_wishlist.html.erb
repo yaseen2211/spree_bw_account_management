@@ -1,0 +1,88 @@
+
+<% wishlist_contents     = Spree::PageContent.from_gen_slug('wishlist') %>
+<% wishlist_label_contents = wishlist_contents.from_gen_slug('wishlist-label') %>
+<% wishlist_btn_label_content = wishlist_contents.from_gen_slug('wishlist-btn-label')%>
+
+
+<% wishlist_off_label             = wishlist_label_contents.spec_slug('wishlist-label-off').last%>
+<% wishlist_temp_label            = wishlist_label_contents.spec_slug('wishlist-label-out-off-stock').last%>
+<% wishlist_add_cart_btn          = wishlist_btn_label_content.spec_slug('wishlist-btn-label-add-to-cart').last%>
+<% wishlist_del_btn               = wishlist_btn_label_content.spec_slug('wishlist-btn-label-delete').last%>
+<% wishlist_in_stock_label        = wishlist_label_contents.spec_slug('wishlist-label-in-stock').last%>
+
+<% Globalize.with_locale (I18n.locale) do %> 
+  <div class="col-lg-12 col-md-12 col-sm-12 wishlist-set <%= (index %2 ==0) ? "wis-box" : "" %>">     
+    <div class="col-lg-6 col-md-6 col-sm-6 sg-box-lft">
+      <div class="wishlist-details-img col-lg-4 col-md-4 col-sm-4 text-center">
+
+        <% if variant.images.length == 0 %>
+          <%= small_image(variant.product) %>
+        <% else %>
+          <%= image_tag(main_app.url_for(variant.images.first.url(:small))) %>
+        <% end %>
+        <br>
+        <% if variant.on_sale? %>
+          <span class="nw-lab-wis">ON SALE</span>
+        <% end %>
+        <!-- <img class="mark-b" src="images/progress-icon-black.png" alt=""> -->
+        <%= image_tag "progress-icon-black.png",class: "mark-b", alt: "" %>
+      </div>
+      <div class="wishlist-details-pro col-lg-8 col-md-8 col-sm-8">
+        <ul>
+          <li><h3><%= link_to product.name, product %></h3></li>
+          <li><p><%= product.vendor.present? ? product.vendor.name.to_s : "Store Does'nt Exist"%> </p></li>
+          <li><p><%= truncate(strip_tags(product.description), length: 50, omission: '...') %></p></li>
+        </ul>
+
+
+        <% if variant.on_sale? %>
+           <ul class="rt-prc">
+            <li class="wis_list"><%=  display_price(variant)%></li>
+
+            <% sale_ammount = variant.original_price.to_f - variant.price.to_f %>
+            <li class="cm_wis"><del><%= display_original_price(variant)%> </del><br><span><%= ((sale_ammount/variant.original_price) * 100).to_i.to_s + '%' + wishlist_off_label.title %></span></li>
+          </ul>
+        <% else %>
+          <ul class="rt-prc">
+            <li class="cm_wis"><%=  display_price(variant)%></li>
+          </ul>
+        <% end %>
+       
+
+        <% if product.variants.any? %>
+          <p><%= variant_options variant %></p>
+          <ul class="rt-prc">
+            
+            <li class="more-cl">More Colors Available</li>
+          </ul>
+        <% end %>
+
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 sg-box-rgt"> 
+
+      <% if wishlist.user == spree_current_user %>   
+        <div class="wis_list_btns">
+          <% if variant.can_supply? %>
+            <%= form_for :order, url: populate_orders_url, html: {id: "add-to-cart-form"} do |f| %>
+              <%= hidden_field_tag 'variant_id', variant.id %>
+              <%#= Spree.t(:quantity) %>
+              <%= hidden_field_tag 'quantity', 1 %>
+              <%= f.submit wishlist_add_cart_btn.title, class: "btn sub-btn-add" %>
+            <% end %>
+
+            <br>
+          <% else %>
+             <span class="out_stock"><%=  wishlist_temp_label.try(:title) %></span><br>
+          <% end %>
+
+          <%= link_to wishlist_del_btn.title, wish, method: :delete, remote: true, class: 'btn cancel-btn', :data => {:confirm => 'Are you sure?'} %>
+
+
+        </div> 
+      <% end %>
+
+    </div>
+  </div>
+
+<% end%>

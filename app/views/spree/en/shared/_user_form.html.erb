@@ -16,14 +16,24 @@
   <% logout_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-logout').last %>
   <% stores_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-stores').last %>
 
-  <% wishlist_label_advertisment = Spree::PageContent.spec_slug('wishlist-label-advertisement').last %>
+  
 
 
   <%#= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
     <%#= render partial: "spree/en/account_management/personal_information" , locals: {f: f}%>
   <%# end %>
+  <%#= render partial: "spree/en/account_management/addresses" %>
+  <%#= render partial: "spree/en/account_management/wishlist"%>
+  <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+    <%= render partial: "spree/account_management/reviews", locals: { :f => f } %>
+  <% end %>
 
-  <%= render partial: "spree/en/account_management/addresses" %>
+   <%#= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+    <%#= render partial: "spree/account_management/orders", locals: { :f => f } %>
+  <%# end %>
+
+
+
 
 <% else %>
 
