@@ -27,7 +27,7 @@ module Spree
     end
 
     def permitted_contact_store_attributes
-      [:subject, :query, :type]
+      [:subject, :query, :query_type]
     end
 
     def contact_store_params

@@ -1,0 +1,104 @@
+<div class="clearfix"></div>
+<div class="container">
+
+  <div class="alert">
+    <% if @contact_store.errors.full_messages.any? %>
+      <% @contact_store.errors.full_messages.each do |error_message| %>
+      <%= error_message if @contact_store.errors.full_messages.first == error_message %> <br />
+      <% end %>
+    <% end %>
+  </div>
+  <div class="stor-full-top" dir="rtl">
+    <div class="dv-title text-center col-md-12">
+      <h2> ﺔﻴﺴﻧﺮﻔﻟ ﺔﻴﺴﻧﺮﻔﻟ</h2>
+    </div>    
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="locan-stor cate-pg ord_pg cont-str-pg" dir="rtl"> 
+
+    <div class="col-lg-10 col-md-10 col-sm-9 p-0 stor-return-pg" dir="rtl">
+
+      <div class="col-lg-12 col-md-12 col-sm-12 p-0 det-ord-return"> 
+
+        <div class="col-lg-12 col-md-12 col-sm-12 odr-return-main">
+          <%= form_for @contact_store, url: vendor_contact_stores_path(@vendor.id), html: { method: :post } do |f| %>
+            <div class="col-lg-12 col-md-12 col-sm-12 wet-text p-0">
+              <p> ,ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ  ,ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ </p>
+            </div>
+
+            <div class="re_turn_person col-lg-12 col-md-12 col-sm-12 p-0 m-0">
+
+              <ul class="col-lg-6 col-md-6 col-sm-6 p-0 order-back m-0 text-left">
+                <li><a href="account-orders-ar.html" ><button>ﺔﻳﺪﻴﻠﻘﺘﻟ</button></a></li>
+                </ul>     
+
+                <ul class="col-lg-6 col-md-6 col-sm-6 p-0 sedd_to">
+                <li> ,<%=@vendor.name%> ﻡﺎﻗﻭ ﻦﻋ </li>
+                <li><%=@order.number%>,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ </li>
+                <li>ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ <%=@order.created_at.strftime("%e/%m/%Y")%> </li>
+                <li>ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍ ﻝّﻫﺃ, <%=@order.line_items.count%> </li>
+                <li>ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ 2</li>
+              </ul>     
+
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="dvd"></div>
+
+            <div class="clearfix"></div>
+
+            <div class="general_qry">
+
+              <div class="radio-dv">
+                <p>
+                 <%= f.radio_button :query_type, 'ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ', id: "test1", requied: true, checked:  true %>
+                  <label for="test1">ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ </label>
+                </p>
+
+                <p>
+                  <%= f.radio_button :query_type, 'ﺔﻴﺴﻧﺮﻔﻟﺍ', id: "test2" , requied: true%>
+                  <label for="test2">ﺔﻴﺴﻧﺮﻔﻟﺍ</label>
+                </p>
+
+              </div>
+
+
+            </div>
+
+            <div class="return_details tp-qry-input">
+              <label>ﻦﻔﺴﻟﺍ</label>
+              <%= f.text_field :subject, maxlength: 255, size: 50, class: 'form-control', requied: true %>
+              <%= f.hidden_field :order_number , value: @order.number.to_s %>
+            </div>
+
+            <div class="ftr_not order-set-marg">
+              <p> ,ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ  ,ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ </p>
+            </div>     
+
+            <div class="return_details">
+              <label>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</label>
+              <%= f.text_area :query, maxlength: 255, size: 50, class: 'form-control', requied: true %>
+              <div class="st-set-sub text-right">
+                <%= f.submit "ﺔﻳﺪﻴﻠﻘﺘﻟ", class: 'sb_frm_return' %>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= render  partial: "spree/ar/account_management/side_bar_tab" %>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="adver-sec">
+  <div class="container">
+    <div class="adver-sec-mn"><%= image_tag "advertize.jpg", alt: "", class: "img-responsive"%> </div>
+  </div>
+</div>
