@@ -25,7 +25,7 @@
   <%#= render partial: "spree/en/account_management/addresses" %>
   <%#= render partial: "spree/en/account_management/wishlist"%>
   <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-    <%= render partial: "spree/account_management/reviews", locals: { :f => f } %>
+    <%= render partial: "spree/en/account_management/reviews", locals: { :f => f } %>
   <% end %>
 
    <%#= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>

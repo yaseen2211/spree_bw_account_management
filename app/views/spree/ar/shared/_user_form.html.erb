@@ -22,7 +22,10 @@
   <%# end %>
 
   <%#= render partial: "spree/ar/account_management/addresses" %>
-  <%= render partial: "spree/ar/account_management/wishlist"%>
+  <%#= render partial: "spree/ar/account_management/wishlist"%>
+  <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+    <%= render partial: "spree/ar/account_management/reviews", locals: { :f => f } %>
+  <% end %>
 
 <% else %>
 

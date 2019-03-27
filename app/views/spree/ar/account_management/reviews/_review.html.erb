@@ -1,0 +1,30 @@
+<div class="col-lg-12 col-md-12 col-sm-12 wet-review-add bg-review brd-set">     
+  <div class="main-review-div">     
+  <div class="review-details-pro col-lg-10 col-md-10 col-sm-10">
+    <ul>
+      <li><h3><a href="#"><%= link_to   review.product.name, product_path(review.product), target: "_blank" %></a></h3></li>
+        <li><p>Purchased On: <%= review.created_at.strftime("%m/%d/%Y") %></p></li>
+        <!-- <img src="images/star-2.png" alt=""> -->
+        <%#= image_tag "star-2.png", alt: "" %>
+        <% star_fill  = review.rating %>
+        <% star_empty = 5 - review.rating %>
+        <li dir="ltr">
+          <% star_fill.times do |star| %>
+            <%= image_tag "star_fill.png", alt: "" %>
+          <% end %>
+
+          <% star_empty.times do |star| %>
+            <%= image_tag "star_empty.png", alt: "" %>
+          <% end %>
+        </li>
+        <%#= review.rating %>
+    </ul>
+    <div class="discription-dv">
+      <p><%= truncate(strip_tags(review.review), length: 50, omission: '...') %></p>
+    </div>
+  </div>
+  <div class="review-img-pro col-lg-2 col-md-2 col-sm-2">
+    <%= link_to small_image(review.product, itemprop: "image"), product_path(review.product) %>
+  </div>
+  </div>     
+</div>
