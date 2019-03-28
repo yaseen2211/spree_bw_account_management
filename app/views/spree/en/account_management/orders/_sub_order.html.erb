@@ -175,9 +175,10 @@
                 <br>
                 <%= link_to @order_contact_store_button_label.try(:title), spree.new_vendor_contact_store_path(vendor.id, order_number: order.number, lang: "en"), target:  "_blank"%>
                 
-                <% if spree_current_user.present? && order.completed? && order.shipped? && order.has_returnable_products? && order.has_returnable_line_items? %>
-                  <%= link_to @order_request_return_button_label.try(:title), spree.new_order_return_authorization_path(order) %>
-                <% end %>
+                <%# if spree_current_user.present? && order.completed? && order.shipped? && order.has_returnable_products? && order.has_returnable_line_items? %>
+                <br>
+                <%= link_to @order_request_return_button_label.try(:title), spree.new_order_return_authorization_path(order.parent_order) %>
+                <%# end %>
 
                 <!-- <a href = "orders-return-request-en.html"><button>Request Return  </button></a> -->
               </div>

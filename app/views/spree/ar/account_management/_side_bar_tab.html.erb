@@ -11,7 +11,7 @@
 <% stores_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-stores').last %>
 <% url = request.original_url%>
 
-
+<% @user = @user.present? ? @user : spree_current_user %>
  <% Globalize.with_locale (I18n.locale) do %> 
   <div class="col-lg-2 col-md-2 col-sm-3 option-stor-lft p-0" dir="rtl">
     <ul class="profile-set-mg">
