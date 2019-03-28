@@ -1,0 +1,13 @@
+<% star_fill   = review.rating %>
+<% star_empty = 5 - review.rating %>
+
+
+<% star_fill.times do |star| %>
+  <%= image_tag "star_fill.png", alt: "" %>
+<% end %>
+
+<% star_empty.times do |star| %>
+  <%= image_tag "star_empty.png", alt: "" %>
+<% end %>
+
+      

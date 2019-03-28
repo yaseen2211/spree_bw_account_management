@@ -34,26 +34,196 @@
 <% @order_vat_label = order_contents.spec_slug('order-vat-label').last%>
 <% @order_vat_total_label = order_contents.spec_slug('order-vat-total-label').last%>
 <% @order_total_inc_vat_label = order_contents.spec_slug('order-total-inc-vat-label').last%>
-<%#= order_total_inc_vat_label.try(:title) %>
+
+<div class="clearfix"></div>
+
 <% Globalize.with_locale (I18n.locale) do %>
-  <h1 class="text-center"> <%= @order_content.try(:title) %> </h1>
-  <hr>
-  <p>
-    <%= order_content.try(:description) %>
-  </p>
-  <hr>
-  <% parent_orders = @orders.complete.select{|s| s.parent_order == nil} %>
-  <% parent_orders.each do |main_order| %> 
-    <% state_class = main_order.completed? && main_order.shipped? ? "#D3D3D3": "white"%>
-    <div id="order_summary-<%main_order.id%>" style="border-style: double ; padding: 27px; background-color: <%=state_class%>;">
-      <div id="order" data-hook="">
-        <%= render partial: "spree/account_management/orders/main_order_details", locals: {order: main_order} %>
-        <hr>
-        <%= render partial: "spree/account_management/orders/sub_orders_section", locals: {sub_orders: main_order.sub_orders, main_order: main_order} %>
-      </div>
+  <div class="container">
+    <div class="stor-full-top" dir="rtl">
+      <div class="dv-title text-center col-md-12">
+        <h2><%= order_content.try(:title) %></h2>
+      </div>    
     </div>
-    <hr>
-    <br>
-    <br>
-  <% end %>
+    <div class="clearfix"></div>
+    <div class="locan-stor cate-pg ord_pg" dir="rtl"> 
+      <div class="col-lg-10 col-md-10 col-sm-9 stor-list-pg" dir="rtl">
+        <div class="col-lg-12 col-md-12 col-sm-12 det-ord"> 
+          <div class="col-lg-12 col-md-12 col-sm-12 odr-set-main">
+            <div class="col-lg-12 col-md-12 col-sm-12 wet-text">
+              <p> <%= order_content.try(:description) %></p>
+            </div>
+            <% parent_orders = @orders.select{|s| s.parent_order == nil} %>
+            <% parent_orders.each do |main_order| %> 
+              <%# state_class = main_order.completed? && main_order.shipped? ? "#D3D3D3": "white"%>
+              <% if (main_order.complete? || main_order.shipped?) && main_order.sub_orders.any? %>
+                <%= render partial: "spree/ar/account_management/orders/close_order", locals: {main_order: main_order} %>
+              <% else %>
+                <%= render partial: "spree/ar/account_management/orders/open_order", locals: {main_order: main_order} %>
+              <% end%>
+            <% end %>
+            <div class="clearfix"></div>
+             <div class="lod-btn lo-pol text-center">
+              <button>ﻥﺪﻣ ﻦﻔﺴﻟﺍ</button>
+            </div>
+
+          </div>      
+      </div>
+      </div>
+      <%= render  partial: "spree/ar/account_management/side_bar_tab" %>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+  <div class="adver-sec">
+    <div class="container">
+      <div class="adver-sec-mn"> 
+          <%= image_tag "advertize.jpg",class: "img-responsive", alt: "" %>
+       </div>
+    </div>
+  </div>
+
 <% end %>
+
+<!-- 
+<div id="Review_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content pr-pop-perso review_pop_set" dir="rtl">
+      <div class="modal-header">
+      <h2 class="popup-title">ﻌﺘﻳ ﺕﺎﻐﻟ</h2>
+      </div>
+      <div class="modal-body">
+      
+      <div class="review_da">
+      <h3> ,ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ <br>
+     ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ 5/03/2019  </h3>
+      <p>ﻧﺮﻔﻟﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ  ,ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍﺭﻮﺤﻤﻟﺎﺑ   ﺖﻣﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍﺖﻣﺍ</p>
+      
+      <div class="tr-v1-pop text-left">
+        <img src="images/star-2.png" alt="">
+        </div>
+      </div>
+      
+      
+      <div class="modal-footer pop-ftr">
+        <button type="button" class="" data-dismiss="modal">ﻌﺘﻳ ﺕﺎﻐﻟ</button>
+      </div>
+      
+      </div>
+      
+    </div>
+
+  </div></div>
+  
+  
+  
+<div id="Add_Review_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+     Modal content
+    <div class="modal-content pr-pop-perso review_pop_set" dir="rtl">
+      <div class="modal-header">
+      <h2 class="popup-title">ﻌﺘﻳ ﺕﺎﻐﻟ</h2>
+      </div>
+      <div class="modal-body">
+      
+      <div class="review_da">
+      <p>,ﺔﻴﺴﻧﺮﻔﻟﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ ﺭﻮﺤﻤﻟﺎﺑ ﺖﻣﺍ ﻝّﻫﺃ ﻡﺎﻗﻭ ﻦﻋ ﻥﻻ ,ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟﺍ ﻢﺗﻭ ﻞﻛ .ﻢﺛ ﻥﺪﻣ</p>
+      
+      <div class="tr-v1-text">
+       <form class="purch">
+      <textarea class="form-control" id="text" name="text" placeholder="" maxlength = '1500' rows="5"></textarea>
+       <label class="limt-text" id="count_message">1500</label>
+       </form>
+       <div class="pop-rating">
+       <ul>
+     <li class="rev_iew_tab"><table class="rating_set"><tr> <td><span class="rating"></span></td> </tr></table></li>       
+       <li class="ovr_all">Overall Star Rating*</li>   
+     </ul>
+     </div>
+     <div class="clearfix"></div>
+        <div class="add-rev-btns pop-add-btns">
+       <button class="cancel-btn" data-dismiss="modal">ﻌﺘﻳ ﺕﺎﻐﻟ</button>
+       <button class="sub-btn-add">ﻌﺘﻳ ﺕﺎﻐﻟ</button>
+       </div>
+      
+       
+       
+           
+        </div>
+        
+        
+      </div>
+    
+      
+      </div>
+      
+    </div>
+
+  </div></div>
+ -->
+  
+<script>
+  $(document).ready(function() {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+    items: 2,
+    loop: true,
+    margin: 10,
+    autoplay: false,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: false
+    });
+    
+    $('.carousel').carousel({
+        pause: true,
+        interval: false,
+    });
+    
+
+    $('.star').click(function(){
+        $('#Add_Review_modal').modal('show');
+    });
+  });
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+    form.addEventListener('submit', function(event) {
+    if (form.checkValidity() === false) {
+    event.preventDefault();
+    event.stopPropagation();
+    }
+    form.classList.add('was-validated');
+    }, false);
+    });
+    }, false);
+  })();
+                    
+        
+  var text_max = 1500;
+  $('#count_message').html(text_max + ' ');
+
+  $('#text').keyup(function() {
+    var text_length = $('#text').val().length;
+    var text_remaining = text_max - text_length;
+    
+    $('#count_message').html(text_remaining + ' ');
+  });
+        
+</script>
+
+ <script>
+  var ratings = document.getElementsByClassName('rating');
+
+  for (var i = 0; i < ratings.length; i++) {
+      var r = new SimpleStarRating(ratings[i]);
+
+      ratings[i].addEventListener('rate', function(e) {
+          console.log('Rating: ' + e.detail);
+      });
+  }
+  </script>

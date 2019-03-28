@@ -31,7 +31,9 @@ Spree::User.class_eval do
 
 
   def full_name
-    self.try(:first_name) + " " + self.try(:last_name)
+    if self.first_name.present? & self.last_name.present?
+      self.try(:first_name) + " " + self.try(:last_name)
+    end
   end
 
 

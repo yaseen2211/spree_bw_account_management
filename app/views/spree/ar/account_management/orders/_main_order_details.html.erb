@@ -1,129 +1,111 @@
+<ul class="ul-ord-3 deta col-lg-4 col-md-4 col-sm-4  aya-lt">
+  <h3><%= @order_sub_heading_order_details.try(:title) %></h3>
+  <li class="bd-3"><%= order.number %></li>
+
+  <li><font class="pull-right"><%= @order_purchased_on_label.try(:title) %></font><font class="pull-left"> <%= order.created_at.strftime("%e/%m/%Y") %></font></li>
 
 
-<div class="row steps-data margin-top-50">
-  <div class="col-md-4 col-sm-4 col-xs-6">
-    <h4><%= @order_sub_heading_order_details.try(:title) %></h4>
-    <div class="fn"><strong><%= order.number %></strong></div>
-    <div>
-      <%= @order_purchased_on_label.try(:title) %>:
-      <%= order.created_at.strftime("%e/%m/%Y") %>
-    </div>
-    <div>
-      <%= @order_detail_items.try(:title) %>:
-      <%= order.sub_orders.map(&:line_items).count %>
-    </div>
-    <!-- <div>
-      <%#= order_personalised_label.try(:title) %>:
-      <%#= order.line_items.count %>
-    </div> -->
-    <% if order.has_step?("payment") %>
-      <div>
-        <%= @order_payment_method_label.try(:title) %>:
-        <%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %>
-      </div>
-    <% end %>
-    <div>
-      <%= @order_currency_label.try(:title) %>:
-      <%= current_currency %>
-    </div>
-  </div>
-  <div class="col-md-4 col-sm-4 col-xs-6">
-    <h4><%= @order_sub_heading_shiping_details.try(:title) %></h4>
-    <% if order.has_step?("delivery") %>
-      <h5><strong><%= order.ship_address.full_name %></strong></h5>
-      <% unless order.ship_address.phone.blank? %>
-          <%= order.ship_address.phone %>
-      <% end %>
-      <% unless order.ship_address.alternative_phone.blank? %>
-          <div class="alternative-phone tel">
-            <%= order.ship_address.alternative_phone %>
-          </div>
-      <% end %>
+  <% order_itmes = order.sub_orders.any? ? order.sub_orders.map(&:line_items) : order.line_items %>
+  
+  <li><font class="pull-right"><%= @order_detail_items.try(:title) %></font><font class="pull-left"> <%= order_itmes.count %></font></li>
+  <li>ﺫﺇ ,ﺀﺍﺰﺟﺃ ﺲﻧﻮﺗ ﻦﻴﺣ ﻥﺃ</li>
+  <% if order.has_step?("payment") && (order.state == "complete") %>
+    <li>
+      <font class="pull-right"><%= @order_payment_method_label.try(:title) %></font><font class="pull-left"><%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %></font>
+    </li>
+  <% end %>
+  <li><font class="pull-right"><%= @order_currency_label.try(:title) %></font><font class="pull-left"> <%= current_currency %></font></li>
+</ul>
 
-      <div class="adr">
-        <div class="street-address">
-          <div class="street-address-line">
-            <%= order.ship_address.address1 %>
-          </div>
-          <% unless order.ship_address.address2.blank? %>
-              <div class="street-address-line">
-                <%= order.ship_address.address2 %>
-              </div>
-          <% end %>
-        </div>
-        <div class="local">
-          <span class="locality"><%= order.ship_address.city %></span>
-          <span class="postal-code"><%= order.ship_address.zipcode %></span>
-          <div class="country-name"><%= order.ship_address.country.try(:name) %></div>
-        </div>
-      </div>
-    <%end%>
-  </div>
-  <div class="col-md-4 col-sm-4 col-xs-6">
-    <h4><%= @order_sub_heading_order_summary.try(:title) %></h4>
-    <div>
+  <ul class="ul-ord-2 deta col-lg-5 col-md-4 col-sm-4">
+    <h3><%= @order_sub_heading_order_summary.try(:title) %> </h3>
+  <li class="bd-3">
+    <font class="pull-right">
       <%= @order_summary_shipping_label.try(:title) %>:
-      <% order.shipments.group_by { |s| s.selected_shipping_rate.name }.each do |name, shipments| %>
-        <tr class="total">
-          <td class="total"><span><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></span></td>
-        </tr>
-      <% end %>
-    </div>
+      
+    </font>
+    <% order.shipments.group_by { |s| s.selected_shipping_rate.name }.each do |name, shipments| %>
+      <font class="pull-left"><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></font>
+    <% end %>
+  </li>     
+  <li class="bd-4"><font class="pull-right">ُﺍﻭ ﺽﺭﻷﺍ ﺫﺇ ,ﺀﺍﺰﺟﺃ</font><font class="pull-left">-$ 30.00</font></li>
 
-    <div>
-      <% if order.line_item_adjustments.nonzero.exists? || order.adjustments.nonzero.eligible.exists? %>
-        <strong><%= @order_discount_label.try(:title) %>:</strong>
-      <% end %>
-      <br>
+  <% if order.line_item_adjustments.nonzero.exists? || order.adjustments.nonzero.eligible.exists? %>
+
+    <li class="bd-4">
+
+      <font class="pull-right">
+        <%= @order_discount_label.try(:title) %>: 
+      </font>
+
       <% if order.line_item_adjustments.nonzero.exists? %>
-        <tbody data-hook="order_details_promotion_adjustments">
-          <% order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
-            <tr class="total">
-              <td><%= label %></td>
-              <td><%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %></td>
-            </tr>
-          <% end %>
-        </tbody>
+        <% order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+          <font class="pull-left" data-hook="order_details_promotion_adjustments" ><%= label %>:<%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %> </font>
+        <% end %>
       <% end %>
 
       <% if order.adjustments.nonzero.eligible.exists? %>
-        <tbody id="summary-order-charges" data-hook>
-          <% order.adjustments.nonzero.eligible.each do |adjustment| %>
-          <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
-            <tr class="total">
-              <td><%= adjustment.label %>:</td>
-              <td><%= adjustment.display_amount.to_html %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      <% end %>
-    </div>
-    <!-- <div>
-      <%#= order_discount_label.try(:title) %>: $40
-    </div> -->
-    <!-- <div>
-      <%#= order_store_credit_label.try(:title) %>: $40
-    </div>
-    <div>
-      <%#= order_gift_card_label.try(:title) %>: $300
-    </div> -->
-    <%if order.all_adjustments.nonzero.tax.eligible.any? %>
-      <div data-hook="order_details_tax_adjustments">
-        <% order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
-          <strong><%= @order_vat_label.try(:title) %></strong> : <%= label %>: <%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>
-          <br>
+        <% order.adjustments.nonzero.eligible.each do |adjustment| %>
+        <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
+        <font class="pull-right" id="summary-order-charges" data-hook ><%= adjustment.label %>:<%= adjustment.display_amount.to_html %> </font>
         <% end %>
-      </div>
-      <div>
-        <%= @order_vat_total_label.try(:title) %>: $<%= order.all_adjustments.nonzero.tax.sum(:amount)%>
-      </div>
-    <% end %>
-    
+      <% end %>
+      
+    </li>
+  <% end %>
+   
+  <li class="bd-4"><font class="pull-right">ﺀﺎﻫﺯ ﻝُﺟ ﻡﺃ ,ﺪﻗ  </font><font class="pull-left">-$ 50.00 </font></li>
 
-  
-    <div>
-      <b><%= @order_total_inc_vat_label.try(:title) %>:</b>
-      <b><%= order.display_total.to_html %></b>
-    </div>
-  </div>
-</div>
+  <li class="bd-3"><font class="pull-right">ﺔﻌﻃﺎﻘﻣ ﻡﺪﻌﻟ ﻯﺮﻗﻭ  </font><font class="pull-left">$ 300.00</font></li>
+
+  <%if order.all_adjustments.nonzero.tax.eligible.any? %>
+    <li class="bd-3" data-hook="order_details_tax_adjustments">
+      <%= @order_vat_label.try(:title) %>:
+      <% order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
+        <font class="pull-right">
+          <%= label %>: 
+        </font>
+        <font class="pull-left">
+          <%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>
+        </font>
+      <% end %>
+
+      <font class="pull-right">
+        <%= @order_vat_total_label.try(:title) %>: 
+      </font>
+      <font class="pull-left">
+        <%= order.all_adjustments.nonzero.tax.sum(:amount)%>
+      </font>
+    </li>
+
+  <% end %>
+
+  <li class="bd-3"><font class="pull-right"><%= @order_total_inc_vat_label.try(:title) %>:</font><font class="pull-left"><%= order.display_total.to_html %></font></li>
+
+</ul>
+<ul class="ul-ord-1 deta col-lg-3 col-md-4 col-sm-4 p-0">
+  <h3><%= @order_sub_heading_shiping_details.try(:title) %></h3>
+  <% if order.has_step?("delivery") %>
+    <li class="bd-3"><%= order.ship_address.full_name %></li>
+    <li>
+      <% unless order.ship_address.phone.blank? %>
+        <%= order.ship_address.phone %>
+      <% end %>
+
+    </li>
+    <% unless order.ship_address.alternative_phone.blank? %>
+      <li>
+        <%= order.ship_address.alternative_phone %>
+      </li>>
+    <% end %>
+
+    <li> <%= order.ship_address.address1 %></li>
+    <% unless order.ship_address.address2.blank? %>
+      <li>
+        <%= order.ship_address.address2 %>
+      </li>
+    <% end %>
+    <li><%= order.ship_address.city %>, <%= order.ship_address.state.name %> </li>
+    <li><%= order.ship_address.country.try(:name) %></li>
+  <%end%>
+</ul>
