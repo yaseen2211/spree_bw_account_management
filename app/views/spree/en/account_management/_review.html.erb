@@ -1,0 +1,35 @@
+
+<% order_overall_star_rating_review_label     = Spree::PageContent.spec_slug('order-overall-star-rating-review-label').last %>
+<% order_add_review_button_label     = Spree::PageContent.spec_slug('order-add-review-button-label').last %>
+<% order_cancel_review_button_label     = Spree::PageContent.spec_slug('order-cancel-review-button-label').last %>
+
+<form></form>
+<div class="tr-v1-text">
+  <%= form_for review, url: product_reviews_path(product), html: { method: :post, class: "purch" } do |f| %>
+    <%= render 'spree/shared/error_messages', target: review %>
+    <%= f.hidden_field :name , value: @user.first_name? ? @user.first_name : @user.email %>
+    <%= f.text_area :review, wrap: 'virtual', rows: 5, cols: 50, id: "text",class: 'form-control',placeholder: "", maxlength:  "1500" %>
+    <label class="limt-text" id="count_message">1500</label>
+
+    <% if Spree::Reviews::Config[:show_identifier] %>
+      <div class="checkbox">
+        <%= f.label :show_identifier do %>
+          <%= f.check_box :show_identifier, checked: true %>
+          <%= Spree::Review.human_attribute_name(:show_identifier) %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="pop-rating">
+      <ul>
+      <li class="ovr_all"><%= order_overall_star_rating_review_label.try(:title) %></li>
+      <%= render 'spree/reviews/stars', stars: review.rating, edit_enabled: true %>  
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+    <div class="add-rev-btns pop-add-btns">
+    <button class="cancel-btn" data-dismiss="modal"><%= order_cancel_review_button_label.try(:title) %></button>
+    <%= f.submit order_add_review_button_label.try(:title), class: 'btn sub-btn-add' %>
+    </div>
+  <% end %>
+</div>

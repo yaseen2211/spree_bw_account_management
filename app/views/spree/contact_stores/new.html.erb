@@ -1,5 +1,3 @@
-<%= render 'form'%>
-<br />
-<%= link_to(spree.edit_account_path, target:  "_blank", class: "btn btn-primary") do %>
-    Back to Account
-<% end %>
+<%= render template: "spree/#{params[:lang].to_s.present? ? params[:lang].to_s : DEFAULT_VIEW_LANG}/contact_stores/new" %>
+
+

@@ -1,0 +1,25 @@
+<p> Settings </p>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+  
+<%= form_for Spree::User.new, :as => @user, :url => spree.user_path(@user), :method => :put do |f| %>
+	<div class="row narrow-row-md">
+	  <div class="col-sm-12">
+	    <div class="form-group">
+	      <label class="control-label">Enter a Password<span class="required">*</span></label>
+	      <%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password) , required: true%>
+	    </div>
+	  </div>
+	</div>
+	<div class="row narrow-row-md">
+	  <div class="col-sm-12">
+	    <div class="form-group">
+	      <label class="control-label">Confirm Password<span class="required">*</span></label>
+	       <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => Spree.t(:confirm_password), required: true %>
+	    </div>
+	  </div>
+	</div>
+	<p>
+	  <%= f.submit Spree.t(:update), :class => 'btn btn-primary' %>
+	</p>
+<% end %>

@@ -27,7 +27,7 @@
     </div>
     <div class="panel-body">
       <%= form_for form_obj , html: { id: 'checkout_form_address' } ,remote: true do |form| %>
-        <%= render partial: 'spree/addresses/form', locals: { address_form: form, address_type: 'billing', address: form_obj} %>
+        <%= render partial: 'spree/ar/addresses/form', locals: { address_form: form, address_type: 'billing', address: form_obj} %>
 
         <%= form.submit form.object.persisted? ? update_address_btn.try(:title) : save_address_btn.try(:title)  , :class => 'btn btn-primary',style:"width:50%" %>
         <% if form.object.persisted? && !@is_primary %>

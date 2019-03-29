@@ -1,0 +1,19 @@
+<!-- 
+<table id="wishlist" class="table table-bordered table-hover">
+ 
+  <tbody id="line_items">
+  
+  </tbody>
+</table>
+
+ -->
+
+<% if wishlist.present? && wishlist.wished_products.size > 0 %>
+  <% wishlist.wished_products.sort_alphabatical_by_name.each_with_index do |wish, index| %>
+      <% variant = wish.variant %>
+      <% product = variant.product %>
+    <%= render partial: "spree/en/account_management/single_wishlist", locals: {index: index, wish: wish, variant: variant, product: product, wishlist: wishlist} %>
+  <% end %>
+<% else %>
+  <p><%= Spree.t(:your_wishlist_is_empty) %></p>
+<% end %>

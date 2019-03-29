@@ -1,0 +1,23 @@
+<div class="text-center">
+	<h1 class="text-center ">Appointments</h1>
+</div>
+<hr>
+<p class="text-center"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+<%# if spree_current_user.appointments.any? %>
+	<%# if spree_current_user.appointments.created.any? %>
+		<%#= render partial: "spree/account_management/appointments/created", locals: {appointments: spree_current_user.appointments.created.last(3)} %>
+	<%# end %>
+	<%# if spree_current_user.appointments.booked.any? %>
+		<%#= render partial: "spree/account_management/appointments/booked", locals: {appointments: spree_current_user.appointments.booked.last(3)} %>
+	<%# end %>
+	<%# if spree_current_user.appointments.confirmed.any? %>
+		<%#= render partial: "spree/account_management/appointments/confirmed", locals: {appointments: spree_current_user.appointments.confirmed.last(3)} %>
+	<%# end %>
+	<%# if spree_current_user.appointments.active.any? %>
+		<%#= render partial: "spree/account_management/appointments/active", locals: {appointments: spree_current_user.appointments.active.last(3)} %>
+	<%# end %>
+	<%# if spree_current_user.appointments.complete.any? %>
+		<%#= render partial: "spree/account_management/appointments/complete", locals: {appointments: spree_current_user.appointments.complete.last(3)} %>
+	<%# end %>
+<%# end %>

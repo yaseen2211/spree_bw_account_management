@@ -8,13 +8,14 @@ module Spree
     end
 
     def create
+
       @contact_store       = @vendor.contact_stores.new(contact_store_params)
       @contact_store.user  = @user
       @contact_store.order = @order
       if @contact_store.save
         redirect_to spree.edit_account_path
       else
-        render :new
+        render "spree/#{params[:lang].to_s.present? ? params[:lang].to_s : DEFAULT_VIEW_LANG}/contact_stores/new"
       end
     end
 
@@ -27,7 +28,7 @@ module Spree
     end
 
     def permitted_contact_store_attributes
-      [:subject, :query, :type]
+      [:subject, :query, :query_type]
     end
 
     def contact_store_params

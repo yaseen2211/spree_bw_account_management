@@ -1,0 +1,79 @@
+<% @address_contents     = Spree::PageContent.from_gen_slug('address') %>
+<% @address_btn_contents = @address_contents.from_gen_slug('address-btn-label') %>
+<% address_main_content = @address_contents.spec_slug('address-main-heading-desc').last%>
+<% new_address_btn      = @address_btn_contents.spec_slug('address-btn-label-new').last%>
+
+<div class="clearfix"></div>
+<div class=" alert  alert-dismissible" id="address-info-sec"></div>
+<% Globalize.with_locale (I18n.locale) do %>
+  <div class="container">
+
+
+    <div class="stor-full-top">
+      <div class="dv-title text-center col-md-12">
+        <h2><%= address_main_content.try(:title) %></h2>
+      </div>
+      
+      <div class="clearfix"></div>
+    </div>
+
+
+    <div class="locan-stor cate-pg ord_pg">
+    
+      <!--- profile section start ----->
+      <%= render  partial: "spree/en/account_management/side_bar_tab" %> 
+      <!--- profile section end ----->
+      
+      <!--- inner section start ----->    
+    <div class="col-lg-10 col-md-10 col-sm-9 p-0 manage-address-pg">
+        
+      <div class="col-lg-12 col-md-12 col-sm-12 p-0 det-addresss"> 
+        
+        <div class="col-lg-12 col-md-12 col-sm-12 mana_ge_1">
+           
+          <div class="col-lg-12 col-md-12 col-sm-12 wet-text lft-rgt-padd">
+            <div class="col-lg-9 col-md-9 col-sm-9 add-bard-btn p-0">
+            <p> <%=  address_main_content.try(:description)%></p>
+            </div>
+             <div class="col-lg-3 col-md-3 col-sm-3 add-bard-btn text-right p-0">
+             <button id="btn-new-address"><%=new_address_btn.try(:title) %></button>
+
+
+            </div>
+          </div>
+          
+          <div class=" alert  alert-dismissible" id="address-info-sec"></div>
+          <div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0" id="user-<%=@user.id%>-addresses-section" >
+	          <%= render partial: 'spree/en/account_management/address/user_addresses_section', locals: {addresses: @user.addresses, user: @user} %>
+	        </div>
+              
+        </div>
+
+      </div>
+
+    </div>
+
+      
+      
+    </div>      
+  </div>
+<% end %>   
+<div class="clearfix"></div>
+
+<!--- advertise ment section start--->
+<div class="adver-sec">
+  <!--- advertise ment section start--->
+  <div class="container">
+    <div class="adver-sec-mn"><%= image_tag "advertize.jpg", alt: "" %></div>
+  </div>
+</div>
+<!--- advertise ment section end--->
+
+
+<script type="text/javascript">
+	$(document).on("click", ".make-primary-checkbox", function(e) {
+		$("#make_me_primary_" + this.id).click();
+	});
+</script>
+
+

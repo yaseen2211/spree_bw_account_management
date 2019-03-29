@@ -11,18 +11,18 @@
 	<% secondry_addresses  = addresses.reject{|s| ( @user_shipping_address || @user_billing_address  ) == s.id} %>
 
 	<% if primary_address.present? %>
-		<%= render partial: 'spree/ar/account_management/address/single_address', locals: {form_obj: primary_address, url_name: address_path(primary_address), method_name: "put",user: user,from_view: "pofile-addresses"}  %>
+		<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: primary_address, url_name: address_path(primary_address), method_name: "put",user: user,from_view: "pofile-addresses"}  %>
 	<% end %>
 
   <% secondry_addresses.each do |address| %>
-	<%= render partial: 'spree/ar/account_management/address/single_address', locals: {form_obj: address, url_name: address_path(address), method_name: "put",user: user,from_view: "pofile-addresses"}  %>
+	<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: address, url_name: address_path(address), method_name: "put",user: user,from_view: "pofile-addresses"}  %>
 
   <% end %> 
 <% else %> 
   <p><strong>No Address(s) found.Please create a new address . You can mark your one address as Primary.</strong></p>
 <% end %>
 
-<%= render partial: 'spree/ar/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
+<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
 
 
 

@@ -1,0 +1,8 @@
+<% if sub_orders.any? %>
+  <% sub_orders.each do |sub_order| %>
+    <%= render partial: "spree/en/account_management/orders/sub_order", locals: {order:  sub_order, main_order: main_order} %>
+  <% end%>
+
+<% else %>
+  <p> Main Order have no sub orders due to some error</p>
+<% end %>

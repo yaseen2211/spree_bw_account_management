@@ -1,0 +1,53 @@
+<% os = main_order.state %>
+<div class="odr-box">     
+  <%= render partial: "spree/en/account_management/orders/main_order_details", locals: {order: main_order} %>
+  <div class="clearfix"></div>     
+  <div class="dvd"></div>          
+  <div class="clearfix"></div>
+
+  <div class="deli_ver_y">
+   <ul>
+   <li class="bd_green"><%= image_tag "recieved-icon-green.png" %><br><font>Order Received</font></li>
+
+   <li class="divid_line"><%= image_tag "divider-line.png" %></li>
+    
+   <li class="<%= ( os == "delivery" || os == "payment") ? "bd_green" : "" %>">
+      <%= image_tag ( os == "delivery" || os == "payment") ? "progress-icon-black-green.png" : "progress-icon-black-old.png" %>
+      <br><font>Order in Progress</font></li>
+   <li class="divid_line"><%= image_tag "divider-line.png" %></li>
+   
+   <li><%= image_tag "deliverd-icon-grey.png" %><br><font class="bd-4">Order Delivered</font></li>
+   </ul>
+ </div>
+ 
+ <div class="cv-set-lal">
+   <div class="pur_ch">
+   <ul class="col-lg-12 col-md-12 col-sm-12 p-0">
+   <li class="he_ad-1">#<%= main_order.number %></li>
+   <li>- Purchased from (Store Name)</li>
+   </ul>
+   </div>
+   
+   <div class="der-mn">
+   <ul class="bsp-kj">
+    <% main_order.line_items.each do |line_item| %>
+      <% variant = line_item.variant %>
+      <% product = variant.product %>
+      <li>
+        <%= link_to small_image(product, itemprop: "image"), product_path(product) %>
+      </a>
+    </li>
+    <% end %>
+   </ul>
+   
+  <!--  <ul class="sw-ord-button">
+   <button class="">SHOW DETAILS</button>
+   </ul> -->
+  </div>
+ 
+ </div>
+
+
+
+  <%#= render partial: "spree/en/account_management/orders/sub_orders_section", locals: {sub_orders: main_order.sub_orders, main_order: main_order} %>
+</div>

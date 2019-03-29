@@ -1,0 +1,108 @@
+<ul class="ul-ord-1 deta col-lg-4 col-md-4 col-sm-4 p-0">
+  <h3><%= @order_sub_heading_order_details.try(:title) %></h3>
+  <li class="bd-3"><%= order.number %></li>
+  <li><%= @order_purchased_on_label.try(:title) %>: <%= order.created_at.strftime("%e/%m/%Y") %></li>
+  <% order_itmes = order.sub_orders.any? ? order.sub_orders.map(&:line_items) : order.line_items %>
+  <li><%= @order_detail_items.try(:title) %>: <%= order_itmes.count %></li>
+  <li>Personalised: 2</li>
+  <% if order.has_step?("payment") && (order.state == "complete") %>
+    <li>
+      <%= @order_payment_method_label.try(:title) %>:  <%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %>
+    </li>
+  <% end %>
+  <li><%= @order_currency_label.try(:title) %>: <%= current_currency %></li>
+</ul>
+
+<ul class="ul-ord-2 deta col-lg-4 col-md-4 col-sm-4">
+  <h3><%= @order_sub_heading_order_summary.try(:title) %> </h3>
+  <li class="bd-3">
+    <font class="pull-left">
+      <%= @order_summary_shipping_label.try(:title) %>:
+      
+    </font>
+    <% order.shipments.group_by { |s| s.selected_shipping_rate.name }.each do |name, shipments| %>
+      <font class="pull-right"><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></font>
+    <% end %>
+  </li>     
+  <li class="bd-4"><font class="pull-left">Store Credit:</font><font class="pull-right">-$ 30.00</font></li>
+  <% if order.line_item_adjustments.nonzero.exists? || order.adjustments.nonzero.eligible.exists? %>
+
+    <li class="bd-4">
+
+      <font class="pull-left">
+        <%= @order_discount_label.try(:title) %>: 
+      </font>
+
+      <% if order.line_item_adjustments.nonzero.exists? %>
+        <% order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
+          <font class="pull-right" data-hook="order_details_promotion_adjustments" ><%= label %>:<%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %> </font>
+        <% end %>
+      <% end %>
+
+      <% if order.adjustments.nonzero.eligible.exists? %>
+        <% order.adjustments.nonzero.eligible.each do |adjustment| %>
+        <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
+        <font class="pull-right" id="summary-order-charges" data-hook ><%= adjustment.label %>:<%= adjustment.display_amount.to_html %> </font>
+        <% end %>
+      <% end %>
+      
+    </li>
+  <% end %>
+   
+  <li class="bd-4"><font class="pull-left">Gift Card:  </font><font class="pull-right">-$ 50.00 </font></li>
+
+  <li class="bd-3"><font class="pull-left">Product Total:  </font><font class="pull-right">$ 300.00</font></li>
+
+  <%if order.all_adjustments.nonzero.tax.eligible.any? %>
+    <li class="bd-3" data-hook="order_details_tax_adjustments">
+      <%= @order_vat_label.try(:title) %>:
+      <% order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
+        <font class="pull-left">
+          <%= label %>: 
+        </font>
+        <font class="pull-right">
+          <%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>
+        </font>
+      <% end %>
+
+      <font class="pull-left">
+        <%= @order_vat_total_label.try(:title) %>: 
+      </font>
+      <font class="pull-right">
+        <%= order.all_adjustments.nonzero.tax.sum(:amount)%>
+      </font>
+    </li>
+
+  <% end %>
+
+  <li class="bd-3"><font class="pull-left"><%= @order_total_inc_vat_label.try(:title) %>:</font><font class="pull-right"><%= order.display_total.to_html %></font></li>
+</ul>
+
+
+
+<ul class="ul-ord-3 deta col-lg-4 col-md-4 col-sm-4 aya-lt">
+  <h3><%= @order_sub_heading_shiping_details.try(:title) %></h3>
+  <% if order.has_step?("delivery") %>
+    <li class="bd-3"><%= order.ship_address.full_name %></li>
+    <li>
+      <% unless order.ship_address.phone.blank? %>
+        <%= order.ship_address.phone %>
+      <% end %>
+
+    </li>
+    <% unless order.ship_address.alternative_phone.blank? %>
+      <li>
+        <%= order.ship_address.alternative_phone %>
+      </li>>
+    <% end %>
+
+    <li> <%= order.ship_address.address1 %></li>
+    <% unless order.ship_address.address2.blank? %>
+      <li>
+        <%= order.ship_address.address2 %>
+      </li>
+    <% end %>
+    <li><%= order.ship_address.city %>, <%= order.ship_address.state.name %> </li>
+    <li><%= order.ship_address.country.try(:name) %></li>
+  <%end%>
+</ul>
