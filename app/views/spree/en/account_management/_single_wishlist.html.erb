@@ -29,8 +29,8 @@
       </div>
       <div class="wishlist-details-pro col-lg-8 col-md-8 col-sm-8">
         <ul>
-          <li><h3><%= link_to product.name, product %></h3></li>
-          <li><p><%= product.vendor.present? ? product.vendor.name.to_s : "Store Does'nt Exist"%> </p></li>
+          <li><h3><%= link_to product.try(:name), product %></h3></li>
+          <li><p><%= product.vendor.present? ? product.vendor.try(name) : "Store Does'nt Exist"%> </p></li>
           <li><p><%= truncate(strip_tags(product.description), length: 50, omission: '...') %></p></li>
         </ul>
 
