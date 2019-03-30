@@ -32,7 +32,7 @@
              <span class="out_stock"><%=  wishlist_temp_label.try(:title) %></span><br>
           <% end %>
 
-          <%= link_to wishlist_del_btn.title, wish, method: :delete, remote: true, class: 'btn cancel-btn', :data => {:confirm => 'Are you sure?'} %>
+          <%= link_to wishlist_del_btn.title, wished_product_path(wish, lang: "ar"), method: :delete, remote: true, class: 'btn cancel-btn', :data => {:confirm => 'Are you sure?'} %>
         </div> 
       <% end %>
 

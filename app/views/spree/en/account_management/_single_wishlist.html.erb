@@ -10,6 +10,7 @@
 <% wishlist_del_btn               = wishlist_btn_label_content.spec_slug('wishlist-btn-label-delete').last%>
 <% wishlist_in_stock_label        = wishlist_label_contents.spec_slug('wishlist-label-in-stock').last%>
 
+
 <% Globalize.with_locale (I18n.locale) do %> 
   <div class="col-lg-12 col-md-12 col-sm-12 wishlist-set <%= (index %2 ==0) ? "wis-box" : "" %>">     
     <div class="col-lg-6 col-md-6 col-sm-6 sg-box-lft">
@@ -29,8 +30,9 @@
       </div>
       <div class="wishlist-details-pro col-lg-8 col-md-8 col-sm-8">
         <ul>
+
           <li><h3><%= link_to product.try(:name), product %></h3></li>
-          <li><p><%= product.vendor.present? ? product.vendor.try(name) : "Store Does'nt Exist"%> </p></li>
+          <li><p><%= product.vendor.present? ? product.vendor.try(:name) : "Store Does'nt Exist"%> </p></li>
           <li><p><%= truncate(strip_tags(product.description), length: 50, omission: '...') %></p></li>
         </ul>
 
@@ -76,7 +78,7 @@
              <span class="out_stock"><%=  wishlist_temp_label.try(:title) %></span><br>
           <% end %>
 
-          <%= link_to wishlist_del_btn.title, wish, method: :delete, remote: true, class: 'btn cancel-btn', :data => {:confirm => 'Are you sure?'} %>
+          <%= link_to wishlist_del_btn.title, wished_product_path(wish, lang: "en"), method: :delete, remote: true, class: 'btn cancel-btn', :data => {:confirm => 'Are you sure?'} %>
 
 
         </div> 
