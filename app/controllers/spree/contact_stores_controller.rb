@@ -12,10 +12,11 @@ module Spree
       @contact_store       = @vendor.contact_stores.new(contact_store_params)
       @contact_store.user  = @user
       @contact_store.order = @order
+      lang = I18n.locale
       if @contact_store.save
         redirect_to spree.edit_account_path
       else
-        render "spree/#{params[:lang].to_s.present? ? params[:lang].to_s : DEFAULT_VIEW_LANG}/contact_stores/new"
+        render "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}}/contact_stores/new"
       end
     end
 

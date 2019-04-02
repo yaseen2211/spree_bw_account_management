@@ -51,7 +51,7 @@
               <% if index == 0 %>
                 <%= link_to @order_download_invoice_button_label.try(:title), "/admin/invoice/#{order.number}/invoice", target:  "_blank"%>
                 <br>
-                <%= link_to @order_contact_store_button_label.try(:title), spree.new_vendor_contact_store_path(vendor.id, order_number: order.number, lang: "ar"), target:  "_blank"%>
+                <%= link_to @order_contact_store_button_label.try(:title), spree.new_vendor_contact_store_path(vendor.id, order_number: order.number), target:  "_blank"%>
                 
                 <% if spree_current_user.present? && order.completed? && order.shipped? && order.has_returnable_products? && order.has_returnable_line_items? %>
                   <%= link_to @order_request_return_button_label.try(:title), spree.new_order_return_authorization_path(order) %>

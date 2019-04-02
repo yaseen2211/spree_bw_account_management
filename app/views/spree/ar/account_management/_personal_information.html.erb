@@ -73,7 +73,17 @@
          </div>
 
          <div class="col-lg-3 col-md-3 col-sm-3 wet-pro-pic" dir="rtl">
-          <a href="#"><%= image_tag "profile-img.jpg", alt: "", height: "90", width: "90"%></a>
+          <span id="user-profile-image"><%= render partial: "spree/users/profile_section", locals: {user_profile_image: spree_current_user.profile_image, height: "90", width: "90"} %></span>
+
+          <div class="return_reason-img">
+            <div class="img-up-lod">
+              <label id="#bb">اختر صورة
+                <%= f.file_field :profile_image, size: 60, id: "File" %>
+              </label>
+              <span id= "file-name"class="text-center"></span>
+            </div>
+          </div>
+
          </div>
         </div>
         

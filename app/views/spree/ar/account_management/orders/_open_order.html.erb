@@ -1,44 +1,74 @@
 <% os = main_order.state %>
-<div class="odr-box" dir="rtl">     
-  <%= render partial: "spree/ar/account_management/orders/main_order_details", locals: {order: main_order} %>
-  <div class="clearfix"></div>     
-  <div class="dvd"></div>          
-  <div class="clearfix"></div>
 
-  <div class="deli_ver_y">
-    <ul>
-      <li class="bd_green"><%= image_tag "recieved-icon-green.png" %><br><font>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
-      <li class="divid_line"><%= image_tag "divider-line.png" %></li>
-      <li class="<%= ( os == "delivery" || os == "payment") ? "bd_green" : "" %>">
-        <%= image_tag ( os == "delivery" || os == "payment") ? "progress-icon-black-green.png" : "progress-icon-black-old.png" %>
-        <br><font>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
-      <li class="divid_line"><%= image_tag "divider-line.png" %></li>
-      <li><%= image_tag "deliverd-icon-grey.png" %><br><font class="bd-4">ﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
-    </ul>
-  </div>
 
-  <div class="cv-set-lal" dir="rtl">
-    <div class="pur_ch">
-      <ul class="col-lg-12 col-md-12 col-sm-12 p-0">
-        <li class="he_ad-1">#<%= main_order.number %></li>
-        <li>ﺔﻳﺪﻴﻠﻘﺘﻟ <font>(Store Name)</font> </li>
+<div id="order_summary-<%main_order.id%>" class = "small_detail_box_<%= main_order.id %>">
+  <div class="odr-box" dir="rtl">     
+    <%= render partial: "spree/ar/account_management/orders/main_order_details", locals: {order: main_order} %>
+    <div class="clearfix"></div>     
+    <div class="dvd"></div>          
+    <div class="clearfix"></div>
+
+    <div class="deli_ver_y">
+      <ul>
+        <li class="bd_green"><%= image_tag "recieved-icon-green.png" %><br><font>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
+        <li class="divid_line"><%= image_tag "divider-line.png" %></li>
+        <li class="<%= ( os == "delivery" || os == "payment") ? "bd_green" : "" %>">
+          <%= image_tag ( os == "delivery" || os == "payment") ? "progress-icon-black-green.png" : "progress-icon-black-old.png" %>
+          <br><font>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
+        <li class="divid_line"><%= image_tag "divider-line.png" %></li>
+        <li><%= image_tag "deliverd-icon-grey.png" %><br><font class="bd-4">ﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
       </ul>
     </div>
 
-    <div class="der-mn">
-     <!--  <ul class="sw-ord-button">
-      <button class="">ﻌﺘﻳ ﺕﺎﻐﻟ </button>
-      </ul> -->
-      <ul class="bsp-kj">
-        <% main_order.line_items.each do |line_item| %>
-          <% variant = line_item.variant %>
-          <% product = variant.product %>
-          <li>
-            <%= link_to small_image(product, itemprop: "image"), product_path(product) %>
-          </a>
-        </li>
-        <% end %>
-      </ul>
+    <div class="cv-set-lal" dir="rtl">
+      <div class="pur_ch">
+        <ul class="col-lg-12 col-md-12 col-sm-12 p-0">
+          <li class="he_ad-1">#<%= main_order.number %></li>
+          <li>ﺔﻳﺪﻴﻠﻘﺘﻟ <font>(<%= main_order.products.map{|s| s.vendor.try(:name)}.uniq.reject(&:blank?).join(",") %>)</font> </li>
+        </ul>
+      </div>
+
+      <div class="der-mn">
+        <div class="der-mn">
+          <ul class="sw-ord-button">
+            <button class="show_details_<%=main_order.id%>">ﻌﺘﻳ ﺕﺎﻐﻟ</button>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
+
+
+<div class="odr-box details_box_<%= main_order.id%>" style= "display: none;">     
+  <%= render partial: "spree/ar/account_management/orders/main_order_details", locals: {order: main_order} %>
+
+
+<div class="clearfix"></div>
+<div class="dvd"></div>  
+<div class="clearfix"></div>
+
+<%= render partial: "spree/ar/account_management/orders/products_collection", locals: {order_line_items: main_order.line_items} %>
+
+
+<div class="hide_detail_btn text-right">
+<button class = 'hide_details_<%= main_order.id%>'>أخف التفاصيل
+</button>
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+  $('.'+ "show_details_<%= main_order.id%>").click(function(){
+      $('.' + "small_detail_box_<%= main_order.id %>").hide();
+      $('.' + "details_box_<%= main_order.id%>").slideDown('fast');
+  });
+    
+  $('.' + "hide_details_<%= main_order.id%>").click(function(){
+      $('.' + "small_detail_box_<%= main_order.id %>").show();  
+      $('.' + "details_box_<%= main_order.id%>").slideUp('fast');
+  });
+    
+</script>

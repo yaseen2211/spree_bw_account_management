@@ -24,7 +24,7 @@
       <font class="pull-right"><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></font>
     <% end %>
   </li>     
-  <li class="bd-4"><font class="pull-left">Store Credit:</font><font class="pull-right">-$ 30.00</font></li>
+  <!-- <li class="bd-4"><font class="pull-left">Store Credit:</font><font class="pull-right">-$ 30.00</font></li> -->
   <% if order.line_item_adjustments.nonzero.exists? || order.adjustments.nonzero.eligible.exists? %>
 
     <li class="bd-4">
@@ -49,9 +49,8 @@
     </li>
   <% end %>
    
-  <li class="bd-4"><font class="pull-left">Gift Card:  </font><font class="pull-right">-$ 50.00 </font></li>
-
-  <li class="bd-3"><font class="pull-left">Product Total:  </font><font class="pull-right">$ 300.00</font></li>
+  <!-- <li class="bd-4"><font class="pull-left">Gift Card:  </font><font class="pull-right">-$ 50.00 </font></li> -->
+  <li class="bd-3"><font class="pull-left">Product Total:  </font><font class="pull-right"><%= order.display_item_total.to_html%> </font></li>
 
   <%if order.all_adjustments.nonzero.tax.eligible.any? %>
     <li class="bd-3" data-hook="order_details_tax_adjustments">
@@ -79,30 +78,31 @@
 </ul>
 
 
+<% if order.ship_address.present? %>
+  <ul class="ul-ord-3 deta col-lg-4 col-md-4 col-sm-4 aya-lt">
+    <h3><%= @order_sub_heading_shiping_details.try(:title) %></h3>
+    <% if order.has_step?("delivery") %>
+      <li class="bd-3"><%= order.ship_address.full_name  %></li>
+      <li>
+        <% unless order.ship_address.phone.blank? %>
+          <%= order.ship_address.phone %>
+        <% end %>
 
-<ul class="ul-ord-3 deta col-lg-4 col-md-4 col-sm-4 aya-lt">
-  <h3><%= @order_sub_heading_shiping_details.try(:title) %></h3>
-  <% if order.has_step?("delivery") %>
-    <li class="bd-3"><%= order.ship_address.full_name %></li>
-    <li>
-      <% unless order.ship_address.phone.blank? %>
-        <%= order.ship_address.phone %>
+      </li>
+      <% unless order.ship_address.alternative_phone.blank? %>
+        <li>
+          <%= order.ship_address.alternative_phone %>
+        </li>>
       <% end %>
 
-    </li>
-    <% unless order.ship_address.alternative_phone.blank? %>
-      <li>
-        <%= order.ship_address.alternative_phone %>
-      </li>>
-    <% end %>
-
-    <li> <%= order.ship_address.address1 %></li>
-    <% unless order.ship_address.address2.blank? %>
-      <li>
-        <%= order.ship_address.address2 %>
-      </li>
-    <% end %>
-    <li><%= order.ship_address.city %>, <%= order.ship_address.state.name %> </li>
-    <li><%= order.ship_address.country.try(:name) %></li>
-  <%end%>
-</ul>
+      <li> <%= order.ship_address.address1 %></li>
+      <% unless order.ship_address.address2.blank? %>
+        <li>
+          <%= order.ship_address.address2 %>
+        </li>
+      <% end %>
+      <li><%= order.ship_address.city %>, <%= order.ship_address.state.name %> </li>
+      <li><%= order.ship_address.country.try(:name) %></li>
+    <%end%>
+  </ul>
+<% end %>

@@ -28,4 +28,14 @@ $(document).ready(function()
           scrollTop: $("#checkout_form_address").offset().top
       }, 2000);
     });
+
+
+
 });
+
+
+$(document).on("change", "#File", function(e) {
+  var filename = $('#File').val();
+  $('#file-name').html(filename);
+});
+

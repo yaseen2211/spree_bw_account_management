@@ -1,9 +1,16 @@
 <%if @user.errors.any?%>
   $('.error-messages').html("<%= escape_javascript render(:partial => 'spree/shared/error_messages', :locals => { :target => @user } ) %>");
 <%else%>
+	$('#user-profile-image').html("<%= escape_javascript render(:partial => "spree/users/profile_section", :locals => { :user_profile_image => @user.profile_image, height: '90', width: '90' } ) %>");
+  $('#side-bar-user-profile-image').html("<%= escape_javascript render(:partial => "spree/users/profile_section", :locals => { :user_profile_image => @user.profile_image, height: '75', width: '75' } ) %>");
+  $('#header-user-profile-image').html("<%= escape_javascript render(:partial => "spree/users/profile_section", :locals => { :user_profile_image => @user.profile_image, height: '45', width: '45' } ) %>");
+  $('#file-name').html("");
   $('.error-messages').html("<div class='alert alert-success'>Account updated</div>");
 <%end%>
 
 $('html, body').animate({
   scrollTop: $(".error-messages").offset().top
 }, 2000);
+
+
+

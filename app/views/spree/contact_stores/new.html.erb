@@ -1,3 +1,4 @@
-<%= render template: "spree/#{params[:lang].to_s.present? ? params[:lang].to_s : DEFAULT_VIEW_LANG}/contact_stores/new" %>
+<% lang = I18n.locale %>
+<%= render template: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/contact_stores/new" %>
 
 

@@ -50,7 +50,9 @@
       <div class="pur_ch">
       <ul class="col-lg-6 col-md-6 col-sm-6 p-0">
       <li class="he_ad_bold_1">#<%= main_order.number %></li>
-      <li>- Purchased from (Store Name)</li>
+      <% if main_order.parent_order.present? %>
+        <li>- Purchased from (<%= main_order.products.map{|s| s.vendor.try(:name)}.uniq.reject(&:blank?).join(",") %>)</li>
+      <% end %>
       </ul>
       <% if  main_order.shipments.any? %>
         <% main_order.shipments.each do |ship| %>

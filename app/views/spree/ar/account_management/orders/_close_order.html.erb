@@ -41,7 +41,9 @@
         <% end %>
         <ul class="col-lg-6 col-md-6 col-sm-6 p-0 ab-rht text-right">
           <li><font> #<%= main_order.number %></font></li>
-          <li class="he_ad-1">ﺔﻳﺪﻴﻠﻘﺘﻟ<font>(Store Name)</font></li>
+          <% if main_order.parent_order.present? %>
+            <li class="he_ad-1">ﺔﻳﺪﻴﻠﻘﺘﻟ<font>(<%= main_order.products.map{|s| s.vendor.try(:name)}.uniq.reject(&:blank?).join(",") %>)</font></li>
+          <% end %>
         </ul>     
       </div>
 

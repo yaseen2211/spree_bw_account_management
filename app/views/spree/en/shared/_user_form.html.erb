@@ -16,7 +16,7 @@
 
 
   <% else %>
-    <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+    <%= form_for @user, :url => spree.user_path(@user), :html => { :multipart => true },  :method => :put, :remote => true do |f| %>
       <%= render partial: "spree/en/account_management/personal_information" , locals: {f: f}%>
     <% end %>
   <% end %>

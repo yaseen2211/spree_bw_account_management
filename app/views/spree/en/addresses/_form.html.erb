@@ -24,17 +24,17 @@
     <div class="form-row" data-hook=<%="#{address_type}_inner" %>>
 
 
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0" id=<%="#{address_id}firstname" %>
+      <div class="col-md-12 col-lg-12 plc-gry-col col-sm-12 mb-3 p-0" id=<%="#{address_id}firstname" %>
         <label for="validationCustom01"><%=  address_form.object.persisted? ? ex_contact_name.try(:title) : new_contact_name.try(:title)  %></label>
         <%= address_form.text_field :firstname, class: 'form-control', id: "validationCustom01", required: true, placeholder: "Aya Barad"%>
       </div>
 
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0" id=<%="#{address_id}phone" %> >
+      <div class="col-md-12 col-lg-12 plc-gry-col col-sm-12 mb-3 p-0" id=<%="#{address_id}phone" %> >
         <label for="validationCustom02"><%= address_form.object.persisted? ? ex_contact_number.try(:title)  : new_contact_number.try(:title) %></label>
         <%= address_form.number_field :phone, class: 'form-control',id: "validationCustom02", required: true, placeholder: "971 50 123 4567"  %>
       </div>
       
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0" id=<%="#{address_id}address1" %>>
+      <div class="col-md-12 col-lg-12 col-sm-12 plc-gry-col mb-3 p-0" id=<%="#{address_id}address1" %>>
         <label for="validationCustom02"><%= address_form.object.persisted? ? ex_contact_address1.try(:title)  : new_contact_address1.try(:title) %></label>
         <%= address_form.text_field :address1, class: 'form-control required', id: "validationCustom02",  required: true, placeholder: "P.O. Box 9966"  %>     
       </div>

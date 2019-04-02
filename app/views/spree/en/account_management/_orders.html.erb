@@ -56,10 +56,9 @@
             <div class="col-lg-12 col-md-12 col-sm-12 wet-text">
             <p><%= order_content.try(:description) %> </p>
             </div>
-              <% parent_orders = @orders.select{|s| s.parent_order == nil} %>
+              <% parent_orders = @orders.select{|s| s.parent_order_id == nil} %>
               <% parent_orders.each do |main_order| %> 
                 <%# state_class = main_order.completed? && main_order.shipped? ? "#D3D3D3": "white"%>
-                
                 <% if (main_order.complete? || main_order.shipped?) && main_order.sub_orders.any? %>
                   <%= render partial: "spree/en/account_management/orders/close_order", locals: {main_order: main_order} %>
                 <% else %>

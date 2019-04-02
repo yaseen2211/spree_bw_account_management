@@ -44,10 +44,21 @@
         <p><%= user_personal_content.try(:description) %></p>
         </div>
         
-        <div class="col-lg-12 col-md-12 col-sm-12 wet-frm">
+      <div class="col-lg-12 col-md-12 col-sm-12 wet-frm">
         
        <div class="col-lg-3 col-md-3 col-sm-3 wet-pro-pic">
-        <a href="#"><%= image_tag "profile-img.jpg", alt: "", height: "90", width: "90"%></a>
+
+        <span id="user-profile-image"><%= render partial: "spree/users/profile_section", locals: {user_profile_image: spree_current_user.profile_image, height: "90", width: "90"} %></span>
+
+        <div class="return_reason-img">
+          <div class="img-up-lod">
+            <label id="#bb">Select Image
+              <%= f.file_field :profile_image, size: 60, id: "File" %>
+            </label>
+            <span id= "file-name"class="text-center"></span>
+          </div>
+        </div>
+        
        </div>
        
        <div class="col-lg-9 col-md-9 col-sm-9 wet-ful-frm">

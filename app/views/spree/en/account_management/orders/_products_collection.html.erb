@@ -1,0 +1,43 @@
+<% order_line_items.each_with_index do |item, index| %>
+  <div class="col-lg-3 col-md-3 col-sm-3 p-0">
+
+    <% if item.variant.images.length == 0 %>
+      <%= link_to small_image(item.variant.product), item.variant.product %>
+    <% else %>
+      <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
+    <% end %>
+  </div>
+
+
+    <div class="col-lg-9 col-md-9 col-sm-9 adip">
+    
+    <%= link_to item.variant.product, itemprop: "url" do %>
+      <%=item.quantity.to_s + " x "%>
+      <%= content_tag(:span, truncate(item.variant.product.name, length: 50), class: 'info', itemprop: "name", title: item.variant.product.name) %>
+    <% end %>
+
+    <br><p><%= truncate(item.description, length: 100) %></p>
+    
+
+    <div>
+      <%= item.variant.options_text unless item.variant.option_values.empty? %>
+    </div>
+
+    <%product = item.variant.product%>
+
+    <% if product.on_sale? %>
+      <% sale_ammount = product.original_price.to_f - product.price.to_f %>
+      <ul class="rt-prc">
+        <li class="wis_list">$<%= product.original_price.to_f%></li>
+        <li class="cm_wis"><del>$<%= product.price.to_f%></del><br><font><%= ((sale_ammount/product.original_price) * 100).round(2).to_s + '% ' + @order_sale_off_label.try(:title)%></font></li>
+      </ul> 
+    <% else %>
+      <ul class="rt-prc">
+        <li class="nom"> $<%= (product.price_in(current_currency).amount.nil?)? 0 : product.price_in(current_currency).amount.to_d %></li>
+      </ul> 
+    <% end %>
+  </div> 
+  <div class="clearfix"></div>
+  <div class="dvd"></div>  
+  <div class="clearfix"></div>
+<% end %>

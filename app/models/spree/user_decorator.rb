@@ -1,9 +1,11 @@
 Spree::User.class_eval do
   
   after_create :send_welcome_email
-  Spree::PermittedAttributes.user_attributes.push(:first_name, :last_name, :phone_number, :date_of_birth, :month_of_birth, :head, :left_shoulder, :right_shoulder, :left_arm)
+  Spree::PermittedAttributes.user_attributes.push(:first_name, :last_name, :phone_number, :date_of_birth, :month_of_birth, :head, :left_shoulder, :right_shoulder, :left_arm,:profile_image)
   has_many :contact_stores
   has_many :reviews
+
+  has_one_attached :profile_image # one-to-one
   
   validates :first_name, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-first-name').last.try(:title) }
   validates :last_name, :presence => {:message     => Spree::PageContent.from_gen_slug('user-error-msg').spec_slug('user-error-msg-last-name').last.try(:title) }

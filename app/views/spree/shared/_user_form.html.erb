@@ -1,3 +1,4 @@
-<%= render partial: "spree/#{params[:lang].to_s.present? ? params[:lang].to_s : DEFAULT_VIEW_LANG}/shared/user_form" %>
+<% lang = I18n.locale %>
+<%= render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/shared/user_form" %>
 
 
