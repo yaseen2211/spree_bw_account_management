@@ -14,8 +14,8 @@
         <% if  order.shipments.any? %>
           <% order.shipments.each do |ship| %>
             <ul class="col-lg-6 col-md-6 col-sm-6 p-0 ab-rht">
-              <li><% ship.shipped_at.present? ? "Shipped On:" + ship.shipped_at.strftime("%e/%m/%Y") : "" %></li>
-              <li class="he_ad_bold_2"> <% ship.tracking.present? ? "Tracking Number:" + ship.tracking.to_s : "" %></li>
+              <li><%= ship.shipped_at.present? ? "Shipped On:" + ship.shipped_at.strftime("%e/%m/%Y") : "" %></li>
+              <li class="he_ad_bold_2"> <%= ship.tracking.present? ? "Tracking Number:" + ship.tracking.to_s : "" %></li>
             </ul>
           <% end %>
         <% end %>
@@ -35,8 +35,8 @@
         <li class="divid_line">
         <%= image_tag "divider-line.png", alt: "" %>
         </li>
-        <li class="bd_green">
-        <%= image_tag "deliverd-icon-green.png", alt: "" %>
+        <li class="<%= (order.complete? && order.shipped?) ? 'bd_green' : '' %>">
+        <%= image_tag (order.complete? && order.shipped?) ? 'deliverd-icon-green.png' : 'deliverd-icon-grey.png', alt: "" %>
         <br><font>Order Delivered</font></li>
       </ul>
 

@@ -39,8 +39,8 @@
         <li class="divid_line">
         <%= image_tag "divider-line.png", alt: "" %>
         </li>
-        <li class="bd_green">
-        <%= image_tag "deliverd-icon-green.png", alt: "" %>
+        <li class="<%= (main_order.complete? && main_order.shipped?) ? 'bd_green' : '' %>">
+        <%= image_tag (main_order.complete? && main_order.shipped?) ? 'deliverd-icon-green.png' : 'deliverd-icon-grey.png', alt: "" %>
         <br><font>Order Delivered</font></li>
         </ul>
 

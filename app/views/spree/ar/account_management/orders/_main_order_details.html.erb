@@ -56,7 +56,7 @@
    
   <!-- <li class="bd-4"><font class="pull-right">ﺀﺎﻫﺯ ﻝُﺟ ﻡﺃ ,ﺪﻗ  </font><font class="pull-left">-$ 50.00 </font></li> -->
 
-  <li class="bd-3"><font class="pull-right">ﺔﻌﻃﺎﻘﻣ ﻡﺪﻌﻟ ﻯﺮﻗﻭ  </font><font class="pull-left"><%= order.display_item_total.to_html%></font></li>
+  <li class="bd-3"><font class="pull-right"><%= @order_summary_product_total_label.try(:title)%> </font><font class="pull-left"><%= order.display_item_total.to_html%></font></li>
 
   <%if order.all_adjustments.nonzero.tax.eligible.any? %>
     <li class="bd-3" data-hook="order_details_tax_adjustments">
