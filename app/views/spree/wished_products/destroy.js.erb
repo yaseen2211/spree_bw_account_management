@@ -15,6 +15,13 @@ $('html, body').animate({
   scrollTop: $("#wishlist-info-sec").offset().top
 }, 2000);
 
+<% if  params[:view_from].present? && (params[:view_from] == "home_page") %>
+	setTimeout(location.reload.bind(location), 3000);
+<% end %>
+
+
+
+
 
 
 

@@ -2,7 +2,6 @@ Spree::PageContent.find_or_create_by! title: "Manage Addresses", description: "L
 Spree::PageContent.find_or_create_by! title: "Add New", description: "", slug: "address-btn-label-new"
 Spree::PageContent.find_or_create_by! title: "Primary Address", description: "", slug: "address-primary-heading"
 Spree::PageContent.find_or_create_by! title: "Address", description: "", slug: "address-existing-heading"
-
 Spree::PageContent.find_or_create_by! title: "Name", description: "", slug: "address-field-label-contact-name"
 Spree::PageContent.find_or_create_by! title: "Name can't be blank", description: "", slug: "address-error-msg-contact-name"
 Spree::PageContent.find_or_create_by! title: "Number", description: "", slug: "address-field-label-contact-number"
@@ -43,10 +42,6 @@ Spree::PageContent.find_or_create_by! title: "Address successfully created", des
 Spree::PageContent.find_or_create_by! title: "Address successfully deleted", description: "", slug: "address-success-msg-deleted"
 Spree::PageContent.find_or_create_by! title: "Address successfully set as Primary", description: "", slug: "address-success-msg-primary"
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "address-advertisement"
-
-
-
-
 Spree::PageContent.find_or_create_by! title: "Welcome", description: "", slug: "user-messages-welcome"
 Spree::PageContent.find_or_create_by! title: "Personal Information", description: "Lorem Ipsum is simply dummy text.", slug: "user-main-heading-desc"
 Spree::PageContent.find_or_create_by! title: "Save", description: "", slug: "user-btn-label-save"
@@ -68,7 +63,6 @@ Spree::PageContent.find_or_create_by! title: "Password is not valid", descriptio
 Spree::PageContent.find_or_create_by! title: "Password Confirmation *", description: "", slug: "user-field-label-password-confirmation"
 Spree::PageContent.find_or_create_by! title: "Password Confirmation can't be blank", description: "", slug: "user-error-msg-password-confirmation"
 Spree::PageContent.find_or_create_by! title: "Select Your Country ", description: "", slug: "user-field-label-country"
-
 Spree::PageContent.find_or_create_by! title: "Last Name *", description: "", slug: "user-field-label-last-name"
 Spree::PageContent.find_or_create_by! title: "Last Name can't be blank", description: "", slug: "user-error-msg-last-name"
 Spree::PageContent.find_or_create_by! title: "Day of Birth", description: "", slug: "user-field-label-birth-date"
@@ -94,7 +88,6 @@ Spree::PageContent.find_or_create_by! title: "My Messages", description: "", slu
 Spree::PageContent.find_or_create_by! title: "Support Centre", description: "", slug: "profile-nav-txt-support-centre"
 Spree::PageContent.find_or_create_by! title: "Logout", description: "", slug: "profile-nav-txt-logout"
 Spree::PageContent.find_or_create_by! title: "Logout Successfully", description: "", slug: "profile-nav-txt-msg-success-logout"
-
 Spree::PageContent.find_or_create_by! title: "Orders", description: "Lorem Ipsum is simply dummy text.", slug: "order-main-heading-desc"
 Spree::PageContent.find_or_create_by! title: "Order Details", description: "", slug: "order-sub-heading-order-details"
 Spree::PageContent.find_or_create_by! title: "Purchased on", description: "", slug: "order-purchased-on-label"
@@ -133,21 +126,32 @@ Spree::PageContent.find_or_create_by! title: "Gift Card", description: "", slug:
 Spree::PageContent.find_or_create_by! title: "VAT", description: "", slug: "order-vat-label"
 Spree::PageContent.find_or_create_by! title: "VAT Total", description: "", slug: "order-vat-total-label"
 Spree::PageContent.find_or_create_by! title: "Total inc. VAT", description: "", slug: "order-total-inc-vat-label"
-
-
 Spree::PageContent.find_or_create_by! title: "WishList", description: "Lorem Ipsum is simply dummy text.", slug: "wishlist-main-heading-desc"
 Spree::PageContent.find_or_create_by! title: "OFF", description: "", slug: "wishlist-label-off"
 Spree::PageContent.find_or_create_by! title: "Add to Cart", description: "", slug: "wishlist-btn-label-add-to-cart"
 Spree::PageContent.find_or_create_by! title: "Delete", description: "", slug: "wishlist-btn-label-delete"
 Spree::PageContent.find_or_create_by! title: "Some Error occured while wishlist product deletion", description: "", slug: "wishlist-error-msg-delete"
 Spree::PageContent.find_or_create_by! title: "Product is successfully deleted from wishlist", description: "", slug: "wishlist-success-msg-delete"
+Spree::PageContent.find_or_create_by! title: "Currently unable to add", description: "", slug: "wishlist-error-before-msg-add"
+Spree::PageContent.find_or_create_by! title: " to your wishlist.  Please try again", description: "", slug: "wishlist-error-after-msg-add"
+Spree::PageContent.find_or_create_by! title: "is successfully added to your Wishlist.", description: "", slug: "wishlist-success-msg-add"
 Spree::PageContent.find_or_create_by! title: "Temporarily out of Stock", description: "", slug: "wishlist-label-out-off-stock"
 Spree::PageContent.find_or_create_by! title: "In Stock", description: "", slug: "wishlist-label-in-stock"
-
-
 Spree::PageContent.find_or_create_by! title: "Load More", description: "", slug: "wishlist-btn-label-load-more"
 Spree::PageContent.find_or_create_by! title: "Back To Top", description: "", slug: "wishlist-btn-label-top"
-
-
-
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "wishlist-label-advertisement"
+Spree::PageContent.find_or_create_by! title: "Search for products, shops and more", description: "", slug: "header-label-search"
+Spree::PageContent.find_or_create_by! title: "Login", description: "", slug: "header-label-login"
+Spree::PageContent.find_or_create_by! title: "Register", description: "", slug: "header-label-register"
+Spree::PageContent.find_or_create_by! title: "Article 1", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magn", slug: "home-article-1"
+Spree::PageContent.find_or_create_by! title: "Article 2", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magn", slug: "home-article-2"
+Spree::PageContent.find_or_create_by! title: "Article 3", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magn", slug: "home-article-3"
+Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "home-advertisement"
+Spree::PageContent.find_or_create_by! title: "Things You Might Want To Know", description: "", slug: "footer-main-head-desc"
+Spree::PageContent.find_or_create_by! title: "Let's Connect", description: "", slug: "footer-sec-connect"
+Spree::PageContent.find_or_create_by! title: "Register My Store", description: "", slug: "footer-sec-lnk-register-store"
+Spree::PageContent.find_or_create_by! title: "Clothes", description: "", slug: "header-tabs-label-clothes"
+Spree::PageContent.find_or_create_by! title: "Stores", description: "", slug: "header-tabs-label-stores"
+Spree::PageContent.find_or_create_by! title: "Categories", description: "", slug: "header-tabs-label-categories"
+Spree::PageContent.find_or_create_by! title: "Sale", description: "", slug: "header-tabs-label-sale"
+
