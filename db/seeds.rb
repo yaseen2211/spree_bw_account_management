@@ -155,3 +155,26 @@ Spree::PageContent.find_or_create_by! title: "Stores", description: "", slug: "h
 Spree::PageContent.find_or_create_by! title: "Categories", description: "", slug: "header-tabs-label-categories"
 Spree::PageContent.find_or_create_by! title: "Sale", description: "", slug: "header-tabs-label-sale"
 
+
+Spree::PageContent.find_or_create_by! title: "We Specialise In", description: "", slug: "store-dtl-heading-speciality"
+Spree::PageContent.find_or_create_by! title: "You Can Find Us At:", description: "", slug: "store-dtl-heading-find-us"
+Spree::PageContent.find_or_create_by! title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", description: "", slug: "store-dtl-heading-follow-inst"
+
+Spree::PageContent.find_or_create_by! title: "Top Designs as Selected By The Designer", description: "", slug: "store-dtl-heading-top-design"
+Spree::PageContent.find_or_create_by! title: "View Entire Range", description: "", slug: "store-dtl-heading-view-entire"
+
+
+Spree::PageContent.find_or_create_by! title: "Opening Hours:", description: "", slug: "store-dtl-time-opn_hrs"
+Spree::PageContent.find_or_create_by! title: "Mon", description: "", slug: "store-dtl-time-mon"
+Spree::PageContent.find_or_create_by! title: "Tue", description: "", slug: "store-dtl-time-tue"
+Spree::PageContent.find_or_create_by! title: "Wed", description: "", slug: "store-dtl-time-wed"
+Spree::PageContent.find_or_create_by! title: "Thu", description: "", slug: "store-dtl-time-thu"
+Spree::PageContent.find_or_create_by! title: "Fri", description: "", slug: "store-dtl-time-fri"
+Spree::PageContent.find_or_create_by! title: "Sat", description: "", slug: "store-dtl-time-sat"
+Spree::PageContent.find_or_create_by! title: "Sun", description: "", slug: "store-dtl-time-sun"
+Spree::PageContent.find_or_create_by! title: "Public Holidays", description: "", slug: "store-dtl-time-pub-holiday"
+
+
+Spree::PageContent.find_or_create_by! title: "From", description: "", slug: "product-label-from"
+Spree::PageContent.find_or_create_by! title: "More Colours Available", description: "", slug: "product-label-more-colors"
+
