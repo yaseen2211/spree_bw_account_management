@@ -162,7 +162,11 @@ Spree::PageContent.find_or_create_by! title: "Lorem ipsum dolor sit amet, consec
 
 Spree::PageContent.find_or_create_by! title: "Top Designs as Selected By The Designer", description: "", slug: "store-dtl-heading-top-design"
 Spree::PageContent.find_or_create_by! title: "View Entire Range", description: "", slug: "store-dtl-heading-view-entire"
+Spree::PageContent.find_or_create_by! title: "Follow", description: "", slug: "store-dtl-heading-follow"
+Spree::PageContent.find_or_create_by! title: "Unfollow", description: "", slug: "store-dtl-heading-unfollow"
 
+Spree::PageContent.find_or_create_by! title: "An Introduction", description: "", slug: "store-dtl-heading-introduction"
+Spree::PageContent.find_or_create_by! title: "Articles Featuring The Designer", description: "", slug: "store-dtl-heading-article"
 
 Spree::PageContent.find_or_create_by! title: "Opening Hours:", description: "", slug: "store-dtl-time-opn_hrs"
 Spree::PageContent.find_or_create_by! title: "Mon", description: "", slug: "store-dtl-time-mon"
@@ -177,4 +181,6 @@ Spree::PageContent.find_or_create_by! title: "Public Holidays", description: "",
 
 Spree::PageContent.find_or_create_by! title: "From", description: "", slug: "product-label-from"
 Spree::PageContent.find_or_create_by! title: "More Colours Available", description: "", slug: "product-label-more-colors"
+
+
 
