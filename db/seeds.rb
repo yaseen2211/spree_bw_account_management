@@ -143,6 +143,7 @@ Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", s
 Spree::PageContent.find_or_create_by! title: "Search for products, shops and more", description: "", slug: "header-label-search"
 Spree::PageContent.find_or_create_by! title: "Login", description: "", slug: "header-label-login"
 Spree::PageContent.find_or_create_by! title: "Register", description: "", slug: "header-label-register"
+Spree::PageContent.find_or_create_by! title: "Language", description: "", slug: "header-label-language"
 Spree::PageContent.find_or_create_by! title: "Article 1", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magn", slug: "home-article-1"
 Spree::PageContent.find_or_create_by! title: "Article 2", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magn", slug: "home-article-2"
 Spree::PageContent.find_or_create_by! title: "Article 3", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magn", slug: "home-article-3"
@@ -154,20 +155,15 @@ Spree::PageContent.find_or_create_by! title: "Clothes", description: "", slug: "
 Spree::PageContent.find_or_create_by! title: "Stores", description: "", slug: "header-tabs-label-stores"
 Spree::PageContent.find_or_create_by! title: "Categories", description: "", slug: "header-tabs-label-categories"
 Spree::PageContent.find_or_create_by! title: "Sale", description: "", slug: "header-tabs-label-sale"
-
-
 Spree::PageContent.find_or_create_by! title: "We Specialise In", description: "", slug: "store-dtl-heading-speciality"
 Spree::PageContent.find_or_create_by! title: "You Can Find Us At:", description: "", slug: "store-dtl-heading-find-us"
 Spree::PageContent.find_or_create_by! title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", description: "", slug: "store-dtl-heading-follow-inst"
-
 Spree::PageContent.find_or_create_by! title: "Top Designs as Selected By The Designer", description: "", slug: "store-dtl-heading-top-design"
 Spree::PageContent.find_or_create_by! title: "View Entire Range", description: "", slug: "store-dtl-heading-view-entire"
 Spree::PageContent.find_or_create_by! title: "Follow", description: "", slug: "store-dtl-heading-follow"
 Spree::PageContent.find_or_create_by! title: "Unfollow", description: "", slug: "store-dtl-heading-unfollow"
-
 Spree::PageContent.find_or_create_by! title: "An Introduction", description: "", slug: "store-dtl-heading-introduction"
 Spree::PageContent.find_or_create_by! title: "Articles Featuring The Designer", description: "", slug: "store-dtl-heading-article"
-
 Spree::PageContent.find_or_create_by! title: "Opening Hours:", description: "", slug: "store-dtl-time-opn_hrs"
 Spree::PageContent.find_or_create_by! title: "Mon", description: "", slug: "store-dtl-time-mon"
 Spree::PageContent.find_or_create_by! title: "Tue", description: "", slug: "store-dtl-time-tue"
@@ -177,10 +173,16 @@ Spree::PageContent.find_or_create_by! title: "Fri", description: "", slug: "stor
 Spree::PageContent.find_or_create_by! title: "Sat", description: "", slug: "store-dtl-time-sat"
 Spree::PageContent.find_or_create_by! title: "Sun", description: "", slug: "store-dtl-time-sun"
 Spree::PageContent.find_or_create_by! title: "Public Holidays", description: "", slug: "store-dtl-time-pub-holiday"
-
-
 Spree::PageContent.find_or_create_by! title: "From", description: "", slug: "product-label-from"
 Spree::PageContent.find_or_create_by! title: "More Colours Available", description: "", slug: "product-label-more-colors"
+Spree::PageContent.find_or_create_by! title: "Categories", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt", slug: "home-label-categories-head_desc"
+Spree::PageContent.find_or_create_by! title: "Latest on Black-Line", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt", slug: "home-label-latest-products"
+Spree::PageContent.find_or_create_by! title: "Visit our stores", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt", slug: "home-label-stores-heading-desc"
+Spree::PageContent.find_or_create_by! title: "No Store(s) Found", description: "", slug: "general-label-no-stores"
+Spree::PageContent.find_or_create_by! title: "No Product(s) Found", description: "", slug: "general-label-no-products"
+Spree::PageContent.find_or_create_by! title: "Are you sure", description: "", slug: "general-label-sure?"
+Spree::PageContent.find_or_create_by! title: "Out of Stock", description: "", slug: "general-label-out-of-stock"
+Spree::PageContent.find_or_create_by! title: "Add to cart", description: "", slug: "general-label-add-to-cart"
 
 
 
