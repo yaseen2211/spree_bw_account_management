@@ -1,19 +1,28 @@
 <% lang = I18n.locale %>
+<% @user_wishlist_products = (spree_current_user.present? && spree_current_user.wishlists.present?) ?  spree_current_user.wishlists.first.wished_products : "" %>
+
 <% if @wished_product.errors.any? %>
-	$('#wishlist-info-sec').html("<p><%= Spree::PageContent.from_gen_slug('wishlist-error-msg').spec_slug('wishlist-error-msg-delete').last.try(:title) %></p><br><p><%= @wished_product.errors.messages%></p>")
-	$('#wishlist-info-sec').addClass("alert-danger")
-	$('#wishlist-info-sec').removeClass('hide alert-success')
+	$('#js-messages').html("<p><%= Spree::PageContent.from_gen_slug('wishlist-error-msg').spec_slug('wishlist-error-msg-delete').last.try(:title) %></p><br><p><%= @wished_product.errors.messages%></p>")
+	$('#js-messages').addClass("alert-danger")
+	$('#js-messages').removeClass('hide alert-success')
 <% else %>
 	var html = "<%= j render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/account_management/wishlist_collection", locals: {wishlist: spree_current_user.wishlists.first} %>"
 	$("#user-"+ <%= spree_current_user.id %> + "-wishlist-section").html(html);
-	$('#wishlist-info-sec').html("<p><%= Spree::PageContent.from_gen_slug('wishlist-success-msg').spec_slug('wishlist-success-msg-delete').last.try(:title) %></p>")
-	$('#wishlist-info-sec').addClass("alert-success")
-	$('#wishlist-info-sec').removeClass('hide alert-danger')
+	$('#js-messages').html("<p><%= Spree::PageContent.from_gen_slug('wishlist-success-msg').spec_slug('wishlist-success-msg-delete').last.try(:title) %></p>")
+	$('#js-messages').addClass("alert-success")
+	$('#js-messages').removeClass('hide alert-danger')
 	
 <% end %>
 $('html, body').animate({
-  scrollTop: $("#wishlist-info-sec").offset().top
+  scrollTop: $("#js-messages").offset().top
 }, 2000);
+
+$('#product_wished_or_not_sec_' + "<%= @wished_product.variant.product.id %>").html("<%= escape_javascript render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/shared/product_wished_section", locals: { user_wishlist_products: @user_wishlist_products,product:@wished_product.variant.product } %>");
+<% if params[:view_from].present? && params[:view_from] == "cart_page" %>
+	setTimeout(location.reload.bind(location), 3000);
+<% end %>
+
+
 
 
 

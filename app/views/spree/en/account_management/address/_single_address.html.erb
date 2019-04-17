@@ -62,7 +62,7 @@
 
           <div class="elit-dd text-center manag-input">
             <%#= link_to delete_address_btn.try(:title) ,address_path(form.object), 'data-method' => :delete, :class => "ress-btn-delet",:data => {:confirm => 'Are you sure?'},:remote => true%> 
-              <button class="ress-btn-delete" data-toggle="modal" data-target="#Delete_confirm_modal_<%=form_obj.persisted? ? form_obj.id : 'new'%>">DELETE</button>
+              <button type="button" class="ress-btn-delete" data-toggle="modal" data-target="#Delete_confirm_modal_<%=form_obj.persisted? ? form_obj.id : 'new'%>">DELETE</button>
              <%#= form.submit form.object.persisted? ? update_address_btn.try(:title) : save_address_btn.try(:title)  , :class => 'ress-btn-save'%>
              <button class="ress-btn-save">SAVE</button>
           </div>
@@ -92,9 +92,9 @@
                  <div class="clearfix"></div>
                     <div class="add-rev-btns pop-add-btns">
                    <button class="cancel-btn" data-dismiss="modal">Cancel</button>
-                   <%= link_to delete_address_btn.try(:title) ,address_path(form.object), 'data-method' => :delete, :class => "sub-btn-add",:data => {:confirm => 'Are you sure?'},:remote => true%> 
 
-                   <!-- <button class="sub-btn-add">Delete</button> -->
+                   <a  href="<%= address_path(form.object) %>" data-confirm="Are you sure?" data-method="delete" data-remote="true"><button style="background: #ecb68f !important; color: #000 !important; border: 1px;" ><%= delete_address_btn.try(:title)  %></button></a>
+
                    </div>      
                     </div>
                   </div>

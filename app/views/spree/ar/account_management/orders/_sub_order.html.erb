@@ -9,8 +9,8 @@
         <% if  order.shipments.any? %>
           <% order.shipments.each do |ship| %>
             <ul class="col-lg-6 col-md-6 col-sm-6 p-0 ab-rht">
-              <li><% ship.shipped_at.present? ? " ﻝﺪﺳُﺍﻭ ﺽﺭﻷﺍ" + ship.shipped_at.strftime("%e/%m/%Y") : "" %></li>
-              <li class="he_ad_bold_2"> <% ship.tracking.present? ? " ﻦﻴﺣ ﻥﺃ" + ship.tracking.to_s : "" %></li>
+              <li><%= ship.shipped_at.present? ? " ﻝﺪﺳُﺍﻭ ﺽﺭﻷﺍ" + ship.shipped_at.strftime("%e/%m/%Y") : "" %></li>
+              <li class="he_ad_bold_2"> <%= ship.tracking.present? ? " ﻦﻴﺣ ﻥﺃ" + ship.tracking.to_s : "" %></li>
             </ul>
           <% end %>
         <% end %>
@@ -22,23 +22,23 @@
       </div>
 
 
-      <ul class="ress">
-        <li class="bd_green">
-        <%= image_tag "recieved-icon-green.png", alt: "" %>
-        <br><font>>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
-        <li class="divid_line">
-        <%= image_tag "divider-line.png", alt: "" %>
-        </li>
-        <li class="bd_green">
-        <%= image_tag "progress-icon-black-green.png", alt: "" %>
-        <br><font>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
-        <li class="divid_line">
-        <%= image_tag "divider-line.png", alt: "" %>
-        </li>
-        <li class="bd_green">
-        <%= image_tag "deliverd-icon-green.png", alt: "" %>
-        <br><font>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
-      </ul>
+        <ul class="ress">
+          <li class="bd_green">
+          <%= image_tag "recieved-icon-green.png", alt: "" %>
+          <br><font>>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
+          <li class="divid_line">
+          <%= image_tag "divider-line.png", alt: "" %>
+          </li>
+          <li class="bd_green">
+          <%= image_tag "progress-icon-black-green.png", alt: "" %>
+          <br><font>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
+          <li class="divid_line">
+          <%= image_tag "divider-line.png", alt: "" %>
+          </li>
+          <li class="<%= (order.complete? && order.shipped?) ? 'bd_green' : '' %>">
+          <%= image_tag (order.complete? && order.shipped?) ? 'deliverd-icon-green.png' : 'deliverd-icon-grey.png', alt: "" %>
+          <br><font>ﺔﻳﺪﻴﻠﻘﺘﻟﺍ ﻦﻔﺴﻟ</font></li>
+        </ul>
 
 
 
