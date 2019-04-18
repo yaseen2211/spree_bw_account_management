@@ -37,53 +37,100 @@
   <% user_country  = user_fields_contents.spec_slug('user-field-label-country').last%>
   <% user_password = user_fields_contents.spec_slug('user-field-label-password').last%>
   <% user_password_confirm = user_fields_contents.spec_slug('user-field-label-password-confirmation').last%>
-
-  <% Globalize.with_locale (I18n.locale) do %> 
-
-    <div class="form-row" data-hook="signup_inside_form" id="password-credentials">
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-        <label for="validationCustom01"><%= user_first_name.try(:title)%> </label>
-        <%= f.text_field :first_name, :class => 'form-control', :placeholder => "", id: "validationCustom01", required: true%>       
-      </div>
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-        <label for="validationCustom02"><%= user_last_name.try(:title)%> </label>
-        <%= f.text_field :last_name, :class => 'form-control', :placeholder =>"", id: "validationCustom02"  , required: true%>     
-      </div>
-
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-        <label for="validationCustom02"><%= user_email.try(:title) %> </label>
-        <%= f.email_field :email, :class => 'form-control', :placeholder => "",id: "validationCustom02" , required: true %>      
-      </div>
-
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-        <label for="validationCustom02"><%= user_email_confirmation.try(:title)%> </label>
-        <%= f.email_field :email_confirmation, :class => 'form-control', :placeholder => "", id: "validationCustom02" , required: true %>   
-      </div>
-
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-        <label for="validationCustom02"><%= user_password.try(:title) %> </label>
-        <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>       
-      </div>
-
-      <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
-        <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
-          
-          <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", id: "validationCustom02"}%> 
-        </div>
-        <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
-          <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", id: "validationCustom02"}%>    
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
-
-      <%= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
-    </div>
+  <% Globalize.with_locale (I18n.locale) do %>
+    <% if (params[:controller] == "spree/checkout") && (params[:action] == "registration") %>
     
+      <%= form_for Spree::User.new, :as => :spree_user, :url => spree.registration_path, html: {:novalidate => true, class: "needs-validation news_frm my-frm-rgi"} do |f| %>
+
+        <div class="form-row" data-hook="signup_inside_form" id="password-credentials">
+          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+            <label for="validationCustom01"><%= user_first_name.try(:title)%> </label>
+            <%= f.text_field :first_name, :class => 'form-control', :placeholder => "", id: "validationCustom01", required: true%>       
+          </div>
+          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+            <label for="validationCustom02"><%= user_last_name.try(:title)%> </label>
+            <%= f.text_field :last_name, :class => 'form-control', :placeholder =>"", id: "validationCustom02"  , required: true%>     
+          </div>
+
+          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+            <label for="validationCustom02"><%= user_email.try(:title) %> </label>
+            <%= f.email_field :email, :class => 'form-control', :placeholder => "",id: "validationCustom02" , required: true %>      
+          </div>
+
+          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+            <label for="validationCustom02"><%= user_email_confirmation.try(:title)%> </label>
+            <%= f.email_field :email_confirmation, :class => 'form-control', :placeholder => "", id: "validationCustom02" , required: true %>   
+          </div>
+
+          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+            <label for="validationCustom02"><%= user_password.try(:title) %> </label>
+            <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>       
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
+            <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
+              
+              <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", id: "validationCustom02"}%> 
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
+              <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", id: "validationCustom02"}%>    
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
+
+          <%= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
+        </div>
+
+      <% end %>
+
+    <% else %>
+
+      <div class="form-row" data-hook="signup_inside_form" id="password-credentials">
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom01"><%= user_first_name.try(:title)%> </label>
+          <%= f.text_field :first_name, :class => 'form-control', :placeholder => "", id: "validationCustom01", required: true%>       
+        </div>
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom02"><%= user_last_name.try(:title)%> </label>
+          <%= f.text_field :last_name, :class => 'form-control', :placeholder =>"", id: "validationCustom02"  , required: true%>     
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom02"><%= user_email.try(:title) %> </label>
+          <%= f.email_field :email, :class => 'form-control', :placeholder => "",id: "validationCustom02" , required: true %>      
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom02"><%= user_email_confirmation.try(:title)%> </label>
+          <%= f.email_field :email_confirmation, :class => 'form-control', :placeholder => "", id: "validationCustom02" , required: true %>   
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom02"><%= user_password.try(:title) %> </label>
+          <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>       
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
+          <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
+            
+            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", id: "validationCustom02"}%> 
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
+            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", id: "validationCustom02"}%>    
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
+
+        <%= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
+      </div>
+    <% end %>
   <% end %>
   <div data-hook="signup_below_password_fields"></div>
-  
 <% end %>
 
