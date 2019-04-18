@@ -151,6 +151,17 @@ Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", s
 Spree::PageContent.find_or_create_by! title: "Things You Might Want To Know", description: "", slug: "footer-main-head-desc"
 Spree::PageContent.find_or_create_by! title: "Let's Connect", description: "", slug: "footer-sec-connect"
 Spree::PageContent.find_or_create_by! title: "Register My Store", description: "", slug: "footer-sec-lnk-register-store"
+Spree::PageContent.find_or_create_by! title: "About Us", description: "", slug: "footer-sec-lnk-about-us"
+Spree::PageContent.find_or_create_by! title: "Gift Cards", description: "", slug: "footer-sec-lnk-gift-cards"
+Spree::PageContent.find_or_create_by! title: "Personal Service", description: "", slug: "footer-sec-lnk-personal-service"
+Spree::PageContent.find_or_create_by! title: "Delivery", description: "", slug: "footer-sec-lnk-delivery"
+Spree::PageContent.find_or_create_by! title: "Exchanges and Returns", description: "", slug: "footer-sec-lnk-exchange-returns"
+Spree::PageContent.find_or_create_by! title: "Security", description: "", slug: "footer-sec-lnk-security"
+Spree::PageContent.find_or_create_by! title: "Terms and Conditions", description: "", slug: "footer-sec-lnk-terms"
+Spree::PageContent.find_or_create_by! title: "Privacy Policy", description: "", slug: "footer-sec-lnk-privacy"
+Spree::PageContent.find_or_create_by! title: "Cookie Policy", description: "", slug: "footer-sec-lnk-cookie"
+Spree::PageContent.find_or_create_by! title: "Support", description: "", slug: "footer-sec-lnk-support"
+Spree::PageContent.find_or_create_by! title: "FAQ's", description: "", slug: "footer-sec-lnk-faqs"
 Spree::PageContent.find_or_create_by! title: "Clothes", description: "", slug: "header-tabs-label-clothes"
 Spree::PageContent.find_or_create_by! title: "Stores", description: "", slug: "header-tabs-label-stores"
 Spree::PageContent.find_or_create_by! title: "Categories", description: "", slug: "header-tabs-label-categories"
@@ -183,6 +194,3 @@ Spree::PageContent.find_or_create_by! title: "No Product(s) Found", description:
 Spree::PageContent.find_or_create_by! title: "Are you sure", description: "", slug: "general-label-sure?"
 Spree::PageContent.find_or_create_by! title: "Out of Stock", description: "", slug: "general-label-out-of-stock"
 Spree::PageContent.find_or_create_by! title: "Add to cart", description: "", slug: "general-label-add-to-cart"
-
-
-
