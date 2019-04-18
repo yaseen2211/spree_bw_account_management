@@ -17,14 +17,13 @@ $('html, body').animate({
   scrollTop: $("#js-messages").offset().top
 }, 2000);
 
+
 $('#product_wished_or_not_sec_' + "<%= @wished_product.variant.product.id %>").html("<%= escape_javascript render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/shared/product_wished_section", locals: { user_wishlist_products: @user_wishlist_products,product:@wished_product.variant.product } %>");
 <% if params[:view_from].present? && params[:view_from] == "cart_page" %>
 	setTimeout(location.reload.bind(location), 3000);
 <% end %>
 
-
-
-
+$("#wishlist-count").html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
 
 
 

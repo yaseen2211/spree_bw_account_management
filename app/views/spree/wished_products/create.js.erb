@@ -5,14 +5,12 @@
 <% wishlist_error_after_msg_content  = wishlist_error_content.spec_slug('wishlist-error-after-msg-add').last %>
 <% @user_wishlist_products = (spree_current_user.present? && spree_current_user.wishlists.present?) ?  spree_current_user.wishlists.first.wished_products : "" %>
 
-
 <% Globalize.with_locale (I18n.locale) do %>
 	<% if @wished_product.errors.blank? %>
 		$('#js-messages').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p><%= @wished_product.variant.name.to_s%> <%= wishlist_add_success_msg_content.try(:title) %></p>")
 		$('#js-messages').addClass("alert-success")
 		$('#js-messages').removeClass('hide alert-danger')
 		$('#wishlist_confirm_modal').modal('hide');
-
 
 	<% else %>
 		$('#js-messages').html("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p> <%= wishlist_error_before_msg_content.try(:title)%> <%= @wished_product.variant.name %> <%= wishlist_error_after_msg_content.try(:title) %></p>")
@@ -23,6 +21,7 @@
 
 
 $('#product_wished_or_not_sec_' + "<%= @wished_product.variant.product.id %>").html("<%= escape_javascript render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/shared/product_wished_section", locals: { user_wishlist_products: @user_wishlist_products,product:@wished_product.variant.product } %>");
+
 $('html, body').animate({
   scrollTop: $("#js-messages").offset().top
 }, 2000);
@@ -30,3 +29,5 @@ $('html, body').animate({
 <% if (params[:view_from].present?) && ( (params[:view_from] == "product_page") || (params[:view_from] == "cart_page")) %>
 	setTimeout(location.reload.bind(location), 3000);
 <% end %>
+
+$("#wishlist-count").html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
