@@ -45,17 +45,18 @@
       
       <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
         <label for="validationCustom02"><%= user_email.try(:title) %></label>
-        <%= f.email_field :email, :class => 'form-control', :placeholder => "",id: "validationCustom02" , required: true %>    
+        <%= f.email_field :email, :class => 'form-control user_email', :placeholder => "",id: "validationCustom02" , required: true %>
       </div>
       
       <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
         <label for="validationCustom02"><%= user_email_confirmation.try(:title)%></label>
-        <%= f.email_field :email_confirmation, :class => 'form-control', :placeholder => "", id: "validationCustom02" , required: true %>
+        <%= f.email_field :email_confirmation, :class => 'form-control confirm_user_email', :placeholder => "", id: "validationCustom02" , required: true %>
+        <span style="color: red;" class="email_error"></span>
       </div>
       
       <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
         <label for="validationCustom02"><%= user_password.try(:title) %></label>
-        <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>      
+        <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>
       </div>
       
       <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
@@ -80,3 +81,19 @@
   
 <% end %>
 
+<script>
+    $( ".confirm_user_email" ).focusout(function( event ) {
+        if ($('.user_email').val() != $('.confirm_user_email').val()) {
+            $(".user_email").attr("style","border: 1px solid red");
+            $(".confirm_user_email").attr("style","border: 1px solid red");
+            $('.email_error').html('').append('email is not equal to confirm email');
+            $('.btn-sub-frm').attr("disabled", true);
+        }
+        else {
+            $(".user_email").css("border","");
+            $(".confirm_user_email").css("border","");
+            $('.email_error').html('');
+            $('.btn-sub-frm').attr("disabled", false);
+        }
+    });
+</script>
