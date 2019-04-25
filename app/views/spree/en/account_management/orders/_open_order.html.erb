@@ -35,14 +35,11 @@
         <div class="col-md-12 col-lg-12">
         <div class="col-md-9 col-lg-9">
           <% main_order.line_items.each_with_index do |item, index| %>
-            <div class="col-lg-9 col-md-9 col-sm-9 p-0">
               <% if item.variant.images.length == 0 %>
                 <%= link_to small_image(item.variant.product), item.variant.product %>
               <% else %>
                 <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
               <% end %>
-            </div>
-             <br><br>
           <% end %>
         </div>
         <div class="col-md-3 col-lg-3">

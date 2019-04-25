@@ -1,7 +1,14 @@
 <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-
+<style>
+  .glyphicon-remove,.help-block{
+    color: red;
+  }
+  .glyphicon-ok {
+    color: green;
+  }
+</style>
 <% if spree_current_user.present? && (params[:action].present? && params[:action] != "new") %>
 
   
@@ -87,20 +94,57 @@
   <div data-hook="signup_below_password_fields"></div>
   
 <% end %>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
 <script>
-    $( ".confirm_user_email" ).focusout(function( event ) {
-        if ($('.user_email').val() != $('.confirm_user_email').val()) {
-            $(".user_email").attr("style","border: 1px solid red");
-            $(".confirm_user_email").attr("style","border: 1px solid red");
-            $('.email_error').html('').append('email is not equal to confirm email');
-            $('.btn-sub-frm').attr("disabled", true);
-        }
-        else {
-            $(".user_email").css("border","");
-            $(".confirm_user_email").css("border","");
-            $('.email_error').html('');
-            $('.btn-sub-frm').attr("disabled", false);
-        }
+    $(document).ready(function() {
+
+        $('#new_spree_user').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                'spree_user[email]': {
+                    validators: {
+                        identical: {
+                            field: 'spree_user[email_confirmation]',
+                            message: '<span style="color: red;">The email and its confirm email are not the match</span>'
+                        }
+                    }
+                },
+                'spree_user[email_confirmation]': {
+                    validators: {
+                        identical: {
+                            field: 'spree_user[email]',
+                            message: '<span style="color: red;">The email and its confirm  emailare not the match</span>'
+                        }
+                    }
+                }
+            }
+        });
+        $('.btn-sub-frm').attr("disabled", true);
+
+        $('.btn-sub-frm').on('click',function () {
+            setTimeout(
+                function()
+                {
+                    $('.glyphicon').hide();
+                }, 1000);
+        });
+        $( "input,textarea,select" ).focusout(function( event ) {
+            let isValid = true;
+            $('input,textarea,select').filter('[required]:visible').each(function() {
+                if ( $(this ).val() === '' )
+                    isValid = false
+            });
+            if (isValid == false){
+                $('.btn-sub-frm').attr("disabled", true);
+            }else {
+                $('.btn-sub-frm').attr("disabled", false);
+            }
+
+        });
     });
+
 </script>

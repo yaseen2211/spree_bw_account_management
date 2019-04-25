@@ -10,13 +10,13 @@
 
 	      <%= link_to(image_tag(main_app.url_for(store.logo_image), height: "100", width: "100") , vendor_path(store.id)) %>
 	    <% else %>
-	      <%= link_to image_tag("store-logo-1.png", :alt => "Store Logo"), vendor_path(store.id) %>
+	      <%= link_to image_tag("store-logo-1.png", :alt => "Store Logo"), vendor_path(store.name) %>
 
 	    <% end %>
 	    <br>
 	    <br>
 
-	    <%= link_to  @store_unfollow_content.try(:title) , vendor_follower_path(store.id), method: :delete, remote: true, class: "btn btn-danger btn-small", :data => {:confirm => 'Are you sure?'}  %>
+	    <%= link_to  @store_unfollow_content.try(:title) , vendor_follower_path(store.name), method: :delete, remote: true, class: "btn btn-danger btn-small", :data => {:confirm => 'Are you sure?'}  %>
 
 	  </div>
 	<% end %>
