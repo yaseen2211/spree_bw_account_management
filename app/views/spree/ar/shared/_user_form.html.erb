@@ -2,8 +2,6 @@
 
 <% if spree_current_user.present? && (params[:action].present? && params[:action] != "new") %>
 
-  
-
   <% if params[:partial].present? %>
 
     <% if params[:with_form].present? %>
@@ -22,7 +20,6 @@
   <% end %>
 
 <% else %>
-
 
   <% user_contents        = Spree::PageContent.from_gen_slug('user') %>
   <% user_fields_contents = user_contents.from_gen_slug('user-field') %>
