@@ -8,7 +8,7 @@
   <% order_itmes = order.sub_orders.any? ? order.sub_orders.map(&:line_items) : order.line_items %>
   
   <li><font class="pull-right"><%= @order_detail_items.try(:title) %></font><font class="pull-left"> <%= order_itmes.count %></font></li>
-<!--  <li>ﺫﺇ ,ﺀﺍﺰﺟﺃ ﺲﻧﻮﺗ ﻦﻴﺣ ﻥﺃ</li>-->
+  <li>ﺫﺇ ,ﺀﺍﺰﺟﺃ ﺲﻧﻮﺗ ﻦﻴﺣ ﻥﺃ</li>
   <% if order.has_step?("payment") && (order.state == "complete") %>
     <li>
       <font class="pull-right"><%= @order_payment_method_label.try(:title) %></font><font class="pull-left"><%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %></font>

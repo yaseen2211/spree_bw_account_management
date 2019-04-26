@@ -4,7 +4,7 @@
   <li><%= @order_purchased_on_label.try(:title) %>: <%= order.created_at.strftime("%e/%m/%Y") %></li>
   <% order_itmes = order.sub_orders.any? ? order.sub_orders.map(&:line_items) : order.line_items %>
   <li><%= @order_detail_items.try(:title) %>: <%= order_itmes.count %></li>
-<!--  <li>Personalised: 2</li>-->
+  <li>Personalised: 2</li>
   <% if order.has_step?("payment") && (order.state == "complete") %>
     <li>
       <%= @order_payment_method_label.try(:title) %>:  <%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %>
