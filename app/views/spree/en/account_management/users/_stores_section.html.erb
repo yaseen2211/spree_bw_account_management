@@ -16,7 +16,7 @@
 	    <br>
 	    <br>
 
-	    <%= link_to  @store_unfollow_content.try(:title) , vendor_follower_path(store.name), method: :delete, remote: true, class: "btn btn-danger btn-small", :data => {:confirm => 'Are you sure?'}  %>
+	    <%= link_to  @store_unfollow_content.try(:title) , vendor_follower_path(store.id), method: :delete, remote: true, class: "btn btn-danger btn-small", :data => {:confirm => 'Are you sure?'}  %>
 
 	  </div>
 	<% end %>
