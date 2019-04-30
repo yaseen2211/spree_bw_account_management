@@ -54,6 +54,13 @@
                 <% else %>
                   <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
                 <% end %>
+
+                <% if item.personalized_info.present? %>
+                  <br>
+                  <br>
+                  <%= image_tag "arw-icon.png" %>
+                <% end %>
+            
               </div>
 
 
