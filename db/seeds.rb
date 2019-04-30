@@ -163,6 +163,7 @@ Spree::PageContent.find_or_create_by! title: "Cookie Policy", description: "", s
 Spree::PageContent.find_or_create_by! title: "Support", description: "", slug: "footer-sec-lnk-support"
 Spree::PageContent.find_or_create_by! title: "FAQ's", description: "", slug: "footer-sec-lnk-faqs"
 Spree::PageContent.find_or_create_by! title: "Clothes", description: "", slug: "header-tabs-label-clothes"
+Spree::PageContent.find_or_create_by! title: "Home", description: "", slug: "header-tabs-label-home"
 Spree::PageContent.find_or_create_by! title: "Stores", description: "", slug: "header-tabs-label-stores"
 Spree::PageContent.find_or_create_by! title: "Categories", description: "", slug: "header-tabs-label-categories"
 Spree::PageContent.find_or_create_by! title: "Sale", description: "", slug: "header-tabs-label-sale"

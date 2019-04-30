@@ -54,6 +54,13 @@
                 <% else %>
                   <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
                 <% end %>
+
+                <% if item.personalized_info.present? %>
+                  <br>
+                  <br>
+                  <%= image_tag "arw-icon.png" %>
+                <% end %>
+            
               </div>
 
 
@@ -154,7 +161,7 @@
                         <div class="modal-body">
                         
                           <div class="review_da">
-                            <p>Thank you for leaving a review for the  (<%=item.name%>)you purchased on  (<%= order.created_at.strftime("%e/%m/%Y")%>)</p>
+                            <p>Thank you for leaving a review for the  <%=item.name%> you purchased on  <%= order.created_at.strftime("%e/%m/%Y")%></p>
                             <%= render partial: "spree/en/account_management/review", locals: {review: Spree::Review.new(product:product), product: product}%>
                           </div>
                         </div>

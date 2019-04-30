@@ -5,10 +5,9 @@
 <div class="col-lg-3 col-md-3 col-sm-3" >
 
   <%# if store.logo_image.attached? %>
-
-    <%#= link_to(image_tag(main_app.url_for(store.logo_image), height: "100", width: "100") , vendor_path(store.id)) %>
-  <%# else %>
-    <%#= link_to image_tag("store-logo-1.png", :alt => "Store Logo"), vendor_path(store.id) %>
+	      <%= link_to(image_tag(main_app.url_for(store.logo_image), height: "100", width: "100") , vendor_path(store.slug)) %>
+	    <% else %>
+	      <%= link_to image_tag("store-logo-1.png", :alt => "Store Logo"), vendor_path(store.slug) %>
 
   <%# end %>
   <br>
@@ -26,9 +25,9 @@
 <li class="col-lg-3 col-md-3 col-sm-3 amet-pt">
 	
 	<% if store.logo_image.attached? %>
-	  <%= link_to(image_tag(main_app.url_for(store.logo_image), height: "100", width: "100") , vendor_path(store.id)) %>
+	  <%= link_to(image_tag(main_app.url_for(store.logo_image), height: "100", width: "100") , vendor_path(store.slug)) %>
 	  <% else %>
-	  <%= link_to image_tag("store-logo-1.png", :alt => "Store Logo"), vendor_path(store.id) %>
+	  <%= link_to image_tag("store-logo-1.png", :alt => "Store Logo"), vendor_path(store.slug) %>
 	<% end %>
   <p><%= truncate(store.about_us, length: 50) %></p><br>
   
