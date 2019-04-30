@@ -1,4 +1,3 @@
-
 <% if spree_current_user.present? && (params[:action].present? && params[:action] != "new") %>
   <% if params[:partial].present? %>
     <% if params[:with_form].present? %>
@@ -138,7 +137,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
 <script>
-  $(document).ready(function() {
+  $( document ).ready(function() {
 
     $('#new_spree_user').bootstrapValidator({
         feedbackIcons: {
@@ -149,25 +148,23 @@
         fields: {
             'spree_user[email]': {
                 validators: {
-                    identical: {
-                        field: 'spree_user[email_confirmation]',
-                        message: '<span style="color: red;">The email and its confirm email are not the match</span>'
-                    },
                     regexp: {
                         regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         message: 'Invalid email format'
+                    },identical: {
+                        field: 'spree_user[email_confirmation]',
+                        message: '<span style="color: red;">The email and its confirm email are not the match</span>'
                     }
                 }
             },
             'spree_user[email_confirmation]': {
                 validators: {
-                    identical: {
-                        field: 'spree_user[email]',
-                        message: '<span style="color: red;">The email and its confirm  emailare not the match</span>'
-                    },
                     regexp: {
                         regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         message: 'Invalid email format'
+                    },identical: {
+                        field: 'spree_user[email]',
+                        message: '<span style="color: red;">The email and its confirm  emailare not the match</span>'
                     }
                 }
             }
@@ -184,14 +181,15 @@
     });
     $( "input,textarea,select" ).focusout(function( event ) {
         let isValid = true;
-        $('input,textarea,select').filter('[required]:visible').each(function() {
-            if ( $(this ).val() === '' )
+        $('input,textarea,select').filter('[required]:visible').each(function () {
+            if ($(this).val() === '')
                 isValid = false
         });
-        if (isValid == false){
+        if (isValid == false) {
             $('.btn-sub-frm').attr("disabled", true);
-        }else {
+        } else {
             $('.btn-sub-frm').attr("disabled", false);
         }
-
+    })
+  });
 </script>
