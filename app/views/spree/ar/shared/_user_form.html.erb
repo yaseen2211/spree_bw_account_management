@@ -129,68 +129,56 @@
   <div data-hook="signup_below_password_fields"></div>
 <% end %>
 
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
 
-<style>
-  .glyphicon-remove,.help-block{
-    color: red;
-  }
-  .glyphicon-ok {
-    color: green;
-  }
-</style>
-
-
-<script>
-  $(document).ready(function() {
-
-    $('#new_spree_user').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            'spree_user[email]': {
-                validators: {
-                    identical: {
-                        field: 'spree_user[email_confirmation]',
-                        message: '<span style="color: red;">The email and its confirm email are not the match</span>'
-                    }
-                }
-            },
-            'spree_user[email_confirmation]': {
-                validators: {
-                    identical: {
-                        field: 'spree_user[email]',
-                        message: '<span style="color: red;">The email and its confirm  emailare not the match</span>'
-                    }
-                }
-            }
-        }
-    });
-    $('.btn-sub-frm').attr("disabled", true);
-
-    $('.btn-sub-frm').on('click',function () {
-        setTimeout(
-            function()
-            {
-                $('.glyphicon').hide();
-            }, 1000);
-    });
-    $( "input,textarea,select" ).focusout(function( event ) {
-        let isValid = true;
-        $('input,textarea,select').filter('[required]:visible').each(function() {
-            if ( $(this ).val() === '' )
-                isValid = false
-        });
-        if (isValid == false){
-            $('.btn-sub-frm').attr("disabled", true);
-        }else {
-            $('.btn-sub-frm').attr("disabled", false);
-        }
-
-    });
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#new_spree_user').bootstrapValidator({
+      feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+          'spree_user[email]': {
+              validators: {
+                  identical: {
+                      field: 'spree_user[email_confirmation]',
+                      message: '<span style="color: red;">The email and confirm email are not the match</span>'
+                  }
+              }
+          },
+          'spree_user[email_confirmation]': {
+              validators: {
+                  identical: {
+                      field: 'spree_user[email]',
+                      message: '<span style="color: red;">The email and its confirm email are not the match</span>'
+                  }
+              }
+          }
+      }
   });
-
+  $('.btn-sub-frm').attr("disabled", true);
+  $('.btn-sub-frm').on('click',function () {
+      setTimeout(
+          function()
+          {
+              $('.glyphicon').hide();
+          }, 1000);
+  });
+   $( "input,textarea,select" ).focusout(function( event ) {
+       let isValid = true;
+       $('input,textarea,select').filter('[required]:visible').each(function() {
+           if ( $(this ).val() === '' )
+               isValid = false
+       });
+       if (isValid == false){
+           $('.btn-sub-frm').attr("disabled", true);
+       }else {
+           $('.btn-sub-frm').attr("disabled", false);
+       }
+    });
+});
 </script>
