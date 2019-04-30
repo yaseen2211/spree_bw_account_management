@@ -35,10 +35,10 @@ Spree::User.class_eval do
       self.roles << (Spree::Role.find_or_create_by! name: "user")
     end
     
-    if self.has_spree_role?("SHOP OWNER")
+    if self.has_spree_role?("Shop Owner")
       reset_passowrd_for_vendor
     else
-    Spree::UserMailer.welcome(self).deliver_now
+      Spree::UserMailer.welcome(self).deliver_now
     end
   end
 
