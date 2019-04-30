@@ -10,6 +10,7 @@
 <% wishlist_del_btn               = wishlist_btn_label_content.spec_slug('wishlist-btn-label-delete').last%>
 <% wishlist_in_stock_label        = wishlist_label_contents.spec_slug('wishlist-label-in-stock').last%>
 
+<% personalization_properties = product.product_properties.map(&:property).select{|s|s.name.to_i > 0}.uniq %>  
 
 <% Globalize.with_locale (I18n.locale) do %> 
 
@@ -80,7 +81,9 @@
           <% if variant.on_sale? %>
             <span class="nw-lab-wis">للبيع</span>
           <% end %>
-          <%= image_tag "progress-icon-black.png",class: "mark-b", alt: "" %>
+          <% if personalization_properties.present? %>
+            <%= image_tag "progress-icon-black.png",class: "mark-b", alt: "" %>
+          <% end %>
       </div>
     </div>
   </div>
