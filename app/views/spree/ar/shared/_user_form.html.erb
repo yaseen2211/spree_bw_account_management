@@ -2,8 +2,6 @@
 
 <% if spree_current_user.present? && (params[:action].present? && params[:action] != "new") %>
 
-  
-
   <% if params[:partial].present? %>
 
     <% if params[:with_form].present? %>
@@ -22,7 +20,6 @@
   <% end %>
 
 <% else %>
-
 
   <% user_contents        = Spree::PageContent.from_gen_slug('user') %>
   <% user_fields_contents = user_contents.from_gen_slug('user-field') %>
@@ -132,8 +129,6 @@
   <div data-hook="signup_below_password_fields"></div>
 <% end %>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
-
 <style>
   .glyphicon-remove,.help-block{
     color: red;
@@ -143,6 +138,7 @@
   }
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
 
 <script>
   $(document).ready(function() {
@@ -201,8 +197,5 @@
         }else {
             $('.btn-sub-frm').attr("disabled", false);
         }
-
-    });
-  });
 
 </script>

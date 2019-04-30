@@ -30,7 +30,7 @@
                 <li>Order Number: (<%=@order.number%>)</li>
                 <li>Purchased On: <%=@order.created_at.strftime("%e/%m/%Y")%></li>
                 <li>Total Items: <%=@order.line_items.count%></li>
-                <li>Total Personalised: 2</li>
+                <li>Total Personalised: <%= @order.line_items.select{|li| li.personalized_info.present?}.count%></li>
               </ul>
 
               <ul class="col-lg-6 col-md-6 col-sm-6 p-0 order-back m-0 text-right">
@@ -47,12 +47,12 @@
             <div class="general_qry">
               <div class="radio-dv">
                 <p>
-                  <%= f.radio_button :query_type, 'General Query', id: "test1", requied: true, checked:  true %>
+                  <%= f.radio_button :query_type, 'General Query', id: "test1", requied: true, checked:  true, data: {order_id: @order.id } %>
                   <label for="test1">General Query</label>
                 </p>
 
                 <p>
-                  <%= f.radio_button :query_type, 'Return Request', id: "test2" , requied: true%>
+                  <%= f.radio_button :query_type, 'Return Request', id: "test2" , requied: true, data: {order_id: @order.number }%>
                   <label for="test2">Return Request</label>
                 </p>
               </div>
@@ -91,3 +91,4 @@
     <div class="adver-sec-mn"><%= image_tag "advertize.jpg", alt: "", class: "img-responsive"%> </div>
   </div>
 </div>
+
