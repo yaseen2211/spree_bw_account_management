@@ -103,15 +103,7 @@
         <div class="clearfix"></div>
           <div class="stor-mng-dv" id="user-<%= @user.id%>-store-section">
             <ul class="list_item_s">
-              <% if @user.stores.any? %>
-                 
-                  <% @user.stores.each do |store| %>
-                    <%= render partial: "spree/en/account_management/users/stores_section", locals: {store: store} %>
-                  <% end %>
-                  
-              <% else %>
-                <li>No Store(s) Found </li>
-              <% end %>
+              <%= render partial: "spree/en/account_management/users/stores_section", locals: {stores: @user.stores} %>
             </ul>
           </div>
           <div class="clearfix"></div>
