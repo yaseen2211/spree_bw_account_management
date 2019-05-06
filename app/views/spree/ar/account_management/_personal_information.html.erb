@@ -77,8 +77,8 @@
 
           <div class="return_reason-img">
             <div class="img-up-lod">
-              <label id="#bb">اختر صورة
-                <%= f.file_field :profile_image, size: 60, id: "File" %>
+              <label style="display: none;" id="bb">اختر صورة
+                <%= f.file_field :profile_image, size: 60, id: "File", accept: "image/x-png,image/gif,image/jpeg" %>
               </label>
               <span id= "file-name"class="text-center"></span>
             </div>
