@@ -1,4 +1,6 @@
+<script>
 
+</script>
 <% user_contents     = Spree::PageContent.from_gen_slug('user') %>
 <% user_btn_contents = user_contents.from_gen_slug('user-btn') %>
 <% user_main_contents = user_contents.from_gen_slug('user-main') %>
@@ -52,8 +54,8 @@
 
         <div class="return_reason-img">
           <div class="img-up-lod">
-            <label id="#bb">Select Image
-              <%= f.file_field :profile_image, size: 60, id: "File" %>
+            <label style="display: none;" id="bb">Select Image
+              <%= f.file_field :profile_image, size: 60, id: "File", accept: "image/x-png,image/gif,image/jpeg" %>
             </label>
             <span id= "file-name"class="text-center"></span>
           </div>

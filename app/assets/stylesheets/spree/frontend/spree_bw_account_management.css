@@ -26,4 +26,7 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 	background-color: #B2BABB !important;
 
 }
-
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+}
