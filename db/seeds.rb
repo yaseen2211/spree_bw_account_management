@@ -195,3 +195,11 @@ Spree::PageContent.find_or_create_by! title: "No Product(s) Found", description:
 Spree::PageContent.find_or_create_by! title: "Are you sure", description: "", slug: "general-label-sure?"
 Spree::PageContent.find_or_create_by! title: "Out of Stock", description: "", slug: "general-label-out-of-stock"
 Spree::PageContent.find_or_create_by! title: "Add to cart", description: "", slug: "general-label-add-to-cart"
+
+Spree::PageContent.find_or_create_by! title: "Check Out", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-checkout-steps"
+Spree::PageContent.find_or_create_by! title: "Shopping Cart", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-cart"
+Spree::PageContent.find_or_create_by! title: "Thank you for your purchase", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-final-order"
+Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-steps-advertisement"
+Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-cart-advertisement"
+Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-final-order-advertisement"
+Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "search-global-advertisement"
