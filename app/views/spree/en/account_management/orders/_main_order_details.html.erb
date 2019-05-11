@@ -29,10 +29,11 @@
   <% if order.line_item_adjustments.nonzero.exists? || order.adjustments.nonzero.eligible.exists? %>
 
     <li class="bd-4">
-
-      <font class="pull-left">
-        <%= @order_discount_label.try(:title) %>: 
-      </font>
+      <% if order.adjustments.nonzero.eligible.exists? %>
+        <font class="pull-left">
+          <%= @order_discount_label.try(:title) %>: 
+        </font>
+      <% end %>
 
       <% if order.line_item_adjustments.nonzero.exists? %>
         <% order.line_item_adjustments.nonzero.promotion.eligible.group_by(&:label).each do |label, adjustments| %>
@@ -55,7 +56,7 @@
 
   <%if order.all_adjustments.nonzero.tax.eligible.any? %>
     <li class="bd-3" data-hook="order_details_tax_adjustments">
-      <%= @order_vat_label.try(:title) %>:
+      <%#= @order_vat_label.try(:title) %>:
       <% order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
         <font class="pull-left">
           <%= label %>: 
@@ -64,7 +65,7 @@
           <%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>
         </font>
       <% end %>
-
+      <br>
       <font class="pull-left">
         <%= @order_vat_total_label.try(:title) %>: 
       </font>
