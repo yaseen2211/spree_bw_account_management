@@ -34,8 +34,17 @@ $(document).ready(function()
 });
 
 
-$(document).on("change", "#File", function(e) {
+$(document).on("change", "#user-profile-image", function(e) {
   var filename = $('#File').val();
   $('#file-name').html(filename);
 });
-
+$(document).ready(function () {
+    $('#user-profile-image').on("click",function () {
+        $( "#bb" ).trigger( "click" );
+        return false;
+    });
+})
+$(document).on("change", "#File", function(e) {
+    var filename = $('#File').val().replace('\\fakepath\\','');
+    $('#file-name').html(filename);
+});
