@@ -44,7 +44,7 @@
       <% if order.adjustments.nonzero.eligible.exists? %>
         <% order.adjustments.nonzero.eligible.each do |adjustment| %>
         <% next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0) %>
-        <font class="pull-right" id="summary-order-charges" data-hook ><%= adjustment.label %>:<%= adjustment.display_amount.to_html %> </font>
+        <font class="pull-right" id="summary-order-charges" data-hook ><%#= adjustment.label %><%= adjustment.display_amount.to_html %> </font>
         <% end %>
       <% end %>
       
@@ -56,21 +56,21 @@
 
   <%if order.all_adjustments.nonzero.tax.eligible.any? %>
     <li class="bd-3" data-hook="order_details_tax_adjustments">
-      <%#= @order_vat_label.try(:title) %>:
-      <% order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
+      <%#= @order_vat_label.try(:title) %>
+      <!-- <%# order.all_adjustments.nonzero.tax.eligible.group_by(&:label).each do |label, adjustments| %>
         <font class="pull-left">
-          <%= label %>: 
+          <%#= label %>: 
         </font>
         <font class="pull-right">
-          <%= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>
+          <%#= Spree::Money.new(adjustments.sum(&:amount), currency: order.currency).to_html %>
         </font>
-      <% end %>
-      <br>
+      <%# end %>
+      <br> -->
       <font class="pull-left">
         <%= @order_vat_total_label.try(:title) %>: 
       </font>
       <font class="pull-right">
-        <%= order.all_adjustments.nonzero.tax.sum(:amount)%>
+        <%= Spree::Money.new(order.all_adjustments.nonzero.tax.sum(:amount), currency: order.currency).to_html %>
       </font>
     </li>
 
