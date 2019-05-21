@@ -1,7 +1,7 @@
 <% if spree_current_user.profile_image.attached? %>
 	<%= link_to(image_tag(main_app.url_for(spree_current_user.profile_image.variant(resize: "#{width}x#{height}"))) , spree.edit_account_path(partial: "personal_information", with_form: true)) %>
 <% else %>
-	<%= link_to image_tag("profile-img.jpg", alt: "", height: "#{height}", width: "#{width}"), spree.edit_account_path(partial: "personal_information", with_form: true) %>
+	<%= link_to image_tag("avatar-01.svg", alt: "", height: "#{height}", width: "#{width}"), spree.edit_account_path(partial: "personal_information", with_form: true) %>
 <% end %>
 
 
