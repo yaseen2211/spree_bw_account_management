@@ -180,7 +180,9 @@
 
                 <%= link_to @order_download_invoice_button_label.try(:title), "/admin/invoice/#{order.number}/invoice", target:  "_blank"%>
                 <br>
-                <%= link_to @order_contact_store_button_label.try(:title), spree.new_vendor_contact_store_path(vendor.try(:id), order_number: order.number), target:  "_blank"%>
+                <% if vendor.present? %>
+                  <%= link_to @order_contact_store_button_label.try(:title), spree.new_vendor_contact_store_path(vendor.try(:id), order_number: order.number), target:  "_blank"%>
+                <% end %>
                 
                 <%# if spree_current_user.present? && order.completed? && order.shipped? && order.has_returnable_products? && order.has_returnable_line_items? %>
                 <br>
