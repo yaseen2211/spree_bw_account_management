@@ -1,7 +1,7 @@
 <ul class="ul-ord-1 deta col-lg-4 col-md-4 col-sm-4 p-0">
   <h3><%= @order_sub_heading_order_details.try(:title) %></h3>
   <li class="bd-3"><%= order.number %></li>
-  <li><%= @order_purchased_on_label.try(:title) %>: <%= order.created_at.strftime("%e/%m/%Y") %></li>
+  <li><%= @order_purchased_on_label.try(:title) %>: <%= order.complete? ? order.completed_at.strftime("%e/%m/%Y") : order.created_at.strftime("%e/%m/%Y") %></li>
   <% order_itmes = order.sub_orders.any? ? order.sub_orders.map(&:line_items) : order.line_items %>
   <li><%= @order_detail_items.try(:title) %>: <%= order_itmes.count %></li>
 
@@ -76,7 +76,7 @@
 
   <% end %>
 
-  <li class="bd-3"><font class="pull-left"><%= @order_total_inc_vat_label.try(:title) %>:</font><font class="pull-right"><%= order.display_total.to_html %></font></li>
+  <li class="bd-3"><font class="pull-left"><%= @order_total_inc_vat_label.try(:title) %></font><font class="pull-right"><%= order.display_total.to_html %></font></li>
 </ul>
 
 

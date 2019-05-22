@@ -74,9 +74,9 @@
                 <br><p><%= truncate(item.description, length: 100) %></p>
                 
 
-                <div>
-                  <%= item.variant.options_text unless item.variant.option_values.empty? %>
-                </div>
+                <!-- <div>
+                  <%#= item.variant.options_text unless item.variant.option_values.empty? %>
+                </div> -->
 
                 <%product = item.variant.product%>
 

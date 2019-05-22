@@ -4,24 +4,12 @@
 
 <% is_product_wished = user_wishlist_products.present? ? user_wishlist_products.select{|s| s.variant.product == @product}.last : "" %>
 <% if @wished_product.errors.any? %>
-	$('#js-messages').html("<p><%= Spree::PageContent.from_gen_slug('wishlist-error-msg').spec_slug('wishlist-error-msg-delete').last.try(:title) %></p><br><p><%= @wished_product.errors.messages%></p>")
-	$('#js-messages').addClass("alert-danger")
-	$('#js-messages').removeClass('hide alert-success')
-  $('.alert').show()
-
+	toastr.error("<p><%= Spree::PageContent.from_gen_slug('wishlist-error-msg').spec_slug('wishlist-error-msg-delete').last.try(:title) %></p><br><p><%= @wished_product.errors.messages%></p>")
 <% else %>
 	var html = "<%= j render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/account_management/wishlist_collection", locals: {wishlist: spree_current_user.wishlists.first} %>"
 	$("#user-"+ <%= spree_current_user.id %> + "-wishlist-section").html(html);
-	$('#js-messages').html("<p><%= Spree::PageContent.from_gen_slug('wishlist-success-msg').spec_slug('wishlist-success-msg-delete').last.try(:title) %></p>")
-	$('#js-messages').addClass("alert-success")
-	$('#js-messages').removeClass('hide alert-danger')
-  $('.alert').show()
-
-	
+	toastr.success("<p><%= Spree::PageContent.from_gen_slug('wishlist-success-msg').spec_slug('wishlist-success-msg-delete').last.try(:title) %></p>")
 <% end %>
-$('html, body').animate({
-  scrollTop: $("#js-messages").offset().top
-}, 2000);
 
 $('#product_wished_or_not_sec_' + "<%= @wished_product.variant.product.id %>").html("<%= escape_javascript render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/shared/product_wished_section", locals: { user_wishlist_products: @user_wishlist_products,product:@wished_product.variant.product } %>");
 <%# if params[:view_from].present? && params[:view_from] == "cart_page" %>
