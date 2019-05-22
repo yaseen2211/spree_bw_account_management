@@ -5,6 +5,9 @@ Spree::UsersController.class_eval do
   end
 
   def update
+    if params[:personalized_info].present?
+        params[:user][:physical_measurment] = params[:personalized_info]
+    end
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
@@ -27,7 +30,7 @@ Spree::UsersController.class_eval do
     def user_params
       params.require(:user).permit(:first_name, :last_name, :phone_number, :date_of_birth,:month_of_birth, 
                                       :head, :left_shoulder, :right_shoulder, :left_arm,
-                                      :email_confirmation, :country,:profile_image
+                                      :email_confirmation, :country,:profile_image, :physical_measurment
                                       )
     end
 

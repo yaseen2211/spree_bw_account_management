@@ -105,12 +105,92 @@
         
         <div class="bust-th col-lg-12 col-md-12 col-sm-12">
         <ul>
-        <li><h3 class="fr-marg">Front</h3><%= image_tag "front-img.jpg", alt: ""%></li>
-        <li><h3>Back</h3><%= image_tag "back-img.jpg", alt: ""%></li>
+          <div class="bust-th col-lg-6 col-md-6 col-sm-6">
+            <%= hidden_field_tag "personalized_info", "" %>
+          <div class="tab-pane active" id="1b">
+            <div class="bust-th front-tab-mesure">
+              <ul>
+                <h2 class="body2 ms-til text-left">Please Enter<br>
+                  Your Measurements</h2>
+                <li class="front-dots"><img src="http://ubeetech-001-site6.ctempurl.com/images/front-img.png" alt="">
+                  <div class="dot-11 dot-style dot-black js-product-measurement" id="js-product-measurement-11"><a href="#" data-toggle="modal" data-target="#lightbox">11</a></div>
+                  <div class="dot-13 dot-style js-product-measurement" id="js-product-measurement-13"><a href="#" data-toggle="modal" data-measurement-id="13" data-target="#lightbox">13</a></div>
+                  <div class="dot-17 dot-style js-product-measurement" id="js-product-measurement-17"><a href="#" data-toggle="modal" data-measurement-id="17" data-target="#lightbox">17</a></div>
+                  <div class="dot-10 dot-style js-product-measurement" id="js-product-measurement-10"><a href="#" data-toggle="modal" data-measurement-id="10" data-target="#lightbox">10</a></div>
+                  <!-- <div class="dot-style dot-fill dot-black"><a href="#" data-toggle="modal" data-target="#lightbox"></a></div>-->
+                  <div class="dot-1 dot-style js-product-measurement" id="js-product-measurement-1"><a href="#" data-toggle="modal" data-measurement-id="1" data-target="#lightbox">1</a></div>
+                  <div class="dot-8 dot-style js-product-measurement" id="js-product-measurement-8"><a href="#" data-toggle="modal" data-measurement-id="8" data-target="#lightbox">8</a></div>
+                  <div class="dot-3 dot-style js-product-measurement" id="js-product-measurement-3"><a href="#" data-toggle="modal" data-measurement-id="3" data-target="#lightbox">3</a></div>
+                  <div class="dot-5 dot-style dot-red js-product-measurement" id="js-product-measurement-5"><a href="#" data-toggle="modal" data-measurement-id="5"  data-target="#lightbox">5</a></div>
+                  <div class="dot-4 dot-style dot-pink js-product-measurement" id="js-product-measurement-4"><a href="#" data-toggle="modal" data-measurement-id="4" data-target="#lightbox">4</a></div>
+                  <div class="dot-6 dot-style js-product-measurement" id="js-product-measurement-6"><a href="#" data-toggle="modal" data-measurement-id="6" data-target="#lightbox">6</a></div>
+                </li>
+              </ul>
+
+            </div>
+
+          </div>
+         </div>
+        <div class="bust-th col-lg-6 col-md-6 col-sm-6">
+
+          <div class="tab-pane" id="2b">
+
+            <div class="bust-th front-tab-mesure">
+              <ul>
+                <h2 class="body2 ms-til text-left">Please Enter<br>
+                  Your Measurements</h2>
+
+                <li class="front-dots"><img src="http://ubeetech-001-site6.ctempurl.com/images/back-img.png" alt="">
+                  <div class="dot-9 dot-style js-product-measurement" id="js-product-measurement-9"><a href="#" data-toggle="modal" data-measurement-id="9" data-target="#lightbox">9</a></div>
+                  <div class="dot-16 dot-style js-product-measurement" id="js-product-measurement-16"><a href="#" data-toggle="modal" data-measurement-id="16" data-target="#lightbox">16</a></div>
+                  <div class="dot-7 dot-style dot-pink js-product-measurement" id="js-product-measurement-7"><a href="#" data-toggle="modal" data-measurement-id="7"  data-target="#lightbox">7</a></div>
+                  <div class="dot-12 dot-style js-product-measurement" id="js-product-measurement-12"><a href="#" data-toggle="modal" data-measurement-id="12" data-target="#lightbox">12</a></div>
+                  <div class="dot-2 dot-style dot-black js-product-measurement" id="js-product-measurement-2"><a href="#" data-toggle="modal" data-measurement-id="2" data-target="#lightbox">2</a></div>
+                  <div class="dot-14 dot-style js-product-measurement" id="js-product-measurement-14"><a href="#" data-toggle="modal" data-measurement-id="14"  data-target="#lightbox">14</a></div>
+                  <div class="dot-15 dot-style js-product-measurement" id="js-product-measurement-15"><a href="#" data-toggle="modal" data-measurement-id="15" data-target="#lightbox">15</a></div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+<!--        <li><h3 class="fr-marg">Front</h3><%#= image_tag "front-img.jpg", alt: ""%></li>-->
+<!--        <li><h3>Back</h3><%#= image_tag "back-img.jpg", alt: ""%></li>-->
+
         </ul>
-        
+
+
+
         <div class="sv-acc-btn col-lg-12 col-md-12 col-sm-12">
+          <div class="col-lg-6 col-md-6 col-sm-6 pro-legand">
+            <div class="frt-dx">
+              <div class="matis-rd">
+                <div class="huy">
+                  <span class="nbi"></span>
+                  <label class="body2">Lorem ipsum dolor sit amet</label>
+                </div>
+
+                <div class="huy">
+                  <span class="dot-pink"></span>
+                  <label class="body2">Lorem ipsum dolor sit amet</label>
+                </div>
+
+                <div class="huy">
+                  <span class="dot-red"></span>
+                  <label class="body2">Lorem ipsum dolor sit amet</label>
+                </div>
+                <div class="huy">
+                  <span class="dot-black"></span>
+                  <label class="body2">Lorem ipsum dolor sit amet</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 sv-btn-pro">
+            <button type="submit" class="acc-sv-btn">Save</button>
+          </div>
           <%#= f.submit user_personal_btn_content.try(:title), :class => "acc-sv-btn" %>
+
         </div>
         
         </div>
@@ -205,3 +285,52 @@
 <!--<label class="control-label">Enter a Password<span class="required">*</span></label>-->
 <!--<#%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password) %>-->
 <!--<div class="form-control-legend">Minimum 7 characters. Must include at least 1 letter and 1 number.</div>-->
+<script>
+    $(function(){
+        let measurementsHash = {};
+        let test = [];
+        let key;
+        let name;
+        let productPersProps = [{id: 1, name: "front_body_length_1", presentation: "Front Body Length"},{id: 2, name: "back_body_length_2", presentation: "Back Body Length"},{id: 3, name: "chest_3", presentation: "Chest"},{id: 4, name: "waist_4", presentation: "Waist"},{id: 5, name: "bust_5", presentation: "Bust"},{id: 6, name: "hips_6", presentation: "Hips"},{id: 7, name: "shoulder_slope_7", presentation: "Shoulder Slope"},{id: 8, name: "arm_hole_8", presentation: "Arm Hole"},{id: 9, name: "shoulder_from_Back_9", presentation: "Shoulder From Back"},{id: 10, name: "full_arm_10", presentation: "Full Arm"},{id: 11, name: "full_neck_11", presentation: "Full Neck"},{id: 12, name: "half_neck_12", presentation: "Half Neck"},{id: 13, name: "half_shoulder_13", presentation: "Half Shoulder"},{id: 14, name: "shoulder_elbow_14", presentation: "Shoulder Elbow"},{id: 15, name: "elbow_wrist_15", presentation: "Elbow Wrist"},{id: 16, name: "wrist_16", presentation: "Wrist"},{id: 17, name: "v_neck_length_17", presentation: "V Neck Length"}]
+
+        $('#lightbox').on('show.bs.modal', function(e) {
+            let $modal = $(this);
+            let $target  = $(e.relatedTarget);
+<!--            let productPersProps = <%#== @product.product_properties.map(&:property).select{|s|s.name.to_i > 0}.uniq.to_json %>;-->
+
+            key = $target.data('measurement-id');
+            let thisProductPersProps = productPersProps.find(x => x.id == key);
+            name = thisProductPersProps.name
+
+            $modal.find('.modal-body .lenth-min').html("<%= j render(:partial => 'spree/shared/measurements/popup_measurement_field') %>");
+            $modal.find('.key').html(key);
+
+            console.log({all:productPersProps, thisProduct:thisProductPersProps})
+            if(!!thisProductPersProps){
+                $modal.find('.js-measurement-label').html(thisProductPersProps.presentation);
+            }
+
+            let currentMeasurementsRaw = $('input#personalized_info').val();
+
+            if(!!currentMeasurementsRaw){
+                let currentMeasurementsJson = JSON.parse(currentMeasurementsRaw);
+                let currentMeasurement = currentMeasurementsJson[key];
+
+                if(currentMeasurement && currentMeasurement.value){
+                    $('.js-measurement-input').val(currentMeasurement.value);
+                }
+            }
+        })
+
+        $('body').on('click', '#save-my-measurement',function(e){
+            let value = $('.js-measurement-input').val();
+
+            measurementsHash[name] = {key,value};
+
+            $('input#personalized_info').val(JSON.stringify(measurementsHash));
+            $('input#personalized_info').trigger('change');
+            $('#lightbox').modal('hide');
+
+        })
+    })
+</script>
