@@ -336,6 +336,6 @@
 
 <script type="text/javascript">
   $(function(){
-    $('input#personalized_info').val(<%== @user.physical_measurment.present? ? @user.physical_measurment.to_json : nil %>);
+    $('input#personalized_info').val(<%== @user.physical_measurment.present? ? @user.physical_measurment.to_json : {} %>);
   });
 </script>
