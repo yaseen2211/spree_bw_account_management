@@ -311,9 +311,10 @@
             }
 
             let currentMeasurementsRaw = $('input#personalized_info').val();
+            let json_converted = JSON.stringify(currentMeasurementsRaw)
 
             if(!!currentMeasurementsRaw){
-                let currentMeasurementsJson = JSON.parse(currentMeasurementsRaw);
+                let currentMeasurementsJson = JSON.parse(json_converted);
                 let currentMeasurement = currentMeasurementsJson[key];
 
                 if(currentMeasurement && currentMeasurement.value){
