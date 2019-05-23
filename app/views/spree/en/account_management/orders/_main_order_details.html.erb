@@ -5,9 +5,14 @@
   <% order_itmes = order.sub_orders.any? ? order.sub_orders.map(&:line_items) : order.line_items %>
   <li><%= @order_detail_items.try(:title) %>: <%= order_itmes.count %></li>
 
+
   <% if order.sub_orders.any? %>
+    <% collective_sub_orders_personalized_lineitems = order.sub_orders.map(&:line_items).flatten.select{|li| li.personalized_info.present?} %>
+    <li>Personalised: <%= collective_sub_orders_personalized_lineitems.count%></li>
+  <% else %>
     <li>Personalised: <%= order.line_items.select{|li| li.personalized_info.present?}.count%></li>
   <% end %>
+  
   <% if order.has_step?("payment") && (order.state == "complete") %>
     <li>
       <%= @order_payment_method_label.try(:title) %>:  <%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %>
