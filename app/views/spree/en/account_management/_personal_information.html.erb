@@ -110,8 +110,7 @@
           <div class="tab-pane active" id="1b">
             <div class="bust-th front-tab-mesure">
               <ul>
-                <h2 class="body2 ms-til text-left">Please Enter<br>
-                  Your Measurements</h2>
+                <h2 class="body2 ms-til text-left">Front</h2>
                 <li class="front-dots"><img src="http://ubeetech-001-site6.ctempurl.com/images/front-img.png" alt="">
                   <div class="dot-11 dot-style dot-black js-product-measurement" id="js-product-measurement-11"><a href="#" data-toggle="modal" data-target="#lightbox">11</a></div>
                   <div class="dot-13 dot-style js-product-measurement" id="js-product-measurement-13"><a href="#" data-toggle="modal" data-measurement-id="13" data-target="#lightbox">13</a></div>
@@ -137,8 +136,7 @@
 
             <div class="bust-th front-tab-mesure">
               <ul>
-                <h2 class="body2 ms-til text-left">Please Enter<br>
-                  Your Measurements</h2>
+                <h2 class="body2 ms-til text-left">Back</h2>
 
                 <li class="front-dots"><img src="http://ubeetech-001-site6.ctempurl.com/images/back-img.png" alt="">
                   <div class="dot-9 dot-style js-product-measurement" id="js-product-measurement-9"><a href="#" data-toggle="modal" data-measurement-id="9" data-target="#lightbox">9</a></div>
@@ -291,7 +289,24 @@
         let test = [];
         let key;
         let name;
-        let productPersProps = [{id: 1, name: "1", presentation: "Front Body Length"},{id: 2, name: "2", presentation: "Back Body Length"},{id: 3, name: "3", presentation: "Chest"},{id: 4, name: "4", presentation: "Waist"},{id: 5, name: "5", presentation: "Bust"},{id: 6, name: "6", presentation: "Hips"},{id: 7, name: "7", presentation: "Shoulder Slope"},{id: 8, name: "8", presentation: "Arm Hole"},{id: 9, name: "9", presentation: "Shoulder From Back"},{id: 10, name: "10", presentation: "Full Arm"},{id: 11, name: "11", presentation: "Full Neck"},{id: 12, name: "12", presentation: "Half Neck"},{id: 13, name: "13", presentation: "Half Shoulder"},{id: 14, name: "14", presentation: "Shoulder Elbow"},{id: 15, name: "15", presentation: "Elbow Wrist"},{id: 16, name: "16", presentation: "Wrist"},{id: 17, name: "17", presentation: "V Neck Length"}]
+        let productPersProps = [{id: 1, name: "front_body_length_1", presentation: "Front Body Length", video: "https://www.youtube.com/embed/wJDor-mHwCc", text: "<ol> <li> <p class='body2'>Measure your height by holding the tip of the measuring tape on your shoulder </p></li><li> <p class='body2'>Extend the tape measure along the front of your body for the desired length </p></li><li> <p class='body2'>This measurement is easier to do with someone to help</p> </li></ol>"},
+            {id: 2, name: "back_body_length_2", presentation: "Back Body Length", video: "https://www.youtube.com/embed/umNSfkg0dx0",text: "<ol> <li><p class='body2'>Measure your height from the back by holding the tip of the measuring tape on your shoulder</p></li><li> <p class='body2'>Extend the tape measure along the back of your body for the desired length </p></li><li><p class='body2'> This measurement is easier to do with someone to help</p></li></ol>" },
+            {id: 3, name: "chest_3", presentation: "Chest",video: "https://www.youtube.com/embed/iWGl7PTt67Y",text: "<ol> <li><p class='body2'>Measure chest size by moving the tape measure under your armpits, around your shoulder blades, and over the top of your bust.  </p></li><li> Don’t pull the tape measure too hard on your chest, it needs to be comfortable </li><li> Pinch the tape measure where it meets together<</p>/li></ol>"},
+            {id: 4, name: "waist_4", presentation: "Waist", video: "https://www.youtube.com/embed/HGpG57I6YT8",text: "<ol> <li><p class='body2'>Measure your waist by wrapping the tape around your natural waistline </p></li><li> <p class='body2'>Keep the measuring tape parallel to the floor as you extend it around your waistline </p></li><li> <p class='body2'>Be sure you don’t pull it too tight; it needs to be comfortable </p></li><li><p class='body2'> Pinch the tape measure where it meets together</p></li></ol>"},
+            {id: 5, name: "bust_5", presentation: "Bust",video: "https://www.youtube.com/embed/TpQR_6rFMls",text: "<ol> <li><p class='body2'>Measure bust size by moving the tape measure under your armpits, around your shoulder blades </p></li><li><p class='body2'> Then over your fullest part of your bust </p></p></li><li><p class='body2'> Don’t pull the tape measure too hard on your chest, it needs to be comfortable </p></li><li><p class='body2'> Pinch the tape measure where it meets together</p></li></ol>"},
+            {id: 6, name: "hips_6", presentation: "Hips",video: "https://www.youtube.com/embed/XN0V3P0Vv0w",text: "<ol> <li><p class='body2'>Measure your hips by first putting your feet together</p> </li><li> <p class='body2'>Wrap a measuring tape straight snug around the widest part of your hips. </p></li><li><p class='body2'>Pinch the tape measure where it meets together</p></li></ol>"},
+            {id: 7, name: "shoulder_slope_7", presentation: "Shoulder Slope",video: "https://www.youtube.com/embed/lQvvTkiF9jo",text: " <p class='body2'>Place the measuring tape at the base of your neck and extend the tape to the of your shoulder (joint shoulder meets the arm)."},
+            {id: 8, name: "arm_hole_8", presentation: "Arm Hole",video: "https://www.youtube.com/embed/wJtbuWxH5yg",text: "<ol> <li> <p class='body2'>Place your measurement tape at the shoulder joint </p></li><li> <p class='body2'>Hold it in place and pass the tape under your armpit to meet the tape on the top. </p></li><li> <p class='body2'>Pinch the tape measure where it meets together .</p> </li></ol>"},
+            {id: 9, name: "shoulder_from_Back_9", presentation: "Shoulder From Back",video: "https://www.youtube.com/embed/nsqmHBg2JiE",text: "<ol> <li><p class='body2'>Place the measuring tape on one point of your shoulder point (joint shoulder meets the arm)</p></li><li> <p class='body2'>Move the tape along your back to the other point of your shoulder</p></li></ol>"},
+            {id: 10, name: "full_arm_10", presentation: "Full Arm",video: "https://www.youtube.com/embed/ke-h-7P-EzM",text: "<ol> <li><p class='body2'>Place the measuring tape on your shoulder point (joint shoulder meets the arm)</p></li><li><p class='body2'> Move the tape along your till your wrist </p></li></ol>"},
+            {id: 11, name: "full_neck_11", presentation: "Full Neck",video: "https://www.youtube.com/embed/8LnBvs8oJTQ",text: "<ol> <li><p class='body2'>Wrap the measuring tape as loose or snugly around your neck</p></li></ol>"},
+            {id: 12, name: "half_neck_12", presentation: "Half Neck",video: "https://www.youtube.com/embed/TicwaNMEBAQ",text: "<ol> <li><p class='body2'>Place the tip of the measurement tape at the centre of your back close to your neck </p></li><li><p class='body2'> Move the tape along your arm till you reach your wrist </p></li><li> <p class='body2'>This measurement is easier to do with someone to help </p></li></ol>"},
+            {id: 13, name: "half_shoulder_13", presentation: "Half Shoulder",video: "https://www.youtube.com/embed/LwThcifmqFE",text: "<ol> <li><p class='body2'>Place the tip of the measurement tape at the centre of your back close to your neck </p></li><li> <p class='body2'>Place the tip of the measurement tape at the centre of your back close to your neck</p> </li><li> <p class='body2'>This measurement is easier to do with someone to help </p></li></ol>"},
+            {id: 14, name: "shoulder_elbow_14", presentation: "Shoulder Elbow",video: "https://www.youtube.com/embed/3PF1hVBA4Po",text: "<ol> <li><p class='body2'>Place the measuring tape at the shoulder </p></li><li><p class='body2'> joint Extend the tape to your elbow </li></ol>"},
+            {id: 15, name: "elbow_wrist_15", presentation: "Elbow Wrist",video: "https://www.youtube.com/embed/jXcCKbpEcm8",text: "<ol> <li><p class='body2'>Place the measuring tape on your elbow and extend on your arm to your wrist.</p></li></ol>"},
+            {id: 16, name: "wrist_16", presentation: "Wrist",video: "https://www.youtube.com/embed/I6jdHOR0Z_Y",text: "<ol> <li><p class='body2'>Wrap a measuring tape around your wrist at the chosen point </p></li><li><p class='body2'> Make the wrap as snug or as loose as you desire </p></li></ol> "},
+            {id: 17, name: "v_neck_length_17", presentation: "V Neck Length",video: "https://www.youtube.com/embed/OoFMt1q6QVI",text: "<ol> <li><p class='body2'>Place the tip of the measurement tape at the base of the side of your neck </p></li><li><p class='body2'> Extend the tape to the centre of your chest to your desired height</p> </li></ol>"}]
+
 
         $('#lightbox').on('show.bs.modal', function(e) {
             let $modal = $(this);
@@ -308,6 +323,8 @@
             console.log({all:productPersProps, thisProduct:thisProductPersProps})
             if(!!thisProductPersProps){
                 $modal.find('.js-measurement-label').html(thisProductPersProps.presentation);
+                $modal.find('iframe').attr("src",thisProductPersProps.video)
+                $modal.find('.body21').html(thisProductPersProps.text)
             }
 
             let currentMeasurementsRaw = $('input#personalized_info').val();
