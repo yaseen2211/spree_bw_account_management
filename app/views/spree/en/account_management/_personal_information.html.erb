@@ -307,6 +307,7 @@
             {id: 16, name: "wrist_16", presentation: "Wrist",video: "https://www.youtube.com/embed/I6jdHOR0Z_Y",text: "<ol> <li><p class='body2'>Wrap a measuring tape around your wrist at the chosen point </p></li><li><p class='body2'> Make the wrap as snug or as loose as you desire </p></li></ol> "},
             {id: 17, name: "v_neck_length_17", presentation: "V Neck Length",video: "https://www.youtube.com/embed/OoFMt1q6QVI",text: "<ol> <li><p class='body2'>Place the tip of the measurement tape at the base of the side of your neck </p></li><li><p class='body2'> Extend the tape to the centre of your chest to your desired height</p> </li></ol>"}]
 
+
         $('#lightbox').on('show.bs.modal', function(e) {
             let $modal = $(this);
             let $target  = $(e.relatedTarget);
@@ -327,9 +328,10 @@
             }
 
             let currentMeasurementsRaw = $('input#personalized_info').val();
+            let json_converted = JSON.stringify(currentMeasurementsRaw)
 
             if(!!currentMeasurementsRaw){
-                let currentMeasurementsJson = JSON.parse(currentMeasurementsRaw);
+                let currentMeasurementsJson = JSON.parse(json_converted);
                 let currentMeasurement = currentMeasurementsJson[key];
 
                 if(currentMeasurement && currentMeasurement.value){
@@ -340,13 +342,18 @@
 
         $('body').on('click', '#save-my-measurement',function(e){
             let value = $('.js-measurement-input').val();
-
             measurementsHash[name] = {key,value};
-
             $('input#personalized_info').val(JSON.stringify(measurementsHash));
             $('input#personalized_info').trigger('change');
             $('#lightbox').modal('hide');
 
         })
     })
+</script>
+
+
+<script type="text/javascript">
+  $(function(){
+    $('input#personalized_info').val(JSON.stringify(<%== @user.physical_measurment.present? ? @user.physical_measurment.to_json : '{}' %>));
+  });
 </script>
