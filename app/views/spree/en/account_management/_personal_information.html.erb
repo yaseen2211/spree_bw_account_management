@@ -339,12 +339,11 @@
             }
         })
 
-
-
         $('body').on('click', '#save-my-measurement',function(e){
-            let value = $('.js-measurement-input').val();
-            measurementsHash[name] = {key,value};
-            $('input#personalized_info').val(JSON.stringify(measurementsHash));
+            let existingHash = JSON.parse($('input#personalized_info').val());
+            let value = JSON.parse($('.js-measurement-input').val());
+            existingHash[name] = {key,value};
+            $('input#personalized_info').val(JSON.stringify(existingHash));
             $('input#personalized_info').trigger('change');
             $('#lightbox').modal('hide');
 
@@ -361,7 +360,7 @@
         $(".tab").children().first().click(); //Load first image by default on page load
         let firstTabFirstOption = $("#neck_shape .option-value").first()
 
-        $('input#personalized_info').val(JSON.stringify(<%== (spree_current_user.present? && spree_current_user.physical_measurment.present?) ? spree_current_user.physical_measurment.to_json : '{}' %>));
+        $('input#personalized_info').val(<%== (spree_current_user.present? && spree_current_user.physical_measurment.present?) ? spree_current_user.physical_measurment.to_json : '{}' %>);
 
         console.log($('input#personalized_info').val());
 
