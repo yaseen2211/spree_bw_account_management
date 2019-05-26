@@ -55,13 +55,13 @@
         <% end %>
 
 
-        <% if product.variants.any? && products.variants.length > 1 %>
+        <%# if product.variants.any? && product.variants.length > 1 %>
           <!-- <p><%#= variant_options variant %></p> -->
-          <ul class="rt-prc">
+<!--          <ul class="rt-prc">-->
 
-            <li class="more-cl">More Colors Available</li>
+<!--            <li class="more-cl">More Colors Available</li>-->
           </ul>
-        <% end %>
+        <%# end %>
 
       </div>
     </div>
@@ -71,10 +71,11 @@
         <div class="wis_list_btns">
           <% if variant.can_supply? %>
             <%= form_for :order, url: populate_orders_url, html: {id: "add-to-cart-form"} do |f| %>
-              <%= hidden_field_tag 'variant_id', variant.id %>
+              <%#= hidden_field_tag 'variant_id', variant.id %>
               <%#= Spree.t(:quantity) %>
-              <%= hidden_field_tag 'quantity', 1 %>
-              <%= f.submit wishlist_add_cart_btn.title, class: "btn sub-btn-add" %>
+              <%#= hidden_field_tag 'quantity', 1 %>
+              <%#= f.submit wishlist_add_cart_btn.title, class: "btn sub-btn-add" %>
+              <%= link_to  "Add to Cart",product_path(product), class: "btn sub-btn-add" %>
             <% end %>
 
             <br>
