@@ -360,7 +360,7 @@
         $(".tab").children().first().click(); //Load first image by default on page load
         let firstTabFirstOption = $("#neck_shape .option-value").first()
 
-        $('input#personalized_info').val(<%== (spree_current_user.present? && spree_current_user.physical_measurment.present?) ? spree_current_user.physical_measurment.to_json : '{}' %>);
+        $('input#personalized_info').val(<%== (spree_current_user.present? && spree_current_user.physical_measurment.present?) ? spree_current_user.physical_measurment.to_json : '{}'.to_json %>);
 
         console.log($('input#personalized_info').val());
 
