@@ -12,7 +12,7 @@
       <div class="dv-title text-center col-md-12">
         <h2><%= wishlist_main_content.title%></h2>
       </div>
-      
+
       <div class="clearfix"></div>
     </div>
     <div class="locan-stor cate-pg">
@@ -20,7 +20,7 @@
 
       <div class="col-lg-10 col-md-10 col-sm-9 stor-list-pg ed-top whis_lent-rgt">
         <div class="col-lg-12 col-md-12 col-sm-12 acc_form_set">
-        
+
           <div class="col-lg-12 col-md-12 col-sm-12 wet-text">
           <p><%= wishlist_main_content.description%></p>
           </div>
@@ -28,15 +28,15 @@
           <div class="col-lg-12 col-md-12 col-sm-12 wet-frm" id="user-<%=@user.id%>-wishlist-section">
             <%= render partial: "spree/en/account_management/wishlist_collection", locals: {wishlist: @wishlist} %>
             <div class="clearfix"></div>
-            <div class="lod-btn text-center">
-              <button>LOAD MORE</button>
-            </div>
+<!--            <div class="lod-btn text-center">-->
+<!--              <button>LOAD MORE</button>-->
+<!--            </div>-->
           </div>
-        
-        <div class="back_to_top" onClick="topFunction()" id="myBtn"> 
+
+        <div class="back_to_top" onClick="topFunction()" id="myBtn">
           <%= image_tag "back-to-top.png", alt: "" %>
         </div>
-        </div>      
+        </div>
       </div>
     </div>
   </div>
@@ -45,12 +45,12 @@
     <div class="adver-sec">
       <div class="container">
         <p><%= wishlist_label_advertisment.try(:title) %></p>
-        <div class="adver-sec-mn"> 
+        <div class="adver-sec-mn">
           <%= image_tag(main_app.url_for(wishlist_label_advertisment.image), height: "127", width: "1100", class: "img-responsive") %>
            </div>
       </div>
     </div>
-  <% end %> 
+  <% end %>
 <% end %>
 
 
@@ -71,6 +71,6 @@ function scrollFunction() {
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}         
-    
+}
+
 </script>

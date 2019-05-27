@@ -1,5 +1,4 @@
 <script>
-
 </script>
 <% user_contents     = Spree::PageContent.from_gen_slug('user') %>
 <% user_btn_contents = user_contents.from_gen_slug('user-btn') %>
@@ -294,44 +293,35 @@
         let key;
         let name;
         let productPersProps = [{id: 1, name: "1", presentation: "Front Body Length"},{id: 2, name: "2", presentation: "Back Body Length"},{id: 3, name: "3", presentation: "Chest"},{id: 4, name: "4", presentation: "Waist"},{id: 5, name: "5", presentation: "Bust"},{id: 6, name: "6", presentation: "Hips"},{id: 7, name: "7", presentation: "Shoulder Slope"},{id: 8, name: "8", presentation: "Arm Hole"},{id: 9, name: "9", presentation: "Shoulder From Back"},{id: 10, name: "10", presentation: "Full Arm"},{id: 11, name: "11", presentation: "Full Neck"},{id: 12, name: "12", presentation: "Half Neck"},{id: 13, name: "13", presentation: "Half Shoulder"},{id: 14, name: "14", presentation: "Shoulder Elbow"},{id: 15, name: "15", presentation: "Elbow Wrist"},{id: 16, name: "16", presentation: "Wrist"},{id: 17, name: "17", presentation: "V Neck Length"}]
-
         $('#lightbox').on('show.bs.modal', function(e) {
             let $modal = $(this);
             let $target  = $(e.relatedTarget);
 <!--            let productPersProps = <%#== @product.product_properties.map(&:property).select{|s|s.name.to_i > 0}.uniq.to_json %>;-->
-
             key = $target.data('measurement-id');
             let thisProductPersProps = productPersProps.find(x => x.id == key);
             name = thisProductPersProps.name
-
             $modal.find('.modal-body .lenth-min').html("<%= j render(:partial => 'spree/shared/measurements/popup_measurement_field') %>");
             $modal.find('.key').html(key);
-
             console.log({all:productPersProps, thisProduct:thisProductPersProps})
             if(!!thisProductPersProps){
                 $modal.find('.js-measurement-label').html(thisProductPersProps.presentation);
             }
-
             let currentMeasurementsRaw = $('input#personalized_info').val();
             let json_converted = JSON.stringify(currentMeasurementsRaw)
-
             if(!!currentMeasurementsRaw){
                 let currentMeasurementsJson = JSON.parse(json_converted);
                 let currentMeasurement = currentMeasurementsJson[key];
-
                 if(currentMeasurement && currentMeasurement.value){
                     $('.js-measurement-input').val(currentMeasurement.value);
                 }
             }
         })
-
         $('body').on('click', '#save-my-measurement',function(e){
             let value = $('.js-measurement-input').val();
             measurementsHash[name] = {key,value};
             $('input#personalized_info').val(JSON.stringify(measurementsHash));
             $('input#personalized_info').trigger('change');
             $('#lightbox').modal('hide');
-
         })
     })
 </script>

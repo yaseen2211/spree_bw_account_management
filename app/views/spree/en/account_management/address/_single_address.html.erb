@@ -14,9 +14,9 @@
 <% save_address_btn     = @address_btn_contents.spec_slug('address-btn-label-new-save').last%>
 <% delete_address_btn   = @address_btn_contents.spec_slug('address-btn-label-delete').last%>
 
-<% Globalize.with_locale (I18n.locale) do %> 
+<% Globalize.with_locale (I18n.locale) do %>
 
-  
+
   <!-- <div class="<%#=  (from_view.present? && from_view == "address-checkout") ? "" : "col-md-4 well" %> <%#= @is_primary ? "primary-address " : "" %>">  -->
 
   <div class=" <%=  (from_view.present? && from_view == "address-checkout") ? "" : "col-lg-6 col-md-6 col-sm-6 prime-set prime-1" %>">
@@ -61,7 +61,7 @@
         <% else %>
 
           <div class="elit-dd text-center manag-input">
-            <%#= link_to delete_address_btn.try(:title) ,address_path(form.object), 'data-method' => :delete, :class => "ress-btn-delet",:data => {:confirm => 'Are you sure?'},:remote => true%> 
+            <%#= link_to delete_address_btn.try(:title) ,address_path(form.object), 'data-method' => :delete, :class => "ress-btn-delet",:data => {:confirm => 'Are you sure?'},:remote => true%>
               <button type="button" class="ress-btn-delete" data-toggle="modal" data-target="#Delete_confirm_modal_<%=form_obj.persisted? ? form_obj.id : 'new'%>">DELETE</button>
              <%#= form.submit form.object.persisted? ? update_address_btn.try(:title) : save_address_btn.try(:title)  , :class => 'ress-btn-save'%>
              <button class="ress-btn-save">SAVE</button>
@@ -76,10 +76,10 @@
                   <h2 class="popup-title">Delete Confirmation</h2>
                   </div>
                   <div class="modal-body">
-                  
+
                   <div class="review_da del-st">
                   <p>Please confirm you would like to delete this address from your addresses</p>
-                  
+
                   <div class="tr-v1-text">
                   <ul class="tower-lt">
                   <li class="la-1"><%= form_obj.firstname.to_s + " " + form_obj.lastname.to_s %></li>
@@ -88,26 +88,26 @@
                   <%=  form_obj.state.present? ? form_obj.state.name : ""%>,
                   <%=  form_obj.country.present? ? form_obj.country.name : ""%></li>
                   </ul>
-                  
+
                  <div class="clearfix"></div>
                     <div class="add-rev-btns pop-add-btns">
                    <button class="cancel-btn" data-dismiss="modal">Cancel</button>
 
                    <a  href="<%= address_path(form.object) %>" data-confirm="Are you sure?" data-method="delete" data-remote="true"><button style="background: #ecb68f !important; color: #000 !important; border: 1px;" ><%= delete_address_btn.try(:title)  %></button></a>
 
-                   </div>      
+                   </div>
                     </div>
                   </div>
                   </div>
-                  
+
                 </div>
 
               </div>
             </div>
-  
+
 
         <% end %>
-                
+
 
       <% end%>
     </div>
@@ -115,7 +115,7 @@
 
 <% end %>
 
-<!-- 
+<!--
 
 
 <script type="text/javascript">
@@ -126,5 +126,5 @@
 </script> -->
 
 
- <!---Delete modal start ----> 
+ <!---Delete modal start ---->
 

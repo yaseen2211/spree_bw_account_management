@@ -8,12 +8,12 @@
 <% messages_txt    = profile_nav_txt.spec_slug('profile-nav-txt-messages').last %>
 <% sc_txt          = profile_nav_txt.spec_slug('profile-nav-txt-support-centre').last %>
 <% logout_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-logout').last %>
-<% stores_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-stores').last %> 
+<% stores_txt    = profile_nav_txt.from_gen_slug('profile-nav-txt-stores').last %>
 
 
 <% url = request.original_url%>
 <% @user = @user.present? ? @user : spree_current_user %>
- <% Globalize.with_locale (I18n.locale) do %> 
+ <% Globalize.with_locale (I18n.locale) do %>
   <div class="col-lg-2 col-md-2 col-sm-3 option-stor-lft p-0 disp-non">
     <ul class="profile-set-mg">
       <span id="side-bar-user-profile-image"><%= render partial: "spree/users/profile_section", locals: {user_profile_image: spree_current_user.profile_image, height: "75", width: "75"} %></span>
@@ -27,13 +27,13 @@
       <li><%= image_tag "address-icon.png", alt: "" %><%= link_to addresses_txt.try(:title), spree.edit_account_path(partial: "addresses"), class: url.include?("addresses") ? "active" : "" %></li>
 
       <li><%= image_tag "order-icon.png", alt: "" %><%= link_to orders_txt.try(:title), spree.edit_account_path(partial: "orders",with_form: true), class: url.include?("orders") ? "active" : "" %></li>
-      <li><%= image_tag "apointment-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink">My Appointments</a></li>
+<!--      <li><%#= image_tag "apointment-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink">My Appointments</a></li>-->
       <li><%= image_tag "wishlist-icon.png", alt: "" %><%= link_to wishlist_txt.try(:title), spree.edit_account_path(partial: "wishlist"),class: url.include?("wishlist") ? "active" : ""%></li>
       <li><%= image_tag "reviews-icon.png", alt: "" %><%= link_to reviews_txt.try(:title), spree.edit_account_path(partial: "reviews",with_form: true),class: url.include?("reviews") ? "active" : ""%></li>
       <li><%= image_tag "stor-icon.png", alt: "" %><%= link_to  stores_txt.try(:title) , spree.edit_account_path(partial: "stores" ),class: url.include?("stores") ? "active" : ""%></li>
-      <li><%= image_tag "setting-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%= settings_txt.try(:title)%></a></li>
-      <li><%= image_tag "message-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%= messages_txt.try(:title)%></a></li>
-      <li><%= image_tag "support-icon.png", alt: "" %><a href="#"  class="tab_link_disable inactiveLink"><%= sc_txt.try(:title)%></a></li>
+<!--      <li><%#= image_tag "setting-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%#= settings_txt.try(:title)%></a></li>-->
+<!--      <li><%#= image_tag "message-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%#= messages_txt.try(:title)%></a></li>-->
+<!--      <li><%#= image_tag "support-icon.png", alt: "" %><a href="#"  class="tab_link_disable inactiveLink"><%#= sc_txt.try(:title)%></a></li>-->
       <li class="log_ut"><%= image_tag "acc-log-out.png", alt: "" %><a href="<%= spree.logout_path%>" data-confirm="Are you sure?"><%= logout_txt.try(:title)%></a></li>
     </ul>
   </div>
