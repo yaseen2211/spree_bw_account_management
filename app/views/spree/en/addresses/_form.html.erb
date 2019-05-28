@@ -27,6 +27,7 @@
       <div class="col-md-12 col-lg-12 plc-gry-col col-sm-12 mb-3 p-0" id=<%="#{address_id}firstname" %>>
         <label for="validationCustom02"><%=  address_form.object.persisted? ? ex_contact_name.try(:title) : new_contact_name.try(:title)  %></label>
         <%= address_form.text_field :firstname, class: 'form-control', id: "validationCustom01", required: true, placeholder: "Aya Barad"%>
+        <%= hidden_field_tag "from_page",  "account" %> 
       </div>
 
       <div class="col-md-12 col-lg-12 plc-gry-col col-sm-12 mb-3 p-0" id=<%="#{address_id}phone" %> >
@@ -53,37 +54,26 @@
 
 
       <p class="form-group" id=<%="#{address_id}country" %>>
-        <label for="">Country</label>
-        <%#= address_form.label :country_id do %>
-          <!-- <%#= Spree.t(:country) %><abbr class="required" title="required">*</abbr> -->
-        <%# end %>
-
+        <label class="transp" for="validationCustom02"></label>
         <span id=<%="#{address_id}country-selection" %>>
-          <%= address_form.collection_select :country_id, available_countries, :id, :name, {:selected => address_form.object.country_id.present? ? address_form.object.country_id : Spree::Config.default_country_id}, { class: 'form-control country-select-dp', required: true } %>
+
+          <% default_country = Spree::Country.where(name: "United Arab Emirates").last %>
+          <%= address_form.collection_select :country_id, default_country.present? ? [default_country] : available_countries , :id, :name, {:prompt => true,selected: 1 }, { class: 'form-control country-select-dp', required: true} %>
         </span>
       </p>
+
       <% address.country.present? ? address.country : (address.country_id = Spree::Config.default_country_id) %>
+
       <% if Spree::Config[:address_requires_state] %>
         <p class="form-group" id=<%="#{address_id}state" %>>
-          <label for="">State/Province</label>
-          <% have_states = !address.country.states.empty? %>
-          <%#= address_form.label :state do %>
-            <!-- <%#= Spree.t(:state) %><abbr class='required' title="required" id=<%#="#{address_id}state-required"%>>*</abbr> -->
-          <%# end %>
+          <label class="transp" for="validationCustom02"></label>
 
-          <%== state_elements = [
-             address_form.collection_select(:state_id, address.country.states,
-                                :id, :name,
-                                {include_blank: true, :prompt => "Please Select the State"},
-                                {class: have_states ? 'form-control' : 'form-control hidden',
-                                required: have_states,
-                                disabled: !have_states}) +
-              address_form.text_field(:state_name,
-                                class: !have_states ? 'form-control' : 'form-control hidden',
-                                required: !have_states,
-                                disabled: have_states)
-             ].join.gsub('"', "'").gsub("\n", "")
-          %>
+          <select id="address_state" name="address[state_id]" class='observe_field select2' data-base-url="<%=suburbs_path(format: :js) %>?state_id=" data-update="#address_suburb" data-current-el-id="<%= (address.present?  && address.id.present?) ? address.id.to_s + '_address_suburb'  : "new_address_suburb"%>" >
+            <% if  address.new_record? %>
+              <option></option>
+            <% end %>
+            <%= options_from_collection_for_select(address.country.states, :id, :name, address.state.present? ? address.state_id : "") %>
+          </select>
         </p>
         <noscript>
           <%= address_form.text_field :state_name, class: 'form-control', required: true %>
@@ -91,7 +81,12 @@
       <% end %>
       <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0" id=<%="#{address_id}city" %> >
         <label for="validationCustom02"><%= address_form.object.persisted? ? ex_contact_town.try(:title) : new_contact_town.try(:title) %></label>
-        <%= address_form.text_field :city, class: 'form-control', id: "validationCustom02", required: true, placeholder: 'Please Select the Town/Suburb'  %>
+        <select id="<%= (address.present?  && address.id.present?) ? address.id.to_s + '_address_suburb'  : "new_address_suburb"%>" class='select2' name="address[suburb_id]">
+          <% if address.state.present? %>
+            <% suburb_id = address.city.present? ? Spree::Suburb.find_by_name(address.city).id :  "" %>
+            <%= options_from_collection_for_select(address.state.suburbs, :id, :name, suburb_id  )%>
+          <% end %>
+        </select>
       </div>
 
     </div>
