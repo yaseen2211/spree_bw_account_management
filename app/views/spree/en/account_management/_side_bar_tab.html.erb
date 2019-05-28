@@ -31,9 +31,9 @@
       <li><%= image_tag "wishlist-icon.png", alt: "" %><%= link_to wishlist_txt.try(:title), spree.edit_account_path(partial: "wishlist"),class: url.include?("wishlist") ? "active" : ""%></li>
 <!--      <li><%#= image_tag "reviews-icon.png", alt: "" %><%= link_to reviews_txt.try(:title), spree.edit_account_path(partial: "reviews",with_form: true),class: url.include?("reviews") ? "active" : ""%></li>-->
 <!--      <li><%#= image_tag "stor-icon.png", alt: "" %><%= link_to  stores_txt.try(:title) , spree.edit_account_path(partial: "stores" ),class: url.include?("stores") ? "active" : ""%></li>-->
-      <li><%= image_tag "setting-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%= settings_txt.try(:title)%></a></li>
-      <li><%= image_tag "message-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%= messages_txt.try(:title)%></a></li>
-      <li><%= image_tag "support-icon.png", alt: "" %><a href="#"  class="tab_link_disable inactiveLink"><%= sc_txt.try(:title)%></a></li>
+<!--      <li><%#= image_tag "setting-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%#= settings_txt.try(:title)%></a></li>-->
+<!--      <li><%#= image_tag "message-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%#= messages_txt.try(:title)%></a></li>-->
+<!--      <li><%#= image_tag "support-icon.png", alt: "" %><a href="#"  class="tab_link_disable inactiveLink"><%#= sc_txt.try(:title)%></a></li>-->
       <li class="log_ut"><%= image_tag "acc-log-out.png", alt: "" %><a href="<%= spree.logout_path%>" data-confirm="Are you sure?"><%= logout_txt.try(:title)%></a></li>
     </ul>
   </div>
