@@ -1,14 +1,14 @@
 <% lang = I18n.locale %>
+
 <% if @address.save %>
 	var html = "<%= j render partial:"spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/account_management/address/user_addresses_section", locals: {addresses: spree_current_user.addresses, user: spree_current_user} %>"
 	$("#user-"+ <%= spree_current_user.id %> + "-addresses-section").html(html);
 
 	<% if params[:controller].present? && params[:from_page].blank? && params[:controller].include?("spree/addresses") %>
-		$('#bl_popup').modal('hide');
-		setTimeout(function(){
-		   window.location.reload(1);
-		}, 3000);
+		var steps_collection_html = "<%= j render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/checkout/checkout_steps_collection", locals: {order: current_order} %>"
+		$("#js-checkout-steps-collection").html(steps_collection_html);
 	<% end %>
+
 	toastr.success("Your address has been created successfully.")
 <% else %>
 	toastr.error("<%= @address.errors.messages%>")
