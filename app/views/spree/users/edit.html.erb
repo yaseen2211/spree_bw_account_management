@@ -1,11 +1,6 @@
-<div class="container sm-width">
-	<div class="col-md-12">
-    <div class="error-messages">
-      <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
-    </div>
-	 
-	  <%= render :partial => 'spree/shared/user_form', :locals => { :page_name=> "edit_account"} %>
-	  
-	  </div> 
+<div class="col-md-12">
+	<div class="error-messages">
+	  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
 	</div>
+ 	<%= render :partial => 'spree/shared/user_form', :locals => { :page_name=> "edit_account"} %>
 </div>
