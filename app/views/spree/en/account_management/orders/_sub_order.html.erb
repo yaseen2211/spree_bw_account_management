@@ -127,7 +127,7 @@
                           
 <!--                            <div class="review_da">-->
 <!--                            <h3><%#= @order_my_review_product_name.try(:title) %>: (<%#= user_review.product.name %>) <br>-->
-<!--                             <%= @order_my_review_date.try(:title) %>:  <%#= user_review.created_at.strftime("%e/%m/%Y") %></h3>-->
+<!--                             <%#= @order_my_review_date.try(:title) %>:  <%#= user_review.created_at.strftime("%e/%m/%Y") %></h3>-->
 <!--                            <p> <%#= simple_format(user_review.review) %></p>-->
 <!--                            <div class="tr-v1-pop text-right">-->
 
@@ -177,17 +177,18 @@
 <!--                    </div>-->
 <!--                  </div>-->
                 <%# end %>
+
+
               </div>
               <div class="clearfix"></div>
               <div class="dvd"></div>  
               <div class="clearfix"></div>
             </div> 
 
-            <%# if index == 0 %>
-<!--              <div class="vol_rma text-right tr_2 col-lg-5 col-md-5 col-sm-5 p-0 turn-btn">-->
-
-                <%#= link_to @order_download_invoice_button_label.try(:title), "/admin/invoice/#{order.number}/invoice", target:  "_blank"%>
-<!--                <br>-->
+            <% if index == 0 %>
+               <div class="vol_rma text-right tr_2 col-lg-5 col-md-5 col-sm-5 p-0 turn-btn">
+                  <button><%= link_to @order_download_invoice_button_label.try(:title), "/admin/invoice/#{order.number}/invoice", target:  "_blank", style: "color:black"%></button>
+                <br>
                 <%# if vendor.present? %>
                   <%#= link_to @order_contact_store_button_label.try(:title), spree.new_vendor_contact_store_path(vendor.try(:id), order_number: order.number), target:  "_blank"%>
                 <%# end %>
@@ -198,14 +199,16 @@
                 <%# end %>
 
 <!--                <a href = "orders-return-request-en.html"><button>Request Return  </button></a> already commented -->
-<!--              </div>-->
-            <%# end %>
+              </div>
+            <% end %>
 
              <!-- <div class="vol_rma text-right tr_2 col-lg-5 col-md-5 col-sm-5 p-0 turn-btn">
              <button>Download Invoice</button>
                <a href="orders-contact-store-en.html"><button>Contact Store</button></a>
                  <a href="orders-return-request-en.html"><button>Request Return  </button></a>
              </div> -->
+
+
           </div>
         <% end %>
       <% end %>
