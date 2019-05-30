@@ -69,8 +69,8 @@
           <label class="transp" for="validationCustom02"></label>
 
           <select id="address_state" name="address[state_id]" class='observe_field select2' data-base-url="<%=suburbs_path(format: :js) %>?state_id=" data-update="#address_suburb" data-current-el-id="<%= (address.present?  && address.id.present?) ? address.id.to_s + '_address_suburb'  : "new_address_suburb"%>" >
-            <% if  address.new_record? %>
-              <option></option>
+             <% if  address.new_record? %>
+              <option>Please Select Your Emirate</option>
             <% end %>
             <%= options_from_collection_for_select(address.country.states, :id, :name, address.state.present? ? address.state_id : "") %>
           </select>
@@ -80,12 +80,16 @@
         </noscript>
       <% end %>
       <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0" id=<%="#{address_id}city" %> >
-        <label for="validationCustom02"><%= address_form.object.persisted? ? ex_contact_town.try(:title) : new_contact_town.try(:title) %></label>
+        <label class="transp"  for="validationCustom02"><%#= address_form.object.persisted? ? ex_contact_town.try(:title) : new_contact_town.try(:title) %></label>
         <select id="<%= (address.present?  && address.id.present?) ? address.id.to_s + '_address_suburb'  : "new_address_suburb"%>" class='select2' name="address[suburb_id]">
+
           <% if address.state.present? %>
             <% suburb_id = address.city.present? ? Spree::Suburb.find_by_name(address.city).id :  "" %>
             <%= options_from_collection_for_select(address.state.suburbs, :id, :name, suburb_id  )%>
+          <% else %>
+            <option>Please Select Your City</option>
           <% end %>
+
         </select>
       </div>
 
