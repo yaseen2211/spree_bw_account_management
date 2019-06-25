@@ -30,23 +30,16 @@ Spree::User.class_eval do
   end
 
   def send_welcome_email
-
     if self.spree_roles.blank?
       self.roles << (Spree::Role.where(name: "Site User").last)
     end
-    
+
     if self.has_spree_role?("Shop Owner")
       reset_passowrd_for_vendor
     else
       Spree::UserMailer.welcome(self).deliver_now
     end
   end
-
-  # Comment Due To Email Confirmation Link
-	# def after_confirmation
-	#   Spree::UserMailer.welcome(self).deliver_now
-	# end
-
 
   def full_name
     if self.first_name.present? & self.last_name.present?
