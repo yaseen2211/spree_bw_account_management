@@ -36,18 +36,11 @@ Spree::User.class_eval do
     end
 
     if self.has_spree_role?("Shop Owner")
-      # @subscriber = Spree::Chimpy::Subscriber.create(email: self.email,subscribe_through:  self.roles.first.name)
       reset_passowrd_for_vendor
     else
       Spree::UserMailer.welcome(self).deliver_now
     end
   end
-
-  # Comment Due To Email Confirmation Link
-	# def after_confirmation
-	#   Spree::UserMailer.welcome(self).deliver_now
-	# end
-
 
   def full_name
     if self.first_name.present? & self.last_name.present?
