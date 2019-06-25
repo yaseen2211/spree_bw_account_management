@@ -22,6 +22,8 @@ setTimeout(
         $('.alert').hide()
     }, 5000);
 $("#wishlist-count").html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
+$('#mobile_wish_list_count').html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
+
 
 
 

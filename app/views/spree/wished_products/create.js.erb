@@ -32,6 +32,6 @@ setTimeout(
       $('.alert').hide()
     }, 5000);
 
-
 $('#wishlist-form').html("<%= escape_javascript render partial: "spree/products/wishlist_form_action_button",locals: {product: @wished_product.variant.product} %>");
 $("#wishlist-count").html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
+$('#mobile_wish_list_count').html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
