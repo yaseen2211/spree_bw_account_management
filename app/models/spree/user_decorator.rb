@@ -31,12 +31,12 @@ Spree::User.class_eval do
 
   def send_welcome_email
     if self.spree_roles.blank?
-      self.roles << (Spree::Role.where(name: "user").last)
+      self.roles << (Spree::Role.where(name: "Site User").last)
       # @subscriber.subscribed = "1"
     end
 
     if self.has_spree_role?("Shop Owner")
-      @subscriber = Spree::Chimpy::Subscriber.create(email: self.email,subscribe_through:  self.roles.first.name)
+      # @subscriber = Spree::Chimpy::Subscriber.create(email: self.email,subscribe_through:  self.roles.first.name)
       reset_passowrd_for_vendor
     else
       Spree::UserMailer.welcome(self).deliver_now
@@ -44,9 +44,9 @@ Spree::User.class_eval do
   end
 
   # Comment Due To Email Confirmation Link
-	def after_confirmation
-	  Spree::UserMailer.welcome(self).deliver_now
-	end
+	# def after_confirmation
+	#   Spree::UserMailer.welcome(self).deliver_now
+	# end
 
 
   def full_name
