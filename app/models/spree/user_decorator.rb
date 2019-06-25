@@ -32,7 +32,6 @@ Spree::User.class_eval do
   def send_welcome_email
     if self.spree_roles.blank?
       self.roles << (Spree::Role.where(name: "Site User").last)
-      # @subscriber.subscribed = "1"
     end
 
     if self.has_spree_role?("Shop Owner")
