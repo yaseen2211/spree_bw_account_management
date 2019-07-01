@@ -44,7 +44,11 @@
     <% end %>
 
   </div> 
-  <div class="clearfix"></div>
-  <div class="dvd"></div>  
-  <div class="clearfix"></div>
+
+
+  <% if order_line_items.count != index + 1 %>
+    <div class="clearfix"></div>
+    <div class="dvd"></div>  
+    <div class="clearfix"></div>
+  <% end %>
 <% end %>
