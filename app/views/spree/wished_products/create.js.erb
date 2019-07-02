@@ -12,25 +12,18 @@
 	<% if @wished_product.errors.blank? %>
 		toastr.success("<%= @wished_product.variant.name.to_s%> <%= wishlist_add_success_msg_content.try(:title) %>")
 		$('#wishlist_confirm_modal').modal('hide');
-		$("#delete_line_item_<%= @line_item_id%>").click();
+		// $("#delete_line_item_<%= @line_item_id%>").click();
 		toastr.success("<%= @wished_product.variant.name.to_s%> has been successfully deleted from your cart");
 	<% else %>
 		toastr.error("<%= wishlist_error_before_msg_content.try(:title)%> <%= @wished_product.variant.name %> <%= wishlist_error_after_msg_content.try(:title) %>")
 	<% end %>
 <% end  %>
 
-
 $('#product_wished_or_not_sec_' + "<%= @wished_product.variant.product.id %>").html("<%= escape_javascript render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/shared/product_wished_section", locals: { user_wishlist_products: @user_wishlist_products,product:@wished_product.variant.product } %>");
 
-
-<%# if (params[:view_from].present?) && ( (params[:view_from] == "product_page") || (params[:view_from] == "cart_page")) %>
-//	setTimeout(location.reload.bind(location), 3000);
-<%# end %>
-setTimeout(
-    function()
-    {
-      $('.alert').hide()
-    }, 5000);
+<% if params[:view_from].present? && params[:view_from] == "cart_page" %>
+	location.reload();
+<% end %>
 
 $('#wishlist-form').html("<%= escape_javascript render partial: "spree/products/wishlist_form_action_button",locals: {product: @wished_product.variant.product} %>");
 $("#wishlist-count").html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
