@@ -13,7 +13,9 @@
 		toastr.success("<%= @wished_product.variant.name.to_s%> <%= wishlist_add_success_msg_content.try(:title) %>")
 		$('#wishlist_confirm_modal').modal('hide');
 		// $("#delete_line_item_<%= @line_item_id%>").click();
-		toastr.success("<%= @wished_product.variant.name.to_s%> has been successfully deleted from your cart");
+		<% if params[:view_from].present? && params[:view_from] == "cart_page" %>
+			toastr.success("<%= @wished_product.variant.name.to_s%> has been successfully deleted from your cart");
+		<% end %>
 	<% else %>
 		toastr.error("<%= wishlist_error_before_msg_content.try(:title)%> <%= @wished_product.variant.name %> <%= wishlist_error_after_msg_content.try(:title) %>")
 	<% end %>
