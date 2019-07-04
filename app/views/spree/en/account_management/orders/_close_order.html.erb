@@ -66,28 +66,29 @@
 
       <div class="der-mn">
         <ul class="bsp-kj">
-          <% main_order.line_items.each_with_index do |item, index| %>
-            <li>
-              <% if item.variant.images.length == 0 %>
-                <%= link_to small_image(item.variant.product), item.variant.product %>
-              <% else %>
-                <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
-              <% end %>
+          <% main_order.sub_orders.each do |sub| %>
+            <% sub.line_items.each_with_index do |item, index| %>
+              <li>
+                <% if item.variant.images.length == 0 %>
+                  <%= link_to small_image(item.variant.product), item.variant.product %>
+                <% else %>
+                  <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
+                <% end %>
 
-              <% if  item.personalized_info.present? %>
-                <div class="text-center" style='margin-top: 6px'>
-                  <%= image_tag "arw-icon.png"%>
-                </div>
-              <% end %>
-            </li>
+                <% if item.personalized_info.present? %>
+                  <br>
+                  <a href="#" data-toggle="modal" data-target="#Personal-info">
+                    <%= image_tag "progress-icon-black.png" %>
+                  </a>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
         </ul>
         <ul class="sw-ord-button dv-frist-fix">
-          <button class="show_details_<%=main_order.id%>">SHOW DETAILS</button>
+          <button class="show_details_<%= main_order.id %>">SHOW DETAILS</button>
         </ul>
       </div>
-
-      
 
 
     </div>
