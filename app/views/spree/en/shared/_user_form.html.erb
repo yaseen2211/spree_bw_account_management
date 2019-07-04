@@ -60,10 +60,10 @@
           <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
 
           <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
-            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", id: "validationCustom02", required: true}%>
+            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control day_dropdown", id: "validationCustom02", required: true}%>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
-            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", id: "validationCustom02", required: true}%>
+            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control dropdown_month", id: "validationCustom02", required: true}%>
           </div>
           </div>
 
@@ -107,10 +107,10 @@
           <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
 
           <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
-            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", id: "validationCustom02", required: true}%>
+            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control day_dropdown", id: "validationCustom02", required: true}%>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
-            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", id: "validationCustom02", required: true}%>
+            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control dropdown_month", id: "validationCustom02", required: true}%>
           </div>
           </div>
 
@@ -140,11 +140,11 @@
   $( document ).ready(function() {
 
     $('#new_spree_user').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
+        // feedbackIcons: {
+        //     valid: 'glyphicon glyphicon-ok',
+        //     invalid: 'glyphicon glyphicon-remove',
+        //     validating: 'glyphicon glyphicon-refresh'
+        // },
         fields: {
             'spree_user[first_name]': {
                 validators: {
@@ -219,4 +219,35 @@
     //     }
     // })
   });
+  let ans = ""
+  $('.dropdown_month').on('change',function () {
+      let months_of_31 = ["january","march","may","july","august","october","december"];
+      let month_of_29 = ["february"];
+      let month_of_30 = ["april","june","september","november"];
+      if (months_of_31.indexOf($(this).val()) != -1){
+          ans = "31"
+      }
+      else if(month_of_29.indexOf($(this).val()) != -1){
+          ans = "29"
+      }
+      else if(month_of_30.indexOf($(this).val()) != -1){
+          ans = "30"
+      }
+      if($('.day_dropdown').val() != ""){
+          $('.day_dropdown').change();
+      }
+  })
+ $('.day_dropdown').on('change',function (e) {
+     if(ans == "29" && parseInt($(this).val()) > 29 || ans == "30" && parseInt($(this).val()) > 30 ){
+         $('#error_msg').html('');
+         $('.day_dropdown').after('<span id="error_msg" style="color: red; font-size: 8px;"> Please select a valid birthdate</span>')
+         $('.day_dropdown').addClass('is-invalid');
+         $('.day_dropdown').removeClass('is-valid');
+     }
+     else{
+         $('.day_dropdown').addClass('is-valid');
+         $('.day_dropdown').removeClass('is-invalid');
+         $('#error_msg').remove();
+     }
+ })
 </script>
