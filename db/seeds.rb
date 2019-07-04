@@ -1,3 +1,4 @@
+Spree::PageContent.find_or_create_by! title: "Stores", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "user-store"
 Spree::PageContent.find_or_create_by! title: "Manage Addresses", description: "Lorem Ipsum is simply dummy text.", slug: "address-main-heading-desc"
 Spree::PageContent.find_or_create_by! title: "Add New", description: "", slug: "address-btn-label-new"
 Spree::PageContent.find_or_create_by! title: "Primary Address", description: "", slug: "address-primary-heading"
