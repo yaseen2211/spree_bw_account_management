@@ -75,17 +75,14 @@
               <%#= Spree.t(:quantity) %>
               <%#= hidden_field_tag 'quantity', 1 %>
               <%#= f.submit wishlist_add_cart_btn.title, class: "btn sub-btn-add" %>
-              <%= link_to  "Add to Cart",product_path(product), class: "btn sub-btn-add" %>
+              <%= link_to "<button type='button' class='sub-btn-add'>ADD TO CART</button>".html_safe, product_path(product) %>
             <% end %>
 
             <br>
           <% else %>
              <span class="out_stock"><%=  wishlist_temp_label.try(:title) %></span><br>
           <% end %>
-
-          <%= link_to wishlist_del_btn.title, wished_product_path(wish), method: :delete, remote: true, class: 'btn cancel-btn', :data => {:confirm => 'Are you sure?'} %>
-
-
+          <%= link_to "<button type='button' class='cancel-btn'>DELETE</button>".html_safe, wished_product_path(wish), method: :delete, remote: true, :data => {:confirm => 'Are you sure?'}  %>
         </div>
       <% end %>
 

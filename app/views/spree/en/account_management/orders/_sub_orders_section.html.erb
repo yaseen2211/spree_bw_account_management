@@ -1,7 +1,10 @@
 <% if sub_orders.any? %>
-  <% sub_orders.each do |sub_order| %>
+  <% sub_orders.each_with_index do |sub_order, index| %>
     <%= render partial: "spree/en/account_management/orders/sub_order", locals: {order:  sub_order, main_order: main_order} %>
-    <div class="dvd"></div>
+
+    <% if sub_orders.count != index + 1 %>
+    	<div class="dvd"></div>
+    <% end %>
   <% end%>
 
 <% else %>
