@@ -172,7 +172,7 @@
               }
           }
       });
-      $('.btn-sub-frm').attr("disabled", true);
+      // $('.btn-sub-frm').attr("disabled", true);
 
       $('.btn-sub-frm').on('click', function () {
           setTimeout(
@@ -180,17 +180,17 @@
                   $('.glyphicon').hide();
               }, 1000);
       });
-      $("input,textarea,select").focusout(function (event) {
-          let isValid = true;
-          $('input,textarea,select').filter('[required]:visible').each(function () {
-              if ($(this).val() === '')
-                  isValid = false
-          });
-          if (isValid == false) {
-              $('.btn-sub-frm').attr("disabled", true);
-          } else {
-              $('.btn-sub-frm').attr("disabled", false);
-          }
-      })
+      // $("input,textarea,select").focusout(function (event) {
+      //     let isValid = true;
+      //     $('input,textarea,select').filter('[required]:visible').each(function () {
+      //         if ($(this).val() === '')
+      //             isValid = false
+      //     });
+      //     if (isValid == false) {
+      //         $('.btn-sub-frm').attr("disabled", true);
+      //     } else {
+      //         $('.btn-sub-frm').attr("disabled", false);
+      //     }
+      // })
   });
 </script>
