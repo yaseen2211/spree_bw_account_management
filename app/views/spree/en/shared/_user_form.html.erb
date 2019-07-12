@@ -165,13 +165,6 @@
             },
             'spree_user[email]': {
                 validators: {
-                    regexp: {
-                        regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: ''
-                    },identical: {
-                        field: 'spree_user[email_confirmation]',
-                        message: '<span style="color: red;">Confirmation email does not match.  Please try again.</span>'
-                    },
                     notEmpty: {
                         message: 'Please enter your email address'
                     }
@@ -179,10 +172,7 @@
             },
             'spree_user[email_confirmation]': {
                 validators: {
-                    regexp: {
-                        regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: ''
-                    },identical: {
+                    identical: {
                         field: 'spree_user[email]',
                         message: '<span style="color: red;">Confirmation email does not match.  Please try again.</span>'
                     },
@@ -192,6 +182,13 @@
                 }
             }
         }
+    }).on('status.field.bv', function (e, data) {
+        // $(e.target)  --> The field element
+        // data.bv      --> The BootstrapValidator instance
+        // data.field   --> The field name
+        // data.element --> The field element
+
+        data.bv.disableSubmitButtons(false);
     });
     // $('.btn-sub-frm').attr("disabled", true);
     //
