@@ -116,11 +116,26 @@
 
         </div>
 
-        <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
+      <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
 
-          <%= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
+        <ul class="phon">
+          <li class=" uae-tac dropdown frm-country"><a href="#" class="langua-tp uni_cd" data-toggle="dropdown">United Arab Emirates</a>
+            <ul class="dropdown-menu">
+              <% available_countries.each do |al| %>
+                <li><a class="" href="#">
+                  <% if al.iso_name.present? %>
+                    <% c_image = al.iso_name + ".svg" %>
+                    <% if Rails.application.assets.find_asset(c_image) != nil %>
+                      <%= image_tag c_image %>
+                    <% end %>
+                  <% end %>
+                  <font> <%= al.name %></font></a></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
 
-        </div>
+      </div>
     <% end %>
   <% end %>
   <div data-hook="signup_below_password_fields"></div>
@@ -169,13 +184,6 @@
             },
             'spree_user[email]': {
                 validators: {
-                    regexp: {
-                        regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: ''
-                    },identical: {
-                        field: 'spree_user[email_confirmation]',
-                        message: '<span style="color: red;">Confirmation email does not match.  Please try again.</span>'
-                    },
                     notEmpty: {
                         message: 'Please enter your email address'
                     }
@@ -183,10 +191,7 @@
             },
             'spree_user[email_confirmation]': {
                 validators: {
-                    regexp: {
-                        regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: ''
-                    },identical: {
+                    identical: {
                         field: 'spree_user[email]',
                         message: '<span style="color: red;">Confirmation email does not match.  Please try again.</span>'
                     },
@@ -196,6 +201,13 @@
                 }
             }
         }
+    }).on('status.field.bv', function (e, data) {
+        // $(e.target)  --> The field element
+        // data.bv      --> The BootstrapValidator instance
+        // data.field   --> The field name
+        // data.element --> The field element
+
+        data.bv.disableSubmitButtons(false);
     });
     // $('.btn-sub-frm').attr("disabled", true);
     //
