@@ -6,10 +6,10 @@
     <% else %>
       <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
     <% end %>
-    <% if item.personalized_info.present? %>
-      <br>
-      <br>
-      <%= image_tag "arw-icon.png" %>
+     <% if  item.personalized_info.present? %>
+      <div class="text-center" style='margin-top: 6px'>
+        <%= image_tag "arw-icon.png"%>
+      </div>
     <% end %>
   </div>
 
@@ -33,18 +33,22 @@
     <%product = item.variant.product%>
 
     <% if product.on_sale? %>
-      <% sale_ammount = product.original_price.to_f - product.price.to_f %>
       <ul class="rt-prc">
-        <li class="wis_list">$<%= product.original_price.to_f%></li>
-        <li class="cm_wis"><del>$<%= product.price.to_f%></del><br><font><%= ((sale_ammount/product.original_price) * 100).round(2).to_s + '% ' + @order_sale_off_label.try(:title)%></font></li>
+        <li class="wis_list"><%= display_price(product) %></li>
+        <li class="cm_wis"><del><%= display_original_price(product) %></del><br><font><%= display_discount_percent(product, append_text=@order_sale_off_label.try(:title)) %></font></li>
       </ul> 
     <% else %>
       <ul class="rt-prc">
-        <li class="nom"> $<%= (product.price_in(current_currency).amount.nil?)? 0 : product.price_in(current_currency).amount.to_d %></li>
+        <li class="nom"><%= display_price(product)  %></li>
       </ul> 
     <% end %>
+
   </div> 
-  <div class="clearfix"></div>
-  <div class="dvd"></div>  
-  <div class="clearfix"></div>
+
+
+  <% if order_line_items.count != index + 1 %>
+    <div class="clearfix"></div>
+    <div class="dvd"></div>  
+    <div class="clearfix"></div>
+  <% end %>
 <% end %>
