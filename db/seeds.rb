@@ -204,3 +204,5 @@ Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", s
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-cart-advertisement"
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-final-order-advertisement"
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "search-global-advertisement"
+
+Spree::PageContent.find_or_create_by! title: "Stores", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "user-store"
