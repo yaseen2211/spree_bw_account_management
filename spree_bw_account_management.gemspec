@@ -6,7 +6,7 @@ require 'spree_bw_account_management/version'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_bw_account_management'
+  s.name        = 'spree_dev_bw_account_management'
   s.version     = SpreeBwAccountManagement.version
   s.summary     = 'Add extension summary here'
   s.description = 'Add (optional) extension description here'
