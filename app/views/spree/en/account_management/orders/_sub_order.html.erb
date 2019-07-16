@@ -183,7 +183,9 @@
 
           <% if index == 0 %>
              <div class="vol_rma text-right tr_2 col-lg-5 col-md-5 col-sm-5 p-0 turn-btn">
-                <button><%= link_to @order_download_invoice_button_label.try(:title), "/admin/invoice/#{order.number}/invoice", target:  "_blank", style: "color:black"%></button>
+               <a href="/admin/invoice/<%=order.number%>/invoice?format=pdf",format="pdf", type="button", target="_blank?" style="color: black"><button type="button">Download Invoice</button></a>
+
+<!--                               <button type="button"><%#= link_to @order_download_invoice_button_label.try(format: 'pdf',:title), "/admin/invoice/#{order.number}/invoice",type: 'button', target:  "_blank", style: "color:black",format: 'pdf'%></button>-->
               <br>
               <%# if vendor.present? %>
                 <%#= link_to @order_contact_store_button_label.try(:title), spree.new_vendor_contact_store_path(vendor.try(:id), order_number: order.number), target:  "_blank"%>
