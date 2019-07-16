@@ -13,7 +13,6 @@
     <% end %>
   <% end %>
 <% else %>
-
   <% user_contents        = Spree::PageContent.from_gen_slug('user') %>
   <% user_fields_contents = user_contents.from_gen_slug('user-field') %>
   <% user_first_name = user_fields_contents.spec_slug('user-field-label-first-name').last%>
@@ -69,10 +68,11 @@
 
         </div>
 
+        <!-- <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
+          <%#= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
+        </div> -->
         <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
-
-          <%= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
-
+          <%= render partial: "spree/en/shared/country_drop_down", locals: {f: f} %>
         </div>
       <% end %>
 
@@ -105,37 +105,18 @@
           </div>
 
           <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
-
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
-            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control day_dropdown", id: "validationCustom02", required: true}%>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
-            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control dropdown_month", id: "validationCustom02", required: true}%>
-          </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
+              <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control day_dropdown", id: "validationCustom02", required: true}%>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
+              <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control dropdown_month", id: "validationCustom02", required: true}%>
+            </div>
           </div>
 
         </div>
-
-      <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
-
-        <ul class="phon">
-          <li class=" uae-tac dropdown frm-country"><a href="#" class="langua-tp uni_cd" data-toggle="dropdown">United Arab Emirates</a>
-            <ul class="dropdown-menu">
-              <% available_countries.each do |al| %>
-                <li><a class="" href="#">
-                  <% if al.iso_name.present? %>
-                    <% c_image = al.iso_name + ".svg" %>
-                    <% if Rails.application.assets.find_asset(c_image) != nil %>
-                      <%= image_tag c_image %>
-                    <% end %>
-                  <% end %>
-                  <font> <%= al.name %></font></a></li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
-
-      </div>
+        <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
+          <%= render partial: "spree/en/shared/country_drop_down", locals: {f: f} %>
+        </div>
     <% end %>
   <% end %>
   <div data-hook="signup_below_password_fields"></div>
@@ -251,15 +232,15 @@
   })
  $('.day_dropdown').on('change',function (e) {
      if(ans == "29" && parseInt($(this).val()) > 29 || ans == "30" && parseInt($(this).val()) > 30 ){
-         $('#error_msg').html('');
-         $('.day_dropdown').after('<span id="error_msg" style="color: red; font-size: 8px;"> Please select a valid birthdate</span>')
-         $('.day_dropdown').addClass('is-invalid');
-         $('.day_dropdown').removeClass('is-valid');
+      $('#error_msg').html('');
+      $('.day_dropdown').after('<span id="error_msg" style="color: red; font-size: 8px;"> Please select a valid birthdate</span>')
+      $('.day_dropdown').addClass('is-invalid');
+      $('.day_dropdown').removeClass('is-valid');
      }
      else{
-         $('.day_dropdown').addClass('is-valid');
-         $('.day_dropdown').removeClass('is-invalid');
-         $('#error_msg').remove();
+      $('.day_dropdown').addClass('is-valid');
+      $('.day_dropdown').removeClass('is-invalid');
+      $('#error_msg').remove();
      }
  })
 </script>
