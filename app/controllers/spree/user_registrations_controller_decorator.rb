@@ -2,11 +2,11 @@ Spree::UserRegistrationsController.class_eval do
 # POST /resource/sign_up
   def create
     @user = build_resource(spree_user_params)
-    resource_saved = resource.save
+    resource_saved = verify_recaptcha(model: @user) && resource.save
     yield resource if block_given?
-    if verify_recaptcha(model: @user) && resource_saved
+    if resource_saved
       if resource.active_for_authentication?
-        set_flash_message :notice, :signed_up
+        set_flash_message :success, :signed_up
         sign_up(resource_name, resource)
         session[:spree_user_signup] = true
         respond_with resource, location: after_sign_up_path_for(resource)
