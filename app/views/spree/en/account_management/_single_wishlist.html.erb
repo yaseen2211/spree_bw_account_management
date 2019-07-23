@@ -78,7 +78,6 @@
               <%= link_to "<button type='button' class='sub-btn-add'>ADD TO CART</button>".html_safe, product_path(product) %>
             <% end %>
 
-            <br>
           <% else %>
              <span class="out_stock"><%=  wishlist_temp_label.try(:title) %></span><br>
           <% end %>
