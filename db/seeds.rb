@@ -200,6 +200,9 @@ Spree::PageContent.find_or_create_by! title: "Add to cart", description: "", slu
 Spree::PageContent.find_or_create_by! title: "Check Out", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-checkout-steps"
 Spree::PageContent.find_or_create_by! title: "Shopping Cart", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-cart"
 Spree::PageContent.find_or_create_by! title: "Thank you for your purchase", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-final-order"
+Spree::PageContent.find_or_create_by! title: "Thank you for your purchase", description: "Thank you for your order.  Our designers can’t wait to get started on your Abaya(s). We have sent you an email confirming all the details.", slug: "final-order-custom"
+Spree::PageContent.find_or_create_by! title: "Thank you for your purchase", description: "Thank you for your order, your Abaya(s) will be with you soon.  We have sent you an email confirming all the details.", slug: "final-order-non-custom"
+
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-steps-advertisement"
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-cart-advertisement"
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-final-order-advertisement"
