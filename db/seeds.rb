@@ -198,6 +198,8 @@ Spree::PageContent.find_or_create_by! title: "Out of Stock", description: "", sl
 Spree::PageContent.find_or_create_by! title: "Add to cart", description: "", slug: "general-label-add-to-cart"
 
 Spree::PageContent.find_or_create_by! title: "Check Out", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-checkout-steps"
+Spree::PageContent.find_or_create_by! title: "Check Out", description: "Our Designers can’t wait to get started on your custom Abaya(s).  All you need to do is confirm your address (Shipping and Billing) and select Finalise Order.", slug: "checkout-page-custom-order"
+Spree::PageContent.find_or_create_by! title: "Check Out", description: "Nearly there, to get your Abaya(s) all you need to do is confirm your address (Shipping and Billing) and select Finalise Order.", slug: "checkout-page-non-custom"
 Spree::PageContent.find_or_create_by! title: "Shopping Cart", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-cart"
 Spree::PageContent.find_or_create_by! title: "Thank you for your purchase", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "checkout-page-final-order"
 Spree::PageContent.find_or_create_by! title: "Thank you for your purchase", description: "Thank you for your order.  Our designers can’t wait to get started on your Abaya(s). We have sent you an email confirming all the details.", slug: "final-order-custom"
