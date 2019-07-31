@@ -106,10 +106,10 @@
 
         <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
           <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
-            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control day_dropdown", id: "validationCustom02", required: true}%>
+            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control day_dropdown", id: "validationCustom02"}%>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
-            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control dropdown_month", id: "validationCustom02", required: true}%>
+            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control dropdown_month", id: "validationCustom02"}%>
           </div>
         </div>
 
