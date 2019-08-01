@@ -157,6 +157,10 @@
                 },
                 'spree_user[password]': {
                     validators: {
+                        stringLength: {
+                            min: 6,
+                            message: 'Please enter your password (Must be having 6 characters)'
+                        },
                         notEmpty: {
                             message: 'Please enter your password'
                         }
