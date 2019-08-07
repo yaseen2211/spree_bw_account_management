@@ -76,7 +76,7 @@
       <% end %>
 
     <% else%>
-      <% if @user.errors.present? %>
+      <% if @user.present? && @user.errors.present? %>
         <% email_error = 'Email address ' + @user.errors.messages[:email].first %>
         <% password_error = 'Password ' + @user.errors.messages[:password].first %>
         <% @user.errors.clear %>
