@@ -15,16 +15,10 @@ $('#product_wished_or_not_sec_' + "<%= @wished_product.variant.product.id %>").h
 <%# if params[:view_from].present? && params[:view_from] == "cart_page" %>
 //	setTimeout(location.reload.bind(location), 3000);
 <%# end %>
-  $('#wishlist-form').html("<%= escape_javascript render partial: "spree/products/wishlist_form_action_button",locals: {product: @wished_product.variant.product} %>");
-setTimeout(
-    function()
-    {
-        $('.alert').hide()
-    }, 5000);
+$('#wishlist-form').html("<%= escape_javascript render partial: "spree/products/wishlist_form_action_button",locals: {product: @wished_product.variant.product} %>");
 $("#wishlist-count").html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
 $('#mobile_wish_list_count').html("<%= @user_wishlist_products.present? ?  @user_wishlist_products.count : 0 %>");
-
-
+location.reload();
 
 
 
