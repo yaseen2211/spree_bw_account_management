@@ -27,7 +27,6 @@
 
   <% Globalize.with_locale (I18n.locale) do %>
     <% if (params[:controller] == "spree/checkout") && (params[:action] == "registration") %>
-
       <%= form_for Spree::User.new, :as => :spree_user, :url => spree.registration_path, html: {:novalidate => true, class: "needs-validation news_frm my-frm-rgi"} do |f| %>
         <div class="form-row" data-hook="signup_inside_form" id="password-credentials">
 
@@ -77,6 +76,11 @@
       <% end %>
 
     <% else%>
+      <% if @user.present? && @user.errors.present? %>
+        <% email_error = 'Email address ' + @user.errors.messages[:email].first %>
+        <% password_error = 'Password ' + @user.errors.messages[:password].first %>
+        <% @user.errors.clear %>
+      <% end %>
       <div class="form-row" data-hook="signup_inside_form" id="password-credentials">
 
         <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
@@ -91,7 +95,12 @@
 
         <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
           <label for="validationCustom02"><%= user_email.try(:title) %></label>
-          <%= f.email_field :email, :class => 'form-control user_email', :placeholder => "",id: "validationCustom02" , required: true %>
+          <%= f.email_field :email, :class => 'form-control user_email custom-error-js', :placeholder => "",id: "validationCustom02" , required: true %>
+          <% if email_error.present? %>
+            <small class="help-block custom_errors" data-bv-validator="identical" data-bv-result="INVALID" style="">
+              <span class="red-color"><%= email_error %></span>
+            </small>
+          <% end %>
         </div>
 
         <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
@@ -101,7 +110,12 @@
 
         <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
           <label for="validationCustom02"><%= user_password.try(:title) %></label>
-          <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>
+          <%= f.password_field :password, :class => 'form-control custom-error-js', :placeholder => "", id: "validationCustom02", required: true %>
+          <% if password_error.present? %>
+            <small class="help-block custom_errors" data-bv-validator="identical" data-bv-result="INVALID" style="">
+              <span class="red-color"><%= password_error %></span>
+            </small>
+          <% end %>
         </div>
 
         <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
@@ -217,6 +231,7 @@
         //         $('.btn-sub-frm').attr("disabled", false);
         //     }
         // })
+
     });
     let ans = ""
     $('.dropdown_month').on('change',function () {
