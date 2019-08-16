@@ -79,6 +79,7 @@
       <% if @user.present? &&@user.errors.present? %>
         <% email_error = @user.errors.messages[:email].present? ? 'Email address ' + @user.errors.messages[:email].first : "" %>
         <% password_error = @user.errors.messages[:password].present? ?  'Password ' + @user.errors.messages[:password].first : "" %>
+
         <% @user.errors.clear %>
       <% end %>
       <div class="form-row" data-hook="signup_inside_form" id="password-credentials">
