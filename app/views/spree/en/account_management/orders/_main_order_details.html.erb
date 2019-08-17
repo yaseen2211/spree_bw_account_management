@@ -115,7 +115,7 @@
           <%= order.ship_address.address2 %>
         </li>
       <% end %>
-      <li><%= order.ship_address.city %>, <%= order.ship_address.state.name %> </li>
+      <li><%= order.ship_address.city_state_info %> </li>
       <li><%= order.ship_address.country.try(:name) %></li>
     <%end%>
   </ul>
