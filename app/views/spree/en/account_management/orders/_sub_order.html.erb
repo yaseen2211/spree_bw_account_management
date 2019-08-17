@@ -41,6 +41,9 @@
 
       <% order.line_items.each_with_index do |item, index| %>
         <% pro = item.variant.product %>
+        <% product = item.variant.product%>
+        <% variant = item.variant%>
+
         <% next if pro.id != item.variant.product.id%>
         <div class="col-lg-12 col-md-12 col-sm-12 tr_1 p-0">
           <div class="nam_cle2 col-lg-7 col-md-7 col-sm-7 p-0">
@@ -65,7 +68,7 @@
             <div class="col-lg-9 col-md-9 col-sm-9 adip">
               
               <%= link_to item.variant.product, itemprop: "url" do %>
-                <%=item.quantity.to_s + " x "%>
+                <%= item.quantity.to_s + " x "%>
                 <%= content_tag(:span, truncate(item.variant.product.name, length: 50), class: 'info', itemprop: "name", title: item.variant.product.name) %>
               <% end %>
 
@@ -75,20 +78,19 @@
                 <%#= item.variant.options_text unless item.variant.option_values.empty? %>
               </div> -->
 
-              <%product = item.variant.product%>
-
-              <% if product.on_sale? %>
+            
+              <% if variant.on_sale? %>
                 <ul class="rt-prc">
-                  <li class="wis_list"><%= display_price(product) %></li>
-                  <li class="cm_wis"><del><%= display_original_price(product) %></del><br><font><%= display_discount_percent(product, append_text=@order_sale_off_label.try(:title)) %></font></li>
+                  <li class="wis_list"><%=  display_variant_price(product) %></li>
+                  <li class="cm_wis"><del><%= display_original_price(variant)%></del><br><font><%= display_discount_percent(variant, append_text=@order_sale_off_label.try(:title)) %></font></li>
                 </ul> 
               <% else %>
                 <ul class="rt-prc">
-                  <li class="nom"><%= display_price(product)  %></li>
+                  <li class="nom"><%= item.display_amount.to_html unless item.quantity.nil? %></li>
                 </ul> 
               <% end %>
 
-              <%user_review = nil%>
+              <% user_review = nil %>
 
               <% if item.variant.product.reviews.present?%>
                 <%item.variant.product.reviews.each do |review|%>
