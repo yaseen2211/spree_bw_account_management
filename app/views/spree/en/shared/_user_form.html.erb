@@ -13,7 +13,6 @@
     <% end %>
   <% end %>
 <% else %>
-
   <% user_contents        = Spree::PageContent.from_gen_slug('user') %>
   <% user_fields_contents = user_contents.from_gen_slug('user-field') %>
   <% user_first_name = user_fields_contents.spec_slug('user-field-label-first-name').last%>
@@ -26,101 +25,113 @@
   <% user_password = user_fields_contents.spec_slug('user-field-label-password').last%>
   <% user_password_confirm = user_fields_contents.spec_slug('user-field-label-password-confirmation').last%>
 
-  <% Globalize.with_locale (I18n.locale) do %> 
+  <% Globalize.with_locale (I18n.locale) do %>
     <% if (params[:controller] == "spree/checkout") && (params[:action] == "registration") %>
-
       <%= form_for Spree::User.new, :as => :spree_user, :url => spree.registration_path, html: {:novalidate => true, class: "needs-validation news_frm my-frm-rgi"} do |f| %>
         <div class="form-row" data-hook="signup_inside_form" id="password-credentials">
 
           <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
             <label for="validationCustom01"><%= user_first_name.try(:title)%></label>
-            <%= f.text_field :first_name, :class => 'form-control', :placeholder => "", id: "validationCustom01", required: true%>    
+            <%= f.text_field :first_name, :class => 'form-control', :placeholder => "", id: "validationCustom01", required: true%>
           </div>
 
           <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
             <label for="validationCustom02"><%= user_last_name.try(:title)%></label>
-            <%= f.text_field :last_name, :class => 'form-control', :placeholder =>"", id: "validationCustom02"  , required: true%>    
+            <%= f.text_field :last_name, :class => 'form-control', :placeholder =>"", id: "validationCustom02"  , required: true%>
           </div>
-          
+
           <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
             <label for="validationCustom02"><%= user_email.try(:title) %></label>
-            <%= f.email_field :email, :class => 'form-control', :placeholder => "",id: "validationCustom02" , required: true %>    
+            <%= f.email_field :email, :class => 'form-control', :placeholder => "",id: "validationCustom02" , required: true %>
           </div>
-          
+
           <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
             <label for="validationCustom02"><%= user_email_confirmation.try(:title)%></label>
             <%= f.email_field :email_confirmation, :class => 'form-control', :placeholder => "", id: "validationCustom02" , required: true %>
           </div>
-          
+
           <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
             <label for="validationCustom02"><%= user_password.try(:title) %></label>
-            <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>      
+            <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>
           </div>
-          
+
           <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
-          
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
-            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", id: "validationCustom02", required: true}%>
+
+            <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
+              <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control day_dropdown", id: "validationCustom02", required: true}%>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
+              <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control dropdown_month", id: "validationCustom02", required: true}%>
+            </div>
           </div>
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
-            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", id: "validationCustom02", required: true}%>  
-          </div>
-          </div>
-          
+
         </div>
-        
+
+        <!-- <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
+          <%#= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
+        </div> -->
         <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
-        
-          <%= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
-          
+          <%= render partial: "spree/en/shared/country_drop_down", locals: {f: f} %>
         </div>
       <% end %>
 
     <% else%>
+      <% if @user.present? &&@user.errors.present? %>
+        <% email_error = @user.errors.messages[:email].present? ? 'Email address ' + @user.errors.messages[:email].first : "" %>
+        <% password_error = @user.errors.messages[:password].present? ?  'Password ' + @user.errors.messages[:password].first : "" %>
+
+        <% @user.errors.clear %>
+      <% end %>
       <div class="form-row" data-hook="signup_inside_form" id="password-credentials">
 
-          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-            <label for="validationCustom01"><%= user_first_name.try(:title)%></label>
-            <%= f.text_field :first_name, :class => 'form-control', :placeholder => "", id: "validationCustom01", required: true%>    
-          </div>
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom01"><%= user_first_name.try(:title)%></label>
+          <%= f.text_field :first_name, :class => 'form-control', :placeholder => "", id: "validationCustom01", required: true%>
+        </div>
 
-          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-            <label for="validationCustom02"><%= user_last_name.try(:title)%></label>
-            <%= f.text_field :last_name, :class => 'form-control', :placeholder =>"", id: "validationCustom02"  , required: true%>    
-          </div>
-          
-          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-            <label for="validationCustom02"><%= user_email.try(:title) %></label>
-            <%= f.email_field :email, :class => 'form-control user_email', :placeholder => "",id: "validationCustom02" , required: true %>    
-          </div>
-          
-          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-            <label for="validationCustom02"><%= user_email_confirmation.try(:title)%></label>
-            <%= f.email_field :email_confirmation, :class => 'form-control confirm_user_email', :placeholder => "", id: "validationCustom02" , required: true %>
-          </div>
-          
-          <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
-            <label for="validationCustom02"><%= user_password.try(:title) %></label>
-            <%= f.password_field :password, :class => 'form-control', :placeholder => "", id: "validationCustom02", required: true %>      
-          </div>
-          
-          <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
-          
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom02"><%= user_last_name.try(:title)%></label>
+          <%= f.text_field :last_name, :class => 'form-control', :placeholder =>"", id: "validationCustom02"  , required: true%>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom02"><%= user_email.try(:title) %></label>
+          <%= f.email_field :email, :class => 'form-control user_email custom-error-js', :placeholder => "",id: "validationCustom02" , required: true %>
+          <% if email_error.present? %>
+            <small class="help-block custom_errors" data-bv-validator="identical" data-bv-result="INVALID" style="">
+              <span class="red-color"><%= email_error %></span>
+            </small>
+          <% end %>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom02"><%= user_email_confirmation.try(:title)%></label>
+          <%= f.email_field :email_confirmation, :class => 'form-control confirm_user_email', :placeholder => "", id: "validationCustom02" , required: true %>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
+          <label for="validationCustom02"><%= user_password.try(:title) %></label>
+          <%= f.password_field :password, :class => 'form-control custom-error-js', :placeholder => "", id: "validationCustom02", required: true %>
+          <% if password_error.present? %>
+            <small class="help-block custom_errors" data-bv-validator="identical" data-bv-result="INVALID" style="">
+              <span class="red-color"><%= password_error %></span>
+            </small>
+          <% end %>
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-lg-12 slc-dv p-0">
           <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-rgt">
-            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control", id: "validationCustom02", required: true}%>
+            <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{:prompt => user_birth_date.try(:title)},{class: "form-control day_dropdown", id: "validationCustom02"}%>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12 mb-3 p-0 dt-lft">
-            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control", id: "validationCustom02", required: true}%>  
+            <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control dropdown_month", id: "validationCustom02"}%>
           </div>
-          </div>
-          
         </div>
-        
-        <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
-        
-          <%= f.collection_select :country, available_countries, :id, :name, {:prompt => user_country.try(:title) }, { class: 'uae-tac dropdown frm-country', required: true } %>
-          
-        </div>
+
+      </div>
+      <div class="col-md-12 col-sm-12 col-lg-12 cn_ry p-0">
+        <%= render partial: "spree/en/shared/country_drop_down", locals: {f: f} %>
+      </div>
     <% end %>
   <% end %>
   <div data-hook="signup_below_password_fields"></div>
@@ -135,61 +146,123 @@
   }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
 <script>
-  $( document ).ready(function() {
+    $( document ).ready(function() {
 
-    $('#new_spree_user').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            'spree_user[email]': {
-                validators: {
-                    regexp: {
-                        regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: 'Invalid email format'
-                    },identical: {
-                        field: 'spree_user[email_confirmation]',
-                        message: '<span style="color: red;">The email and its confirm email are not the match</span>'
+        $('#new_spree_user').bootstrapValidator({
+            // feedbackIcons: {
+            //     valid: 'glyphicon glyphicon-ok',
+            //     invalid: 'glyphicon glyphicon-remove',
+            //     validating: 'glyphicon glyphicon-refresh'
+            // },
+            fields: {
+                'spree_user[first_name]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter your first name'
+                        }
                     }
-                }
-            },
-            'spree_user[email_confirmation]': {
-                validators: {
-                    regexp: {
-                        regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: 'Invalid email format'
-                    },identical: {
-                        field: 'spree_user[email]',
-                        message: '<span style="color: red;">The email and its confirm  emailare not the match</span>'
+                },
+                'spree_user[last_name]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter your last name'
+                        }
+                    }
+                },
+                'spree_user[password]': {
+                    validators: {
+                        stringLength: {
+                            min: 6,
+                            message: 'Please enter your password (Must be having 6 characters)'
+                        },
+                        notEmpty: {
+                            message: 'Please enter your password'
+                        }
+                    }
+                },
+                'spree_user[email]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter your email address'
+                        }
+                    }
+                },
+                'spree_user[email_confirmation]': {
+                    validators: {
+                        identical: {
+                            field: 'spree_user[email]',
+                            message: '<span style="color: red;">Confirmation email does not match.  Please try again.</span>'
+                        },
+                        notEmpty: {
+                            message: 'Please enter your confirm email address'
+                        },
+                        emailAddress: {
+                            message: 'Please enter a valid confirm email address'
+                        }
                     }
                 }
             }
-        }
-    });
-    $('.btn-sub-frm').attr("disabled", true);
+        }).on('status.field.bv', function (e, data) {
+            // $(e.target)  --> The field element
+            // data.bv      --> The BootstrapValidator instance
+            // data.field   --> The field name
+            // data.element --> The field element
 
-    $('.btn-sub-frm').on('click',function () {
-        setTimeout(
-            function()
-            {
-                $('.glyphicon').hide();
-            }, 1000);
-    });
-    $( "input,textarea,select" ).focusout(function( event ) {
-        let isValid = true;
-        $('input,textarea,select').filter('[required]:visible').each(function () {
-            if ($(this).val() === '')
-                isValid = false
+            data.bv.disableSubmitButtons(false);
         });
-        if (isValid == false) {
-            $('.btn-sub-frm').attr("disabled", true);
-        } else {
-            $('.btn-sub-frm').attr("disabled", false);
+        // $('.btn-sub-frm').attr("disabled", true);
+        //
+        $('.btn-sub-frm').on('click',function () {
+            setTimeout(
+                function()
+                {
+                    $('.glyphicon').hide();
+                }, 1000);
+        });
+        // $( "input,textarea,select" ).focusout(function( event ) {
+        //     let isValid = true;
+        //     $('input,textarea,select').filter('[required]:visible').each(function () {
+        //         if ($(this).val() === '')
+        //             isValid = false
+        //     });
+        //     if (isValid == false) {
+        //         $('.btn-sub-frm').attr("disabled", true);
+        //     } else {
+        //         $('.btn-sub-frm').attr("disabled", false);
+        //     }
+        // })
+
+    });
+    let ans = ""
+    $('.dropdown_month').on('change',function () {
+        let months_of_31 = ["january","march","may","july","august","october","december"];
+        let month_of_29 = ["february"];
+        let month_of_30 = ["april","june","september","november"];
+        if (months_of_31.indexOf($(this).val()) != -1){
+            ans = "31"
+        }
+        else if(month_of_29.indexOf($(this).val()) != -1){
+            ans = "29"
+        }
+        else if(month_of_30.indexOf($(this).val()) != -1){
+            ans = "30"
+        }
+        if($('.day_dropdown').val() != ""){
+            $('.day_dropdown').change();
         }
     })
-  });
+    $('.day_dropdown').on('change',function (e) {
+        if(ans == "29" && parseInt($(this).val()) > 29 || ans == "30" && parseInt($(this).val()) > 30 ){
+            $('#error_msg').html('');
+            $('.day_dropdown').after('<span id="error_msg" style="color: red; font-size: 8px;"> Please select a valid birthdate</span>')
+            $('.day_dropdown').addClass('is-invalid');
+            $('.day_dropdown').removeClass('is-valid');
+        }
+        else{
+            $('.day_dropdown').addClass('is-valid');
+            $('.day_dropdown').removeClass('is-invalid');
+            $('#error_msg').remove();
+        }
+    })
 </script>
