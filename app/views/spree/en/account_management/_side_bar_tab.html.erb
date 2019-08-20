@@ -22,19 +22,19 @@
       <li><a href="#"><%= @user.phone_number %></a></li>
     </ul>
     <ul class="rev_vw">
-      <li><%= image_tag "per-information-icon.png", alt: "" %><%= link_to  profile_info_txt.try(:title), spree.edit_account_path(partial: "personal_information", with_form: true), class: url.include?("personal_information") ? "active" : "" %></li>
+      <li><%= image_tag "edit-ico.svg", alt: "" %><%= link_to  profile_info_txt.try(:title), spree.edit_account_path(partial: "personal_information", with_form: true), class: url.include?("personal_information") ? "active" : "" %></li>
 
-      <li><%= image_tag "address-icon.png", alt: "" %><%= link_to addresses_txt.try(:title), spree.edit_account_path(partial: "addresses"), class: url.include?("addresses") ? "active" : "" %></li>
+      <li><%= image_tag "geo-ico-01.svg", alt: "" %><%= link_to addresses_txt.try(:title), spree.edit_account_path(partial: "addresses"), class: url.include?("addresses") ? "active" : "" %></li>
 
-      <li><%= image_tag "order-icon.png", alt: "" %><%= link_to orders_txt.try(:title), spree.edit_account_path(partial: "orders",with_form: true), class: url.include?("orders") ? "active" : "" %></li>
-<!--      <li><%#= image_tag "apointment-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink">My Appointments</a></li>-->
-      <li><%= image_tag "wishlist-icon.png", alt: "" %><%= link_to wishlist_txt.try(:title), spree.edit_account_path(partial: "wishlist"),class: url.include?("wishlist") ? "active" : ""%></li>
-<!--      <li><%#= image_tag "reviews-icon.png", alt: "" %><%= link_to reviews_txt.try(:title), spree.edit_account_path(partial: "reviews",with_form: true),class: url.include?("reviews") ? "active" : ""%></li>-->
-      <li><%= image_tag "stor-icon.png", alt: "" %><%= link_to  stores_txt.try(:title) , spree.edit_account_path(partial: "stores" ),class: url.include?("stores") ? "active" : ""%></li>
-<!--      <li><%#= image_tag "setting-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%#= settings_txt.try(:title)%></a></li>-->
-<!--      <li><%#= image_tag "message-icon.png", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%#= messages_txt.try(:title)%></a></li>-->
-<!--      <li><%#= image_tag "support-icon.png", alt: "" %><a href="#"  class="tab_link_disable inactiveLink"><%#= sc_txt.try(:title)%></a></li>-->
-      <li class="log_ut"><%= image_tag "acc-log-out.png", alt: "" %><a href="<%= spree.logout_path%>" data-confirm="Are you sure?"><%= logout_txt.try(:title)%></a></li>
+      <li><%= image_tag "bag-ico-01.svg", alt: "" %><%= link_to orders_txt.try(:title), spree.edit_account_path(partial: "orders",with_form: true), class: url.include?("orders") ? "active" : "" %></li>
+      <!-- <li><%#= image_tag "cal-ico-01.svg", alt: "" %><a href="#" class="tab_link_disable inactiveLink">My Appointments</a></li> -->
+      <li><%= image_tag "heart-ico-01.svg", alt: "" %><%= link_to wishlist_txt.try(:title), spree.edit_account_path(partial: "wishlist"),class: url.include?("wishlist") ? "active" : ""%></li>
+      <!-- <li><%#= image_tag "like-ico-01.svg", alt: "" %><%#= link_to reviews_txt.try(:title), spree.edit_account_path(partial: "reviews",with_form: true),class: url.include?("reviews") ? "active" : ""%></li> -->
+      <li><%= image_tag "stores-ico-01.svg", alt: "" %><%= link_to  stores_txt.try(:title) , spree.edit_account_path(partial: "stores" ),class: url.include?("stores") ? "active" : ""%></li>
+      <!-- <li><%#= image_tag "sett-ico-01.svg", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%#= settings_txt.try(:title)%></a></li> -->
+      <!-- <li><%#= image_tag "msg-ico-01.svg", alt: "" %><a href="#" class="tab_link_disable inactiveLink"><%#= messages_txt.try(:title)%></a></li> -->
+      <!-- <li><%#= image_tag "supp-ico-01.svg", alt: "" %><a href="#"  class="tab_link_disable inactiveLink"><%#= sc_txt.try(:title)%></a></li> -->
+      <li class="log_ut"><%= image_tag "arrow-ico-01.svg", alt: "" %><a href="<%= spree.logout_path%>" data-confirm="Are you sure?"><%= logout_txt.try(:title)%></a></li>
     </ul>
   </div>
 
