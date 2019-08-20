@@ -21,7 +21,7 @@
       <%= @order_payment_method_label.try(:title) %>:  <%= order.payments.valid.map{|payment| payment.payment_method.name}.join(',') %>
     </li>
   <% end %>
-  <li><%= @order_currency_label.try(:title) %>: <%= current_currency %></li>
+  <li><%= @order_currency_label.try(:title) %>: <%= order.currency %></li>
 </ul>
 
 <ul class="ul-ord-2 deta col-lg-4 col-md-4 col-sm-4">
@@ -115,7 +115,7 @@
           <%= order.ship_address.address2 %>
         </li>
       <% end %>
-      <li><%= order.ship_address.city %>, <%= order.ship_address.state.name %> </li>
+      <li><%= order.ship_address.city_state_info %> </li>
       <li><%= order.ship_address.country.try(:name) %></li>
     <%end%>
   </ul>

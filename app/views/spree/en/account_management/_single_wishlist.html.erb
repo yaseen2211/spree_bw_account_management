@@ -27,9 +27,9 @@
           <span class="nw-lab-wis">ON SALE</span>
         <% end %>
         <!-- <img class="mark-b" src="images/progress-icon-black.png" alt=""> -->
-        <% if personalization_properties.present? %>
-          <%= image_tag "progress-icon-black.png",class: "mark-b", alt: "" %>
-        <% end %>
+        <%# if personalization_properties.present? %>
+          <%#= image_tag "progress-icon-black.png",class: "mark-b", alt: "" %>
+        <%# end %>
 
       </div>
       <div class="wishlist-details-pro col-lg-8 col-md-8 col-sm-8">
@@ -78,7 +78,6 @@
               <%= link_to "<button type='button' class='sub-btn-add'>ADD TO CART</button>".html_safe, product_path(product) %>
             <% end %>
 
-            <br>
           <% else %>
              <span class="out_stock"><%=  wishlist_temp_label.try(:title) %></span><br>
           <% end %>

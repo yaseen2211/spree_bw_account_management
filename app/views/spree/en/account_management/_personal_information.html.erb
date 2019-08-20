@@ -33,25 +33,16 @@
 
       <div class="clearfix"></div>
     </div>
-
     <div class="locan-stor cate-pg">
-
       <%= render  partial: "spree/en/account_management/side_bar_tab" %>
-
       <div class="col-lg-10 col-md-10 col-sm-9 stor-list-pg">
-
         <div class="col-lg-12 col-md-12 col-sm-12 acc_form_set">
-
           <div class="col-lg-12 col-md-12 col-sm-12 wet-text">
             <p><%= user_personal_content.try(:description) %></p>
           </div>
-
           <div class="col-lg-12 col-md-12 col-sm-12 wet-frm">
-
             <div class="col-lg-3 col-md-3 col-sm-3 wet-pro-pic">
-
               <span id="user-profile-image"><%= render partial: "spree/users/profile_section", locals: {user_profile_image: spree_current_user.profile_image, height: "90", width: "90"} %></span>
-
               <div class="return_reason-img">
                 <div class="img-up-lod">
                   <label style="display: none;" id="bb">Select Image
@@ -60,11 +51,9 @@
                   <span id= "file-name"class="text-center"></span>
                 </div>
               </div>
-
             </div>
 
             <div class="col-lg-9 col-md-9 col-sm-9 wet-ful-frm">
-
               <div class="form-group col-md-6 col-sm-6 col-lg-6 nxt-lab">
                 <label><%= user_first_name.try(:title) %></label>
                 <%= f.text_field :first_name, :class => 'form-control' %>
@@ -87,12 +76,10 @@
                 <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{},{class: "form-control frt-sell"}%>
 
                 <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control sc-sell"}%>
-
               </div>
               <div class="form-group col-md-12 col-sm-12 col-lg-12 sub-btn-acc">
-                <%= f.submit user_personal_btn_content.try(:title), :class => "xtut" %>
+                <%= f.submit user_personal_btn_content.try(:title), :class => "btn-sub-frm button-body" %>
               </div>
-
             </div>
           </div>
 
@@ -102,106 +89,69 @@
           </div>
 
           <div class="clearfix"></div>
-
           <div class="bust-th col-lg-12 col-md-12 col-sm-12">
-            <ul>
-              <div class="bust-th col-lg-6 col-md-6 col-sm-6">
-                <%= hidden_field_tag "personalized_info", "" %>
-                <div class="tab-pane active" id="1b">
-                  <div class="bust-th front-tab-mesure">
-                    <ul>
-                      <h2 class="body2 ms-til text-left">Front</h2>
-                      <li class="front-dots"><%= image_tag "front-img.png" %>
-                        <div class="dot-11 dot-style  js-product-measurement" id="js-product-measurement-11"><a href="#" data-toggle="modal" data-measurement-id="11" data-target="#lightbox">11</a></div>
-                        <div class="dot-13 dot-style js-product-measurement" id="js-product-measurement-13"><a href="#" data-toggle="modal" data-measurement-id="13" data-target="#lightbox">13</a></div>
-                        <div class="dot-17 dot-style js-product-measurement" id="js-product-measurement-17"><a href="#" data-toggle="modal" data-measurement-id="17" data-target="#lightbox">17</a></div>
-                        <div class="dot-10 dot-style js-product-measurement" id="js-product-measurement-10"><a href="#" data-toggle="modal" data-measurement-id="10" data-target="#lightbox">10</a></div>
-                        <!-- <div class="dot-style dot-fill dot-black"><a href="#" data-toggle="modal" data-target="#lightbox"></a></div>-->
-                        <div class="dot-1 dot-style js-product-measurement" id="js-product-measurement-1"><a href="#" data-toggle="modal" data-measurement-id="1" data-target="#lightbox">1</a></div>
-                        <div class="dot-8 dot-style js-product-measurement" id="js-product-measurement-8"><a href="#" data-toggle="modal" data-measurement-id="8" data-target="#lightbox">8</a></div>
-                        <div class="dot-3 dot-style js-product-measurement" id="js-product-measurement-3"><a href="#" data-toggle="modal" data-measurement-id="3" data-target="#lightbox">3</a></div>
-                        <div class="dot-5 dot-style  js-product-measurement" id="js-product-measurement-5"><a href="#" data-toggle="modal" data-measurement-id="5"  data-target="#lightbox">5</a></div>
-                        <div class="dot-4 dot-style  js-product-measurement" id="js-product-measurement-4"><a href="#" data-toggle="modal" data-measurement-id="4" data-target="#lightbox">4</a></div>
-                        <div class="dot-6 dot-style js-product-measurement" id="js-product-measurement-6"><a href="#" data-toggle="modal" data-measurement-id="6" data-target="#lightbox">6</a></div>
-                      </li>
-                    </ul>
-
-                  </div>
-
-                </div>
-              </div>
-              <div class="bust-th col-lg-6 col-md-6 col-sm-6">
-
-                <div class="tab-pane" id="2b">
-
-                  <div class="bust-th front-tab-mesure">
-                    <ul>
-                      <h2 class="body2 ms-til text-left">Back</h2>
-
-                      <li class="front-dots"><%= image_tag "back-img.png" %>
-                        <div class="dot-9 dot-style js-product-measurement" id="js-product-measurement-9"><a href="#" data-toggle="modal" data-measurement-id="9" data-target="#lightbox">9</a></div>
-                        <div class="dot-16 dot-style js-product-measurement" id="js-product-measurement-16"><a href="#" data-toggle="modal" data-measurement-id="16" data-target="#lightbox">16</a></div>
-                        <div class="dot-7 dot-style  js-product-measurement" id="js-product-measurement-7"><a href="#" data-toggle="modal" data-measurement-id="7"  data-target="#lightbox">7</a></div>
-                        <div class="dot-12 dot-style js-product-measurement" id="js-product-measurement-12"><a href="#" data-toggle="modal" data-measurement-id="12" data-target="#lightbox">12</a></div>
-                        <div class="dot-2 dot-style  js-product-measurement" id="js-product-measurement-2"><a href="#" data-toggle="modal" data-measurement-id="2" data-target="#lightbox">2</a></div>
-                        <div class="dot-14 dot-style js-product-measurement" id="js-product-measurement-14"><a href="#" data-toggle="modal" data-measurement-id="14"  data-target="#lightbox">14</a></div>
-                        <div class="dot-15 dot-style js-product-measurement" id="js-product-measurement-15"><a href="#" data-toggle="modal" data-measurement-id="15" data-target="#lightbox">15</a></div>
-                      </li>
-
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!--        <li><h3 class="fr-marg">Front</h3><%#= image_tag "front-img.jpg", alt: ""%></li>-->
-              <!--        <li><h3>Back</h3><%#= image_tag "back-img.jpg", alt: ""%></li>-->
-
-            </ul>
-
-
-
-            <div class="sv-acc-btn col-lg-12 col-md-12 col-sm-12">
+            <%= hidden_field_tag "personalized_info", "" %>
+           <ul>
+              <li class="front-dots">
+                 <h3 class="fr-marg">Front</h3>
+                 <%= image_tag "front-img-pro.png" %>
+                 <div class="dot-11 dot-style dot-black js-product-measurement" id="js-product-measurement-11"><a href="#" data-toggle="modal"  data-measurement-id="11" data-target="#lightbox">11</a></div>
+                 <div class="dot-13 dot-style js-product-measurement" id="js-product-measurement-13"><a href="#" data-toggle="modal"  data-measurement-id="13" data-target="#lightbox">13</a></div>
+                 <div class="dot-17 dot-style js-product-measurement" id="js-product-measurement-17"><a href="#" data-toggle="modal"  data-measurement-id="17" data-target="#lightbox">17</a></div>
+                 <div class="dot-10 dot-style js-product-measurement" id="js-product-measurement-10"><a href="#" data-toggle="modal"  data-measurement-id="10" data-target="#lightbox">10</a></div>
+                 <!-- <div class="dot-style dot-fill dot-black"><a href="#" data-toggle="modal" data-target="#lightbox"></a></div>-->    
+                 <div class="dot-1 dot-style js-product-measurement" id="js-product-measurement-1"><a href="#" data-toggle="modal" data-measurement-id="1" data-target="#lightbox">1</a></div>
+                 <div class="dot-8 dot-style js-product-measurement" id="js-product-measurement-8"><a href="#" data-toggle="modal" data-measurement-id="8" data-target="#lightbox">8</a></div>
+                 <div class="dot-3 dot-style js-product-measurement" id="js-product-measurement-3"><a href="#" data-toggle="modal" data-measurement-id="3" data-target="#lightbox">3</a></div>
+                 <div class="dot-5 dot-style dot-red js-product-measurement" id="js-product-measurement-5"><a href="#" data-toggle="modal"  data-measurement-id="5" data-target="#lightbox">5</a></div>
+                 <div class="dot-4 dot-style dot-pink js-product-measurement" id="js-product-measurement-4"><a href="#" data-toggle="modal" data-measurement-id="4" data-target="#lightbox">4</a></div>
+                 <div class="dot-6 dot-style js-product-measurement" id="js-product-measurement-6"><a href="#" data-toggle="modal" data-measurement-id="6" data-target="#lightbox">6</a></div>
+              </li>
+              <li class="front-dots">
+                 <h3 class="fr-marg">Back</h3>
+                 <%= image_tag "back-img-pro.png" %>
+                 <div class="dot-9 dot-style js-product-measurement" id="js-product-measurement-9"><a href="#" data-toggle="modal" data-measurement-id="9" data-target="#lightbox">9</a></div>
+                 <div class="dot-16 dot-style js-product-measurement" id="js-product-measurement-16"><a href="#" data-toggle="modal"  data-measurement-id="16" data-target="#lightbox">16</a></div>
+                 <div class="dot-7 dot-style dot-pink js-product-measurement" id="js-product-measurement-7"><a href="#" data-toggle="modal" data-measurement-id="7" data-target="#lightbox">7</a></div>
+                 <div class="dot-12 dot-style js-product-measurement" id="js-product-measurement-12"><a href="#" data-toggle="modal" data-measurement-id="12"  data-target="#lightbox">12</a></div>
+                 <div class="dot-2 dot-style dot-black js-product-measurement" id="js-product-measurement-2"><a href="#" data-toggle="modal"  data-measurement-id="2" data-target="#lightbox">2</a></div>
+                 <div class="dot-14 dot-style js-product-measurement" id="js-product-measurement-14"><a href="#" data-toggle="modal"  data-measurement-id="14" data-target="#lightbox">14</a></div>
+                 <div class="dot-15 dot-style js-product-measurement" id="js-product-measurement-15"><a href="#" data-toggle="modal"  data-measurement-id="15" data-target="#lightbox">15</a></div>
+              </li>
+           </ul>
+           <div class="sv-acc-btn col-lg-12 col-md-12 col-sm-12">
               <div class="col-lg-6 col-md-6 col-sm-6 pro-legand">
-                <div class="frt-dx">
-                  <div class="matis-rd">
-                    <div class="huy">
-                      <span class="nbi"></span>
-                      <label class="body2">Measurement not entered</label>
+                 <div class="frt-dx">
+                    <div class="matis-rd">
+                       <div class="huy">
+                          <span class="nbi"></span>
+                          <label class="body2">Measurement not entered</label>
+                       </div>
+                       <div class="huy">
+                          <span class="dot-pink"></span>
+                          <label class="body2">Measurement entered</label>
+                       </div>
+                       <div class="huy">
+                          <span class="dot-red"></span>
+                          <label class="body2">Problem with measurement entered</label>
+                       </div>
+                       <div class="huy">
+                          <span class="dot-black"></span>
+                          <label class="body2">Current measurement user is trying to enter</label>
+                       </div>
                     </div>
-
-                    <div class="huy">
-                      <span class="dot-pink"></span>
-                      <label class="body2">Measurement entered</label>
-                    </div>
-
-                    <div class="huy">
-                      <span class="dot-red"></span>
-                      <label class="body2">Problem with measurement entered</label>
-                    </div>
-                    <div class="huy">
-                      <span class="dot-black"></span>
-                      <label class="body2"> Current measurement user is trying to enter</label>
-                    </div>
-                  </div>
-                </div>
+                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 sv-btn-pro">
-                <button type="submit" class="acc-sv-btn">Save</button>
+                 <button class="acc-sv-btn">Save</button>
               </div>
-              <%#= f.submit user_personal_btn_content.try(:title), :class => "acc-sv-btn" %>
-
             </div>
-
-          </div>
-
+          </div> 
 
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 
 
   <div class="adver-sec">
