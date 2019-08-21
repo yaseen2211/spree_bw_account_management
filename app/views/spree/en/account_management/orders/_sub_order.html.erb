@@ -179,7 +179,10 @@
 
             </div>
             <div class="clearfix"></div>
-            <div class="dvd"></div>  
+            <% if order.line_items.last != item  %>
+              <div class="dvd"></div> 
+            <% end %> 
+
             <div class="clearfix"></div>
           </div> 
 
