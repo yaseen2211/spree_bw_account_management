@@ -106,12 +106,12 @@
 
         <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
           <label for="validationCustom02"><%= user_email_confirmation.try(:title)%></label>
-          <%= f.email_field :email_confirmation, name: "user_confirmation", :class => 'form-control confirm_user_email', :placeholder => "", id: "validationCustom02" , required: true %>
+          <%= f.email_field :email_confirmation, :class => 'form-control confirm_user_email', :placeholder => "", id: "validationCustom02" , required: true %>
         </div>
 
         <div class="col-md-12 col-lg-12 col-sm-12 mb-3 p-0">
           <label for="validationCustom02"><%= user_password.try(:title) %></label>
-          <%= f.password_field :password,name: 'pass_confirm', :class => 'form-control custom-error-js', :placeholder => "", id: "validationCustom02", required: true %>
+          <%= f.password_field :password, :class => 'form-control custom-error-js', :placeholder => "", id: "validationCustom02", required: true %>
           <% if password_error.present? %>
             <small class="help-block custom_errors" data-bv-validator="identical" data-bv-result="INVALID" style="">
               <span class="red-color"><%= password_error %></span>
@@ -173,7 +173,7 @@
                         }
                     }
                 },
-                pass_confirm: {
+                'spree_user[password]': {
                     validators: {
                         stringLength: {
                             min: 6,
@@ -188,11 +188,17 @@
                         }
                     }
                 },
-                user_confirmation: {
+                'spree_user[email_confirmation]': {
                     validators: {
                         identical: {
                             field: 'spree_user[email]',
                             message: '<span style="color: red;">Confirmation email does not match.  Please try again.</span>'
+                        },
+                        notEmpty: {
+                            message: 'Please enter your confirm email address'
+                        },
+                        emailAddress: {
+                            message: ' '
                         }
                     }
                 }
@@ -226,9 +232,9 @@
         //         $('.btn-sub-frm').attr("disabled", false);
         //     }
         // })
-        // $('.confirm_user_email').next().next().remove();
-        // $('.confirm_user_email').next().next().remove();
-        // $('[name="spree_user[password]"').next().remove();
+        $('.confirm_user_email').next().next().remove();
+        $('.confirm_user_email').next().next().remove();
+        $('[name="spree_user[password]"').next().next().remove();
     });
     let ans = ""
     $('.dropdown_month').on('change',function () {
