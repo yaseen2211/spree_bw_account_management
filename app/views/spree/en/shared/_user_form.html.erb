@@ -178,9 +178,6 @@
                         stringLength: {
                             min: 6,
                             message: 'Please enter your password (Must be having 6 characters)'
-                        },
-                        notEmpty: {
-                            message: 'Please enter your password'
                         }
                     }
                 },
@@ -235,7 +232,9 @@
         //         $('.btn-sub-frm').attr("disabled", false);
         //     }
         // })
-
+        $('.confirm_user_email').next().next().remove();
+        $('.confirm_user_email').next().next().remove();
+        $('[name="spree_user[password]"').next().next().remove();
     });
     let ans = ""
     $('.dropdown_month').on('change',function () {
