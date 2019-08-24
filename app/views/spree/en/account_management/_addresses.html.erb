@@ -12,13 +12,14 @@
 
 
     <div class="stor-full-top">
-      <div class="dv-title text-center col-md-12">
-        <h2><%= address_main_content.try(:title) %></h2>
-      </div>
-      
-      <div class="clearfix"></div>
+     <div class="dv-title  col-md-12 p-0">
+        <div class="col-lg-8 col-md-8 col-sm-8 add-bard-btn text-right p-0">
+           <h2><%= address_main_content.try(:title) %></h2>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 add-bard-btn text-right p-0 desktop-eng"><a id="btn-new-address" href="#"><%=new_address_btn.try(:title) %></a></div>
+     </div>
+     <div class="clearfix"></div>
     </div>
-
 
     <div class="locan-stor cate-pg ord_pg">
       <%= render  partial: "spree/en/account_management/side_bar_tab" %> 
@@ -29,17 +30,17 @@
         <div class="col-lg-12 col-md-12 col-sm-12 mana_ge_1">
            
           <div class="col-lg-12 col-md-12 col-sm-12 wet-text lft-rgt-padd">
-            <div class="col-lg-9 col-md-9 col-sm-9 add-bard-btn p-0">
+            <div class="col-lg-9 col-md-9 col-sm-9 add-bard-btn lk-adv p-0">
             <p> <%=  address_main_content.try(:description)%></p>
             </div>
-             <div class="col-lg-3 col-md-3 col-sm-3 add-bard-btn text-right p-0">
-             <a id="btn-new-address" href="#"><%=new_address_btn.try(:title) %></a>
+             <div class="col-lg-4 col-md-4 col-sm-4 add-bard-btn text-right p-0 mobile-eng">
+              <a id="btn-new-address" href="#"><%=new_address_btn.try(:title) %></a>
             </div>
           </div>
           
           <div class=" alert  alert-dismissible" id="address-info-sec"></div>
             <div  id="user-<%=@user.id%>-addresses-section" >        
-	             <%= render partial: 'spree/en/account_management/address/user_addresses_section', locals: {addresses: @user.addresses, user: @user} %>
+               <%= render partial: 'spree/en/account_management/address/user_addresses_section', locals: {addresses: @user.addresses, user: @user} %>
             </div>
               
         </div>
@@ -72,9 +73,7 @@
 
 
 <script type="text/javascript">
-	$(document).on("click", ".make-primary-checkbox", function(e) {
-		$("#make_me_primary_" + this.id).click();
-	});
+  $(document).on("click", ".make-primary-checkbox", function(e) {
+    $("#make_me_primary_" + this.id).click();
+  });
 </script>
-
-

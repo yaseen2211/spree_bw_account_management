@@ -67,7 +67,6 @@
 <% user_store     = Spree::PageContent.from_gen_slug('user-store').last %>
 
 
-
 <div class="clearfix"></div>
 <div class="container">
   <div class="stor-full-top">
@@ -83,25 +82,24 @@
       <div class="col-lg-12 col-md-12 col-sm-12 p-0">
         <div class="col-lg-12 col-md-12 col-sm-12 p-0 man-str-pg">
           <div class="col-lg-12 col-md-12 col-sm-12 wet-text"><br>
-<!--            <h4 class="heading1"><%# @user.stores %></h4>-->
+            <!-- <h4 class="heading1"><%# @user.stores %></h4> -->
             <p><%= user_store.try(:description) %> </p>
           </div>
           
           <div class="clearfix"></div>
           
-          <div class="nec-dv text-right">
-          <div class="vw-tep in_line">
-
-          <ul class="phon">
-            <li class="dropdown dp-innr"><a href="#" class="drp-tp" data-toggle="dropdown">Sort By</a>
-              <ul class="dropdown-menu">
-                <li><a class="active" href="#">Lorem</a></li>
-                <li><a class="" href="#">Lorem</a></li>
+          <!-- <div class="nec-dv mf-h1 nab-c text-left">
+            <div class="vw-tep in_line">
+              <ul class="phon">
+                <li class="dropdown dp-innr"><a href="#" class="drp-tp" data-toggle="dropdown">Sort By</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="active" href="#">Lorem</a></li>
+                    <li><a class="" href="#">Lorem</a></li>
+                  </ul>
+                </li>
               </ul>
-            </li>
-          </ul>
-        </div>
-        </div>
+            </div>
+          </div> -->
         
         <div class="clearfix"></div>
           <div class="stor-mng-dv" id="user-<%= @user.id%>-store-section">
@@ -153,13 +151,13 @@
 </div> -->
 <!--------------- side menu modal buttons --------------------->
 <!--- advertise ment section start--->
-<div class="adver-sec">
+<!-- <div class="adver-sec">
   <div class="container">
     <div class="adver-sec-mn">
-     <%= image_tag "advertize.jpg",class: "img-responsive", alt: "" %>
+     <%#= image_tag "advertize.jpg",class: "img-responsive", alt: "" %>
       </div>
   </div>
-</div>
+</div> -->
 <!--- advertise ment section end--->
 
 

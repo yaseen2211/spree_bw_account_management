@@ -60,7 +60,7 @@
 
         <% else %>
 
-          <div class="elit-dd text-center manag-input">
+          <div class="elit-dd text-center manag-input mng-st-mat nv-dit">
             <%#= link_to delete_address_btn.try(:title) ,address_path(form.object), 'data-method' => :delete, :class => "ress-btn-delet",:data => {:confirm => 'Are you sure?'},:remote => true%>
               <button type="button" class="ress-btn-delete" data-toggle="modal" data-target="#Delete_confirm_modal_<%=form_obj.persisted? ? form_obj.id : 'new'%>">DELETE</button>
              <%#= form.submit form.object.persisted? ? update_address_btn.try(:title) : save_address_btn.try(:title)  , :class => 'ress-btn-save'%>

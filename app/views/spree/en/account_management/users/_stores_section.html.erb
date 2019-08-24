@@ -33,8 +33,8 @@
 	  <%= link_to image_tag("store-logo-1.png", :alt => "Store Logo"), vendor_path(store.slug) %>
 	<% end %>
   <p><%= truncate(store.about_us, length: 50) %></p><br>
-  
-  <%= link_to  @store_unfollow_content.try(:title) , vendor_follower_path(store.id), method: :delete, remote: true, class: "un_follow", :data => {:confirm => 'Are you sure?'}  %>
+
+  <%= button_to @store_unfollow_content.try(:title) , vendor_follower_path(store.id), :class => "un_follow", :method => :delete, remote: true,  :data => {:confirm => 'Are you sure?'} %>
 </li>
   <% end %>
 <% else %>

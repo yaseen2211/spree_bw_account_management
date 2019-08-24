@@ -23,7 +23,9 @@
 
 $('#product_wished_or_not_sec_' + "<%= @wished_product.variant.product.id %>").html("<%= escape_javascript render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/shared/product_wished_section", locals: { user_wishlist_products: @user_wishlist_products,product:@wished_product.variant.product } %>");
 
-<% if params[:view_from].present? && params[:view_from] == "cart_page" %>
+<% reload_pages = ["cart_page", "home_page", "product_page"] %>
+
+<% if params[:view_from].present? && (reload_pages.include?(params[:view_from])) %>
 	location.reload();
 <% end %>
 

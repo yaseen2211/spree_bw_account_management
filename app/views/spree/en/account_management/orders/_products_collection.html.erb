@@ -1,16 +1,19 @@
 <% order_line_items.each_with_index do |item, index| %>
   <div class="col-lg-3 col-md-3 col-sm-3 p-0 text-center">
 
+    <% product = item.variant.product%>
+    <% variant = item.variant%>
+
     <% if item.variant.images.length == 0 %>
       <%= link_to small_image(item.variant.product), item.variant.product %>
     <% else %>
       <%= link_to image_tag(main_app.url_for(item.variant.images.first.url(:small))), item.variant.product %>
     <% end %>
-     <% if  item.personalized_info.present? %>
-      <div class="text-center" style='margin-top: 6px'>
-        <%= image_tag "arw-icon.png"%>
-      </div>
-    <% end %>
+       <%# if  item.personalized_info.present? %>
+  <!--      <div class="text-center" style='margin-top: 6px'>-->
+          <%#= image_tag "arw-icon.png"%>
+  <!--      </div>-->
+      <%# end %>
   </div>
 
 
@@ -30,21 +33,18 @@
       <%#= item.variant.options_text unless item.variant.option_values.empty? %>
     </div> -->
 
-    <%product = item.variant.product%>
-
-    <% if product.on_sale? %>
+    <% if variant.on_sale?  %>
       <ul class="rt-prc">
-        <li class="wis_list"><%= display_price(product) %></li>
+        <li class="wis_list"><%= display_variant_price(product)  %></li>
         <li class="cm_wis"><del><%= display_original_price(product) %></del><br><font><%= display_discount_percent(product, append_text=@order_sale_off_label.try(:title)) %></font></li>
       </ul> 
     <% else %>
       <ul class="rt-prc">
-        <li class="nom"><%= display_price(product)  %></li>
+        <li class="nom"><%= item.display_amount.to_html unless item.quantity.nil?   %></li>
       </ul> 
     <% end %>
 
   </div> 
-
 
   <% if order_line_items.count != index + 1 %>
     <div class="clearfix"></div>

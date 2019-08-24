@@ -55,10 +55,10 @@ Spree::PageContent.find_or_create_by! title: "Phone Number is not valid", descri
 Spree::PageContent.find_or_create_by! title: "Email *", description: "", slug: "user-field-label-email"
 Spree::PageContent.find_or_create_by! title: "Email can't be blank", description: "", slug: "user-error-msg-email"
 Spree::PageContent.find_or_create_by! title: "Email is not valid", description: "", slug: "user-error-msg-email-formate"
-Spree::PageContent.find_or_create_by! title: "Confirm Email", description: "", slug: "user-field-label-email-confirmation"
+Spree::PageContent.find_or_create_by! title: "Confirm Email *", description: "", slug: "user-field-label-email-confirmation"
 Spree::PageContent.find_or_create_by! title: "Confirm Email can't be blank", description: "", slug: "user-error-msg-email-confirmation"
 Spree::PageContent.find_or_create_by! title: "Email Address is not matched .", description: "", slug: "user-error-msg-email-confirmation-matcher"
-Spree::PageContent.find_or_create_by! title: "Password*", description: "", slug: "user-field-label-password"
+Spree::PageContent.find_or_create_by! title: "Password *", description: "", slug: "user-field-label-password"
 Spree::PageContent.find_or_create_by! title: "Password can't be blank", description: "", slug: "user-error-msg-password"
 Spree::PageContent.find_or_create_by! title: "Password is not valid", description: "", slug: "user-error-msg-password-formate"
 Spree::PageContent.find_or_create_by! title: "Password Confirmation *", description: "", slug: "user-field-label-password-confirmation"
@@ -209,3 +209,5 @@ Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", s
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-cart-advertisement"
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "checkout-page-final-order-advertisement"
 Spree::PageContent.find_or_create_by! title: "Advertisement", description: "", slug: "search-global-advertisement"
+
+Spree::PageContent.find_or_create_by! title: "Stores", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.", slug: "user-store"
