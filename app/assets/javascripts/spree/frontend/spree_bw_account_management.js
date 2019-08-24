@@ -23,7 +23,7 @@ $(document).ready(function()
     //$("#address-info-sec").slideUp(500);
     //});
 
-    $("#btn-new-address").click(function() {
+    $('body').on("click", ".js-add-new-address-btn", function(e) {
       $('html, body').animate({
           scrollTop: $("#checkout_form_address").offset().top
       }, 2000);

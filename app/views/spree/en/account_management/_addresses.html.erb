@@ -16,7 +16,7 @@
         <div class="col-lg-8 col-md-8 col-sm-8 add-bard-btn text-right p-0">
            <h2><%= address_main_content.try(:title) %></h2>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 add-bard-btn text-right p-0 desktop-eng"><a id="btn-new-address" href="#"><%=new_address_btn.try(:title) %></a></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 add-bard-btn text-right p-0 desktop-eng js-add-new-address-btn"><a id="btn-new-address" href="#"><%=new_address_btn.try(:title) %></a></div>
      </div>
      <div class="clearfix"></div>
     </div>
@@ -34,7 +34,7 @@
             <p> <%=  address_main_content.try(:description)%></p>
             </div>
              <div class="col-lg-4 col-md-4 col-sm-4 add-bard-btn text-right p-0 mobile-eng">
-              <a id="btn-new-address" href="#"><%=new_address_btn.try(:title) %></a>
+              <a class="js-add-new-address-btn" id="btn-new-address" href="#"><%=new_address_btn.try(:title) %></a>
             </div>
           </div>
           
