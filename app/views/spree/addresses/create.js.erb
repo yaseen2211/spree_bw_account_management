@@ -1,17 +1,21 @@
 <% lang = I18n.locale %>
-
 <% if @address.save %>
 
 	<%= Spree::Address.assign_address_to_order(@address, current_order) %>
-	
-	var html = "<%= j render partial:"spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/account_management/address/user_addresses_section", locals: {addresses: spree_current_user.addresses, user: spree_current_user} %>"
-	$("#user-"+ <%= spree_current_user.id %> + "-addresses-section").html(html);
+	<%= Spree::Address.shipping_cost_calculation(@address, current_order) %>
 
+	var address_html = "<%= j render partial:"spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/account_management/address/user_addresses_section", locals: {addresses: spree_current_user.addresses, user: spree_current_user} %>"
+	$("#user-"+ <%= spree_current_user.id %> + "-addresses-section").html(address_html);
+
+	<% if current_order.present? %>
+		var order_shipping_cost = "<%= j render partial:'spree/en/shared/order_shipping_cost', locals: {order: current_order} %>";
+		$("#js-shipping-cost-sec").html(order_shipping_cost);
+	<% end %>
+		
 	<% if params[:controller].present? && params[:from_page].blank? && params[:controller].include?("spree/addresses") %>
 		var steps_collection_html = "<%= j render partial: "spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/checkout/checkout_steps_collection", locals: {order: current_order} %>"
 		$("#js-checkout-steps-collection").html(steps_collection_html);
 	<% end %>
-
 	toastr.success("Your address has been created successfully.")
 <% else %>
 	toastr.error("<%= @address.errors.messages%>")

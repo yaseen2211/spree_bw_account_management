@@ -1,3 +1,4 @@
+
 <% @address_contents     = Spree::PageContent.from_gen_slug('address') %>
 <% @address_btn_contents = @address_contents.from_gen_slug('address-btn-label') %>
 <% @address_fileds_contents = @address_contents.from_gen_slug('address-field-label') %>
@@ -8,9 +9,9 @@
 <% primary_address     = addresses.select{|s| ( @user_shipping_address || @user_billing_address  ) == s.id}.last%>
 <% secondry_addresses  = addresses.reject{|s| ( @user_shipping_address || @user_billing_address  ) == s.id} %>
 
-<% if primary_address.present? %>
-	<% secondry_addresses.insert(0,primary_address) %>
-<% end %>
+<%# if primary_address.present? %>
+	<%# secondry_addresses.insert(0,primary_address) %>
+<%# end %>
 
 <% if addresses.any? %>
 	<% secondry_addresses.in_groups_of(2).each  do |grouped_address_col| %>
@@ -27,7 +28,7 @@
 <% end %>
 
 
-<% if  addresses.blank? || secondry_addresses.uniq.length%2==0 %>
+<% if  addresses.blank? || (secondry_addresses.uniq.length%2==0) %>
 	<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 mrt-20-top"  >
 		<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
 	</div>
