@@ -71,14 +71,14 @@
                 <label><%=  user_phone_number.try(:title) %></label>
                 <%= f.number_field :phone_number, :class => 'form-control' %>
               </div>
-              <div class="col-md-6 col-sm-12 col-lg-6 nxt-sell">
+              <div class="form-group col-md-6 col-sm-12 col-lg-6 nxt-sell">
                 <label><%= user_birth_date.try(:title) %></label>
                 <%= f.select :date_of_birth, options_for_select((1..31).to_a.map{|num| [num,num]}, f.object.date_of_birth.to_i),{},{class: "form-control frt-sell"}%>
 
                 <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control sc-sell"}%>
               </div>
               <div class="col-md-12 col-sm-12 col-lg-12 sub-btn-acc">
-                <%= f.submit user_personal_btn_content.try(:title), :class => "btn-sub-frm button-body" %>
+                <%= f.submit user_personal_btn_content.try(:title), :class => "btn-sub-frm button-body", :id => "profile-btn" %>
               </div>
             </div>
           </div>
