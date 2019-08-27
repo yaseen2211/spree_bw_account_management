@@ -17,7 +17,7 @@ Spree::UserRegistrationsController.class_eval do
       end
     else
       clean_up_passwords(resource)
-      render :new
+      redirect_to request.referrer, :flash => { :error => resource.errors.full_messages.first}
     end
   end
 
