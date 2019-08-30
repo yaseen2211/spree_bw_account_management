@@ -9,7 +9,7 @@
   <%= form_for review, url: product_reviews_path(product), html: { method: :post, class: "purch" }  do |f| %>
     <%= render 'spree/shared/error_messages', target: review %>
     <%= f.hidden_field :name , value: @user.first_name? ? @user.first_name : @user.email %>
-    <%= f.text_area :review, wrap: 'virtual', rows: 5, cols: 50, id: "text",class: 'form-control',placeholder: "", maxlength:  "1500", required: true %>
+    <%= f.text_area :review, wrap: 'virtual', rows: 5, cols: 50, id: "text",class: 'form-control',placeholder: "", maxlength:  "1500" %>
     <label class="limt-text" id="count_message">1500</label>
 
     <% if Spree::Reviews::Config[:show_identifier] %>
@@ -34,4 +34,3 @@
     </div>
   <% end %>
 </div>
-

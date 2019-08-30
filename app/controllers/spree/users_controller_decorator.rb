@@ -2,6 +2,11 @@ Spree::UsersController.class_eval do
 
   def edit
     @orders = @user.orders.includes(:products, line_items: [variant: [:option_values, :images, :product]], bill_address: :state, ship_address: :state)
+    products_ids = []
+    @orders.map do |order|
+      products_ids << order.sub_orders.joins(:products).pluck(:"spree_products.id")
+    end
+    @products_ids = products_ids.flatten.uniq - @user.reviews.joins(:product).pluck("spree_products.id")
   end
 
   def update

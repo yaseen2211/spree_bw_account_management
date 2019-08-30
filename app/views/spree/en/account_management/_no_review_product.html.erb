@@ -1,0 +1,21 @@
+<% product = Spree::Product.find(product_id) %>
+<div class="col-lg-12 col-md-12 col-sm-12 wet-review-add bg-review brd-set">
+  <div class="main-review-div">
+    <div class="review-img-pro col-lg-2 col-md-2 col-sm-2">
+      <%= link_to small_image(product, itemprop: "image"), product_path(product) %>
+    </div>
+    <div class="review-details-pro col-lg-10 col-md-10 col-sm-10">
+      <ul>
+        <li><h3><a href="#"><%= link_to   product.name, product_path(product), target: "_blank" %></a></h3></li>
+        <li><p>Purchased On: <%= product.created_at.strftime("%m/%d/%Y") %></p></li>
+        <li>
+          <table class="rating_set">
+            <tbody><tr>
+              <td><span class="rating" data-rating="4" style="display: inline-block;"><span class="star active"><span class="star active"><span class="star active"><span class="star active"><span class="star"></span></span></span></span></span></span></td>
+            </tr>
+            </tbody></table>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

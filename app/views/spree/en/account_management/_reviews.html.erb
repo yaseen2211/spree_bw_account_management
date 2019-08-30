@@ -21,7 +21,6 @@
       </div>
       
       <div class="col-lg-12 col-md-12 col-sm-12 wet-frm">
-      
         <% if @user.reviews.any? %>
           <% @user.reviews.each do |review| %>
            <%= render partial: "spree/en/account_management/reviews/review", locals: {review: review} %>
@@ -29,6 +28,11 @@
 
         <% else %>
           <p> No Review(s) Found </p>
+        <% end %>
+        <% if @products_ids.any? %>
+          <% @products_ids.each do |product| %>
+            <%= render partial: "spree/en/account_management/no_review_product", locals: {product_id: product} %>
+      <% end %>
         <% end %>
         <div class="clearfix"></div>
         <div class="lod-btn text-center">
