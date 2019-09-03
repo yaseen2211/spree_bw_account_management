@@ -3,7 +3,7 @@
 <% address_main_content = @address_contents.spec_slug('address-main-heading-desc').last%>
 <% new_address_btn      = @address_btn_contents.spec_slug('address-btn-label-new').last%>
 <% address_advertisment_content = @address_contents.spec_slug('address-advertisement').last%>
-
+<% default_country = Spree::Country.where(name: "United Arab Emirates").last %>
 
 <div class="clearfix"></div>
 <div class=" alert  alert-dismissible" id="address-info-sec"></div>
@@ -13,7 +13,7 @@
 
     <div class="stor-full-top">
      <div class="dv-title  col-md-12 p-0">
-        <div class="col-lg-8 col-md-8 col-sm-8 add-bard-btn text-right p-0">
+        <div class="col-lg-8 col-md-8 col-sm-8 add-bard-btn text-right p-0 js-default-address-id" data_default_address_id="<%= default_country.id %>">
            <h2><%= address_main_content.try(:title) %></h2>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 add-bard-btn text-right p-0 desktop-eng js-add-new-address-btn"><a id="btn-new-address" href="#"><%=new_address_btn.try(:title) %></a></div>

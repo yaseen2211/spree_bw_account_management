@@ -16,21 +16,26 @@
 
 <% if addresses.any? %>
 	<% addresses.in_groups_of(2).each  do |grouped_address_col| %>
-		<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 mrt-20-top" >
+		<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 mrt-20-top"  >
 			<% grouped_address_col.reject(&:blank?).each do |split_address| %>
 				<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: split_address, url_name: address_path(split_address), method_name: "put",user: user,from_view: "pofile-addresses"}  %>
 			<% end %>
 
-			<% if grouped_address_col.compact.length == 1 %>
+			<% if  grouped_address_col.compact.length == 1 %>
 				<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
 			<% end %>
 		</div>
 	<% end %>
 <% end %>
 
+<% if  addresses.present? && (addresses.length%2 == 0) && addresses.last.persisted? %>
+	<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 mrt-20-top"  >
+		<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
+	</div>
+<% end  %>
 
 
-<% if  addresses.blank? && (addresses.length%2==0) %>
+<% if  addresses.blank?  %>
 	<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 mrt-20-top"  >
 		<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
 	</div>
