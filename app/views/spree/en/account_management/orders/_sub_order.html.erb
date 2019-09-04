@@ -169,7 +169,7 @@
 
                         <div class="review_da">
                           <p>Thank you for leaving a review for the  <%=item.name%> you purchased on  <%= order.created_at.strftime("%e/%m/%Y")%></p>
-                          <%= render partial: "spree/en/account_management/review", locals: {review: Spree::Review.new(product:product), product: product}%>
+                          <%= render partial: "spree/en/account_management/review", locals: {review: Spree::Review.new(product:product), product: product, sub_order_id: item.id}%>
                         </div>
                       </div>
                     </div>

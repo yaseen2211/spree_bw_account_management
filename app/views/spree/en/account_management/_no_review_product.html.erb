@@ -1,5 +1,5 @@
-<% product = Spree::Product.find(product_id) %>
-<div class="col-lg-12 col-md-12 col-sm-12 wet-review-add bg-review brd-set">
+<% product = Spree::Product.find(product_id[:id]) %>
+<div class="col-lg-12 col-md-12 col-sm-12 wet-review-add bg-review brd-set" style="background: white;">
   <div class="main-review-div">
     <div class="review-img-pro col-lg-2 col-md-2 col-sm-2">
       <%= link_to small_image(product, itemprop: "image"), product_path(product) %>
@@ -7,15 +7,29 @@
     <div class="review-details-pro col-lg-10 col-md-10 col-sm-10">
       <ul>
         <li><h3><a href="#"><%= link_to   product.name, product_path(product), target: "_blank" %></a></h3></li>
-        <li><p>Purchased On: <%= product.created_at.strftime("%m/%d/%Y") %></p></li>
-        <li>
+        <li><p>Purchased On: <%= product_id[:created_at].strftime("%m/%d/%Y") %></p></li>
+        <li class="rev_iew_tab">
           <table class="rating_set">
-            <tbody><tr>
-              <td><span class="rating" data-rating="4" style="display: inline-block;"><span class="star active"><span class="star active"><span class="star active"><span class="star active"><span class="star"></span></span></span></span></span></span></td>
+            <tr>
+              <td><span class="rating js-rating-event js-form-<%= product_id[:id]%>" data-formIdReview="<%= product_id[:id]%>"></span></td>
             </tr>
-            </tbody></table>
+          </table>
         </li>
       </ul>
+     <%=  form_tag( product_reviews_path(product), method: :post, :class => "background_color purch  js-review-form-#{product_id[:id]}")  do %>
+
+        <%= hidden_field_tag :name , value: @user.email %>
+        <%= hidden_field_tag :rating , value: nil %>
+        <%= hidden_field_tag :from_rating , value: 1 %>
+
+        <textarea class="form-control" id="review<%=product_id[:id] %>" name="review" maxlength="1500" rows="5" placeholder="" required=""></textarea>
+        <label class="limt-text" id="count_message">1500</label>
+        <div class="add-rev-btns">
+          <button class="cancel-btn" data-form-id="<%= product_id[:id] %>">Cancel</button>
+          <button class="sub-btn-add" data-form-id="<%= product_id[:id] %>">SUBMIT REVIEW</button>
+        </div>
+      <% end %>
+       <%#= render partial: 'spree/en/account_management/review_submit_form' %>
     </div>
   </div>
 </div>

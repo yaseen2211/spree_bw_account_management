@@ -48,9 +48,9 @@ $(document).on("change", "#File", function(e) {
     var filename = $('#File').val().replace('\\fakepath\\','');
     $('#file-name').html(filename);
 });
-$(document).on('click','#add-review-btn,.star-rating',function () {
-    if (!$('.star-rating-live').hasClass('star-rating-on')){
-        toastr.error('Please give rating.');
-        return false;
-    }
-})
+// $(document).on('click','#add-review-btn,.star-rating',function () {
+//     if (!$('.star-rating-live').hasClass('star-rating-on')){
+//         toastr.error('Please give rating.');
+//         return false;
+//     }
+// })
