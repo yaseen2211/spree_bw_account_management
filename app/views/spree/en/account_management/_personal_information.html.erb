@@ -77,8 +77,8 @@
 
                 <%= f.select :month_of_birth, options_for_select(Date::MONTHNAMES.compact.map{|mon| [mon,mon.downcase]}, f.object.month_of_birth),{:prompt => user_birth_month.try(:title), },{class: "form-control sc-sell"}%>
               </div>
-              <div class="form-group col-md-12 col-sm-12 col-lg-12 sub-btn-acc">
-                <%= f.submit user_personal_btn_content.try(:title), :class => "btn-sub-frm button-body" %>
+              <div class="col-md-12 col-sm-12 col-lg-12 sub-btn-acc">
+                <%= f.submit user_personal_btn_content.try(:title), :class => "btn-sub-frm button-body", :id => "profile-btn" %>
               </div>
             </div>
           </div>
