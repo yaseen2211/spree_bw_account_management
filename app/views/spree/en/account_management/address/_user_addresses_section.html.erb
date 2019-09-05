@@ -3,32 +3,39 @@
 <% @address_btn_contents = @address_contents.from_gen_slug('address-btn-label') %>
 <% @address_fileds_contents = @address_contents.from_gen_slug('address-field-label') %>
 
-<% @user_shipping_address = user.shipping_address.present? ?user.shipping_address.id  : "" %>
-<% @user_billing_address = user.billing_address.present? ? user.billing_address.id: "" %>
+<%# @user_shipping_address = user.shipping_address.present? ?user.shipping_address.id  : "" %>
+<%# @user_billing_address = user.billing_address.present? ? user.billing_address.id: "" %>
 
-<% primary_address     = addresses.select{|s| ( @user_shipping_address || @user_billing_address  ) == s.id}.last%>
-<% secondry_addresses  = addresses.reject{|s| ( @user_shipping_address || @user_billing_address  ) == s.id} %>
+<%# primary_address     = addresses.select{|s| ( @user_shipping_address || @user_billing_address  ) == s.id}.last%>
+<%# secondry_addresses  = addresses.reject{|s| ( @user_shipping_address || @user_billing_address  ) == s.id} %>
 
 <%# if primary_address.present? %>
 	<%# secondry_addresses.insert(0,primary_address) %>
 <%# end %>
 
+
 <% if addresses.any? %>
-	<% secondry_addresses.in_groups_of(2).each_with_index  do |grouped_address_col, index| %>
-		<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 <%= index == 0 ?  ' ' : 'mrt-20-top'%>">
+	<% addresses.in_groups_of(2).each_with_index   do |grouped_address_col, index| %>
+		<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 <%= index == 0 ?  ' ' : 'mrt-20-top'%>"  >
 			<% grouped_address_col.reject(&:blank?).each do |split_address| %>
 				<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: split_address, url_name: address_path(split_address), method_name: "put",user: user,from_view: "pofile-addresses"}  %>
 			<% end %>
 
-			<% if grouped_address_col.compact.length == 1 %>
+			<% if  grouped_address_col.compact.length == 1 %>
 				<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
 			<% end %>
 		</div>
 	<% end %>
 <% end %>
 
+<% if  addresses.present? && (addresses.length%2 == 0) && addresses.last.persisted? %>
+	<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 mrt-20-top"  >
+		<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
+	</div>
+<% end  %>
 
-<% if  addresses.blank? || (secondry_addresses.uniq.length%2==0) %>
+
+<% if  addresses.blank?  %>
 	<div class="col-lg-12 col-md-12 col-sm-12 primary-dv-main p-0 mrt-20-top"  >
 		<%= render partial: 'spree/en/account_management/address/single_address', locals: {form_obj: addresses.new, url_name: addresses_path(user), method_name: "post",user: user, from_view: "pofile-addresses"}  %>
 	</div>

@@ -1,40 +1,23 @@
-<div class="clearfix"></div>
+<div class="locan-stor cate-pg">
+  <%= render partial: "spree/en/account_management/side_bar_tab" %>
+  <div class="col-lg-10 col-md-10 col-sm-9 stor-list-pg ed-top">
 
-<div class="container">
+    <div class="col-lg-12 col-md-12 col-sm-12 acc_form_set">
 
-  <div class="stor-full-top">
-    <div class="dv-title text-center col-md-12">
-      <h2>Reviews</h2>
-    </div>
-    
-    <div class="clearfix"></div>
-  </div>
-
-  <div class="locan-stor cate-pg">
-    <%= render  partial: "spree/en/account_management/side_bar_tab" %> 
-    <div class="col-lg-10 col-md-10 col-sm-9 stor-list-pg ed-top">
-      
-      <div class="col-lg-12 col-md-12 col-sm-12 acc_form_set">
-      
       <div class="col-lg-12 col-md-12 col-sm-12 wet-text">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui
+          mattis dui, non pulvinar lorem felis nec erat. </p>
       </div>
-      
+
       <div class="col-lg-12 col-md-12 col-sm-12 wet-frm">
-      
         <% if @user.reviews.any? %>
           <% @user.reviews.each do |review| %>
-           <%= render partial: "spree/en/account_management/reviews/review", locals: {review: review} %>
+            <%= render partial: "spree/en/account_management/reviews/review", locals: {review: review} %>
           <% end %>
 
         <% else %>
           <p> No Review(s) Found </p>
         <% end %>
-        <div class="clearfix"></div>
-        <div class="lod-btn text-center">
-          <button>LOAD MORE</button>
-        </div>
-     
       </div>
       <div class="back_to_top" onClick="topFunction()" id="myBtn">
        <%= image_tag "top-ico.svg", alt: "" %>
@@ -103,22 +86,18 @@
     }
   }
 
-  // When the user clicks on the button, scroll to the top of the document
-  function topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  }         
-    
-</script>
+<!--<script>-->
+<!--    $('.star').click(function () {-->
+<!--        debugger;-->
+<!--        let form_id = $(this).find('formIdReview');-->
+<!--        let total = $('.js-form-'+form_id).length;-->
+<!--        let c = 0-->
+<!--        $('.star').each(function (el) {-->
+<!--            c +=1;-->
+<!--        })-->
+<!--        $('#rating').val(c);-->
+<!--    })-->
+<!--</script>-->
 
- <script>
-  var ratings = document.getElementsByClassName('rating');
 
-  for (var i = 0; i < ratings.length; i++) {
-      var r = new SimpleStarRating(ratings[i]);
 
-      ratings[i].addEventListener('rate', function(e) {
-          console.log('Rating: ' + e.detail);
-      });
-  }
-</script>

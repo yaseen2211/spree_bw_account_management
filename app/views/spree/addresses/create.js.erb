@@ -1,9 +1,8 @@
 <% lang = I18n.locale %>
 <% if @address.save %>
 
-	<%= Spree::Address.assign_address_to_order(@address, current_order) %>
-	<%= Spree::Address.shipping_cost_calculation(@address, current_order) %>
-
+	<%= Spree::Address.assign_address_to_order(@address, current_order, spree_current_user) %>
+	<%#= Spree::Address.shipping_cost_calculation(@address, current_order) %>
 	var address_html = "<%= j render partial:"spree/#{lang.present? ? lang.to_s : DEFAULT_VIEW_LANG}/account_management/address/user_addresses_section", locals: {addresses: spree_current_user.addresses, user: spree_current_user} %>"
 	$("#user-"+ <%= spree_current_user.id %> + "-addresses-section").html(address_html);
 
