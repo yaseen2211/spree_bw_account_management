@@ -30,7 +30,8 @@
     <div class="clearfix"></div>
     <div class="add-rev-btns pop-add-btns">
     <button class="cancel-btn" data-dismiss="modal"><%= order_cancel_review_button_label.try(:title) %></button>
-    <%= f.submit order_add_review_button_label.try(:title), class: 'btn sub-btn-add', id: "add-review-btn" %>
+    <%#= f.submit order_add_review_button_label.try(:title), class: 'btn sub-btn-add', id: "add-review-btn" %>
+    <button type="submit" id="add-review-btn" class="sub-btn-add"><%=order_add_review_button_label.try(:title)%></button>
     </div>
   <% end %>
 </div>
