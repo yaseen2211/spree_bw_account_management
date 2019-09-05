@@ -19,10 +19,72 @@
           <p> No Review(s) Found </p>
         <% end %>
       </div>
+      <div class="back_to_top" onClick="topFunction()" id="myBtn">
+       <%= image_tag "top-ico.svg", alt: "" %>
+      </div>
+      
+      </div>      
     </div>
   </div>
 </div>
 
+<!-- <div class="adver-sec">
+  <div class="container">
+    <div class="adver-sec-mn"> 
+      <%#= image_tag "advertize.jpg",class: "img-responsive", alt: "" %>
+       </div>
+  </div>
+</div>
+
+ -->
+  
+
+
+
+
+<script>
+  $(document).ready(function() {
+        
+        
+    $('.star').each(function(){
+      $(this).click(function(){
+        $(this).parents('.review-details-pro').find('.add_review_form').show();
+      });
+    });
+    
+    $('.cancel-btn').each(function(){
+      $(this).click(function(e){
+        e.preventDefault();
+        $('.add_review_form').hide();
+        return false;
+      });
+    });
+  });
+  
+      
+      
+
+      
+      
+  var text_max = 1500;
+  $('#count_message').html(text_max + ' ');
+
+  $('#text').keyup(function() {
+    var text_length = $('#text').val().length;
+    var text_remaining = text_max - text_length;
+    
+    $('#count_message').html(text_remaining + ' ');
+  }); 
+      
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("myBtn").style.display = "block";
+    } else {
+      document.getElementById("myBtn").style.display = "none";
+    }
+  }
 
 <!--<script>-->
 <!--    $('.star').click(function () {-->

@@ -16,11 +16,11 @@
         <li>
 
         	<% star_fill.times do |star| %>
-        		<%= image_tag "star_fill.png", alt: "" %>
+        		<%= image_tag "star-b.png", alt: "" %>
         	<% end %>
 
           <% star_empty.times do |star| %>
-            <%= image_tag "star_empty.png", alt: "" %>
+            <%= image_tag "star-w.png", alt: "" %>
           <% end %>
 
         	
@@ -28,7 +28,7 @@
         <%#= review.rating %>
       </ul>
       <div class="discription-dv">
-        <p><%= truncate(strip_tags(review.review), length: 50, omission: '...') %></p>
+        <p><%= truncate(strip_tags(review.review), length: 183, omission: '...') %></p>
       </div>
     </div>
   </div>     
