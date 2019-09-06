@@ -1,8 +1,4 @@
-<style>
-  .star_rating:nth-child(2){
-    display: none!important;
-  }
-</style>
+
 <% if sub_orders.any? %>
   <% sub_orders.each_with_index do |sub_order, index| %>
     <%= render partial: "spree/en/account_management/orders/sub_order", locals: {order:  sub_order, main_order: main_order} %>
