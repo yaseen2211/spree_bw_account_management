@@ -158,7 +158,7 @@
                       <li data-toggle="modal" data-target=".js-add-reveiw_<%= item.id%>">
                         <table class="rating_set">
                           <tr>
-                            <td><span class="rating star_rating" ></span></td>
+                            <td><span class="rating star_rating" id="<%= item.id%>"></span></td>
                           </tr>
                         </table>
                       </li>
@@ -225,6 +225,11 @@
     </div>
   </div>
 <% end %>
+<script>
+   $(document).ready(function () {
+       $('.star_rating > span:even').hide();
+   })
+</script>
 
 <script type="text/javascript">
   $('.close').on('click',function(){

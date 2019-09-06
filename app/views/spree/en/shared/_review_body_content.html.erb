@@ -1,0 +1,49 @@
+<% if params[:partial] == 'reviews' %>
+  <div class="clearfix"></div>
+
+  <div class="container">
+
+    <div class="stor-full-top">
+      <div class="dv-title text-center col-md-12">
+        <h2>Reviews</h2>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+<% end %>
+<%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+  <%= render partial: "spree/en/account_management/#{params[:partial]}", locals: {f: f} %>
+<% end %>
+<% if params[:partial] == 'reviews' %>
+  <div class="container">
+    <div class="locan-stor cate-pg">
+      <div class="col-lg-2 col-md-2 col-sm-3 option-stor-lft p-0 disp-non"></div>
+      <div class="col-lg-10 col-md-10 col-sm-9 stor-list-pg ed-top">
+        <div class="col-lg-12 col-md-12 col-sm-12 acc_form_set">
+          <div class="col-lg-12 col-md-12 col-sm-12 wet-frm">
+            <% if @products_ids.any? %>
+              <% @products_ids.each do |product| %>
+                <%= render partial: "spree/en/account_management/no_review_product", locals: {product_id: product} %>
+              <% end %>
+            <% end %>
+            <div class="clearfix"></div>
+            <div class="lod-btn text-center">
+              <button>LOAD MORE</button>
+            </div>
+          </div>
+          <div class="back_to_top" onClick="topFunction()" id="myBtn">
+            <%= image_tag "top-ico.svg", alt: "" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--          <div class="adver-sec">-->
+    <!--            <div class="container">-->
+    <!--              <div class="adver-sec-mn">-->
+    <%#= image_tag "advertize.jpg", class: "img-responsive", alt: "" %>
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--          </div>-->
+  </div>
+  </div>
+<% end %>

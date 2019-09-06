@@ -37,6 +37,9 @@
 </div>
 
 <script>
+    $('.cancel-btn').on('click',function () {
+        $('.close').trigger('click')
+    })
     $('.js-rating-modal').on('click',function(){
         let id = $(this).attr('id');
         let el = $('#'+id).first().children();
