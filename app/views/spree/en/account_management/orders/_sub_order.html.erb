@@ -1,3 +1,4 @@
+
 <%vendors = []%>
 <%vendors = order.products.group_by(&:vendor) %>
 <% vendors.each do |vendor, products|%>
@@ -61,33 +62,33 @@
                   <%#= image_tag "arw-icon.png"%>
 <!--                </div>-->
               <%# end %>
-              
+
             </div>
 
 
             <div class="col-lg-9 col-md-9 col-sm-9 adip">
-              
+
               <%= link_to item.variant.product, itemprop: "url" do %>
                 <%= item.quantity.to_s + " x "%>
                 <%= content_tag(:span, truncate(item.variant.product.name, length: 50), class: 'info', itemprop: "name", title: item.variant.product.name) %>
               <% end %>
 
               <br><p><%= truncate(item.description, length: 100) %></p>
-              
+
               <!-- <div>
                 <%#= item.variant.options_text unless item.variant.option_values.empty? %>
               </div> -->
 
-            
+
               <% if variant.on_sale? %>
                 <ul class="rt-prc">
                   <li class="wis_list"><%=  display_variant_price(product) %></li>
                   <li class="cm_wis"><del><%= display_original_price(variant)%></del><br><font><%= display_discount_percent(variant, append_text=@order_sale_off_label.try(:title)) %></font></li>
-                </ul> 
+                </ul>
               <% else %>
                 <ul class="rt-prc">
                   <li class="nom"><%= item.display_amount.to_html unless item.quantity.nil? %></li>
-                </ul> 
+                </ul>
               <% end %>
 
               <% user_review = nil %>
@@ -100,7 +101,7 @@
               <% end %>
 
               <% if user_review.present? %>
-                
+
 
                   <div class="odr-tb">
                     <ul>
@@ -148,13 +149,19 @@
                         </div>
                       </div>
                     </div>
-               </div> 
+               </div>
 
 
               <% else %>
                  <div class="odr-tb">
                     <ul>
-                      <li data-toggle="modal" data-target=".js-add-reveiw_<%= item.id%>"><table class="rating_set"><tr> <td><span class="rating"></span></td> </tr></table></li>
+                      <li data-toggle="modal" data-target=".js-add-reveiw_<%= item.id%>">
+                        <table class="rating_set">
+                          <tr>
+                            <td><span class="rating star_rating" ></span></td>
+                          </tr>
+                        </table>
+                      </li>
                       <li class="rev_siew"><a href="#"  data-toggle="modal" data-target=".js-add-reveiw_<%= item.id%>"><%= @order_review_button_label.try(:title) %></a></li>
                     </ul>
                   </div>
@@ -166,10 +173,10 @@
                           <button type="button" class="close" data-dismiss="modal">×</button>
                         </div>
                         <div class="modal-body">
-                      
+
                           <div class="review_da">
                             <p id="popup-style">Thank you for leaving a review for the  <%=item.name%> you purchased on  <%= order.created_at.strftime("%e/%m/%Y")%></p>
-                          <%= render partial: "spree/en/account_management/review", locals: {review: Spree::Review.new(product:product), product: product}%>
+                          <%= render partial: "spree/en/account_management/review", locals: {review: Spree::Review.new(product:product), product: product, sub_order_id: item.id}%>
                           </div>
                         </div>
                       </div>
@@ -181,11 +188,11 @@
             </div>
             <div class="clearfix"></div>
             <% if order.line_items.last != item  %>
-              <div class="dvd"></div> 
-            <% end %> 
+              <div class="dvd"></div>
+            <% end %>
 
             <div class="clearfix"></div>
-          </div> 
+          </div>
 
           <% if index == 0 %>
              <div class="vol_rma text-right tr_2 col-lg-5 col-md-5 col-sm-5 p-0 turn-btn">
@@ -196,7 +203,7 @@
               <%# if vendor.present? %>
                 <%#= link_to @order_contact_store_button_label.try(:title), spree.new_vendor_contact_store_path(vendor.try(:id), order_number: order.number), target:  "_blank"%>
               <%# end %>
-              
+
               <%# if spree_current_user.present? && order.completed? && order.shipped? && order.has_returnable_products? && order.has_returnable_line_items? %>
 <!--                <br>-->
               <%#= link_to @order_request_return_button_label.try(:title), spree.new_order_return_authorization_path(order.parent_order) %>
