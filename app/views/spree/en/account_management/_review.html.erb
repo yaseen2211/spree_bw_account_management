@@ -23,20 +23,23 @@
 
     <div class="pop-rating">
       <ul>
-      <li class="ovr_all"><%= order_overall_star_rating_review_label.try(:title) %></li>
-      <%= render 'spree/reviews/stars', stars: review.rating, edit_enabled: true, sub_order_id: sub_order_id %>
+        <li class="ovr_all"><%= order_overall_star_rating_review_label.try(:title) %></li>
+        <%= render 'spree/reviews/stars', stars: review.rating, edit_enabled: true, sub_order_id: sub_order_id %>
       </ul>
     </div>
     <div class="clearfix"></div>
     <div class="add-rev-btns pop-add-btns">
-    <button class="cancel-btn" data-dismiss="modal"><%= order_cancel_review_button_label.try(:title) %></button>
-    <%#= f.submit order_add_review_button_label.try(:title), class: 'btn sub-btn-add', id: "add-review-btn" %>
-    <button type="submit" id="add-review-btn" class="sub-btn-add"><%=order_add_review_button_label.try(:title)%></button>
+      <button class="cancel-btn" data-dismiss="modal"><%= order_cancel_review_button_label.try(:title) %></button>
+      <button type="submit" id="add-review-btn" class="sub-btn-add"><%=order_add_review_button_label.try(:title)%></button>
+      <%#= f.submit order_add_review_button_label.try(:title), class: 'btn sub-btn-add', id: "add-review-btn" %>
     </div>
   <% end %>
 </div>
 
 <script>
+    $('.cancel-btn').on('click',function () {
+        $('.close').trigger('click')
+    })
     $('.js-rating-modal').on('click',function(){
         let id = $(this).attr('id');
         let el = $('#'+id).first().children();
