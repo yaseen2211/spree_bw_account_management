@@ -1,3 +1,4 @@
+
 <ul class="ul-ord-1 deta col-lg-4 col-md-4 col-sm-4 p-0">
   <h3><%= @order_sub_heading_order_details.try(:title) %></h3>
   <li class="bd-3"><%= order.number %></li>
@@ -31,11 +32,7 @@
       <%= @order_summary_shipping_label.try(:title) %>:
       
     </font>
-    <% order.shipments.group_by { |s| s.selected_shipping_rate.try(:name) }.each do |name, shipments| %>
-      <% if shipments.present? %>
-        <font class="pull-right"><%= Spree::Money.new(shipments.sum(&:discounted_cost), currency: order.currency).to_html %></font>
-      <% end %>
-    <% end %>
+    <font class="pull-right"><%= @order.display_shipment_total.to_html %></font>
   </li>     
   <!-- <li class="bd-4"><font class="pull-left">Store Credit:</font><font class="pull-right">-$ 30.00</font></li> -->
   <% if order.line_item_adjustments.nonzero.exists? || order.adjustments.nonzero.eligible.exists? %>
