@@ -19,7 +19,11 @@
       </ul>
      <%=  form_tag( product_reviews_path(product), method: :post, :class => "background_color purch  js-review-form-#{product_id[:id]}")  do %>
 
-        <%= hidden_field_tag :name , @user.email %>
+        <% if  @user.first_name.present? && @user.last_name.present? %>
+          <%= hidden_field_tag :name , @user.first_name+''+@user.last_name[0] %>
+        <% else %>
+          <%= hidden_field_tag :name , @user.email %>
+        <% end %>
         <%= hidden_field_tag :rating , nil %>
         <%= hidden_field_tag :from_rating , 1 %>
 
