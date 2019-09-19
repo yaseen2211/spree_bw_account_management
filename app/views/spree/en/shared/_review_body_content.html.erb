@@ -11,9 +11,7 @@
       <div class="clearfix"></div>
     </div>
 <% end %>
-<% form = nil %>
 <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-  <% form =f %>
+  <%= render partial: "spree/en/account_management/#{params[:partial]}", locals: {f: f} %>
 <% end %>
-<%= render partial: "spree/en/account_management/#{params[:partial]}", locals: {f: form} %>
   </div>
