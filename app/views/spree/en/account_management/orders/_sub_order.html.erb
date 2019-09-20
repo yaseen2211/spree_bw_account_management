@@ -111,7 +111,7 @@
                       <%= render partial: "spree/en/account_management/reviews/print_review_stars", locals: {review: user_review}%>
                       </li>
                       <li class="rev_iew">
-                        <a href="#" data-toggle="" data-target=".js-reveiw_<%=item.id%>"><%= @order_my_review_button_label.try(:title) %>
+                        <a href="#" data-toggle="modal" data-target=".js-reveiw_<%=item.id%>"><%= @order_my_review_button_label.try(:title) %>
                         </a>
                       </li>
                     </ul>
