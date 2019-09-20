@@ -29,7 +29,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="add-rev-btns pop-add-btns">
-      <button class="cancel-btn" data-dismiss="modal"><%= order_cancel_review_button_label.try(:title) %></button>
+      <button class="cancel-btn" data-target="js-click-<%= sub_order_id%>" data-dismiss="modal"><%= order_cancel_review_button_label.try(:title) %></button>
       <button type="submit" id="add-review-btn" class="sub-btn-add"><%=order_add_review_button_label.try(:title)%></button>
       <%#= f.submit order_add_review_button_label.try(:title), class: 'btn sub-btn-add', id: "add-review-btn" %>
     </div>
@@ -38,11 +38,13 @@
 
 <script>
     $('.cancel-btn').on('click',function () {
-        $('.close').trigger('click')
+        let attr_class= $(this).attr('data-target')
+        $('.'+attr_class).trigger('click')
     })
     $('.js-rating-modal').on('click',function(){
         let id = $(this).attr('id');
-        let el = $('#'+id).first().children();
+        // let el = $('#'+id).last().children();
+        let el = $(this).children().last();
         // let old_stars = $('.star-rating-control').first().children();
         let c =0;
         for(let i =0 ;i < 5; i++){
