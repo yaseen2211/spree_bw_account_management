@@ -235,4 +235,10 @@
   $('.close').on('click',function(){
     $('.modal-backdrop').remove();
   })
+
+  $('.rating_set').click(function () {
+      let modal_class= $(this).parent().attr('data-target');
+      $(modal_class).modal('show');
+      return false;
+  })
 </script>
