@@ -8,7 +8,7 @@
   <%= form_for review, url: product_reviews_path(product), html: { method: :post, class: "purch" }  do |f| %>
     <%= render 'spree/shared/error_messages', target: review %>
     <%= f.hidden_field :name , value: @user.first_name? ? @user.first_name : @user.email %>
-    <%= f.hidden_field :rating , value: nil, class: "js-review-form-#{sub_order_id}" %>
+    <%= f.hidden_field :rating , value: 0, class: "js-review-form-#{sub_order_id}" %>
     <%= f.text_area :review, wrap: 'virtual', rows: 5, cols: 50, id: "text",class: 'form-control',placeholder: "", maxlength:  "1500" %>
     <label class="limt-text" id="count_message">1500</label>
 
@@ -30,7 +30,7 @@
     <div class="clearfix"></div>
     <div class="add-rev-btns pop-add-btns">
       <button class="cancel-btn" data-target="js-click-<%= sub_order_id%>" data-dismiss="modal"><%= order_cancel_review_button_label.try(:title) %></button>
-      <button type="submit" id="add-review-btn" class="sub-btn-add"><%=order_add_review_button_label.try(:title)%></button>
+      <button type="submit" id="add-review-btn", data-target = "js-review-form-<%= sub_order_id%>" class="sub-btn-add"><%=order_add_review_button_label.try(:title)%></button>
       <%#= f.submit order_add_review_button_label.try(:title), class: 'btn sub-btn-add', id: "add-review-btn" %>
     </div>
   <% end %>
@@ -40,6 +40,14 @@
     $('.cancel-btn').on('click',function () {
         let attr_class= $(this).attr('data-target')
         $('.'+attr_class).trigger('click')
+    })
+    $('.sub-btn-add').click(function () {
+        $('.color_class').remove();
+        let input_id = $(this).attr('data-target');
+        if ($('.'+input_id).val() == "0"){
+            $(this).after('<span class="color_class" style="color: red">please add review</span>');
+            return false
+        }
     })
     $('.js-rating-modal').on('click',function(){
         let id = $(this).attr('id');
