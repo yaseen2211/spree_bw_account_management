@@ -1,9 +1,7 @@
 <% if spree_current_user.present? && (params[:action].present? && params[:action] != "new") %>
   <% if params[:partial].present? %>
     <% if params[:with_form].present? %>
-      <%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
-        <%= render partial: "spree/en/account_management/#{params[:partial]}" , locals: {f: f} %>
-      <% end %>
+      <%= render partial: "spree/en/shared/review_body_content" %>
     <% else %>
       <%= render partial: "spree/en/account_management/#{params[:partial]}" %>
     <% end %>
@@ -267,4 +265,76 @@
             $('#error_msg').remove();
         }
     })
+
+
+
+
+
+
+
+
+
+    $(document).ready(function() {
+
+
+        $('.star').each(function(){
+            $(this).click(function(){
+                $(this).parents('.review-details-pro').find('.add_review_form').show();
+            });
+        });
+
+        $('.cancel-btn').each(function(){
+            $(this).click(function(e){
+                e.preventDefault();
+                $('.add_review_form').hide();
+                return false;
+            });
+        });
+    });
+    $('.cancel-btn').on('click',function(){
+        let id = $(this).attr('data-form-id');
+        $('.js-review-form-'+id).css('display','none')
+
+    })
+
+    var text_max = 1500;
+    $('#count_message').html(text_max + ' ');
+
+    $('#text').keyup(function() {
+        var text_length = $('#text').val().length;
+        var text_remaining = text_max - text_length;
+
+        $('#count_message').html(text_remaining + ' ');
+    });
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+</script>
+
+<script>
+    var ratings = document.getElementsByClassName('rating');
+
+    for (var i = 0; i < ratings.length; i++) {
+        var r = new SimpleStarRating(ratings[i]);
+
+        ratings[i].addEventListener('rate', function(e) {
+            console.log('Rating: ' + e.detail);
+        });
+    }
+
+
 </script>

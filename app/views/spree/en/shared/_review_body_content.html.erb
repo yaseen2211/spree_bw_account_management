@@ -1,0 +1,17 @@
+<% if params[:partial] == 'reviews' %>
+  <div class="clearfix"></div>
+
+  <div class="container">
+
+    <div class="stor-full-top">
+      <div class="dv-title text-center col-md-12">
+        <h2>Reviews</h2>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+<% end %>
+<%= form_for @user, :url => spree.user_path(@user), :method => :put, :remote => true do |f| %>
+  <%= render partial: "spree/en/account_management/#{params[:partial]}", locals: {f: f} %>
+<% end %>
+  </div>
