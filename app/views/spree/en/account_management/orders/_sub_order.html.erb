@@ -145,6 +145,11 @@
                               <div class="modal-footer pop-ftr">
                                 <button type="button" class="" data-dismiss="modal"><%= @order_my_review_close.try(:title) %></button>
                               </div>
+                              <% if !user_review.approved %>
+                                <div>
+                                  <span style="color: red"> review will be shown on product after admin approval</span>
+                                </div>
+                              <% end %>
                             </div>
                         </div>
                       </div>
