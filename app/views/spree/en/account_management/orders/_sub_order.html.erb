@@ -147,7 +147,7 @@
                               </div>
                               <% if !user_review.approved %>
                                 <div>
-                                  <span style="color: red"> review will be shown on product after admin approval</span>
+                                  <span style="color: red"> Review will be shown on product after admin approval</span>
                                 </div>
                               <% end %>
                             </div>
@@ -158,35 +158,35 @@
 
 
               <% else %>
-                 <div class="odr-tb">
-                    <ul>
-                      <li data-toggle="modal" data-target=".js-add-reveiw_<%= item.id%>">
-                        <table class="rating_set">
-                          <tr>
-                            <td><span class="rating star_rating" id="<%= item.id%>"></span></td>
-                          </tr>
-                        </table>
-                      </li>
-                      <li class="rev_siew"><a href="#"  data-toggle="modal" data-target=".js-add-reveiw_<%= item.id%>"><%= @order_review_button_label.try(:title) %></a></li>
-                    </ul>
-                  </div>
-                  <div id="Add_Review_modal" class="modal fade js-add-reveiw_<%= item.id%>" role="dialog">
-                    <div class="modal-dialog">
-                      <div class="modal-content pr-pop-perso review_pop_set">
-                        <div class="modal-header">
-                          <h2 class="popup-title"><%= @order_product_review_heading.try(:title) %></h2>
-                          <button type="button" class="close js-click-<%= item.id%>" data-dismiss="modal">×</button>
-                        </div>
-                        <div class="modal-body">
+                <div class="odr-tb">
+                  <ul>
+                    <li data-toggle="modal" class="js-rating-current-review" data-target=".js-add-reveiws_<%= item.id%>">
+                      <table class="rating_set">
+                        <tr>
+                          <td><span class="rating star_rating" id="<%= item.id%>"></span></td>
+                        </tr>
+                      </table>
+                    </li>
+                    <li class="rev_siew"><a href="#"  data-toggle="modal" data-target=".js-add-reveiw_<%= item.id%>"><%= @order_review_button_label.try(:title) %></a></li>
+                  </ul>
+                </div>
+                <div id="Add_Review_modal" class="modal fade js-add-reveiws_<%= item.id%> js-add-reveiw_<%= item.id%>" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content pr-pop-perso review_pop_set">
+                      <div class="modal-header">
+                        <h2 class="popup-title"><%= @order_product_review_heading.try(:title) %></h2>
+                        <button type="button" class="close js-click-<%= item.id%>" data-dismiss="modal">×</button>
+                      </div>
+                      <div class="modal-body">
 
-                          <div class="review_da">
-                            <p id="popup-style">Thank you for leaving a review for the  <%=item.name%> you purchased on  <%= order.created_at.strftime("%e/%m/%Y")%></p>
+                        <div class="review_da">
+                          <p id="popup-style">Thank you for leving a review for the  <%=item.name%> you purchased on  <%= order.created_at.strftime("%e/%m/%Y")%></p>
                           <%= render partial: "spree/en/account_management/review", locals: {review: Spree::Review.new(product:product), product: product, sub_order_id: item.id}%>
-                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
               <% end %>
 
 
@@ -241,9 +241,4 @@
     $('.modal-backdrop').remove();
   })
 
-  $('.rating_set').click(function () {
-      let modal_class= $(this).parent().attr('data-target');
-      $(modal_class).modal('show');
-      return false;
-  })
 </script>
