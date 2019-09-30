@@ -23,7 +23,7 @@
 
     <div class="pop-rating">
       <ul>
-        <li class="ovr_all"><%= order_overall_star_rating_review_label.try(:title) %></li>
+        <li class="ovr_all modal_style"><%= order_overall_star_rating_review_label.try(:title) %></li>
         <%= render 'spree/reviews/stars', stars: review.rating, edit_enabled: true, sub_order_id: sub_order_id %>
       </ul>
     </div>
