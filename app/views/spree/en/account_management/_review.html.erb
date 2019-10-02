@@ -22,7 +22,7 @@
     <% end %>
 
     <div class="pop-rating">
-      <ul>
+      <ul id="css-modal-style">
         <li class="ovr_all modal_style"><%= order_overall_star_rating_review_label.try(:title) %></li>
         <%= render 'spree/reviews/stars', stars: review.rating, edit_enabled: true, sub_order_id: sub_order_id %>
       </ul>
@@ -45,7 +45,7 @@
         $('.color_class').remove();
         let input_id = $(this).attr('data-target');
         if ($('.'+input_id).val() == "0"){
-            $(this).after('<span class="color_class" style="color: red">please add review</span>');
+            $(this).after('<div><span class="color_class" style="color: red">Please add review</span></div>');
             return false
         }
     })
