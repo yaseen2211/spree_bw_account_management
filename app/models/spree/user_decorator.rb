@@ -37,7 +37,10 @@ Spree::User.class_eval do
     if self.has_spree_role?("Shop Owner")
       reset_passowrd_for_vendor
     else
-      Spree::UserMailer.welcome(self).deliver_now
+      begin
+        Spree::UserMailer.welcome(self).deliver_now
+      rescue
+      end
     end
   end
 
